@@ -449,7 +449,7 @@ byte Status = 0x0;
 //*****************************************************************************************
 boolean Ethernet_Shield = true;                     // Change to "false" if you do not have an Ethernet Shield connected to Arduino.
 
-char *credencial = "williemcd:012867";              // Put here your username and password registered on www.joy-reef.com. User and password should be separated by a colon (:);
+char *credencial = "username:password";              // Put here your username and password registered on www.joy-reef.com. User and password should be separated by a colon (:);
                                                     // Use lowercase apena.
                                               
 byte maxima_tentativa = 3;                          // Maximum number of authentication attempts.
@@ -457,7 +457,7 @@ unsigned long intervalo_tentativa = 15;             // Time to wait (in minutes)
 
 byte mac[] = { 0x54, 0x55, 0x58, 0x10, 0x00, 0x26 }; // The MAC must be unique on your local network.
 
-byte ip[] = {192,168,0, 7};                         // ENC28J60 Ethernet Shield--Configure the IP as its local network.
+byte ip[] = {192,168,0, 0};                         // ENC28J60 Ethernet Shield--Configure the IP as its local network.
 
 IPAddress gateway(192,168,0,1);                     // Configure the "Gateway" as your local network.
 IPAddress subnet(255, 255, 255, 0);                 // Configure the network mask according to your local network.
