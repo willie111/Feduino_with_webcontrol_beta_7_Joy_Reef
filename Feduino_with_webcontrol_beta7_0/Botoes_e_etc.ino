@@ -14,16 +14,16 @@ const byte almM[]= {
 const byte almP[]= {
   205, 135, 230, 160};        //alarm plus
 const int iniC[]= {
-  325, 2, 390, 42};           // home
+  650, 2, 780, 42};           // home
 const int menU[]= {
-  325, 52, 390, 92};          // menu
+  650, 52, 780, 92};          // menu
 const int prOK[]= {
-  325, 200, 390, 238};        //ok
+  650, 200, 780, 238};        //ok
 const int salV[]= {
-  325, 150, 390, 190};        //save dosage
+  650, 150, 780, 190};        //save dosage
 const int deS[]= {
-  325, 102, 390, 142};
-//const int xxxx[]= {325, 200, 390, 239};
+  650, 102, 780, 142};
+//const int xxxx[]= {650, 200, 780, 239};
 const byte tanD[]= {
   10, 20, 150, 60};        // Time $ date
 const byte tesT[]= {
@@ -49,7 +49,7 @@ const int dosA[]= {
 const int wavM[]= {
   170, 170, 310, 210};        // Wavemaker
 const int volT[]= {
-  325, 200, 390, 238};         //voltar
+  650, 200, 780, 238};         // back
 const int testT[]= {
   40, 34, 280, 74};      //Testar todos os leds
 const int testI[]= {
