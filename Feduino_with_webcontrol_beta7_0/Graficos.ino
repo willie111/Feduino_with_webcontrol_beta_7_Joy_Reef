@@ -34,10 +34,10 @@ void tempgScreen()//------------------------------------------------------------
   }
 
   myGLCD.print("0", 550, 386); 
-  myGLCD.drawCircle(30, 42, 2);
+  myGLCD.drawCircle(30, 32, 2);
   myGLCD.print("F", 40, 36);  
   //myGLCD.print("C", 20, 18);
-  myGLCD.print("HOUR", 580, 386);
+  myGLCD.print("HOUR", 520, 420);
 
   myGLCD.drawLine(80, 60, 80, 380); // Eixo y
   myGLCD.drawLine(80, 380, 580, 380);  // Eixo x
@@ -53,7 +53,7 @@ void tempgScreen()//------------------------------------------------------------
   //EIXO Y
   for(int l=120; l<600; l+=40)
   {
-    myGLCD.drawLine(2, 60, 2, 380);
+    myGLCD.drawLine(l, 60, l, 380);
   }
 /***********************************************CELSIUS******************************/
 /**************************************************************************** changed for Fahrenheit *******************************************************************/
@@ -201,7 +201,7 @@ void tempgScreen()//------------------------------------------------------------
       {
         grafico = 380;
       }
-      setFont(SMALL, 255, 0, 255, 0, 0, 0);
+      setFont(LARGE, 255, 0, 255, 0, 0, 0);
 
       if(j < 250)
       {
@@ -249,8 +249,8 @@ void orpScreen()//------------------------------------------------------------te
     f -= 40;
   }
   myGLCD.print("0", 550, 396);    
-  myGLCD.print("MV", 36, 36);
-  myGLCD.print("H", 580, 396);
+  myGLCD.print("MV", 22, 36);
+  myGLCD.print("HOUR", 520, 420);
   myGLCD.drawLine(80, 380, 580, 380);  //eixo x
   myGLCD.drawLine(80, 60, 80, 380); //eixo y
 
@@ -263,9 +263,9 @@ void orpScreen()//------------------------------------------------------------te
   }
 
   //EIXOY
-  for(int l = 1200; l<600; l+=40)
+  for(int l = 120; l<600; l+=40)
   {
-    myGLCD.drawLine(2, 60, 2, 380);
+    myGLCD.drawLine(l, 60, l, 380);
   } 
 
   linhaR = orp;       //  Linhas de comparacao
@@ -371,7 +371,7 @@ void orpScreen()//------------------------------------------------------------te
       {
         grafico = (380 - ((media - 180) * 0.5));
       }
-      setFont(SMALL, 255, 0, 255, 0, 0, 0);
+      setFont(LARGE, 255, 0, 255, 0, 0, 0);
 
       if(j < 250)
       {
@@ -418,8 +418,8 @@ void PHAScreen()//-------------------------------ph do aqua---------------------
     f -= 40;
   }
   myGLCD.print("0", 550, 386);   
-  myGLCD.print("PH", 34, 36);
-  myGLCD.print("H", 580, 386);
+  myGLCD.print("pH", 22, 36);
+  myGLCD.print("HOUR", 520, 420);
 
   myGLCD.drawLine(80, 60, 80, 380); //eixo y
   myGLCD.drawLine(80, 380, 580, 380);  //eixo x
@@ -434,7 +434,7 @@ void PHAScreen()//-------------------------------ph do aqua---------------------
   //EIXOY
   for(int l= 120; l < 600; l += 40)
   {
-    myGLCD.drawLine(2, 60, 2, 380);
+    myGLCD.drawLine(l, 60, l, 380);
   }
 
   linhaR =ph;  //  Linhas de comparacao
@@ -539,7 +539,7 @@ void PHAScreen()//-------------------------------ph do aqua---------------------
       {
         grafico = 380;
       }
-      setFont(SMALL, 255, 0, 255, 0, 0, 0);
+      setFont(LARGE, 255, 0, 255, 0, 0, 0);
 
       if(j < 250)
       {
@@ -588,8 +588,8 @@ void PHRScreen()//----------------PH do reator ---------------------------------
     f -= 40;
   }
   myGLCD.print("0", 550, 386);   
-  myGLCD.print("PH", 34, 36);
-  myGLCD.print("H", 580, 386);
+  myGLCD.print("pH", 22, 36);
+  myGLCD.print("HOUR", 520, 420);
 
   myGLCD.drawLine(80, 60, 80, 380); //eixo y
   myGLCD.drawLine(80, 380, 580, 380);  //eixo x
@@ -605,7 +605,7 @@ void PHRScreen()//----------------PH do reator ---------------------------------
   //EIXOY
   for(int l=120; l<600; l+=40)
   {
-    myGLCD.drawLine(2, 60, 2, 380);
+    myGLCD.drawLine(l, 60, l, 380);
   }
 
   linhaR =ph;  //  Linhas de comparacao
@@ -707,7 +707,7 @@ void PHRScreen()//----------------PH do reator ---------------------------------
       {
         grafico = 380;
       }
-      setFont(SMALL, 255, 0, 255, 0, 0, 0);
+      setFont(LARGE, 255, 0, 255, 0, 0, 0);
 
       if(j < 250)
       {
@@ -757,8 +757,8 @@ void densidadeScreen()//----------------grafico de densidade -------------------
   }
 
   myGLCD.print("0", 570, 386);   
-  myGLCD.print("DENS.", 24, 36);
-  myGLCD.print("H", 600, 386);
+  myGLCD.print("DENS.", 10, 36);
+  myGLCD.print("HOUR", 520, 420);
 
   myGLCD.drawLine(100, 60, 100, 380); //eixo y
   myGLCD.drawLine(100, 380, 600, 380);  //eixo x
@@ -766,7 +766,7 @@ void densidadeScreen()//----------------grafico de densidade -------------------
   myGLCD.setColor(64, 64, 64);            //malha
 
   //EIXO X
-  for(int k=80; k<380; k+=30)
+  for(int k=80; k<360; k+=30)
   {
     myGLCD.drawLine(100, k, 600, k);
   }
@@ -774,7 +774,7 @@ void densidadeScreen()//----------------grafico de densidade -------------------
   //EIXOY
   for(int l=140; l < 600; l+=40)
   {
-    myGLCD.drawLine(2, 60, 2, 380);
+    myGLCD.drawLine(l, 60, l, 380);
   }
 
 
@@ -879,7 +879,7 @@ void densidadeScreen()//----------------grafico de densidade -------------------
       {
         grafico = (380 - ((media - 1010) * 7.5));
       }
-      setFont(SMALL, 255, 0, 255, 0, 0, 0);
+      setFont(LARGE, 255, 0, 255, 0, 0, 0);
 
       if(j < 250)
       {
