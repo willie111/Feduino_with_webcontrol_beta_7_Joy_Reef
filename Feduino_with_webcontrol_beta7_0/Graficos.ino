@@ -12,48 +12,48 @@ void tempgScreen()//------------------------------------------------------------
   float linhaR;
   float linhaG;
   float linhaB;
-  int f = 60;
+  int f = 30;
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[25])));
   printHeader(buffer); // tabela_textos[25] = "GRAFICO DE TEMPERATURA DA AGUA"
 
-  setFont(LARGE, 255, 255, 255, 0, 0, 0);
+  setFont(SMALL, 255, 255, 255, 0, 0, 0);
 
-  for(float i = 81; i > 75.5; i -= .5)   // Fahrenheit scale 81---75.5
+  for(float i = 80; i > 75; i -= .5)   // Fahrenheit scale 81.5---71.6
    //(float i = 27.5; i > 22; i -= .5) // Celsius scale 27.5--22 
   {
     myGLCD.printNumF(i, 1, 5, 3 + f);
-    f += 30; 
+    f += 15; 
   }
 
-  f = 510;
+  f = 255;
   for(int i = 22; i > 0; i -= 2)
   {
-    myGLCD.printNumI(i, f, 386);
-    f -= 40;
+    myGLCD.printNumI(i, f, 193);
+    f -= 20;
   }
-
-  myGLCD.print("0", 550, 386); 
-  myGLCD.drawCircle(30, 32, 2);
-  myGLCD.print("F", 40, 36);  
+  myGLCD.print("75.0", 2, 182);
+  myGLCD.print("0", 275, 193); 
+  myGLCD.drawCircle(15, 21, 2);
+  myGLCD.print("F", 20, 18);  
   //myGLCD.print("C", 20, 18);
-  myGLCD.print("HOUR", 520, 420);
+  myGLCD.print("H", 290, 193);
 
-  myGLCD.drawLine(80, 60, 80, 380); // Eixo y
-  myGLCD.drawLine(80, 380, 580, 380);  // Eixo x
+  myGLCD.drawLine(40, 30, 40, 190); // Eixo y
+  myGLCD.drawLine(40, 190, 290, 190);  // Eixo x
 
   myGLCD.setColor(64, 64, 64);  // Malha
 
   //EIXO X
-  for(int k=80; k<360; k+=30)
+  for(int k=40; k<180; k+=15)
   {
-    myGLCD.drawLine(80, k, 580, k);
+    myGLCD.drawLine(40, k, 290, k);
   }
 
   //EIXO Y
-  for(int l=120; l<600; l+=40)
+  for(int l=60; l<300; l+=20)
   {
-    myGLCD.drawLine(l, 60, l, 380);
+    myGLCD.drawLine(l, 30, l, 190);
   }
 /***********************************************CELSIUS******************************/
 /**************************************************************************** changed for Fahrenheit *******************************************************************/
@@ -109,41 +109,41 @@ void tempgScreen()//------------------------------------------------------------
   linhaG =(setTempC+offTempC);
   linhaB = (setTempC-offTempC);
 
-  if ((linhaR >= 75.5) && (linhaR <= 81))
-    x= (380 - ((linhaR - 75.5) * 60));
+  if ((linhaR >= 75) && (linhaR <= 80))
+    x= (190 - ((linhaR - 75) * 30));
 
-  else if (linhaR > 81)
-    x = 60;
+  else if (linhaR > 80)
+    x = 30;
 
-  else if (linhaR < 75.5)
-    x = 380;
+  else if (linhaR < 75)
+    x = 190;
 
-  if ((linhaG >= 75.5) && (linhaG <= 81))
-    y = (380-((linhaG - 75.5) * 60));
+  if ((linhaG >= 75) && (linhaG <= 80))
+    y = (190-((linhaG - 75) * 30));
 
-  else if (linhaG > 81)
-    y = 60;
+  else if (linhaG > 80)
+    y = 30;
 
-  else if (linhaG < 75.5)
-    y = 380;
+  else if (linhaG < 75)
+    y = 190;
 
-  if ((linhaB >= 75.5) && (linhaB <= 81))
-    z = (380 -((linhaB - 75.5) * 60));
+  if ((linhaB >= 75) && (linhaB <= 80))
+    z = (190 -((linhaB - 75) * 30));
 
-  else if (linhaB > 81)
-    z = 60;
+  else if (linhaB > 80)
+    z = 30;
 
-  else if (linhaB < 75.5)
-    z = 380;
+  else if (linhaB < 75)
+    z = 190;
     
 //--------------------------------------------end F or C -----------------------------------------------//
   
 
   myGLCD.setColor(255, 0, 0);
-  myGLCD.drawLine(80, x, 580, x);// Temperatura desejada
+  myGLCD.drawLine(40, x, 290, x);// Temperatura desejada
   myGLCD.setColor(10, 10, 255);        // VariaÃƒÂ§ÃƒÂ£o permitida
-  myGLCD.drawLine(80, y, 580, y); // VariaÃƒÂ§ÃƒÂ£o mais
-  myGLCD.drawLine(80, z, 580, z); // VariaÃƒÂ§ÃƒÂ£o menos
+  myGLCD.drawLine(40, y, 290, y); // VariaÃƒÂ§ÃƒÂ£o mais
+  myGLCD.drawLine(40, z, 290, z); // VariaÃƒÂ§ÃƒÂ£o menos
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
   printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); 
@@ -156,9 +156,9 @@ void tempgScreen()//------------------------------------------------------------
 
   setFont(SMALL, 255, 255, 0, 0, 0, 0);
 
-  int d = 82 + (NumMins(t.hour,t.min) / 3);
+  int d = 41 + (NumMins(t.hour,t.min) / 6);
 
-  myGLCD.drawLine(d, 30, d, 380); // Linha de marcaÃƒÂ§ÃƒÂ£o do horÃƒÂ¡rio.
+  myGLCD.drawLine(d, 30, d, 190); // Linha de marcaÃƒÂ§ÃƒÂ£o do horÃƒÂ¡rio.
   myGLCD.print(rtc.getTimeStr(FORMAT_SHORT), d + 2, 75, 270);
 
   file.open(&root, "LOGTDIA.TXT", O_READ);
@@ -178,7 +178,7 @@ void tempgScreen()//------------------------------------------------------------
       k -= 1;
     }
 
-    if (i == 3)
+    if (i == 6)
     {
       media = soma / k;
       i = 0;
@@ -187,21 +187,21 @@ void tempgScreen()//------------------------------------------------------------
       k = 0;
 /********************************************************************** added for Fahrenheit *******************************************************************/
       //if ((media) > 27.5)
-      if ((media) > 81)
+      if ((media) > 80)
       {
-        grafico = 60;
+        grafico = 30;
       }
       //else if ((media >= 22.5) && (media <= 27.5))
-      else if ((media >= 75.5) && (media <= 81))
+      else if ((media >= 75) && (media <= 80))
       {
         //grafico = (190 -((media - 22.5) * 30));
-        grafico = (380 -((media - 75.5) * 30));
+        grafico = (190 -((media - 75) * 30));
       }
       else
       {
-        grafico = 380;
+        grafico = 190;
       }
-      setFont(LARGE, 255, 0, 255, 0, 0, 0);
+      setFont(SMALL, 255, 0, 255, 0, 0, 0);
 
       if(j < 250)
       {
@@ -230,42 +230,42 @@ void orpScreen()//------------------------------------------------------------te
   int16_t n;
   char buf[6];
   int redox;
-  int f = 60;
+  int f = 30;
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[26])));
   printHeader(buffer); // tabela_textos[26] = "GRAFICO DE ORP"
-  setFont(LARGE, 255, 255, 255, 0, 0, 0);
+  setFont(SMALL, 255, 255, 255, 0, 0, 0);
 
   for(int i = 480; i > 160; i -= 30)
   {
     myGLCD.printNumI(i, 10, 3 + f);
-    f += 30; 
+    f += 15; 
   }
 
-  f = 510;
+  f = 255;
   for(int i = 22; i > 0; i -= 2)
   {
-    myGLCD.printNumI(i, f, 396);
-    f -= 40;
+    myGLCD.printNumI(i, f, 193);
+    f -= 20;
   }
-  myGLCD.print("0", 550, 396);    
-  myGLCD.print("MV", 22, 36);
-  myGLCD.print("HOUR", 520, 420);
-  myGLCD.drawLine(80, 380, 580, 380);  //eixo x
-  myGLCD.drawLine(80, 60, 80, 380); //eixo y
+  myGLCD.print("0", 275, 193);    
+  myGLCD.print("MV", 18, 18);
+  myGLCD.print("H", 290, 193);
+  myGLCD.drawLine(40, 190, 290, 190);  //eixo x
+  myGLCD.drawLine(40, 30, 40, 190); //eixo y
 
   myGLCD.setColor(64, 64, 64);                    //malha
 
   //EIXO X
-  for(int k=80; k<360; k+=30)
+  for(int k=40; k<180; k+=15)
   {
-    myGLCD.drawLine(80, k, 580, k);
+    myGLCD.drawLine(40, k, 290, k);
   }
 
   //EIXOY
-  for(int l = 120; l<600; l+=40)
+  for(int l = 60; l<300; l+=20)
   {
-    myGLCD.drawLine(l, 60, l, 380);
+    myGLCD.drawLine(l, 30, l, 190);
   } 
 
   linhaR = orp;       //  Linhas de comparacao
@@ -274,48 +274,48 @@ void orpScreen()//------------------------------------------------------------te
 
   if ((linhaR >= 180) && (linhaR <= 480))
   {
-    x = (380 - ((linhaR - 180) * 0.5));
+    x = (190 - ((linhaR - 180) * 0.5));
   }
   else if (linhaR > 480)
   {
-    x = 60;
+    x = 30;
   }
   else if (linhaR < 180)
   {
-    x = 380;
+    x = 190;
   }
 
   if ((linhaG > 180) && (linhaG <= 480))
   {
-    y = (380 - ((linhaG - 180) * 0.5));
+    y = (190 - ((linhaG - 180) * 0.5));
   }
   else if (linhaG > 480)
   {
-    y = 60;
+    y = 30;
   }
   else if (linhaG < 180)
   {
-    y = 380;
+    y = 190;
   }
 
   if ((linhaB > 180) && (linhaB <= 480))
   {
-    z = (380 - ((linhaB - 180) * 0.5));
+    z = (190 - ((linhaB - 180) * 0.5));
   }
   else if (linhaB > 480)
   {
-    z = 60;
+    z = 30;
   }
   else if (linhaB < 180)
   {
-    z = 380;
+    z = 190;
   }
 
   myGLCD.setColor(255, 0, 0);
-  myGLCD.drawLine(80, x, 580, x);//Temperatura desejada
+  myGLCD.drawLine(40, x, 290, x);//Temperatura desejada
   myGLCD.setColor(10, 10, 255);        //Variacao permitida
-  myGLCD.drawLine(80, y, 580, y); //variacao mais
-  myGLCD.drawLine(80, z, 580, z); //variacao menos
+  myGLCD.drawLine(40, y, 290, y); //variacao mais
+  myGLCD.drawLine(40, z, 290, z); //variacao menos
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
   printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); 
@@ -328,9 +328,9 @@ void orpScreen()//------------------------------------------------------------te
 
   setFont(SMALL, 255, 255, 0, 0, 0, 0);
 
-  int d = 82 + (NumMins(t.hour,t.min) / 3);
+  int d = 41 + (NumMins(t.hour,t.min) / 6);
 
-  myGLCD.drawLine(d, 30, d, 380); // Linha de marcaÃƒÂ§ÃƒÂ£o do horÃƒÂ¡rio.
+  myGLCD.drawLine(d, 30, d, 190); // Linha de marcaÃƒÂ§ÃƒÂ£o do horÃƒÂ¡rio.
   myGLCD.print(rtc.getTimeStr(FORMAT_SHORT), d + 2, 75, 270);
 
   file.open(&root, "LOGODIA.TXT", O_READ);
@@ -351,7 +351,7 @@ void orpScreen()//------------------------------------------------------------te
       k -= 1;
     }
 
-    if (i==3)
+    if (i==6)
     {
       media = soma / k;
       i = 0;
@@ -361,17 +361,17 @@ void orpScreen()//------------------------------------------------------------te
 
       if ((media) < 180)
       {
-        grafico = 380;
+        grafico = 190;
       }
       else if ((media) > 480)
       {
-        grafico = 60;
+        grafico = 30;
       }
       else if ((media >= 180) && (media <= 480))
       {
-        grafico = (380 - ((media - 180) * 0.5));
+        grafico = (190 - ((media - 180) * 0.5));
       }
-      setFont(LARGE, 255, 0, 255, 0, 0, 0);
+      setFont(SMALL, 255, 0, 255, 0, 0, 0);
 
       if(j < 250)
       {
@@ -381,6 +381,7 @@ void orpScreen()//------------------------------------------------------------te
   }
   file.close();
 }
+
 void PHAScreen()//-------------------------------ph do aqua-----------------------------tela =13
 {
   float x, y, z;
@@ -399,42 +400,42 @@ void PHAScreen()//-------------------------------ph do aqua---------------------
   int16_t n;
   char buf[7];
   float pht;
-  int f = 60;
+  int f = 30;
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[27])));
   printHeader(buffer); //tabela_textos[27] = "GRAFICO DE PH DO AQUARIO"
-  setFont(LARGE, 255, 255, 255, 0, 0, 0);
+  setFont(SMALL, 255, 255, 255, 0, 0, 0);
 
   for(float i = 9; i > 6.9; i -= 0.2)
   {
     myGLCD.printNumF(i, 1, 10, 3 + f);
-    f += 30; 
+    f += 15; 
   }
 
-  f = 510;
+  f = 255;
   for(int i = 22; i > 0; i -= 2)
   {
-    myGLCD.printNumI(i, f, 386);
-    f -= 40;
+    myGLCD.printNumI(i, f, 193);
+    f -= 20;
   }
-  myGLCD.print("0", 550, 386);   
-  myGLCD.print("pH", 22, 36);
-  myGLCD.print("HOUR", 520, 420);
+  myGLCD.print("0", 275, 193);   
+  myGLCD.print("PH", 17, 18);
+  myGLCD.print("H", 290, 193);
 
-  myGLCD.drawLine(80, 60, 80, 380); //eixo y
-  myGLCD.drawLine(80, 380, 580, 380);  //eixo x
+  myGLCD.drawLine(40, 30, 40, 190); //eixo y
+  myGLCD.drawLine(40, 190, 290, 190);  //eixo x
 
   myGLCD.setColor(64, 64, 64);            //malha
   //EIXO X
-  for(int k=80; k<360; k+=30)
+  for(int k=40; k<180; k+=15)
   {
-    myGLCD.drawLine(80, k, 580, k);
+    myGLCD.drawLine(40, k, 290, k);
   }
 
   //EIXOY
-  for(int l= 120; l < 600; l += 40)
+  for(int l= 60; l < 300; l += 20)
   {
-    myGLCD.drawLine(l, 60, l, 380);
+    myGLCD.drawLine(l, 30, l, 190);
   }
 
   linhaR =ph;  //  Linhas de comparacao
@@ -443,48 +444,48 @@ void PHAScreen()//-------------------------------ph do aqua---------------------
 
   if ((linhaR >= 7) && (linhaR <= 9))
   {
-    x= 380 - ((linhaR - 7) * 75);
+    x= 190 - ((linhaR - 7) * 75);
   }
   else if (linhaR > 9)
   {
-    x = 60;
+    x = 30;
   }
   else if (linhaR < 7)
   {
-    x = 380;
+    x = 190;
   }
 
   if ((linhaG >= 7) && (linhaG <= 9))
   {
-    y= 380 - ((linhaG - 7) * 75);
+    y= 190 - ((linhaG - 7) * 75);
   }
   else if (linhaG > 9)
   {
-    y = 60;
+    y = 30;
   }
   else if (linhaG < 7)
   {
-    y = 380;
+    y = 190;
   }
 
   if ((linhaB >= 7) && (linhaB <= 9))
   {
-    z= 380 - ((linhaB - 7) * 75);
+    z= 190 - ((linhaB - 7) * 75);
   }
   else if (linhaB > 9)
   {
-    z = 60;
+    z = 30;
   }
   else if (linhaB < 7)
   {
-    z = 380;
+    z = 190;
   }
 
   myGLCD.setColor(255, 0, 0);
-  myGLCD.drawLine(80, x, 580, x);//PH desejado
+  myGLCD.drawLine(40, x, 290, x);//PH desejado
   myGLCD.setColor(10, 10, 255);  //Variacao permitida
-  myGLCD.drawLine(80, y, 580, y); //variacao mais
-  myGLCD.drawLine(80, z, 580, z); //variacao menos
+  myGLCD.drawLine(40, y, 290, y); //variacao mais
+  myGLCD.drawLine(40, z, 290, z); //variacao menos
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
   printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3],false); 
@@ -497,9 +498,9 @@ void PHAScreen()//-------------------------------ph do aqua---------------------
 
   setFont(SMALL, 255, 255, 0, 0, 0, 0);
 
-  int d = 82 + (NumMins(t.hour,t.min) / 3);
+  int d = 41 + (NumMins(t.hour,t.min) / 6);
 
-  myGLCD.drawLine(d, 60, d, 380); // Linha de marcaÃƒÂ§ÃƒÂ£o do horÃƒÂ¡rio.
+  myGLCD.drawLine(d, 30, d, 190); // Linha de marcaÃƒÂ§ÃƒÂ£o do horÃƒÂ¡rio.
   myGLCD.print(rtc.getTimeStr(FORMAT_SHORT), d + 2, 75, 270);
 
   file.open(&root, "LOGPDIA.TXT", O_READ);
@@ -529,17 +530,17 @@ void PHAScreen()//-------------------------------ph do aqua---------------------
 
       if ((media) > 9)
       {
-        grafico = 60;
+        grafico = 30;
       }
       else if ((media >= 7) && (media <= 9))
       {
-        grafico = (380-((media-7)* 75));
+        grafico = (190-((media-7)* 75));
       }
       else
       {
-        grafico = 380;
+        grafico = 190;
       }
-      setFont(LARGE, 255, 0, 255, 0, 0, 0);
+      setFont(SMALL, 255, 0, 255, 0, 0, 0);
 
       if(j < 250)
       {
@@ -568,44 +569,44 @@ void PHRScreen()//----------------PH do reator ---------------------------------
   int16_t n;
   char buf[7];
   float pht;
-  int f = 60;
+  int f = 30;
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[28])));
   printHeader(buffer); //tabela_textos[28] = "GRAFICO DE PH DO REATOR DE CALCIO"
 
-  setFont(LARGE, 255, 255, 255, 0, 0, 0);
+  setFont(SMALL, 255, 255, 255, 0, 0, 0);
 
   for(float i = 7.4; i > 5.3; i -= 0.2)
   {
     myGLCD.printNumF(i, 1, 10, 3 + f);
-    f += 30; 
+    f += 15; 
   }
 
-  f = 510;
+  f = 255;
   for(int i = 22; i > 0; i -= 2)
   {
-    myGLCD.printNumI(i, f, 386);
-    f -= 40;
+    myGLCD.printNumI(i, f, 193);
+    f -= 20;
   }
-  myGLCD.print("0", 550, 386);   
-  myGLCD.print("pH", 22, 36);
-  myGLCD.print("HOUR", 520, 420);
+  myGLCD.print("0", 275, 193);   
+  myGLCD.print("PH", 17, 18);
+  myGLCD.print("H", 290, 193);
 
-  myGLCD.drawLine(80, 60, 80, 380); //eixo y
-  myGLCD.drawLine(80, 380, 580, 380);  //eixo x
+  myGLCD.drawLine(40, 30, 40, 190); //eixo y
+  myGLCD.drawLine(40, 190, 290, 190);  //eixo x
 
   myGLCD.setColor(64, 64, 64);            //malha
 
   //EIXO X
-  for(int k=80; k<380; k+=30)
+  for(int k=40; k<180; k+=15)
   {
-    myGLCD.drawLine(80, k, 580, k);
+    myGLCD.drawLine(40, k, 290, k);
   }
 
   //EIXOY
-  for(int l=120; l<600; l+=40)
+  for(int l=60; l<300; l+=20)
   {
-    myGLCD.drawLine(l, 60, l, 380);
+    myGLCD.drawLine(l, 30, l, 190);
   }
 
   linhaR =ph;  //  Linhas de comparacao
@@ -614,47 +615,47 @@ void PHRScreen()//----------------PH do reator ---------------------------------
 
   if ((linhaR>=5.4) && (linhaR<=7.4))
   {
-    x= 380-((linhaR-5.4)*75);
+    x= 190-((linhaR-5.4)*75);
   }
   else if (linhaR >7.4)
   {
-    x=60;
+    x=30;
   }
   else if (linhaR <5.4)
   {
-    x=380;
+    x=190;
   }
 
   if ((linhaG >= 5.4) && (linhaG <= 7.4))
   {
-    y= 380 - ((linhaG-5.4) * 75);
+    y= 190 - ((linhaG-5.4) * 75);
   }
   else if (linhaG > 7.4)
   {
-    y = 60;
+    y = 30;
   }
   else if (linhaG < 5.4)
   {
-    y = 380;
+    y = 190;
   }
 
   if ((linhaB >= 5.4) && (linhaB <= 7.4))
   {
-    z = 380 -((linhaB - 5.4) * 75);
+    z = 190 -((linhaB - 5.4) * 75);
   }
   else if (linhaB > 7.4)
   {
-    z = 60;
+    z = 30;
   }
   else if (linhaB < 5.4)
   {
-    z = 380;
+    z = 190;
   }
   myGLCD.setColor(255, 0, 0);
-  myGLCD.drawLine(80, x, 580, x);//PH desejado
+  myGLCD.drawLine(40, x, 290, x);//PH desejado
   myGLCD.setColor(10, 10, 255);  //Variacao permitida
-  myGLCD.drawLine(80, y, 580, y); //variacao mais
-  myGLCD.drawLine(80, z, 580, z); //variacao menos
+  myGLCD.drawLine(40, y, 290, y); //variacao mais
+  myGLCD.drawLine(40, z, 290, z); //variacao menos
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
   printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3],false); 
@@ -667,9 +668,9 @@ void PHRScreen()//----------------PH do reator ---------------------------------
 
   setFont(SMALL, 255, 255, 0, 0, 0, 0);
 
-  int d = 82 + (NumMins(t.hour,t.min)/3);
+  int d = 41 + (NumMins(t.hour,t.min)/6);
 
-  myGLCD.drawLine(d, 60, d, 380); // Linha de marcaÃƒÂ§ÃƒÂ£o do horÃƒÂ¡rio.
+  myGLCD.drawLine(d, 30, d, 190); // Linha de marcaÃƒÂ§ÃƒÂ£o do horÃƒÂ¡rio.
   myGLCD.print(rtc.getTimeStr(FORMAT_SHORT), d + 2, 75, 270);
 
   file.open(&root, "LOGRDIA.TXT", O_READ);
@@ -697,17 +698,17 @@ void PHRScreen()//----------------PH do reator ---------------------------------
 
       if ((media) > 7.4)
       {
-        grafico = 60;
+        grafico = 30;
       }
       else if ((media >= 5.4) && (media <= 7.4))
       {
-        grafico = (380 - ((media - 5.4) * 75));
+        grafico = (190 - ((media - 5.4) * 75));
       }
       else
       {
-        grafico = 380;
+        grafico = 190;
       }
-      setFont(LARGE, 255, 0, 255, 0, 0, 0);
+      setFont(SMALL, 255, 0, 255, 0, 0, 0);
 
       if(j < 250)
       {
@@ -736,45 +737,45 @@ void densidadeScreen()//----------------grafico de densidade -------------------
   int16_t n;
   char buf[7];
   int densidade;
-  int f = 60;
+  int f = 30;
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[29])));
   printHeader(buffer); //tabela_textos[29] = "GRAFICO DE DENSIDADE"
 
-  setFont(LARGE, 255, 255, 255, 0, 0, 0);
+  setFont(SMALL, 255, 255, 255, 0, 0, 0);
 
   for(int i = 1030; i > 1008; i -= 2)
   {
     myGLCD.printNumI(i, 12, 3 + f);
-    f += 30; 
+    f += 15; 
   }
 
-  f = 530;
+  f = 265;
   for(int i = 22; i > 0; i -= 2)
   {
-    myGLCD.printNumI(i, f, 386);
-    f -= 40;
+    myGLCD.printNumI(i, f, 193);
+    f -= 20;
   }
 
-  myGLCD.print("0", 570, 386);   
-  myGLCD.print("DENS.", 10, 36);
-  myGLCD.print("HOUR", 520, 420);
+  myGLCD.print("0", 285, 193);   
+  myGLCD.print("DENS.", 12, 18);
+  myGLCD.print("H", 300, 193);
 
-  myGLCD.drawLine(100, 60, 100, 380); //eixo y
-  myGLCD.drawLine(100, 380, 600, 380);  //eixo x
+  myGLCD.drawLine(50, 30, 50, 190); //eixo y
+  myGLCD.drawLine(50, 190, 300, 190);  //eixo x
   //EIXO X
   myGLCD.setColor(64, 64, 64);            //malha
 
   //EIXO X
-  for(int k=80; k<360; k+=30)
+  for(int k=40; k<180; k+=15)
   {
-    myGLCD.drawLine(100, k, 600, k);
+    myGLCD.drawLine(50, k, 300, k);
   }
 
   //EIXOY
-  for(int l=140; l < 600; l+=40)
+  for(int l=70; l < 300; l+=20)
   {
-    myGLCD.drawLine(l, 60, l, 380);
+    myGLCD.drawLine(l, 30, l, 190);
   }
 
 
@@ -784,47 +785,47 @@ void densidadeScreen()//----------------grafico de densidade -------------------
 
   if ((linhaR >= 1010) && (linhaR <= 1030))
   {
-    x= 380 - ((linhaR - 1010) * 7.5);
+    x= 190 - ((linhaR - 1010) * 7.5);
   }
   else if (linhaR > 1030)
   {
-    x = 60;
+    x = 30;
   }
   else if (linhaR < 1010)
   {
-    x = 380;
+    x = 190;
   }
 
   if ((linhaG >= 1010) && (linhaG <= 1030))
   {
-    y= 380 - ((linhaG - 1010) * 7.5);
+    y= 190 - ((linhaG - 1010) * 7.5);
   }
   else if (linhaG >1030)
   {
-    y = 60;
+    y = 30;
   }
   else if (linhaG < 1010)
   {
-    y = 318;
+    y = 190;
   }
 
   if ((linhaB >= 1010) && (linhaB <= 1030))
   {
-    z = 380 - ((linhaB - 1010) * 7.5);
+    z = 190 - ((linhaB - 1010) * 7.5);
   }
   else if (linhaB > 1030)
   {
-    z = 60;
+    z = 30;
   }
   else if (linhaB < 1010)
   {
-    z = 380;
+    z = 190;
   }
   myGLCD.setColor(255, 0, 0);
-  myGLCD.drawLine(100, x, 600, x);//PH desejado
+  myGLCD.drawLine(50, x, 300, x);//PH desejado
   myGLCD.setColor(10, 10, 255);  //Variacao permitida
-  myGLCD.drawLine(100, y, 600, y); //variacao mais
-  myGLCD.drawLine(100, z, 600, z); //variacao menos
+  myGLCD.drawLine(50, y, 300, y); //variacao mais
+  myGLCD.drawLine(50, z, 300, z); //variacao menos
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
   printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3],false); 
@@ -837,9 +838,9 @@ void densidadeScreen()//----------------grafico de densidade -------------------
 
   setFont(SMALL, 255, 255, 0, 0, 0, 0);
 
-  int d = 102 + (NumMins(t.hour,t.min)/3);
+  int d = 51 + (NumMins(t.hour,t.min)/6);
 
-  myGLCD.drawLine(d, 60, d, 380); // Linha de marcaÃƒÂ§ÃƒÂ£o do horÃƒÂ¡rio.
+  myGLCD.drawLine(d, 30, d, 190); // Linha de marcaÃƒÂ§ÃƒÂ£o do horÃƒÂ¡rio.
   myGLCD.print(rtc.getTimeStr(FORMAT_SHORT), d + 2, 75, 270);
 
   file.open(&root, "LOGDDIA.TXT", O_READ);
@@ -869,17 +870,17 @@ void densidadeScreen()//----------------grafico de densidade -------------------
 
       if ((media) < 1010)
       {
-        grafico = 380;
+        grafico = 190;
       }
       else if ((media) > 1030)
       {
-        grafico = 60;
+        grafico = 30;
       }
       else if (1010 <= media <= 1030)
       {
-        grafico = (380 - ((media - 1010) * 7.5));
+        grafico = (190 - ((media - 1010) * 7.5));
       }
-      setFont(LARGE, 255, 0, 255, 0, 0, 0);
+      setFont(SMALL, 255, 0, 255, 0, 0, 0);
 
       if(j < 250)
       {
@@ -889,7 +890,6 @@ void densidadeScreen()//----------------grafico de densidade -------------------
   }
   file.close();
 }
-
 
 
 
