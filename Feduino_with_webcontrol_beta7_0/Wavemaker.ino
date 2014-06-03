@@ -3,26 +3,26 @@ void Grafico_WaveMaker()
   int Pump1PWM_t;
   int Pump2PWM_t;
 
-  int bar = map(Pump1PWM, 0, 255, 225, 97);   
+  int bar = map(Pump1PWM, 0, 510, 450,-60);   
 
-  if (bar < 97 )
+  if (bar < -60 )
   {
-    bar = 97;
+    bar = -60;
   }
-  if (bar > 225)
+  if (bar > 450)
   {
-    bar = 225;
+    bar = 450;
   }
 
-  int bar2 = map(Pump2PWM, 0, 255, 225, 97);   
+  int bar2 = map(Pump2PWM, 0, 510, 450, -60);   
 
-  if (bar2 < 97)
+  if (bar2 < -60)
   {
-    bar2 = 97;
+    bar2 = -60;
   } 
-  if (bar2 > 225)
+  if (bar2 > 450)
   {
-    bar2 = 225;
+    bar2 = 450;
   }
 
   Pump1PWM_t = map(Pump1PWM, 0, 255, 0, 100);  
@@ -31,53 +31,53 @@ void Grafico_WaveMaker()
   myGLCD.setBackColor(0, 0, 0); 
   myGLCD.setColor(0, 0, 0);
 
-  myGLCD.fillRect(251, bar - 1, 272, 91); 
-  myGLCD.fillRect(280, bar2 - 1, 301, 91); 
+  myGLCD.fillRect(502, bar - 2, 544, 182); 
+  myGLCD.fillRect(560, bar2 - 2, 602, 182); 
 
   myGLCD.setColor(0, 0, 255);              
 
-  myGLCD.fillRect(251, 225, 272, bar); 
-  myGLCD.fillRect(280, 225, 301, bar2); 
+  myGLCD.fillRect(502, 450, 544, bar); 
+  myGLCD.fillRect(560, 450, 602, bar2); 
 
   myGLCD.setFont(RusFont1);
 
   if(Pump1PWM_t < 10)
   {
     myGLCD.setColor(255, 255, 0);
-    myGLCD.printNumI(Pump1PWM_t, 256, 80); 
+    myGLCD.printNumI(Pump1PWM_t, 512, 160); 
     myGLCD.setColor(0, 0, 0);
-    myGLCD.print("  ", 264, 80);
+    myGLCD.print("  ", 528, 160);
   }
   else if ((Pump1PWM_t >= 10) && (Pump1PWM_t <= 99))
   {
     myGLCD.setColor(255, 255, 0);
-    myGLCD.printNumI(Pump1PWM_t, 256, 80); 
+    myGLCD.printNumI(Pump1PWM_t, 512, 160); 
     myGLCD.setColor(0, 0, 0);
-    myGLCD.print(" ", 272, 80);
+    myGLCD.print(" ", 544, 160);
   }
   else
   {
     myGLCD.setColor(255, 255, 0);
-    myGLCD.printNumI(Pump1PWM_t, 256, 80);
+    myGLCD.printNumI(Pump1PWM_t, 512, 160);
   }
 
   if(Pump2PWM_t < 10)
   {
     myGLCD.setColor(255, 255, 0);
-    myGLCD.printNumI(Pump2PWM_t, 285, 80);
+    myGLCD.printNumI(Pump2PWM_t, 570, 160);
     myGLCD.setColor(0, 0, 0);
-    myGLCD.print("   ", 293, 80);
+    myGLCD.print("   ", 586, 160);
   }
   else if((Pump2PWM_t >= 10) && (Pump2PWM_t <= 99))
   {
     myGLCD.setColor(255, 255, 0);
-    myGLCD.printNumI(Pump2PWM_t, 285, 80); 
+    myGLCD.printNumI(Pump2PWM_t, 570, 160); 
     myGLCD.setColor(0, 0, 0);
-    myGLCD.print(" ", 301, 80);
+    myGLCD.print(" ", 602, 160);
   }
   else
   {
-    myGLCD.printNumI(Pump2PWM_t, 285, 80);  
+    myGLCD.printNumI(Pump2PWM_t, 570, 160);  
   }
 }
 
@@ -211,7 +211,6 @@ else if(modo_selecionado == 5)
 /********* this little thing below is needed for night time pump power reduction, otherwise comment it out with the above stuff *****/
 
 }
-
 
 
 
