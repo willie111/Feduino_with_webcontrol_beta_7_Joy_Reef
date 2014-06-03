@@ -1,17 +1,41 @@
 //---------------------------------------Tela inicial ----------------------------------------------tela =0
-void mainScreen(boolean refreshAll=false)
+vvoid mainScreen(boolean refreshAll=false)
 {
   int ledLevel, s, u;
   String oldval, rtc1, rtcm, oldano;
   oldval = day;
   oldano = ano;
+  int Hour12;
+  String ampm;
   day = String(t.date);                             //Atualiza se a data for diferente
   ano = String(t.year);
   int offset = 0;
 
   setFont(LARGE, 255, 255, 0, 0, 0, 0);
-  myGLCD.print(rtc.getTimeStr(FORMAT_LONG), 630, 454);  
+ // myGLCD.print(rtc.getTimeStr(FORMAT_LONG), 630, 454); 
+  
+      {
+      if (t.hour==0) { Hour12 = 12; }                          //12 HR Format
+        else {
+          if (t.hour>12) { Hour12 = t.hour-12; }
+            else { Hour12 = t.hour; }}
 
+      if (Hour12<10)
+        { myGLCD.print(" ", 652, 454);
+          myGLCD.printNumI(Hour12, 668, 454);}
+      else
+        { myGLCD.printNumI(Hour12, 652, 454);}
+      myGLCD.print(":", 684, 454);
+      if (t.min<10)
+        { myGLCD.printNumI(0, 700, 454);
+          myGLCD.printNumI(t.min, 716, 454);}
+      else
+        { myGLCD.printNumI(t.min, 700, 454);}
+        
+   setFont(LARGE, 0, 0, 255, 0, 0, 0);
+      if(t.hour < 12){ myGLCD.print(" AM  ", 732, 454); }      //Adding the AM/PM sufffix
+        else { myGLCD.print(" PM  ", 732, 454); }
+    }
   if ((oldval != day) || refreshAll)
   {
     setFont(LARGE, 255, 255, 0, 0, 0, 0);
