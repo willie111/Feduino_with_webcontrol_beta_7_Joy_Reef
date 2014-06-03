@@ -229,18 +229,18 @@ void printButton(char* text, int x1, int y1, int x2, int y2, boolean setFont = f
   myGLCD.drawRoundRect (x1, y1, x2, y2);
 
   myGLCD.setBackColor(0, 0, 200);
-  //if (setFont) {
+    if (setFont) {
     myGLCD.setFont(BigFont); 
     fx = x1+(((x2 - x1+1)-(stl*16))/2);
     fy = y1+(((y2 - y1+1)-16)/2);
     myGLCD.print(text, fx, fy);
- /* }
+  }
     else {
     myGLCD.setFont(RusFont1); 
     fx = x1+(((x2 - x1)-(stl*8))/2);
     fy = y1+(((y2 - y1-1)-6)/2);
     myGLCD.print(text, fx, fy);
-  }*/
+  }
 }
 void printButton_verde(char* text, int x1, int y1, int x2, int y2, boolean setFont = false)
 {
