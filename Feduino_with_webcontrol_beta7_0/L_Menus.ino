@@ -288,18 +288,18 @@ void tempScreen(boolean refreshAll=false)
     temp2beA = alarmTempC;
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[24])));
-    printHeader(buffer); //tabela_textos[24] "CONTROLE DE TEMPERATURA DA AGUA"
+    printHeader(buffer); //tabela_textos[24] "WATER TEMPERATURE CONTROL"
 
     setFont(SMALL, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[74])));
-    myGLCD.print(buffer, 85, 20); // "TEMPERATURA DESEJADA:"
+    myGLCD.print(buffer, 85, 20); // "DESIRED TEMPERATURE:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[75])));
-    myGLCD.print(buffer, 90, 70); // "VARIACAO PERMITIDA:"
+    myGLCD.print(buffer, 90, 70); // "ALLOWABLE VARIATION:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[76])));
-    myGLCD.print(buffer, 50, 120); // "VARIACAO PARA ACIONAR O ALARME:"
+    myGLCD.print(buffer, 50, 120); // "VARIATION TO ACTIVATE ALARM:"
 
     printButton("-", temM[0], temM[1], temM[2], temM[3], true);      //temp minus
     printButton("+", temP[0], temP[1], temP[2], temP[3], true);      //temp plus
@@ -701,16 +701,16 @@ void waveScreen(boolean refreshAll = false)///----------------------------------
     printHeader(buffer); // tabela_textos[10] = "WAVEMAKER"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "HOME"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
     printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
-    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SALVAR"
+    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SAVE"
 
     myGLCD.setColor(0, 0, 0);
-    myGLCD.fillRect(1, 62, 324, 239);
+    myGLCD.fillRect(2, 20, 648, 478);
 
     if(modo_selecionado == 1)
     {       
@@ -718,13 +718,13 @@ void waveScreen(boolean refreshAll = false)///----------------------------------
       printButton("+", peRC[0], peRC[1], peRC[2], peRC[3], true);
       printButton_verde("1", boT1[0], boT1[1], boT1[2], boT1[3],true);
 
-      setFont(SMALL, 255, 255, 255, 0, 0, 0);
+      setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[238]))); // "PERIODO"
-      myGLCD.print(buffer, 90, 130);
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[238]))); // "PERIOD"
+      myGLCD.print(buffer, 90, 100);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[239]))); // "MODO: ONDA SENOIDAL DESSINCRONIZADA" 
-      myGLCD.print(buffer, 10, 65);
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[239]))); // "ALTERNATING" 
+      myGLCD.print(buffer, 380, 40);
     }
     else
     {
@@ -737,13 +737,13 @@ void waveScreen(boolean refreshAll = false)///----------------------------------
       printButton("+", peRC[0], peRC[1], peRC[2], peRC[3], true);
       printButton_verde("2", boT2[0], boT2[1], boT2[2], boT2[3],true);
 
-      setFont(SMALL, 255, 255, 255, 0, 0, 0);
+      setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[238]))); // "PERIODO"
-      myGLCD.print(buffer, 90, 130);
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[238]))); // "PERIOD"
+      myGLCD.print(buffer, 90, 100);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[240]))); // "MODO: ONDA SENOIDAL SINCRONIZADA" 
-      myGLCD.print(buffer, 10, 65); 
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[240]))); // "SYNCRONIZED" 
+      myGLCD.print(buffer, 380, 40); 
     }
     else
     {
@@ -755,13 +755,13 @@ void waveScreen(boolean refreshAll = false)///----------------------------------
       printButton("+", peRC[0], peRC[1], peRC[2], peRC[3], true);    
       printButton_verde("3", boT3[0], boT3[1], boT3[2], boT3[3],true); 
 
-      setFont(SMALL, 255, 255, 255, 0, 0, 0);
+      setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[241]))); // "DURACAO DO INTERVALO EM MS"
-      myGLCD.print(buffer, 10, 130);
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[241]))); // "DURATION OF INTERVAL IN MS"
+      myGLCD.print(buffer, 20, 100);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[242]))); // "MODO: MARE CHEIA" 
-      myGLCD.print(buffer, 10, 65);
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[242]))); // "TIDAL SWELL" 
+      myGLCD.print(buffer, 380, 45);
     }
     else
     {
@@ -773,13 +773,14 @@ void waveScreen(boolean refreshAll = false)///----------------------------------
       printButton("+", peRC[0], peRC[1], peRC[2], peRC[3], true);    
       printButton_verde("4", boT4[0], boT4[1], boT4[2], boT4[3],true);
 
-      setFont(SMALL, 255, 255, 255, 0, 0, 0);
+      setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[243]))); // "MODO: CRISTA DA ONDA"
-      myGLCD.print(buffer, 10, 65);   
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[243]))); // "REEF CREST"
+      myGLCD.print(buffer, 390, 45);   
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[241]))); // "DURACAO DO INTERVALO EM MS"
-      myGLCD.print(buffer, 10, 130);
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[241]))); // "DURATION/MILLISECONDS"
+
+      myGLCD.print(buffer, 20, 100);
     }
     else
     {
@@ -793,58 +794,58 @@ void waveScreen(boolean refreshAll = false)///----------------------------------
       printButton("+", PoTEC2[0], PoTEC2[1], PoTEC2[2], PoTEC2[3], true);  
       printButton_verde("M", boT5[0], boT5[1], boT5[2], boT5[3],true);
 
-      setFont(SMALL, 255, 255, 255, 0, 0, 0);
+      setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[246]))); // "MODO: MANUAL"
-      myGLCD.print(buffer, 10, 65);
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[246]))); // "MANUAL"
+      myGLCD.print(buffer, 430, 45);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[244]))); // "POTENCIA DA BOMBA 1" 
-      myGLCD.print(buffer, 40, 100);
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[244]))); // "PUMP 1" 
+      myGLCD.print(buffer, 86, 110);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[245]))); // "POTENCIA DA BOMBA 2" 
-      myGLCD.print(buffer, 40, 170);
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[245]))); // "PUMP 2" 
+      myGLCD.print(buffer, 86, 180);
     }
     else
     {
       printButton("M", boT5[0], boT5[1], boT5[2], boT5[3],true);   
     }
 
-    setFont(SMALL, 88, 255, 238, 0, 0, 0);
+    setFont(LARGE, 88, 255, 238, 0, 0, 0);
 
-    myGLCD.print("0%", 223, 219);
-    myGLCD.print("50%", 217, 156);
-    myGLCD.print("100%", 208, 91);
+    myGLCD.print("0%", 446, 438);
+    myGLCD.print("50%", 434, 312);
+    myGLCD.print("100%", 416, 182);
 
     myGLCD.setColor(190, 190, 190); 
-    myGLCD.drawRect(242, 227, 309, 227); // Linha x   
-    myGLCD.drawRect(245, 227, 245, 97);  // Linha y1  
-    myGLCD.drawRect(306, 227, 306, 97);  // Linha y2
+    myGLCD.drawRect(484, 454, 618, 454);  // Linha x   
+    myGLCD.drawRect(490, 454, 490, 194);  // Linha y1  
+    myGLCD.drawRect(612, 454, 612, 194);  // Linha y2
 
     for (int i=0; i < 10; i++)
     {
-      myGLCD.drawLine(242, (i * 13) + 97, 248, (i * 13) + 97); // Marcador esequerdo
-      myGLCD.drawLine(303, (i * 13) + 97, 309, (i * 13) + 97); // Marcador central
-      myGLCD.drawPixel(276, (i * 13) + 97);                    // Marcador direito
+      myGLCD.drawLine(484, (i * 26) + 194, 496, (i * 26) + 194); // Marcador esequerdo
+      myGLCD.drawLine(606, (i * 26) + 194, 618, (i * 26) + 194); // Marcador central
+      myGLCD.drawPixel(552, (i * 26) + 194);                     // Marcador direito
     }  
   }
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
   if((modo_selecionado == 1) || (modo_selecionado == 2))
   {
-    myGLCD.print("     ", 75, 145);
-    myGLCD.printNumI(periodo, 75, 145); 
+    myGLCD.print("     ", 100, 150);
+    myGLCD.printNumI(periodo, 100, 150); 
   }
   else if((modo_selecionado == 3) || (modo_selecionado == 4)) 
   {
-    myGLCD.print("    ", 85, 150); 
-    myGLCD.printNumI(duracao, 85, 150);  
+    myGLCD.print("    ", 105, 150); 
+    myGLCD.printNumI(duracao, 105, 150);  
   }
   else if(modo_selecionado == 5)
   {
-    myGLCD.print("   ", 95, 120);
-    myGLCD.printNumI(Pump1PWM_temp, 95, 120); 
-    myGLCD.print("   ", 95, 190);   
-    myGLCD.printNumI(Pump2PWM_temp, 95, 190);
+    myGLCD.print("   ", 105, 145);
+    myGLCD.printNumI(Pump1PWM_temp, 105, 145); 
+    myGLCD.print("   ", 105, 215);   
+    myGLCD.printNumI(Pump2PWM_temp, 105, 215);
   }
   delay(100);
 }
@@ -922,7 +923,7 @@ void config_phR_Screen(boolean refreshAll=false)
     printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
-    printButton(buffer, menU[0], menU[1], menU[2], menU[3]);
+    printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "BACK"
   }
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
@@ -971,7 +972,7 @@ void config_orp_Screen(boolean refreshAll=false)
     printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
-    printButton(buffer, menU[0], menU[1], menU[2], menU[3]);
+    printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "BACK"
   }
 
   myGLCD.setColor(0, 0, 0);
@@ -3069,37 +3070,37 @@ void desativar_dosadoras(boolean refreshAll = false)
     setFont(SMALL, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[149])));
-    myGLCD.print(buffer, 10, 100); // tabela_textos[149] = "UM DOS MODOS"
+    myGLCD.print(buffer, 10, 100); // "BOTH MODES"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 10, 115); // tabela_textos[150] = "DE DOSAGEM  "
+    myGLCD.print(buffer, 10, 115); // "OF DOSAGE"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[151])));
-    myGLCD.print(buffer, 10, 130); // tabela_textos[151] = "ESTA:"
+    myGLCD.print(buffer, 10, 130); // "ARE OR:"
   } 
   else 
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[152])));
-    printButton(buffer, 100, 115, 220, 155);  // tabela_textos[152]
+    printButton(buffer, 100, 115, 220, 155);  // "DEACTIVATED"
 
     setFont(SMALL, 255, 255, 0, 0, 0, 0); 
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[153])));
-    myGLCD.print(buffer, 3, 100); // tabela_textos[153] = "AMBOS OS MODOS"
+    myGLCD.print(buffer, 3, 100); // "BOTH MODES"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 3, 115); //tabela_textos[150] =  "DE DOSAGEM  "
+    myGLCD.print(buffer, 3, 115); // "OF DOSAGE"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[154])));
-    myGLCD.print(buffer, 3, 130); // tabela_textos[154] = "ESTAO OU"
+    myGLCD.print(buffer, 3, 130); // "ARE OR"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[155])));
-    myGLCD.print(buffer, 3, 145); // tabela_textos[155] = "SERAO:"
+    myGLCD.print(buffer, 3, 145); // "WILL BE:"
   }
   if (bitRead(ativar_desativar,3) == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[147])));
-    printButton_verde(buffer, 100, 185, 220, 225); 
+    printButton_verde(buffer, 100, 185, 220, 225); // "ACTIVATED"
 
     myGLCD.setColor(0, 0, 0);
     myGLCD.fillRect (3, 166, 117, 183);
@@ -3690,101 +3691,101 @@ void procurar_sensores(boolean refreshAll=false)
     sonda_associada_3_temp = sonda_associada_3;
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[214])));
-    printHeader(buffer); // tabela_textos[214] = "CONFIGURAR SONDAS DE TEMPERATURA" 
+    printHeader(buffer); // "TEMPERATURE PROBE SETUP" 
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[215])));
-    printButton(buffer, busC[0], busC[1], busC[2], busC[3]); // "BUSCAR SONDAS";
+    printButton(buffer, busC[0], busC[1], busC[2], busC[3]); // "FIND PROBES";
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[2])));
-    printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 2";
+    printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 2"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO" 
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "HOME" 
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
-    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SALVAR"
+    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SAVE"
 
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);          
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);          
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[216])));
-    myGLCD.print(buffer,36, 44);  // "SONDAS ENCONTRADAS"
+    myGLCD.print(buffer,90, 44);  // "PROBES FOUND"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217])));
-    myGLCD.print(buffer,10, 80);   // SONDA 1
+    myGLCD.print(buffer,35, 80);   // "1"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218])));
-    myGLCD.print(buffer,10, 95);  // "SONDA 2"
+    myGLCD.print(buffer,35, 100);  // "2"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219])));
-    myGLCD.print(buffer,10, 110);  // "SONDA 3" 
+    myGLCD.print(buffer,35, 120);  // "3" 
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[220])));
-    myGLCD.print(buffer,5, 137);  // "ASSOCIAR TEMP. DA AGUA A" 
+    myGLCD.print(buffer,65, 240);  // "USE FOR WATER TEMP." 
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[221])));
-    myGLCD.print(buffer,5, 177);  // "ASSOCIAR TEMP. DO DISSIPADOR A" 
+    myGLCD.print(buffer,65, 310);  // "USE FOR LED TEMP." 
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[222])));
-    myGLCD.print(buffer,5, 217);  // "ASSOCIAR TEMP. AMBIENTE A"  
+    myGLCD.print(buffer,65, 380);  // "USE FOR ROOM TEMP."  
   }
 
   myGLCD.setColor(0, 0, 0);
-  myGLCD.fillRect(10, 160, 245, 172); //Apaga mensagem de erro: "NAO ASSOCIE 2 OU 3 SONDAS AO MESMO PARAMETRO"
-  myGLCD.fillRect(10, 195, 245, 207); //Apaga mensagem de erro: "NAO ASSOCIE 2 OU 3 SONDAS AO MESMO PARAMETRO"
+  myGLCD.fillRect(5, 160, 400, 190); //Clear error message: "DO NOT ASSOCIE 2 OR 3 PROBES AT THE SAME PARAMETER"
+  myGLCD.fillRect(5, 190, 400, 220); //Clear error message: "DO NOT ASSOCIE 2 OR 3 PROBES AT THE SAME PARAMETER"
 
   if(sonda_associada_1_temp == 1)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217]))); // "SONDA 1"
-    printButton(buffer, sonD1[0], sonD1[1], sonD1[2], sonD1[3]);
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217]))); // "1"
+    printButton(buffer, sonD1[0], sonD1[1], sonD1[2], sonD1[3], true);
   }
   if(sonda_associada_1_temp == 2)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218]))); // "SONDA 2"
-    printButton_verde(buffer, sonD1[0], sonD1[1], sonD1[2], sonD1[3]); 
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218]))); // "2"
+    printButton_verde(buffer, sonD1[0], sonD1[1], sonD1[2], sonD1[3], true); 
   }
   if(sonda_associada_1_temp == 3)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219]))); // "SONDA 3"
-    printButton_vermelho(buffer, sonD1[0], sonD1[1], sonD1[2], sonD1[3]);
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219]))); // "3"
+    printButton_vermelho(buffer, sonD1[0], sonD1[1], sonD1[2], sonD1[3], true);
   } 
 
   if(sonda_associada_2_temp == 1)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217]))); // "SONDA 1"
-    printButton(buffer, sonD2[0], sonD2[1], sonD2[2], sonD2[3]);
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217]))); // "1"
+    printButton(buffer, sonD2[0], sonD2[1], sonD2[2], sonD2[3], true);
   }
   if(sonda_associada_2_temp == 2)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218]))); // "SONDA 2"
-    printButton_verde(buffer, sonD2[0], sonD2[1], sonD2[2], sonD2[3]); 
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218]))); // "2"
+    printButton_verde(buffer, sonD2[0], sonD2[1], sonD2[2], sonD2[3], true); 
   }
   if(sonda_associada_2_temp == 3)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219]))); // "SONDA 3"
-    printButton_vermelho(buffer, sonD2[0], sonD2[1], sonD2[2], sonD2[3]);
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219]))); // "3"
+    printButton_vermelho(buffer, sonD2[0], sonD2[1], sonD2[2], sonD2[3], true);
   } 
 
   if(sonda_associada_3_temp == 1)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217]))); // "SONDA 1"
-    printButton(buffer, sonD3[0], sonD3[1], sonD3[2], sonD3[3]);
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217]))); // "1"
+    printButton(buffer, sonD3[0], sonD3[1], sonD3[2], sonD3[3], true);
   }
   if(sonda_associada_3_temp == 2)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218]))); // "SONDA 2"
-    printButton_verde(buffer, sonD3[0], sonD3[1], sonD3[2], sonD3[3]);
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218]))); // "2"
+    printButton_verde(buffer, sonD3[0], sonD3[1], sonD3[2], sonD3[3], true);
   }
   if(sonda_associada_3_temp == 3)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219]))); // "SONDA 3"
-    printButton_vermelho(buffer, sonD3[0], sonD3[1], sonD3[2], sonD3[3]);
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219]))); // "3"
+    printButton_vermelho(buffer, sonD3[0], sonD3[1], sonD3[2], sonD3[3], true);
   }
 
   sensors.begin();
   numberOfDevices = sensors.getDeviceCount();
 
-  setFont(SMALL, 88, 255, 238, 0, 0, 0);
-  myGLCD.printNumI(numberOfDevices, 20, 44);  // NÃƒÂºmero de sensores encontrados
+  setFont(LARGE, 88, 255, 238, 0, 0, 0);
+  myGLCD.printNumI(numberOfDevices, 65, 44);  // NUMBER OF PROBES FOUND, IN THIS CASE,"3"
 
 
   for(byte k = 0; k < numberOfDevices; k++)
@@ -3819,16 +3820,16 @@ void procurar_sensores(boolean refreshAll=false)
       }      
     }
     myGLCD.setColor(255, 255, 255); 
-    myGLCD.print(":", 66, (k * 15) + 80);
+    myGLCD.print(":", 55, (k * 20) + 80);
 
     myGLCD.setColor(255, 163, 100); 
-    myGLCD.printNumF(temperatura, 1, 278,(k * 15) + 80);    // Imprime as teperaturas.
-    myGLCD.print("T.", 262, (k * 15) + 80);
-    myGLCD.print("F", 315, (k * 15) + 80); 
+    myGLCD.printNumF(temperatura, 1, 278,(k * 18) + 80);    // Imprime as teperaturas.
+    myGLCD.print(":", 262, (k * 20) + 80);
+    myGLCD.print("F", 360, (k * 20) + 80); 
     //myGLCD.print("C", 315, (k * 15) + 80);
-    myGLCD.drawCircle(311, (k * 15) + 82, 1);
+    myGLCD.drawCircle(355, (k * 20) + 82, 1);
 
-    setFont(SMALL, 88, 255, 238, 0, 0, 0);
+    setFont(LARGE, 88, 255, 238, 0, 0, 0);
     for (byte i = 0; i < 8; i++) 
     {
       byte result;
@@ -3836,65 +3837,65 @@ void procurar_sensores(boolean refreshAll=false)
       result = temp/16;		     //Converte primeiro caracter HEX para ASCII
       if (result == 15) 
       {
-        myGLCD.print("F", (i * 24) + 74, (k * 15) + 80);
+        myGLCD.print("F", (i * 24) + 74, (k * 20) + 80);
       }
       if (result == 14) 
       {
-        myGLCD.print("E", (i * 24) + 74, (k * 15) + 80);
+        myGLCD.print("E", (i * 24) + 74, (k * 20) + 80);
       } 
       if (result == 13) 
       {
-        myGLCD.print("D", (i * 24) + 74, (k * 15) + 80);
+        myGLCD.print("D", (i * 24) + 74, (k * 20) + 80);
       }
       if (result == 12) 
       {
-        myGLCD.print("C", (i * 24) + 74, (k * 15) + 80);
+        myGLCD.print("C", (i * 24) + 74, (k * 20) + 80);
       }
       if (result == 11) 
       {
-        myGLCD.print("B", (i * 24) + 74, (k * 15) + 80);
+        myGLCD.print("B", (i * 24) + 74, (k * 20) + 80);
       }
       if (result == 10) 
       {
-        myGLCD.print("A", (i * 24 + 74), (k * 15) + 80);
+        myGLCD.print("A", (i * 24 + 74), (k * 20) + 80);
       }
       if (result < 10 ) 
       {
-        myGLCD.printNumI(result, (i * 24) + 74, (k * 15) + 80);
+        myGLCD.printNumI(result, (i * 24) + 74, (k * 20) + 80);
       }
 
       result = temp - (temp/16) * 16;           // Converte segundo caracter HEX para ASCII
       if (result == 15) 
       {
-        myGLCD.print("F", (i * 24) + 82, (k * 15) + 80);
+        myGLCD.print("F", (i * 24) + 82, (k * 20) + 80);
       }
       if (result == 14) 
       {
-        myGLCD.print("E", (i * 24) + 82, (k * 15) + 80);
+        myGLCD.print("E", (i * 24) + 82, (k * 20) + 80);
       }
       if (result == 13) 
       {
-        myGLCD.print("D", (i * 24) + 82, (k * 15) + 80);
+        myGLCD.print("D", (i * 24) + 82, (k * 20) + 80);
       }
       if (result == 12) 
       {
-        myGLCD.print("C", (i * 24) + 82, (k * 15) + 80);
+        myGLCD.print("C", (i * 24) + 82, (k * 20) + 80);
       } 
       if (result == 11) 
       {
-        myGLCD.print("B", (i * 24) + 82, (k * 15) + 80);
+        myGLCD.print("B", (i * 24) + 82, (k * 20) + 80);
       }
       if (result == 10) 
       {
-        myGLCD.print("A", (i * 24) + 82, (k * 15) + 80);
+        myGLCD.print("A", (i * 24) + 82, (k * 20) + 80);
       }
       if (result < 10)
       {
-        myGLCD.printNumI(result, (i * 24) + 82, (k * 15) + 80);
+        myGLCD.printNumI(result, (i * 24) + 82, (k * 20) + 80);
       }
       if (i<7)
       {
-        myGLCD.print(":", (i * 24) + 90, (k * 15) + 80);
+        myGLCD.print(":", (i * 24) + 90, (k * 20) + 80);
       } 
     }
   }
@@ -4381,7 +4382,6 @@ void pre_definido(boolean refreshAll = false)
     myGLCD.fillRoundRect(1, 201, 399, 239);
   }
 }
-
 
 
 
