@@ -2,45 +2,45 @@
 //*********************** BotÃƒÂµes dos menus *****************************************************
 //**********************************************************************************************
 const byte temM[]= {
-  90, 35, 115, 60};           // temp. minus
+  90, 35, 115, 60};           //temp. minus
 const byte temP[]= {
-  205,35,230, 60};            // temp. plus
+  205,35,230, 60};            //temp. plus
 const byte offM[]= {
-  90, 85, 115, 110};          // offset minus
+  90, 85, 115, 110};          //offset minus
 const byte offP[]= {
-  205, 85, 230, 110};         // offset plus
+  205, 85, 230, 110};         //offset plus
 const byte almM[]= {
-  90, 135, 115, 160};         // alarm minus
+  90, 135, 115, 160};         //alarm minus
 const byte almP[]= {
-  205, 135, 230, 160};        // alarm plus
+  205, 135, 230, 160};        //alarm plus
 const int iniC[]= {
-  650, 4, 780, 84};           // home
+  325, 2, 390, 42};           // home
 const int menU[]= {
-  650, 104, 780, 184};        // menu
+  325, 52, 390, 92};          // menu
 const int prOK[]= {
-  650, 200, 780, 238};        // ok
+  325, 200, 390, 238};        //ok
 const int salV[]= {
-  650, 300, 780, 380};        // save 
+  325, 150, 390, 190};        //save dosage
 const int deS[]= {
-  650, 204, 780, 284};
-//const int xxxx[]= {650, 400, 780, 478};
+  325, 102, 390, 142};
+//const int xxxx[]= {325, 200, 390, 239};
 const byte tanD[]= {
-  10, 20, 150, 60};           // Time $ date
+  10, 20, 150, 60};        // Time $ date
 const byte tesT[]= {
-  10, 70, 150, 110};          // Test LED
+  10, 70, 150, 110};       // Test LED
 const byte temC[]= {
-  10, 120, 150, 160};         // Temperature 
+  10, 120, 150, 160};      // Temperature 
 const byte graF[]= {
-  10, 170, 150, 210};         // Graphs
+  10, 170, 150, 210};      // Graphs
 const int ledW[]= {
-  170, 20, 310, 60};          // Timers
+  170, 20, 310, 60};        // Timers
 
 const int savE[]= {
   180, 203, 300, 235};        //Save Eeprom
 const byte leWB[]= {
-  5, 203, 90, 235};           //LED values show whites or blues
+  5, 203, 90, 235};        //LED values show whites or blues
 const byte leST[]= {
-  100, 203, 170, 235};        //LED values change
+  100, 203, 170, 235};       //LED values change
 
 const int tpaA[]= {
   170, 70, 310, 110};         //auto-water change
@@ -49,50 +49,50 @@ const int dosA[]= {
 const int wavM[]= {
   170, 170, 310, 210};        // Wavemaker
 const int volT[]= {
-  650, 400, 780, 476};        // back
+  325, 200, 390, 238};         //voltar
 const int testT[]= {
-  20, 20, 255, 60};           // Test all leds
+  40, 34, 280, 74};      //Testar todos os leds
 const int testI[]= {
-  340, 20, 580, 60};          // Test individual leds
+  40, 84, 280, 124};    //Teste individual dos leds
 //-----------botoes graficos e parametros--------------------
 const byte tempG[]= {
-  10, 20, 150, 60};           // parametro/grafico de temperatura
+  10, 20, 150, 60};        //parametro/grafico de temperatura
 const byte phA[]= {
-  10, 70, 150, 110};          // parametro/grafico de ph do aqua
+  10, 70, 150, 110};       //parametro/grafico de ph do aqua
 const int phR[]= {
-  10, 120, 150, 160};         // parametro/grafico de ph do aqua
+  10, 120, 150, 160};      //parametro/grafico de ph do aqua
 const byte orP[]= {
-  10, 170, 150, 210};         // parametro/grafico de orp
+  10, 170, 150, 210};      // parametro/grafico de orp
 const int denS[]= {
-  170, 20, 310, 60};          // parametro/grafico de densidade
+  170, 20, 310, 60};        //parametro/grafico de densidade
 //const int []= {170, 70, 310, 110};         
 //const int []= {170, 120, 310, 160};        
 
 const byte manU[]= {
-  10, 20, 150, 60};           // Dosagem manual
+  10, 20, 150, 60};        // Dosagem manual
 const byte autO[]= {
-  10, 70, 150, 110};          // Dosagem automatica
+  10, 70, 150, 110};       //Dosagem automatica
 const byte perS[]= {
-  10, 70, 150, 110};          // Dosagem personalizada
+  10, 70, 150, 110};      //Dosagem personalizada
 const byte reV[]= {
-  10, 120, 150, 160};         // rever cofig. dosagem personalizada
+  10, 120, 150, 160};     // rever cofig. dosagem personalizada
 const int atiV[]= {
-  170, 20, 310, 60};          // Ativar/desativar dosadoras   
+  170, 20, 310, 60};    //Ativar/desativar dosadoras   
 //const int []= {170, 70, 310, 110};         
 //const int []= {170, 120, 310, 160};          
 
 const byte dosa1[]= {
-  20, 20, 255, 60};            // Bomba dosadora 1
+  10, 20, 150, 60};       //Bomba dosadora 1
 const byte dosa2[]= {
-  20, 70, 255, 110};           // Bomba dosadora 2
+  10, 70, 150, 110};         //Bomba dosadora 2
 const byte dosa3[]= {
-  20, 120, 255, 160};          // Bomba dosadora 3
+  10, 120, 150, 160};      // Bomba dosadora 3
 const int dosa4[]= {
-  340, 20, 580, 60};          // Bomba dosadora 4
+  170, 20, 310, 60};       //Bomba dosadora 4
 const int dosa5[]= {
-  340, 70, 580, 110};         // Bomba dosadora 5
+  170, 70, 310, 110};         //Bomba dosadora 5
 const int dosa6[]= {
-  340, 120, 580, 160};         // Bomba dosadora 6
+  170, 120, 310, 160};      // Bomba dosadora 6
 //----------------------------------------------------
 
 const byte houU[]= {
@@ -344,6 +344,5 @@ void desenhar_barras_periodo ()
   myGLCD.drawRect((setor_selecionado * 38)+5, 80, (setor_selecionado * 38)+39, 195); 
   desenhar_barras(cor_canal [cor_selecionada][0], cor_canal [cor_selecionada][1], cor_canal [cor_selecionada][2], (setor_selecionado * 38)+5, 80, (setor_selecionado * 38)+39, 195);
 }
-
 
 
