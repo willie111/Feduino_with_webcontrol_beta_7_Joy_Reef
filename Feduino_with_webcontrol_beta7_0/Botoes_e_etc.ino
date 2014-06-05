@@ -149,9 +149,9 @@ const int domI[]= {
   240, 386, 400, 466};      // Sunday
 const int caliB[]= {
   340, 340, 620, 420};       // Probe Calibration
-const byte iniciaR[]= {
+const int iniciaR[]= {
   240, 386, 400, 466};      // start calibration
-const byte anT[]= {
+const int anT[]= {
   60, 386, 220, 466};       // previous
 const int proX[]= {
   420, 386, 580, 466};      // next
