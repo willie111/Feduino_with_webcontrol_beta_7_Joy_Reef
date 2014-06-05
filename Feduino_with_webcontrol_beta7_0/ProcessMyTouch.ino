@@ -2,7 +2,7 @@
 void processMyTouch()
 {
   myTouch.read();
-  int x, y;                  // Coordenadas do touch screen
+  int x, y; // Coordenadas do touch screen
   x=myTouch.getX();
   y=myTouch.getY();
 
@@ -10,10 +10,10 @@ void processMyTouch()
   {
     temperatura_baixou = false;
   }
-  if ((x>=iniC[0]) && (x<=iniC[2]) && (y>=iniC[1]) && (y<=iniC[3]) && (dispScreen!=0) && (LEDtestTick == false) && (horario_alterado == false))  // volta ao inicio
+  if ((x>=iniC[0]) && (x<=iniC[2]) && (y>=iniC[1]) && (y<=iniC[3]) && (dispScreen!=0) && (LEDtestTick == false) && (horario_alterado == false)) // volta ao inicio
   {
     //waitForIt(iniC[0], iniC[1], iniC[2], iniC[3]);
-    if((dispScreen == 5) || (dispScreen == 28)) 
+    if((dispScreen == 5) || (dispScreen == 28))
     {
       ReadFromEEPROM();
     }
@@ -28,27 +28,27 @@ void processMyTouch()
     }
     else if(dispScreen == 22)
     {
-      ler_predefinido_EEPROM(); 
+      ler_predefinido_EEPROM();
     }
     periodo_selecionado = false;
     dispScreen=0;
     clearScreen();
-    mainScreen(true);   
+    mainScreen(true);
 
-  } 
+  }
   else
   {
-    switch (dispScreen) 
+    switch (dispScreen)
     {
-    case 0:                       // Screen start
+    case 0: // Screen start
       dispScreen=30;
       clearScreen();
       solicitar_senha();
       break;
-    case 1:     //------------------------------------menu-------------------------------------------------
-      if ((x>=tanD[0]) && (x<=tanD[2]))               //first column
+    case 1: //------------------------------------menu-------------------------------------------------
+      if ((x>=tanD[0]) && (x<=tanD[2])) //first column
       {
-        if ((y>=tanD[1]) && (y<=tanD[3]))             //press clock
+        if ((y>=tanD[1]) && (y<=tanD[3])) //press clock
         {
           //waitForIt(tanD[0], tanD[1], tanD[2], tanD[3]);
           dispScreen=2;
@@ -56,60 +56,60 @@ void processMyTouch()
           setClock();
         }
 
-        else if ((y>=tesT[1]) && (y<=tesT[3]))              // Menu configurar leds
+        else if ((y>=tesT[1]) && (y<=tesT[3])) // Menu configurar leds
         {
           //waitForIt(tesT[0], tesT[1], tesT[2], tesT[3]);
           dispScreen=40;
           clearScreen();
           config_leds();
-        }  
-        else if ((y>=temC[1]) && (y<=temC[3]))               //controle de parametros
+        }
+        else if ((y>=temC[1]) && (y<=temC[3])) //controle de parametros
         {
           //waitForIt(temC[0], temC[1], temC[2], temC[3]);
           dispScreen=14;
           clearScreen();
           parametroScreen();
         }
-        else if ((y>=graF[1]) && (y<=graF[3]))           // seleciona a funcao grafico
+        else if ((y>=graF[1]) && (y<=graF[3])) // seleciona a funcao grafico
         {
           //waitForIt(graF[0], graF[1], graF[2], graF[3]);
           dispScreen=9;
           clearScreen();
           graficoScreen();
-        } 
+        }
       }
-      else if ((x>=ledW[0]) && (x<=ledW[2]))                 //second column
+      else if ((x>=ledW[0]) && (x<=ledW[2])) //second column
       {
-        if  ((y>=ledW[1]) && (y<=ledW[3]))           //Timers
+        if ((y>=ledW[1]) && (y<=ledW[3])) //Timers
         {
           //waitForIt(ledW[0], ledW[1], ledW[2], ledW[3]);
           dispScreen=38;
           clearScreen();
           TimerScreen();
-        } 
-        else if  ((y>=tpaA[1]) && (y<=tpaA[3]))           // seleciona a funcao "water change"
+        }
+        else if ((y>=tpaA[1]) && (y<=tpaA[3])) // seleciona a funcao "water change"
         {
           //waitForIt(tpaA[0], tpaA[1], tpaA[2], tpaA[3]);
           dispScreen=7;
           clearScreen();
           tpaScreen(true);
-        }      
-        else if  ((y>=dosA[1]) && (y<=dosA[3]))           // seleciona a funcao "dosing pump"
+        }
+        else if ((y>=dosA[1]) && (y<=dosA[3])) // seleciona a funcao "dosing pump"
         {
           //waitForIt(dosA[0], dosA[1], dosA[2], dosA[3]);
           dispScreen=8;
           clearScreen();
           menu_dosadoras();
-        } 
-        else if ((y>=wavM[1]) && (y<=wavM[3]))           // seleciona a funcao "wavemaker"
+        }
+        else if ((y>=wavM[1]) && (y<=wavM[3])) // seleciona a funcao "wavemaker"
         {
           //waitForIt(wavM[0], wavM[1], wavM[2], wavM[3]);
           dispScreen=10;
           clearScreen();
           waveScreen(true);
-        } 
+        }
       }
-      else  if ((y>=menU[1]) && (y<=menU[3]) && (x>=menU[0]) && (x<=menU[2]))
+      else if ((y>=menU[1]) && (y<=menU[3]) && (x>=menU[0]) && (x<=menU[2]))
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]); // Vai para o menu 2
         dispScreen=37;
@@ -118,7 +118,7 @@ void processMyTouch()
       }
       break;
 
-    case 2:    // -------------------------------------time and date---------------------
+    case 2: // -------------------------------------time and date---------------------
 
       if ((y>=houU[1]) && (y<=houU[3])) // Buttons: Time UP
       {
@@ -129,13 +129,13 @@ void processMyTouch()
           t_temp.hour = (t_temp.hour+1) %24;
           if (t_temp.hour<10)
           {
-            myGLCD.printNumI(0, 140, 96);
+            myGLCD.printNumI(0, 156, 96);
             myGLCD.printNumI(t_temp.hour, 172, 96);
           }
           else
           {
-            myGLCD.printNumI(t_temp.hour, 140, 96);
-          }   
+            myGLCD.printNumI(t_temp.hour, 156, 96);
+          }
         }
         else if ((x>=minU[0]) && (x<=minU[2]))
         {
@@ -143,13 +143,13 @@ void processMyTouch()
           t_temp.min = (t_temp.min +1) %60;
           if (t_temp.min<10)
           {
-            myGLCD.printNumI(0, 320, 96);
+            myGLCD.printNumI(0, 336, 96);
             myGLCD.printNumI(t_temp.min, 352, 96);
           }
           else
           {
-            myGLCD.printNumI(t_temp.min, 320, 96);
-          }   
+            myGLCD.printNumI(t_temp.min, 336, 96);
+          }
         }
         else if ((x>=segC[0]) && (x<=segC[2]))
         {
@@ -159,13 +159,13 @@ void processMyTouch()
             t_temp.sec=0;
           if (t_temp.sec<10)
           {
-            myGLCD.printNumI(0, 500, 96);
+            myGLCD.printNumI(0, 516, 96);
             myGLCD.printNumI(t_temp.sec, 532, 96);
           }
           else
           {
-            myGLCD.printNumI(t_temp.sec, 500, 96);
-          }     
+            myGLCD.printNumI(t_temp.sec, 516, 96);
+          }
         }
       }
       else if ((y>=houD[1]) && (y<=houD[3])) // Buttons: Time DOWN
@@ -176,13 +176,13 @@ void processMyTouch()
           t_temp.hour =(t_temp.hour + 23)% 24;
           if (t_temp.hour<10)
           {
-            myGLCD.printNumI(0, 140, 96);
+            myGLCD.printNumI(0, 156, 96);
             myGLCD.printNumI(t_temp.hour, 172, 96);
           }
           else
           {
-            myGLCD.printNumI(t_temp.hour, 140, 96);
-          }            
+            myGLCD.printNumI(t_temp.hour, 156, 96);
+          }
         }
         else if ((x>=minD[0]) && (x<=minD[2]))
         {
@@ -190,26 +190,26 @@ void processMyTouch()
           t_temp.min =(t_temp.min +59) %60;
           if (t_temp.min<10)
           {
-            myGLCD.printNumI(0, 320, 96);
+            myGLCD.printNumI(0, 336, 96);
             myGLCD.printNumI(t_temp.min, 352, 96);
           }
           else
           {
-            myGLCD.printNumI(t_temp.min, 320, 96);
-          } 
+            myGLCD.printNumI(t_temp.min, 336, 96);
+          }
         }
         else if ((x>=segB[0]) && (x<=segB[2]))
         {
-          //waitForIt(segB[0], segB[1], segB[2], segB[3]); 
+          //waitForIt(segB[0], segB[1], segB[2], segB[3]);
           t_temp.sec = (t_temp.sec +59) %60;
           if (t_temp.sec<10)
           {
-            myGLCD.printNumI(0, 500, 96);
+            myGLCD.printNumI(0, 516, 96);
             myGLCD.printNumI(t_temp.sec, 532, 96);
           }
           else
           {
-            myGLCD.printNumI(t_temp.sec, 500, 96);
+            myGLCD.printNumI(t_temp.sec, 516, 96);
           }
         }
       }
@@ -223,12 +223,12 @@ void processMyTouch()
           t_temp.date=validateDate(t_temp.date, t_temp.mon, t_temp.year);
           if (t_temp.date<10)
           {
-            myGLCD.printNumI(0, 140, 264);
+            myGLCD.printNumI(0, 156, 264);
             myGLCD.printNumI(t_temp.date, 172, 264);
           }
           else
           {
-            myGLCD.printNumI(t_temp.date, 140, 264);
+            myGLCD.printNumI(t_temp.date, 156, 264);
           }
         }
         else if ((x>=monU[0]) && (x<=monU[2]))
@@ -241,29 +241,29 @@ void processMyTouch()
           }
           if (t_temp.mon<10)
           {
-            myGLCD.printNumI(0, 320, 264);
+            myGLCD.printNumI(0, 336, 264);
             myGLCD.printNumI(t_temp.mon, 352, 264);
           }
           else
           {
-            myGLCD.printNumI(t_temp.mon, 320, 264);
+            myGLCD.printNumI(t_temp.mon, 336, 264);
           }
 
           t_temp.date=validateDateForMonth(t_temp.date, t_temp.mon, t_temp.year);
         }
-        else if ((x>=yeaU[0]) && (x<=yeaU[2]))   
+        else if ((x>=yeaU[0]) && (x<=yeaU[2]))
         {
           //waitForIt(yeaU[0], yeaU[1], yeaU[2], yeaU[3]);
           t_temp.year+=1;
           if (t_temp.year==2100)
             t_temp.year=2000;
-          myGLCD.printNumI(t_temp.year, 460, 264);
+          myGLCD.printNumI(t_temp.year, 492, 264);
 
           t_temp.date=validateDateForMonth(t_temp.date, t_temp.mon, t_temp.year);
         }
         t_temp.dow=calcDOW(t_temp.date, t_temp.mon, t_temp.year);
       }
-      else if ((y>=dayD[1]) && (y<=dayD[3]))  // Buttons: Date DOWN
+      else if ((y>=dayD[1]) && (y<=dayD[3])) // Buttons: Date DOWN
       {
         if ((x>=dayD[0]) && (x<=dayD[2]))
         {
@@ -272,15 +272,15 @@ void processMyTouch()
           t_temp.date=validateDate(t_temp.date, t_temp.mon, t_temp.year);
           if (t_temp.date<10)
           {
-            myGLCD.printNumI(0, 140, 264);
+            myGLCD.printNumI(0, 156, 264);
             myGLCD.printNumI(t_temp.date, 172, 264);
           }
           else
           {
-            myGLCD.printNumI(t_temp.date, 140, 264);
+            myGLCD.printNumI(t_temp.date, 156, 264);
           }
         }
-        else if ((x>=monD[0]) && (x<=monD[2]))   
+        else if ((x>=monD[0]) && (x<=monD[2]))
         {
           //waitForIt(monD[0], monD[1], monD[2], monD[3]);
           t_temp.mon =(t_temp.mon +12) %13;
@@ -290,12 +290,12 @@ void processMyTouch()
           }
           if (t_temp.mon<10)
           {
-            myGLCD.printNumI(0, 320, 264);
+            myGLCD.printNumI(0, 336, 264);
             myGLCD.printNumI(t_temp.mon, 352, 264);
           }
           else
           {
-            myGLCD.printNumI(t_temp.mon, 320, 264);
+            myGLCD.printNumI(t_temp.mon, 336, 264);
           }
           t_temp.date=validateDateForMonth(t_temp.date, t_temp.mon, t_temp.year);
         }
@@ -305,8 +305,8 @@ void processMyTouch()
           //waitForIt(yeaD[0], yeaD[1], yeaD[2], yeaD[3]);
           t_temp.year = (t_temp.year +2099) %2100;
 
-          myGLCD.printNumI(t_temp.year, 460, 264);
-          t_temp.date=validateDateForMonth(t_temp.date, t_temp.mon, t_temp.year);        
+          myGLCD.printNumI(t_temp.year, 492, 264);
+          t_temp.date=validateDateForMonth(t_temp.date, t_temp.mon, t_temp.year);
         }
         t_temp.dow=calcDOW(t_temp.date, t_temp.mon, t_temp.year);
       }
@@ -314,7 +314,7 @@ void processMyTouch()
       {
         //waitForIt(prOK[0], prOK[1], prOK[2], prOK[3]); //funcao salvar
         rtc.halt(true);
-        rtc.setTime(t_temp.hour, t_temp.min, t_temp.sec); 
+        rtc.setTime(t_temp.hour, t_temp.min, t_temp.sec);
         rtc.setDate(t_temp.date, t_temp.mon, t_temp.year);
         rtc.setDOW(t_temp.dow);
         rtc.halt(false);
@@ -335,14 +335,14 @@ void processMyTouch()
         dispScreen=1;
         clearScreen();
         menuScreen();
-      }     
+      }
       break;
-    case 3:                    // -------------------test led------------------------------------------
-      if ((x>=stsT[0]) && (x<=stsT[2]) && (y>=stsT[1]) && (y<=stsT[3]))     //press start/stop test
+    case 3: // -------------------test led------------------------------------------
+      if ((x>=stsT[0]) && (x<=stsT[2]) && (y>=stsT[1]) && (y<=stsT[3])) //press start/stop test
       {
-        //waitForIt(stsT[0], stsT[1], stsT[2], stsT[3]); 
+        //waitForIt(stsT[0], stsT[1], stsT[2], stsT[3]);
 
-        if (LEDtestTick == true) 
+        if (LEDtestTick == true)
         {
           teste_em_andamento = false;
           LEDtestTick = false;
@@ -350,52 +350,52 @@ void processMyTouch()
         }
         else {
           teste_iniciado = true;
-          LEDtestTick = true; 
+          LEDtestTick = true;
           myGLCD.setColor(0, 0, 0);
-          myGLCD.fillRect (638, 1, 798, 478);   //Limpar botÃƒÂµes iniciar e menu.       
+          myGLCD.fillRect (638, 1, 798, 478); //Limpar botÃƒÂµes iniciar e menu.
           testScreen();
-          teste_iniciado = false; 
+          teste_iniciado = false;
         }
-      } 
+      }
       else
       {
-        if ((x>=tenM[0]) && (x<=tenM[2]) && (y>=tenM[1]) && (y<=tenM[3]))      //press -10s
+        if ((x>=tenM[0]) && (x<=tenM[2]) && (y>=tenM[1]) && (y<=tenM[3])) //press -10s
         {
           //waitForIt(tenM[0], tenM[1], tenM[2], tenM[3]);
           min_cnt -= 10;
           if (min_cnt <= 0)
           {
-            min_cnt= 0; 
+            min_cnt= 0;
           }
 
         }
-        else if ((x>=tenP[0]) && (x<=tenP[2]) && (y>=tenP[1]) && (y<=tenP[2]))    //press +10s
+        else if ((x>=tenP[0]) && (x<=tenP[2]) && (y>=tenP[1]) && (y<=tenP[2])) //press +10s
         {
           //waitForIt(tenP[0], tenP[1], tenP[2], tenP[3]);
           min_cnt += 10;
-          if (min_cnt > 1440) 
+          if (min_cnt > 1440)
           {
-            min_cnt = 1440; 
+            min_cnt = 1440;
           }
         }
-        else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]) && (LEDtestTick == false))           // volta ao menu
+        else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]) && (LEDtestTick == false)) // volta ao menu
         {
           //waitForIt(menU[0], menU[1], menU[2], menU[3]);
           dispScreen=1;
           clearScreen();
-          menuScreen(); 
+          menuScreen();
         }
-        else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3])&& (LEDtestTick == false))           // volta a tela configurar leds
+        else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3])&& (LEDtestTick == false)) // volta a tela configurar leds
         {
           //waitForIt(volT[0], volT[1], volT[2], volT[3]);
           dispScreen=25;
           clearScreen();
-          escolher_teste(); 
+          escolher_teste();
         }
-      }    
+      }
       break;
-    case 4:             //---------------------------------------control temperature----------------------------------
-      if ((x>=prOK[0]) && (x<=prOK[2]) && (y>=prOK[1]) && (y<=prOK[3]))       //Funcao salvar
+    case 4: //---------------------------------------control temperature----------------------------------
+      if ((x>=prOK[0]) && (x<=prOK[2]) && (y>=prOK[1]) && (y<=prOK[3])) //Funcao salvar
       {
         //waitForIt(prOK[0], prOK[1], prOK[2], prOK[3]);
         setTempC = temp2beS;
@@ -405,10 +405,10 @@ void processMyTouch()
         SaveTempToEEPROM();
         clearScreen();
         parametroScreen();
-      } 
-      else if ((x>=temM[0]) && (x<=temM[2]))                         // Primeira coluna
+      }
+      else if ((x>=temM[0]) && (x<=temM[2])) // Primeira coluna
       {
-        if ((y>=temM[1]) && (y<=temM[3]))                      //press temp minus
+        if ((y>=temM[1]) && (y<=temM[3])) //press temp minus
         {
           //waitForIt(temM[0], temM[1], temM[2], temM[3]);
           temp2beS -= 0.1;
@@ -416,72 +416,72 @@ void processMyTouch()
              (temp2beS < 50)
           {
             //temp2beS = 10;
-           temp2beS = 50; 
+           temp2beS = 50;
           }
           tempScreen();
         }
-        else if ((y>=offM[1]) && (y<=offM[3]))                       //press offset minus
+        else if ((y>=offM[1]) && (y<=offM[3])) //press offset minus
         {
           //waitForIt(offM[0], offM[1], offM[2], offM[3]);
           temp2beO -= 0.1;
-          if (temp2beO <= 0.0) 
+          if (temp2beO <= 0.0)
           {
-            temp2beO = 0.0; 
+            temp2beO = 0.0;
           }
           tempScreen();
-        }          
-        else if ((y>=almM[1]) && (y<=almM[3]))                        //press alarm minus
+        }
+        else if ((y>=almM[1]) && (y<=almM[3])) //press alarm minus
         {
           //waitForIt(almM[0], almM[1], almM[2], almM[3]);
           temp2beA -= 0.1;
-          if (temp2beA <= 0.0) 
+          if (temp2beA <= 0.0)
           {
-            temp2beA = 0.0;  
+            temp2beA = 0.0;
           }
           tempScreen();
         }
       }
-      else if ((x>=temP[0]) && (x<=temP[2]))                             //Segunda coluna
+      else if ((x>=temP[0]) && (x<=temP[2])) //Segunda coluna
       {
-        if ((y>=temP[1]) && (y<=temP[3]))                      //press temp plus
+        if ((y>=temP[1]) && (y<=temP[3])) //press temp plus
         {
           //waitForIt(temP[0], temP[1], temP[2], temP[3]);
           temp2beS += 0.1;
-          if /*(temp2beS >= 40) {  
-            temp2beS = 40; */ /******************************************************** changed for Fahrenheit *******************************************************************/
-             (temp2beS >= 104) {    // CHANGE 104 TO 40 FOR CELSIUS SCALE
+          if /*(temp2beS >= 40) {
+temp2beS = 40; */ /******************************************************** changed for Fahrenheit *******************************************************************/
+             (temp2beS >= 104) { // CHANGE 104 TO 40 FOR CELSIUS SCALE
             temp2beS = 104;
           }
           tempScreen();
         }
-        else if ((y>=offP[1]) && (y<=offP[3]))                           //press offset plus
+        else if ((y>=offP[1]) && (y<=offP[3])) //press offset plus
         {
           //waitForIt(offP[0], offP[1], offP[2], offP[3]);
           temp2beO += 0.1;
           if (temp2beO >= 10) {
-            temp2beO = 9.9;         
+            temp2beO = 9.9;
           }
           tempScreen();
         }
-        else if ((y>=almP[1]) && (y<=almP[3]))                           //press alarm plus
+        else if ((y>=almP[1]) && (y<=almP[3])) //press alarm plus
         {
           //waitForIt(almP[0], almP[1], almP[2], almP[3]);
           temp2beA += 0.1;
           if (temp2beA >= 10) {
-            temp2beA = 9.9;  
+            temp2beA = 9.9;
           }
           tempScreen();
         }
       }
-      else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+      else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) // volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=14;
         clearScreen();
         parametroScreen();
-      } 
+      }
       break;
-    case 5:         // -------------------------------- Tela alterar valores led ------------------------------------------------------------
+    case 5: // -------------------------------- Tela alterar valores led ------------------------------------------------------------
       if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
@@ -522,13 +522,13 @@ void processMyTouch()
         ledSetScreen();
         periodo_selecionado = false;
       }
-      else if ((y>=30) && (y<=80))                                    // SeleÃƒÂ§ÃƒÂ£o de perÃƒÂ­odo
+      else if ((y>=15) && (y<=40))                                    // SeleÃƒÂ§ÃƒÂ£o de perÃƒÂ­odo
       {
-        if ((x>=8) && (x<=632))
+        if ((x>=4) && (x<=316))
         {
           periodo_selecionado = true;
           int oldLCT = LedChangTime;
-          LedChangTime = map(x, 6, 640, 0, 24);                
+          LedChangTime = map(x, 3, 320, 0, 12);                
 
           if (oldLCT != LedChangTime)                        // RealÃƒÂ§ar perÃƒÂ­odo tocado
           {
@@ -537,104 +537,104 @@ void processMyTouch()
               ledChangeScreen();
             }
             myGLCD.setColor(0, 0, 0);
-            myGLCD.fillRect((oldLCT*52)+10, 42, (oldLCT*52)+58, 90);
+            myGLCD.fillRect((oldLCT*26)+5, 21, (oldLCT*26)+29, 45);
 
-            setFont(LARGE, 0, 255, 255, 0, 0, 0);
+            setFont(SMALL, 0, 255, 255, 0, 0, 0);
 
-            if(oldLCT == 22)
+            if(oldLCT == 11)
             {
-              myGLCD.printNumI((oldLCT*4), (oldLCT*52)+20, 44);
-              myGLCD.print("0", (oldLCT*52)+28, 66);            
+              myGLCD.printNumI((oldLCT*2), (oldLCT*26)+10, 22);
+              myGLCD.print("0", (oldLCT*26)+14, 33);            
             }
             else
             {
-              myGLCD.printNumI((oldLCT*4), (oldLCT*26)+20, 44);
-              myGLCD.printNumI(((oldLCT*4)+4), (oldLCT*52)+20, 66);
+              myGLCD.printNumI((oldLCT*2), (oldLCT*26)+10, 22);
+              myGLCD.printNumI(((oldLCT*2)+2), (oldLCT*26)+10, 33);
             }
             myGLCD.setColor(255, 0, 0);
-            myGLCD.fillRect((LedChangTime*52)+10, 42, (LedChangTime*52)+58, 90);
+            myGLCD.fillRect((LedChangTime*26)+5, 21, (LedChangTime*26)+29, 45);
 
-            setFont(LARGE, 255, 255, 255, 255, 0, 0);
+            setFont(SMALL, 255, 255, 255, 255, 0, 0);
 
-            if(LedChangTime == 22)
+            if(LedChangTime == 11)
             {
-              myGLCD.printNumI((LedChangTime*4), (LedChangTime*52)+20, 44);
-              myGLCD.print("0", (LedChangTime*52)+28, 66);
+              myGLCD.printNumI((LedChangTime*2), (LedChangTime*26)+10, 22);
+              myGLCD.print("0", (LedChangTime*26)+14, 33);
             }
             else
             {
-              myGLCD.printNumI((LedChangTime*4), (LedChangTime*52)+20, 44);
-              myGLCD.printNumI(((LedChangTime*4)+4), (LedChangTime*52)+20, 66);              
+              myGLCD.printNumI((LedChangTime*2), (LedChangTime*26)+10, 22);
+              myGLCD.printNumI(((LedChangTime*2)+2), (LedChangTime*26)+10, 33);              
             }
             myGLCD.setColor(100, 100, 100);
-            myGLCD.drawLine(8, 90, 632,90);
+            myGLCD.drawLine(4, 45, 316,45);
 
-            for (int i = 0; i < 16; i++)                          // Imprime valores do perÃƒÂ­odo.
+            for (int i = 0; i < 8; i++)                          // Imprime valores do perÃƒÂ­odo.
             {
-              int k=(LedChangTime * 16) + i;
+              int k=(LedChangTime * 8) + i;
               myGLCD.setColor(0,0,0);
-              myGLCD.fillRect((i * 76) + 24, 400, (i * 76) + 72, 420); 
-              setFont(LARGE, 255, 255, 255, 0, 0, 0);
-              myGLCD.printNumI( cor[cor_selecionada][k], (i * 76) + 24, 400);
-              y_tocado = map(cor[cor_selecionada][k], 510, 0, 160, 390);
+              myGLCD.fillRect((i * 38) + 12, 200, (i * 38) + 36, 210); 
+              setFont(SMALL, 255, 255, 255, 0, 0, 0);
+              myGLCD.printNumI( cor[cor_selecionada][k], (i * 38) + 12, 200);
+              y_tocado = map(cor[cor_selecionada][k], 255, 0, 80, 195);
               setor_selecionado = i;
               desenhar_barras_periodo ();
             }
           }
         }
       }
-      else if((y >= 160) && (y <= 390))
+      else if((y >= 80) && (y <= 195))
       {
-        for (int i = 0; i < 16; i++) {                
-          if ((x >= (i * 76) + 10) && (x <= (i * 76) + 78)) 
+        for (int i = 0; i < 8; i++) {                
+          if ((x >= (i * 38) + 5) && (x <= (i * 38) + 39)) 
           {
-            int k= (LedChangTime * 16) + i;
+            int k= (LedChangTime * 8) + i;
             y_tocado = y;
-            cor[cor_selecionada][k] = map(y_tocado, 390, 160, 0, 510);
+            cor[cor_selecionada][k] = map(y_tocado, 195, 80, 0, 255);
             myGLCD.setColor(0,0,0);
-            myGLCD.fillRect((i * 76) + 24, 400, (i * 76) + 72, 420);
-            setFont(LARGE, 255, 255, 255, 0, 0, 0);
-            myGLCD.printNumI( cor[cor_selecionada][k], (i * 76) + 24, 400);
+            myGLCD.fillRect((i * 38) + 12, 200, (i * 38) + 36, 210);
+            setFont(SMALL, 255, 255, 255, 0, 0, 0);
+            myGLCD.printNumI( cor[cor_selecionada][k], (i * 38) + 12, 200);
             setor_selecionado = i;
             desenhar_barras_periodo ();
           }
         }     
       } 
-      else if ((y >= 100) && (y <= 150) && (periodo_selecionado == true))       // BotÃƒÂ£o +
+      else if ((y >= 50) && (y <= 75) && (periodo_selecionado == true))       // BotÃƒÂ£o +
       {
-        for (int i = 0; i < 16; i++) 
+        for (int i = 0; i < 8; i++) 
         {                
-          if ((x >= (i * 76) + 10) && (x <= (i * 76) + 78)) 
+          if ((x >= (i * 38) + 5) && (x <= (i * 38) + 39)) 
           {
-            //waitForIt((i*76)+5, 100, (i*76)+78, 150); 
-            int k= (LedChangTime * 16) + i;
+            //waitForIt((i*38)+5, 50, (i*38)+39, 75); 
+            int k= (LedChangTime * 8) + i;
             cor[cor_selecionada][k] += 1;
             delay(50);
             myGLCD.setColor(0,0,0);
-            myGLCD.fillRect((i * 76) + 24, 400, (i * 76) + 72, 420);
-            setFont(LARGE, 255, 255, 255, 0, 0, 0);
-            myGLCD.printNumI( cor[cor_selecionada][k], (i * 76) + 24, 400);
-            y_tocado = map(cor[cor_selecionada][k], 510, 0, 160, 390);
+            myGLCD.fillRect((i * 38) + 12, 200, (i * 38) + 36, 210);
+            setFont(SMALL, 255, 255, 255, 0, 0, 0);
+            myGLCD.printNumI( cor[cor_selecionada][k], (i * 38) + 12, 200);
+            y_tocado = map(cor[cor_selecionada][k], 255, 0, 80, 195);
             setor_selecionado = i;
             desenhar_barras_periodo ();
-          }                                             
+          }
         }
       }
-      else if ((y>=428) && (y<=478)  && (periodo_selecionado == true))     // BotÃƒÂ£o -
+      else if ((y>=214) && (y<=239)  && (periodo_selecionado == true))     // BotÃƒÂ£o -
       {
-        for (int i = 0; i < 16; i++) 
+        for (int i = 0; i < 8; i++) 
         {                
-          if ((x >= (i * 76) + 10) && (x <= (i * 76) + 78)) 
+          if ((x >= (i * 38) + 5) && (x <= (i * 38) + 39)) 
           {
-            //waitForIt((i*76)+10, 428, (i*76)+78, 478);
-            int k= (LedChangTime * 16) + i;
+            //waitForIt((i*38)+5, 214, (i*38)+39, 239);
+            int k= (LedChangTime * 8) + i;
             cor[cor_selecionada][k] -= 1;
             delay(50);
             myGLCD.setColor(0,0,0);
-            myGLCD.fillRect((i * 76) + 24, 400, (i * 76) + 72, 420);
-            setFont(LARGE, 255, 255, 255, 0, 0, 0);
-            myGLCD.printNumI( cor[cor_selecionada][k], (i * 76) + 24, 400);
-            y_tocado = map(cor[cor_selecionada][k], 510, 0, 160, 390);
+            myGLCD.fillRect((i * 38) + 12, 200, (i * 38) + 36, 210);
+            setFont(SMALL, 255, 255, 255, 0, 0, 0);
+            myGLCD.printNumI( cor[cor_selecionada][k], (i * 38) + 12, 200);
+            y_tocado = map(cor[cor_selecionada][k], 255, 0, 80, 195);
             setor_selecionado = i;
             desenhar_barras_periodo ();
           }
@@ -662,44 +662,44 @@ void processMyTouch()
     case 7: //--------------------------------------------- configurar tpa autom.-----------------------------------
       if ((y >= houU[1]) && (y <= houU[3])) // Buttons: Time UP
       {
-        if ((x >= houU[0]) && (x <= houU[2])) 
+        if ((x >= houU[0]) && (x <= houU[2]))
         {
           //waitForIt(houU[0], houU[1], houU[2], houU[3]);
           temp2hora = (temp2hora + 1) % 24;
           tpaScreen();
-        } 
+        }
         else if ((x >= minUT[0]) && (x <= minUT[2]))
         {
           //waitForIt(minUT[0], minUT[1], minUT[2], minUT[3]);
           temp2minuto = (temp2minuto + 1) % 60;
           tpaScreen();
-        } 
+        }
         else if ((x >= durC[0]) && (x <= durC[2]))
         {
-          //waitForIt(durC[0], durC[1], durC[2], durC[3]); 
+          //waitForIt(durC[0], durC[1], durC[2], durC[3]);
           temp2duracaomaximatpa = (temp2duracaomaximatpa + 1) % 60;
           tpaScreen();
         }
-      } 
+      }
       else if ((y >= houD[1]) && (y <= houD[3])) // Buttons: Time DOWN
       {
-        if ((x >= houD[0]) && (x <= houD[2])) 
+        if ((x >= houD[0]) && (x <= houD[2]))
         {
           //waitForIt(houD[0], houD[1], houD[2], houD[3]);
           temp2hora = (temp2hora + 23) % 24;
           tpaScreen();
-        } 
-        else if ((x >= minDT[0]) && (x <= minDT[2])) 
+        }
+        else if ((x >= minDT[0]) && (x <= minDT[2]))
         {
           //waitForIt(minDT[0], minDT[1], minDT[2], minDT[3]);
           temp2minuto = (temp2minuto + 59) % 60;
           tpaScreen();
-        } 
-        else if ((x >= durB[0]) && (x <= durB[2])) 
+        }
+        else if ((x >= durB[0]) && (x <= durB[2]))
         {
           //waitForIt(durB[0], durB[1], durB[2], durB[3]);
           temp2duracaomaximatpa = (temp2duracaomaximatpa + 59) % 60;
-          tpaScreen();          
+          tpaScreen();
         }
       }
       else if ((y >= prOK[1]) && (y <= prOK[3]) && (x >= prOK[0]) && (x <= prOK[2]))
@@ -720,60 +720,60 @@ void processMyTouch()
         clearScreen();
         menuScreen();
       }
-      else if ((y >= menU[1]) && (y <= menU[3]) && (x >= menU[0]) && (x <= menU[2])) 
+      else if ((y >= menU[1]) && (y <= menU[3]) && (x >= menU[0]) && (x <= menU[2]))
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]); //volta ao menu
         dispScreen = 1;
         clearScreen();
         menuScreen();
       }
-      else if ((x >= segU[0]) && (x <= segU[2]) && (y >= segU[1]) && (y <= segU[3])) 
+      else if ((x >= segU[0]) && (x <= segU[2]) && (y >= segU[1]) && (y <= segU[3]))
       {
-        if (temp2segunda == 1) 
+        if (temp2segunda == 1)
         {
           temp2segunda = 0;
           tpaScreen();
-        } 
-        else 
+        }
+        else
         {
           temp2segunda = 1;
           tpaScreen();
         }
       }
-      else if ((x >= terC[0]) && (x <= terC[2]) && (y >= terC[1]) && (y <= terC[3])) 
+      else if ((x >= terC[0]) && (x <= terC[2]) && (y >= terC[1]) && (y <= terC[3]))
       {
-        if (temp2terca == 2) 
+        if (temp2terca == 2)
         {
           temp2terca = 0;
           tpaScreen();
-        } 
+        }
         else {
           temp2terca = 2;
           tpaScreen();
         }
       }
-      else if ((x >= quaR[0]) && (x <= quaR[2]) && (y >= quaR[1]) && (y <= quaR[3])) 
+      else if ((x >= quaR[0]) && (x <= quaR[2]) && (y >= quaR[1]) && (y <= quaR[3]))
       {
-        if (temp2quarta == 3) 
+        if (temp2quarta == 3)
         {
           temp2quarta = 0;
           tpaScreen();
-        } 
-        else 
+        }
+        else
         {
           temp2quarta = 3;
           tpaScreen();
         }
       }
-      else if ((x >= quiN[0]) && (x <= quiN[2]) && (y >= quiN[1]) && (y <= quiN[3])) 
+      else if ((x >= quiN[0]) && (x <= quiN[2]) && (y >= quiN[1]) && (y <= quiN[3]))
       {
 
-        if (temp2quinta == 4) 
+        if (temp2quinta == 4)
         {
           temp2quinta = 0;
           tpaScreen();
-        } 
-        else 
+        }
+        else
         {
           temp2quinta = 4;
           tpaScreen();
@@ -781,42 +781,42 @@ void processMyTouch()
       }
       else if ((x >= sexT[0]) && (x <= sexT[2]) && (y >= sexT[1]) && (y <= sexT[3]))
       {
-        if (temp2sexta == 5) 
+        if (temp2sexta == 5)
         {
           temp2sexta = 0;
           tpaScreen();
-        } 
-        else 
+        }
+        else
         {
           temp2sexta = 5;
           tpaScreen();
         }
       }
-      else if ((x >= sabA[0]) && (x <= sabA[2]) && (y >= sabA[1]) && (y <= sabA[3])) 
+      else if ((x >= sabA[0]) && (x <= sabA[2]) && (y >= sabA[1]) && (y <= sabA[3]))
       {
-        if (temp2sabado == 6) 
+        if (temp2sabado == 6)
         {
           temp2sabado = 0;
           tpaScreen();
-        } 
+        }
         else {
           temp2sabado = 6;
           tpaScreen();
         }
       }
-      else if ((x >= domI[0]) && (x <= domI[2]) && (y >= domI[1]) && (y <= domI[3])) 
+      else if ((x >= domI[0]) && (x <= domI[2]) && (y >= domI[1]) && (y <= domI[3]))
       {
-        if (temp2domingo == 7) 
+        if (temp2domingo == 7)
         {
           temp2domingo = 0;
           tpaScreen();
-        } 
+        }
         else {
           temp2domingo = 7;
           tpaScreen();
         }
       }
-      else if ((x >= proX[0]) && (x <= proX[2]) && (y >= proX[1]) && (y <= proX[3])) 
+      else if ((x >= proX[0]) && (x <= proX[2]) && (y >= proX[1]) && (y <= proX[3]))
       {
         if (bitRead(tpa_status,2) == true)
         {
@@ -858,7 +858,7 @@ void processMyTouch()
         setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
         strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[171])));
-        myGLCD.print(buffer, 30, 440);      
+        myGLCD.print(buffer, 30, 440);
       }
       else if ((x>=orP[0]) && (x<=orP[2]) && (y>=orP[1]) && (y<=orP[3]))
       {
@@ -872,9 +872,9 @@ void processMyTouch()
         setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
         strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[172])));
-        myGLCD.print(buffer, 30, 440);      
-      }    
-      else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           /// volta ao menu
+        myGLCD.print(buffer, 30, 440);
+      }
+      else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) /// volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
@@ -882,9 +882,9 @@ void processMyTouch()
         menuScreen();
         modo_manual = false;
         modo_personalizado = false;
-        modo_calibrar = false; 
-      }          
-      else if ((x>=reV[0]) && (x<=reV[2]) && (y>=reV[1]) && (y<=reV[3]))           /// Rever config
+        modo_calibrar = false;
+      }
+      else if ((x>=reV[0]) && (x<=reV[2]) && (y>=reV[1]) && (y<=reV[3])) /// Rever config
       {
         //waitForIt(reV[0], reV[1], reV[2], reV[3]);
         dispScreen=32;
@@ -900,94 +900,94 @@ void processMyTouch()
       }
       break;
 
-    case 9: //  -----------------------------------------Screen dosing charts-----------------------------------------
-      if ((x >= orP[0]) && (x <= orP[2]) && (y >= orP[1]) && (y <= orP[3]))           
+    case 9: // -----------------------------------------Screen dosing charts-----------------------------------------
+      if ((x >= orP[0]) && (x <= orP[2]) && (y >= orP[1]) && (y <= orP[3]))
       {
         //waitForIt(orP[0], orP[1], orP[2], orP[3]);
         dispScreen=12;
         clearScreen();
-        orpScreen(); 
-      } 
-      else if ((x >= phR[0]) && (x <= phR[2]) && (y >= phR[1]) && (y <= phR[3]))           
+        orpScreen();
+      }
+      else if ((x >= phR[0]) && (x <= phR[2]) && (y >= phR[1]) && (y <= phR[3]))
       {
         //waitForIt(phR[0], phR[1], phR[2], phR[3]);
         dispScreen=13;
         clearScreen();
-        PHRScreen(); 
-      } 
-      else if ((x >= tempG[0]) && (x <= tempG[2]) && (y >= tempG[1]) && (y <= tempG[3]))           
+        PHRScreen();
+      }
+      else if ((x >= tempG[0]) && (x <= tempG[2]) && (y >= tempG[1]) && (y <= tempG[3]))
       {
         //waitForIt(tempG[0], tempG[1], tempG[2], tempG[3]);
         dispScreen=13;
         clearScreen();
-        tempgScreen(); 
+        tempgScreen();
       }
-      else if ((x >= phA[0]) && (x <= phA[2]) && (y >= phA[1]) && (y <= phA[3]))           
+      else if ((x >= phA[0]) && (x <= phA[2]) && (y >= phA[1]) && (y <= phA[3]))
       {
         //waitForIt(phA[0], phA[1], phA[2], phA[3]);
         dispScreen=17;
         clearScreen();
-        PHAScreen(); 
-      } 
-      else if ((x >= denS[0]) && (x <= denS[2]) && (y >= denS[1]) && (y <= denS[3]))           
+        PHAScreen();
+      }
+      else if ((x >= denS[0]) && (x <= denS[2]) && (y >= denS[1]) && (y <= denS[3]))
       {
         //waitForIt(denS[0], denS[1], denS[2], denS[3]);
         dispScreen=19;
         clearScreen();
-        densidadeScreen(); 
-      }       
+        densidadeScreen();
+      }
 
-      else if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3]))           /// volta ao menu
+      else if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3])) /// volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
-        menuScreen(); 
-      }          
+        menuScreen();
+      }
       break;
 
     case 10: //--------------------------------- wavemaker ----------------------------
-      if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3]))           // volta ao menu
+      if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3])) // volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         ler_wave_EEPROM();
         dispScreen = 1;
         clearScreen();
-        menuScreen(); 
+        menuScreen();
       }
-      else if ((x>=prOK[0]) && (x<=prOK[2]) && (y>=prOK[1]) && (y<=prOK[3]))       //Funcao salvar
+      else if ((x>=prOK[0]) && (x<=prOK[2]) && (y>=prOK[1]) && (y<=prOK[3])) //Funcao salvar
       {
         //waitForIt(prOK[0], prOK[1], prOK[2], prOK[3]);
-        Salvar_wave_EEPROM(); 
+        Salvar_wave_EEPROM();
         dispScreen = 1;
         clearScreen();
         menuScreen();
       }
-      else if ((x>=boT1[0]) && (x<=boT1[2]) && (y>=boT1[1]) && (y<=boT1[3]))  // Botao: 1
+      else if ((x>=boT1[0]) && (x<=boT1[2]) && (y>=boT1[1]) && (y<=boT1[3])) // Botao: 1
       {
         //waitForIt(boT1[0], boT1[1], boT1[2] ,boT1[3]);
         modo_selecionado = 1;
         waveScreen(true);
       }
-      else if ((x>=boT2[0]) && (x<=boT2[2]) && (y>=boT2[1]) && (y<=boT2[3]))  // Botao: 2
+      else if ((x>=boT2[0]) && (x<=boT2[2]) && (y>=boT2[1]) && (y<=boT2[3])) // Botao: 2
       {
         //waitForIt(boT2[0], boT2[1], boT2[2], boT2[3]);
         modo_selecionado = 2;
         waveScreen(true);
       }
-      else if ((x>=boT3[0]) && (x<=boT3[2]) && (y>=boT3[1]) && (y<=boT3[3]))  // Botao: 3
+      else if ((x>=boT3[0]) && (x<=boT3[2]) && (y>=boT3[1]) && (y<=boT3[3])) // Botao: 3
       {
         //waitForIt(boT3[0], boT3[1], boT3[2], boT3[3]);
         modo_selecionado = 3;
         waveScreen(true);
       }
-      else if ((x>=boT4[0]) && (x<=boT4[2]) && (y>=boT4[1]) && (y<=boT4[3]))  // Botao: 4
+      else if ((x>=boT4[0]) && (x<=boT4[2]) && (y>=boT4[1]) && (y<=boT4[3])) // Botao: 4
       {
         //waitForIt(boT4[0], boT4[1], boT4[2], boT4[3]);
         modo_selecionado = 4;
         waveScreen(true);
       }
-      else if ((x>=boT5[0]) && (x<=boT5[2]) && (y>=boT5[1]) && (y<=boT5[3]))  // Botao: M
+      else if ((x>=boT5[0]) && (x<=boT5[2]) && (y>=boT5[1]) && (y<=boT5[3])) // Botao: M
       {
         //waitForIt(boT5[0], boT5[1], boT5[2], boT5[3]);
         modo_selecionado = 5;
@@ -995,17 +995,17 @@ void processMyTouch()
       }
       if(modo_selecionado == 1)
       {
-        if ((x>=peRB[0]) && (x<=peRB[2]) && (y>=peRB[1]) && (y<=peRB[3]))  // PerÃƒÂ­odo -
+        if ((x>=peRB[0]) && (x<=peRB[2]) && (y>=peRB[1]) && (y<=peRB[3])) // PerÃƒÂ­odo -
         {
           //waitForIt(peRB[0], peRB[1], peRB[2], peRB[3]);
           periodo -= 100;
           if(periodo < 100)
           {
             periodo = 10000;
-          } 
+          }
           waveScreen();
-        }       
-        else if ((x>=peRC[0]) && (x<=peRC[2]) && (y>=peRC[1]) && (y<=peRC[3]))  // PerÃƒÂ­odo +
+        }
+        else if ((x>=peRC[0]) && (x<=peRC[2]) && (y>=peRC[1]) && (y<=peRC[3])) // PerÃƒÂ­odo +
         {
           //waitForIt(peRC[0], peRC[1], peRC[2], peRC[3]);
           periodo += 100;
@@ -1018,7 +1018,7 @@ void processMyTouch()
       }
       else if(modo_selecionado == 2)
       {
-        if ((x>=peRB[0]) && (x<=peRB[2]) && (y>=peRB[1]) && (y<=peRB[3]))  // PerÃƒÂ­odo -
+        if ((x>=peRB[0]) && (x<=peRB[2]) && (y>=peRB[1]) && (y<=peRB[3])) // PerÃƒÂ­odo -
         {
           //waitForIt(peRB[0], peRB[1], peRB[2], peRB[3]);
           periodo -= 100;
@@ -1027,8 +1027,8 @@ void processMyTouch()
             periodo = 10000;
           }
           waveScreen();
-        }       
-        else if ((x>=peRC[0]) && (x<=peRC[2]) && (y>=peRC[1]) && (y<=peRC[3]))  // PerÃƒÂ­odo +
+        }
+        else if ((x>=peRC[0]) && (x<=peRC[2]) && (y>=peRC[1]) && (y<=peRC[3])) // PerÃƒÂ­odo +
         {
           //waitForIt(peRC[0], peRC[1], peRC[2], peRC[3]);
           periodo += 100;
@@ -1037,11 +1037,11 @@ void processMyTouch()
             periodo = 100;
           }
           waveScreen();
-        }        
+        }
       }
       else if(modo_selecionado == 3)
       {
-        if ((x>=peRB[0]) && (x<=peRB[2]) && (y>=peRB[1]) && (y<=peRB[3]))  // DuraÃƒÂ§ÃƒÂ£o do intervalo -
+        if ((x>=peRB[0]) && (x<=peRB[2]) && (y>=peRB[1]) && (y<=peRB[3])) // DuraÃƒÂ§ÃƒÂ£o do intervalo -
         {
           //waitForIt(peRB[0], peRB[1], peRB[2], peRB[3]);
           duracao -= 500;
@@ -1050,8 +1050,8 @@ void processMyTouch()
             duracao = 9500;
           }
           waveScreen();
-        }       
-        else if ((x>=peRC[0]) && (x<=peRC[2]) && (y>=peRC[1]) && (y<=peRC[3]))  // DuraÃƒÂ§ÃƒÂ£o intervalo +
+        }
+        else if ((x>=peRC[0]) && (x<=peRC[2]) && (y>=peRC[1]) && (y<=peRC[3])) // DuraÃƒÂ§ÃƒÂ£o intervalo +
         {
           //waitForIt(peRC[0], peRC[1], peRC[2], peRC[3]);
           duracao += 500;
@@ -1060,11 +1060,11 @@ void processMyTouch()
             duracao = 1000;
           }
           waveScreen();
-        }        
+        }
       }
       else if(modo_selecionado == 4)
       {
-        if ((x>=peRB[0]) && (x<=peRB[2]) && (y>=peRB[1]) && (y<=peRB[3]))  // DuraÃƒÂ§ÃƒÂ£o do intervalo -
+        if ((x>=peRB[0]) && (x<=peRB[2]) && (y>=peRB[1]) && (y<=peRB[3])) // DuraÃƒÂ§ÃƒÂ£o do intervalo -
         {
           //waitForIt(peRB[0], peRB[1], peRB[2], peRB[3]);
           duracao -= 1000;
@@ -1073,8 +1073,8 @@ void processMyTouch()
             duracao = 5000;
           }
           waveScreen();
-        }       
-        else if ((x>=peRC[0]) && (x<=peRC[2]) && (y>=peRC[1]) && (y<=peRC[3]))  // intervalo +
+        }
+        else if ((x>=peRC[0]) && (x<=peRC[2]) && (y>=peRC[1]) && (y<=peRC[3])) // intervalo +
         {
           //waitForIt(peRC[0], peRC[1], peRC[2], peRC[3]);
           duracao += 1000;
@@ -1083,29 +1083,29 @@ void processMyTouch()
             duracao = 1000;
           }
           waveScreen();
-        }        
+        }
       }
       else if(modo_selecionado == 5)
       {
-        if ((x>=PoTEB1[0]) && (x<=PoTEB1[2]) && (y>=PoTEB1[1]) && (y<=PoTEB1[3]))  // PotÃƒÂªncia bomba 1 -
+        if ((x>=PoTEB1[0]) && (x<=PoTEB1[2]) && (y>=PoTEB1[1]) && (y<=PoTEB1[3])) // PotÃƒÂªncia bomba 1 -
         {
           //waitForIt(PoTEB1[0], PoTEB1[1], PoTEB1[2], PoTEB1[3]);
           Pump1PWM_temp -= 1;
           waveScreen();
-        }       
-        else if ((x>=PoTEC1[0]) && (x<=PoTEC1[2]) && (y>=PoTEC1[1]) && (y<=PoTEC1[3]))  // PotÃƒÂªncia bomba 1 +
+        }
+        else if ((x>=PoTEC1[0]) && (x<=PoTEC1[2]) && (y>=PoTEC1[1]) && (y<=PoTEC1[3])) // PotÃƒÂªncia bomba 1 +
         {
           //waitForIt(PoTEC1[0], PoTEC1[1], PoTEC1[2], PoTEC1[3]);
           Pump1PWM_temp += 1;
           waveScreen();
-        }        
-        else if ((x>=PoTEB2[0]) && (x<=PoTEB2[2]) && (y>=PoTEB2[1]) && (y<=PoTEB2[3]))  // PotÃƒÂªncia bomba 1 -
+        }
+        else if ((x>=PoTEB2[0]) && (x<=PoTEB2[2]) && (y>=PoTEB2[1]) && (y<=PoTEB2[3])) // PotÃƒÂªncia bomba 1 -
         {
           //waitForIt(PoTEB2[0], PoTEB2[1], PoTEB2[2], PoTEB2[3]);
           Pump2PWM_temp -= 1;
           waveScreen();
-        }       
-        else if ((x>=PoTEC2[0]) && (x<=PoTEC2[2]) && (y>=PoTEC2[1]) && (y<=PoTEC2[3]))  // PotÃƒÂªncia bomba 1 +
+        }
+        else if ((x>=PoTEC2[0]) && (x<=PoTEC2[2]) && (y>=PoTEC2[1]) && (y<=PoTEC2[3])) // PotÃƒÂªncia bomba 1 +
         {
           //waitForIt(PoTEC2[0], PoTEC2[1], PoTEC2[2], PoTEC2[3]);
           Pump2PWM_temp += 1;
@@ -1114,110 +1114,110 @@ void processMyTouch()
       }
       break;
 
-    case 11:  //----------------------------- Tela grafico de temperatura ------------------------------
-      if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3]))           /// volta ao menu
+    case 11: //----------------------------- Tela grafico de temperatura ------------------------------
+      if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3])) /// volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
-        menuScreen(); 
+        menuScreen();
       }
-      else if ((x >= volT[0]) && (x <= volT[2]) && (y >= volT[1]) && (y <= volT[3]))           // volta a tela de graficos
+      else if ((x >= volT[0]) && (x <= volT[2]) && (y >= volT[1]) && (y <= volT[3])) // volta a tela de graficos
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen=9;
         clearScreen();
-        graficoScreen(); 
-      }           
+        graficoScreen();
+      }
       break;
 
-    case 12:  //--------------------------- Tela grafico de orp---------------------------------------
-      if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3]))           /// volta ao menu
+    case 12: //--------------------------- Tela grafico de orp---------------------------------------
+      if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3])) /// volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
-        menuScreen(); 
+        menuScreen();
       }
-      else if ((x >= volT[0]) && (x <= volT[2]) && (y >= volT[1]) && (y <= volT[3]))           // volta a tela de graficos
+      else if ((x >= volT[0]) && (x <= volT[2]) && (y >= volT[1]) && (y <= volT[3])) // volta a tela de graficos
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen=9;
         clearScreen();
-        graficoScreen(); 
-      }  
-      break;           
+        graficoScreen();
+      }
+      break;
 
-    case 13:   //-----------------Tela grafico de ph do aquario----------------------------------
-      if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3]))           // volta ao menu
+    case 13: //-----------------Tela grafico de ph do aquario----------------------------------
+      if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3])) // volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
-        menuScreen(); 
+        menuScreen();
       }
-      else if ((x >= volT[0]) && (x <= volT[2]) && (y >= volT[1]) && (y <= volT[3]))         // volta a tela de graficos
+      else if ((x >= volT[0]) && (x <= volT[2]) && (y >= volT[1]) && (y <= volT[3])) // volta a tela de graficos
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen=9;
         clearScreen();
-        graficoScreen(); 
-      } 
-      break; 
+        graficoScreen();
+      }
+      break;
 
-    case 14:  //--------------------------------Tela escolher parametro para configurar-----------------------------------
-      if ((x >= orP[0]) && (x <= orP[2]) && (y >= orP[1]) && (y <= orP[3]))           
+    case 14: //--------------------------------Tela escolher parametro para configurar-----------------------------------
+      if ((x >= orP[0]) && (x <= orP[2]) && (y >= orP[1]) && (y <= orP[3]))
       {
         //waitForIt(orP[0], orP[1], orP[2], orP[3]);
         dispScreen=16;
         clearScreen();
-        config_orp_Screen(true); 
-      } 
-      else if ((x >= phR[0]) && (x <= phR[2]) && (y >= phR[1]) && (y <= phR[3]))           
+        config_orp_Screen(true);
+      }
+      else if ((x >= phR[0]) && (x <= phR[2]) && (y >= phR[1]) && (y <= phR[3]))
       {
         //waitForIt(phR[0], phR[1], phR[2], phR[3]);
         dispScreen=15;
         clearScreen();
-        config_phR_Screen(true); 
+        config_phR_Screen(true);
       }
-      else if ((x >= phA[0]) && (x <= phA[2]) && (y>=phA[1]) && (y<=phA[3]))           
+      else if ((x >= phA[0]) && (x <= phA[2]) && (y>=phA[1]) && (y<=phA[3]))
       {
         //waitForIt(phA[0], phA[1], phA[2], phA[3]);
         dispScreen=18;
         clearScreen();
-        config_phA_Screen(true); 
-      } 
-      else if ((x >= tempG[0]) && (x <= tempG[2]) && (y >= tempG[1]) && (y <= tempG[3]))           
+        config_phA_Screen(true);
+      }
+      else if ((x >= tempG[0]) && (x <= tempG[2]) && (y >= tempG[1]) && (y <= tempG[3]))
       {
         //waitForIt(tempG[0], tempG[1], tempG[2], tempG[3]);
         dispScreen=4;
         clearScreen();
-        tempScreen(true); 
+        tempScreen(true);
       }
-      if ((x >= caliB[0]) && (x <= caliB[2]) && (y >= caliB[1]) && (y <= caliB[3]))           
+      if ((x >= caliB[0]) && (x <= caliB[2]) && (y >= caliB[1]) && (y <= caliB[3]))
       {
         //waitForIt(caliB[0], caliB[1], caliB[2], caliB[3]);
         dispScreen=0;
         clearScreen();
-        mainScreen(true); 
+        mainScreen(true);
       }
-      else if ((x >= denS[0]) && (x <= denS[2]) && (y >= denS[1]) && (y <= denS[3]))           
+      else if ((x >= denS[0]) && (x <= denS[2]) && (y >= denS[1]) && (y <= denS[3]))
       {
         //waitForIt(denS[0], denS[1], denS[2], denS[3]);
         dispScreen=20;
         clearScreen();
-        config_dens_Screen(true); 
-      }  
-      else if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3]))           /// volta ao menu
+        config_dens_Screen(true);
+      }
+      else if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3])) /// volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
-        menuScreen(); 
-      }          
+        menuScreen();
+      }
       break;
-    case 15:             //---------------------------------------Tela controle de PH do reator--------
-      if ((x>=prOK[0]) && (x<=prOK[2]) && (y>=prOK[1]) && (y<=prOK[3]))       //Funcao salvar
+    case 15: //---------------------------------------Tela controle de PH do reator--------
+      if ((x>=prOK[0]) && (x<=prOK[2]) && (y>=prOK[1]) && (y<=prOK[3])) //Funcao salvar
       {
         //waitForIt(prOK[0], prOK[1], prOK[2], prOK[3]);
         setPHR = PHR2beS;
@@ -1227,43 +1227,43 @@ void processMyTouch()
         SavePHRToEEPROM();
         clearScreen();
         parametroScreen();
-      } 
+      }
       else
       {
-        if ((x>=temM[0]) && (x<=temM[2]))                         // Primeira coluna
+        if ((x>=temM[0]) && (x<=temM[2])) // Primeira coluna
         {
-          if ((y>=temM[1]) && (y<=temM[3]))                      //press ph minus
+          if ((y>=temM[1]) && (y<=temM[3])) //press ph minus
           {
             //waitForIt(temM[0], temM[1], temM[2], temM[3]);
             PHR2beS -= 0.1;
             if(PHR2beS < 0.1)
             {
               PHR2beS = 0.1;
-            }         
+            }
             config_phR_Screen();
           }
-          if ((y>=offM[1]) && (y<=offM[3]))                       //press offset minus
+          if ((y>=offM[1]) && (y<=offM[3])) //press offset minus
           {
             //waitForIt(offM[0], offM[1], offM[2], offM[3]);
             PHR2beO -= 0.1;
             if (PHR2beO <= 0.1) {
-              PHR2beO = 0.0; 
+              PHR2beO = 0.0;
             }
             config_phR_Screen();
-          }          
-          if ((y>=almM[1]) && (y<=almM[3]))                        //press alarm minus
+          }
+          if ((y>=almM[1]) && (y<=almM[3])) //press alarm minus
           {
             //waitForIt(almM[0], almM[1], almM[2], almM[3]);
             PHR2beA -= 0.1;
             if (PHR2beA < 0.1) {
-              PHR2beA = 0.0;  
+              PHR2beA = 0.0;
             }
             config_phR_Screen();
           }
         }
-        else if ((x>=temP[0]) && (x<=temP[2]))                             //Segunda coluna
+        else if ((x>=temP[0]) && (x<=temP[2])) //Segunda coluna
         {
-          if ((y>=temP[1]) && (y<=temP[3]))                      //press ph plus
+          if ((y>=temP[1]) && (y<=temP[3])) //press ph plus
           {
             //waitForIt(temP[0], temP[1], temP[2], temP[3]);
             PHR2beS += 0.1;
@@ -1271,9 +1271,9 @@ void processMyTouch()
             {
               PHR2beS = 9.9;
             }
-            config_phR_Screen();            
+            config_phR_Screen();
           }
-          else if ((y>=offP[1]) && (y<=offP[3]))                           //press offset plus
+          else if ((y>=offP[1]) && (y<=offP[3])) //press offset plus
           {
             //waitForIt(offP[0], offP[1], offP[2], offP[3]);
             PHR2beO += 0.1;
@@ -1284,7 +1284,7 @@ void processMyTouch()
             config_phR_Screen();
 
           }
-          else if ((y>=almP[1]) && (y<=almP[3]))                           //press alarm plus
+          else if ((y>=almP[1]) && (y<=almP[3])) //press alarm plus
           {
             //waitForIt(almP[0], almP[1], almP[2], almP[3]);
             PHR2beA += 0.1;
@@ -1295,18 +1295,18 @@ void processMyTouch()
             config_phR_Screen();
           }
         }
-        else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+        else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) // volta ao menu
         {
           //waitForIt(menU[0], menU[1], menU[2], menU[3]);
           dispScreen=14;
           clearScreen();
-          parametroScreen(); 
-        } 
+          parametroScreen();
+        }
 
       }
       break;
-    case 16:             //---------------------------------------Tela controle de ORP---------------------------------
-      if ((x>=prOK[0]) && (x<=prOK[2]) && (y>=prOK[1]) && (y<=prOK[3]))       //Funcao salvar
+    case 16: //---------------------------------------Tela controle de ORP---------------------------------
+      if ((x>=prOK[0]) && (x<=prOK[2]) && (y>=prOK[1]) && (y<=prOK[3])) //Funcao salvar
       {
         //waitForIt(prOK[0], prOK[1], prOK[2], prOK[3]);
         setORP = ORP2beS;
@@ -1316,12 +1316,12 @@ void processMyTouch()
         SaveORPToEEPROM();
         clearScreen();
         parametroScreen();
-      } 
+      }
       else
       {
-        if ((x>=temM[0]) && (x<=temM[2]))                         // Primeira coluna
+        if ((x>=temM[0]) && (x<=temM[2])) // Primeira coluna
         {
-          if ((y>=temM[1]) && (y<=temM[3]))                      //press orp minus
+          if ((y>=temM[1]) && (y<=temM[3])) //press orp minus
           {
             //waitForIt(temM[0], temM[1], temM[2], temM[3]);
             ORP2beS -= 10;
@@ -1331,7 +1331,7 @@ void processMyTouch()
             }
             config_orp_Screen();
           }
-          else if ((y>=offM[1]) && (y<=offM[3]))                       //press offset minus
+          else if ((y>=offM[1]) && (y<=offM[3])) //press offset minus
           {
             //waitForIt(offM[0], offM[1], offM[2], offM[3]);
             ORP2beO -= 10;
@@ -1340,8 +1340,8 @@ void processMyTouch()
               ORP2beO = 200;
             }
             config_orp_Screen();
-          }          
-          else if ((y>=almM[1]) && (y<=almM[3]))                        //press alarm minus
+          }
+          else if ((y>=almM[1]) && (y<=almM[3])) //press alarm minus
           {
             //waitForIt(almM[0], almM[1], almM[2], almM[3]);
             ORP2beA -= 10;
@@ -1352,9 +1352,9 @@ void processMyTouch()
             config_orp_Screen();
           }
         }
-        else if ((x>=temP[0]) && (x<=temP[2]))                             //Segunda coluna
+        else if ((x>=temP[0]) && (x<=temP[2])) //Segunda coluna
         {
-          if ((y>=temP[1]) && (y<=temP[3]))                      //press orp plus
+          if ((y>=temP[1]) && (y<=temP[3])) //press orp plus
           {
             //waitForIt(temP[0], temP[1], temP[2], temP[3]);
             ORP2beS += 10;
@@ -1364,7 +1364,7 @@ void processMyTouch()
             }
             config_orp_Screen();
           }
-          else if ((y>=offP[1]) && (y<=offP[3]))                           //press offset plus
+          else if ((y>=offP[1]) && (y<=offP[3])) //press offset plus
           {
             //waitForIt(offP[0], offP[1], offP[2], offP[3]);
             ORP2beO += 10;
@@ -1374,7 +1374,7 @@ void processMyTouch()
             }
             config_orp_Screen();
           }
-          else if ((y>=almP[1]) && (y<=almP[3]))                           //press alarm plus
+          else if ((y>=almP[1]) && (y<=almP[3])) //press alarm plus
           {
             //waitForIt(almP[0], almP[1], almP[2], almP[3]);
             ORP2beA += 10;
@@ -1385,35 +1385,35 @@ void processMyTouch()
             config_orp_Screen();
           }
         }
-        else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+        else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) // volta ao menu
         {
           //waitForIt(menU[0], menU[1], menU[2], menU[3]);
           dispScreen=14;
           clearScreen();
           parametroScreen();
-        } 
+        }
 
       }
       break;
-    case 17:   //---------------------Tela grafico de ph do reator de calcio-------------------------------------
-      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           /// volta ao menu
+    case 17: //---------------------Tela grafico de ph do reator de calcio-------------------------------------
+      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) /// volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
-        menuScreen(); 
+        menuScreen();
       }
-      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3]))           // volta a tela de graficos
+      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3])) // volta a tela de graficos
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen=9;
         clearScreen();
-        graficoScreen(); 
-      }  
-      break; 
+        graficoScreen();
+      }
+      break;
 
     case 18: //--------------------------Tela configuracao de ph do aquario-----------------------------------
-      if ((x>=prOK[0]) && (x<=prOK[2]) && (y>=prOK[1]) && (y<=prOK[3]))       //Funcao salvar
+      if ((x>=prOK[0]) && (x<=prOK[2]) && (y>=prOK[1]) && (y<=prOK[3])) //Funcao salvar
       {
         //waitForIt(prOK[0], prOK[1], prOK[2], prOK[3]);
         setPHA = PHA2beS;
@@ -1423,12 +1423,12 @@ void processMyTouch()
         SavePHAToEEPROM();
         clearScreen();
         parametroScreen();
-      } 
+      }
       else
       {
-        if ((x>=temM[0]) && (x<=temM[2]))                         // Primeira coluna
+        if ((x>=temM[0]) && (x<=temM[2])) // Primeira coluna
         {
-          if ((y>=temM[1]) && (y<=temM[3]))                      //press ph minus
+          if ((y>=temM[1]) && (y<=temM[3])) //press ph minus
           {
             //waitForIt(temM[0], temM[1], temM[2], temM[3]);
             PHA2beS -= 0.1;
@@ -1438,38 +1438,38 @@ void processMyTouch()
             }
             config_phA_Screen();
           }
-          else if ((y>=offM[1]) && (y<=offM[3]))                       //press offset minus
+          else if ((y>=offM[1]) && (y<=offM[3])) //press offset minus
           {
             //waitForIt(offM[0], offM[1], offM[2], offM[3]);
             PHA2beO -= 0.1;
             if (PHA2beO < 0.0) {
-              PHA2beO = 0.0; 
+              PHA2beO = 0.0;
             }
             config_phA_Screen();
-          }          
-          else if ((y>=almM[1]) && (y<=almM[3]))                        //press alarm minus
+          }
+          else if ((y>=almM[1]) && (y<=almM[3])) //press alarm minus
           {
             //waitForIt(almM[0], almM[1], almM[2], almM[3]);
             PHA2beA -= 0.1;
             if (PHA2beA < 0.0) {
-              PHA2beA = 0.0;  
+              PHA2beA = 0.0;
             }
             config_phA_Screen();
           }
         }
-        else if ((x>=temP[0]) && (x<=temP[2]))                             //Segunda coluna
+        else if ((x>=temP[0]) && (x<=temP[2])) //Segunda coluna
         {
-          if ((y>=temP[1]) && (y<=temP[3]))                      //press temp plus
+          if ((y>=temP[1]) && (y<=temP[3])) //press temp plus
           {
             //waitForIt(temP[0], temP[1], temP[2], temP[3]);
             PHA2beS += 0.1;
             if (PHA2beS > 9.9)
             {
               PHA2beS = 9.9;
-            }            
+            }
             config_phA_Screen();
           }
-          else if ((y>=offP[1]) && (y<=offP[3]))                           //press offset plus
+          else if ((y>=offP[1]) && (y<=offP[3])) //press offset plus
           {
             //waitForIt(offP[0], offP[1], offP[2], offP[3]);
             PHA2beO += 0.1;
@@ -1479,7 +1479,7 @@ void processMyTouch()
             }
             config_phA_Screen();
           }
-          else if ((y>=almP[1]) && (y<=almP[3]))                           //press alarm plus
+          else if ((y>=almP[1]) && (y<=almP[3])) //press alarm plus
           {
             //waitForIt(almP[0], almP[1], almP[2], almP[3]);
             PHA2beA += 0.1;
@@ -1490,35 +1490,35 @@ void processMyTouch()
             config_phA_Screen();
           }
         }
-        else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+        else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) // volta ao menu
         {
           //waitForIt(menU[0], menU[1], menU[2], menU[3]);
           dispScreen=14;
           clearScreen();
-          parametroScreen(); 
-        } 
+          parametroScreen();
+        }
       }
       break;
 
     case 19://----------------------Tela grafico de densidade----------------------------------
-      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           /// volta ao menu
+      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) /// volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
-        menuScreen(); 
+        menuScreen();
       }
-      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3]))           // volta a tela de graficos
+      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3])) // volta a tela de graficos
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen=9;
         clearScreen();
-        graficoScreen(); 
-      }  
+        graficoScreen();
+      }
       break;
 
-    case 20: //--------------------------Tela configuraÃƒÂ§ÃƒÂ£o densidade  -----------------------------------------------------
-      if ((x>=prOK[0]) && (x<=prOK[2]) && (y>=prOK[1]) && (y<=prOK[3]))       //Funcao salvar
+    case 20: //--------------------------Tela configuraÃƒÂ§ÃƒÂ£o densidade -----------------------------------------------------
+      if ((x>=prOK[0]) && (x<=prOK[2]) && (y>=prOK[1]) && (y<=prOK[3])) //Funcao salvar
       {
         //waitForIt(prOK[0], prOK[1], prOK[2], prOK[3]);
         setDEN = DEN2beS;
@@ -1528,12 +1528,12 @@ void processMyTouch()
         SaveDENToEEPROM();
         clearScreen();
         parametroScreen();
-      } 
+      }
       else
       {
-        if ((x>=temM[0]) && (x<=temM[2]))                         // Primeira coluna
+        if ((x>=temM[0]) && (x<=temM[2])) // Primeira coluna
         {
-          if ((y>=temM[1]) && (y<=temM[3]))                      //press densidade minus
+          if ((y>=temM[1]) && (y<=temM[3])) //press densidade minus
           {
             //waitForIt(temM[0], temM[1], temM[2], temM[3]);
             DEN2beS -= 1;
@@ -1543,7 +1543,7 @@ void processMyTouch()
             }
             config_dens_Screen();
           }
-          else if ((y>=offM[1]) && (y<=offM[3]))                       //press offset minus
+          else if ((y>=offM[1]) && (y<=offM[3])) //press offset minus
           {
             //waitForIt(offM[0], offM[1], offM[2], offM[3]);
             DEN2beO -= 1;
@@ -1552,8 +1552,8 @@ void processMyTouch()
               DEN2beO = 10;
             }
             config_dens_Screen();
-          }          
-          else if ((y>=almM[1]) && (y<=almM[3]))                        //press alarm minus
+          }
+          else if ((y>=almM[1]) && (y<=almM[3])) //press alarm minus
           {
             //waitForIt(almM[0], almM[1], almM[2], almM[3]);
             DEN2beA -= 1;
@@ -1564,9 +1564,9 @@ void processMyTouch()
             config_dens_Screen();
           }
         }
-        else if ((x>=temP[0]) && (x<=temP[2]))                             //Segunda coluna
+        else if ((x>=temP[0]) && (x<=temP[2])) //Segunda coluna
         {
-          if ((y>=temP[1]) && (y<=temP[3]))                      //press densidade plus
+          if ((y>=temP[1]) && (y<=temP[3])) //press densidade plus
           {
             //waitForIt(temP[0], temP[1], temP[2], temP[3]);
             DEN2beS += 1;
@@ -1576,7 +1576,7 @@ void processMyTouch()
             }
             config_dens_Screen();
           }
-          else if ((y>=offP[1]) && (y<=offP[3]))                           //press offset plus
+          else if ((y>=offP[1]) && (y<=offP[3])) //press offset plus
           {
             //waitForIt(offP[0], offP[1], offP[2], offP[3]);
             DEN2beO += 1;
@@ -1586,7 +1586,7 @@ void processMyTouch()
             }
             config_dens_Screen();
           }
-          else if ((y>=almP[1]) && (y<=almP[3]))                           //press alarm plus
+          else if ((y>=almP[1]) && (y<=almP[3])) //press alarm plus
           {
             //waitForIt(almP[0], almP[1], almP[2], almP[3]);
             DEN2beA += 1;
@@ -1597,18 +1597,18 @@ void processMyTouch()
             config_dens_Screen();
           }
         }
-        else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+        else if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) // volta ao menu
         {
           //waitForIt(menU[0], menU[1], menU[2], menU[3]);
           dispScreen=14;
           clearScreen();
-          parametroScreen(); 
-        } 
+          parametroScreen();
+        }
       }
       break;
     case 21: // ------------------------------------------------ Escolher dosadora -----------------------------------
 
-      if ((x>=dosa1[0]) && (x<=dosa1[2]) && (y>=dosa1[1]) && (y<=dosa1[3]))         
+      if ((x>=dosa1[0]) && (x<=dosa1[2]) && (y>=dosa1[1]) && (y<=dosa1[3]))
       {
         //waitForIt(dosa1[0], dosa1[1], dosa1[2], dosa1[3]);
         if (modo_manual == true)
@@ -1617,10 +1617,10 @@ void processMyTouch()
           dispScreen = 27;
           clearScreen();
           config_dosagem_manual(true);
-        }     
+        }
         if (modo_personalizado == true)
         {
-          dosadora_selecionada = 0;       
+          dosadora_selecionada = 0;
           dispScreen = 29;
           clearScreen();
           config_dosagem_personalizada(true);
@@ -1632,9 +1632,9 @@ void processMyTouch()
           dispScreen = 26;
           clearScreen();
           calibrar_dosadoras(true);
-        }      
+        }
       }
-      else if ((x>=dosa2[0]) && (x<=dosa2[2]) && (y>=dosa2[1]) && (y<=dosa2[3]))         
+      else if ((x>=dosa2[0]) && (x<=dosa2[2]) && (y>=dosa2[1]) && (y<=dosa2[3]))
       {
         //waitForIt(dosa2[0], dosa2[1], dosa2[2], dosa2[3]);
         if (modo_manual == true)
@@ -1643,7 +1643,7 @@ void processMyTouch()
           dispScreen = 27;
           clearScreen();
           config_dosagem_manual(true);
-        }   
+        }
         else if (modo_personalizado == true)
         {
           dosadora_selecionada = 1;
@@ -1657,9 +1657,9 @@ void processMyTouch()
           dispScreen = 26;
           clearScreen();
           calibrar_dosadoras(true);
-        } 
+        }
       }
-      else if ((x>=dosa3[0]) && (x<=dosa3[2]) && (y>=dosa3[1]) && (y<=dosa3[3]))         
+      else if ((x>=dosa3[0]) && (x<=dosa3[2]) && (y>=dosa3[1]) && (y<=dosa3[3]))
       {
         //waitForIt(dosa3[0], dosa3[1], dosa3[2], dosa3[3]);
         if (modo_manual == true)
@@ -1668,7 +1668,7 @@ void processMyTouch()
           dispScreen = 27;
           clearScreen();
           config_dosagem_manual(true);
-        }     
+        }
         else if (modo_personalizado == true)
         {
           dosadora_selecionada = 2;
@@ -1682,14 +1682,14 @@ void processMyTouch()
           dispScreen = 26;
           clearScreen();
           calibrar_dosadoras(true);
-        }  
-      }        
-      else if ((x>=dosa4[0]) && x<=dosa4[2] && (y>=dosa4[1]) && (y<=dosa4[3]))         
+        }
+      }
+      else if ((x>=dosa4[0]) && x<=dosa4[2] && (y>=dosa4[1]) && (y<=dosa4[3]))
       {
         //waitForIt(dosa4[0], dosa4[1], dosa4[2], dosa4[3]);
         if (modo_manual == true)
         {
-          dosadora_selecionada = 3;       
+          dosadora_selecionada = 3;
           dispScreen = 27;
           clearScreen();
           config_dosagem_manual(true);
@@ -1708,9 +1708,9 @@ void processMyTouch()
           dispScreen = 26;
           clearScreen();
           calibrar_dosadoras(true);
-        }      
+        }
       }
-      else if ((x>=dosa5[0]) && x<=dosa5[2] && (y>=dosa5[1]) && (y<=dosa5[3]))         
+      else if ((x>=dosa5[0]) && x<=dosa5[2] && (y>=dosa5[1]) && (y<=dosa5[3]))
       {
         //waitForIt(dosa5[0], dosa5[1], dosa5[2], dosa5[3]);
         if (modo_manual == true)
@@ -1719,7 +1719,7 @@ void processMyTouch()
           dispScreen = 27;
           clearScreen();
           config_dosagem_manual(true);
-        }     
+        }
         else if (modo_personalizado == true)
         {
           dosadora_selecionada = 4;
@@ -1733,9 +1733,9 @@ void processMyTouch()
           dispScreen = 26;
           clearScreen();
           calibrar_dosadoras(true);
-        } 
+        }
       }
-      else if ((x>=dosa6[0]) && x<=dosa6[2] && (y>=dosa6[1]) && (y<=dosa6[3]))         
+      else if ((x>=dosa6[0]) && x<=dosa6[2] && (y>=dosa6[1]) && (y<=dosa6[3]))
       {
         //waitForIt(dosa6[0], dosa6[1], dosa6[2], dosa6[3]);
         if (modo_manual == true)
@@ -1758,16 +1758,16 @@ void processMyTouch()
           dispScreen = 26;
           clearScreen();
           calibrar_dosadoras(true);
-        }  
+        }
       }
-      else if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+      else if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3])) // volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen = 1;
         clearScreen();
-        menuScreen(); 
+        menuScreen();
       }
-      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3]))           // volta a tela de escolha da dosadora
+      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3])) // volta a tela de escolha da dosadora
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen = 8;
@@ -1776,7 +1776,7 @@ void processMyTouch()
       }
       break;
     case 22:// ----------------------------------------- Teste individual dos leds -----------------------
-      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+            if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen = 1;
@@ -1792,359 +1792,359 @@ void processMyTouch()
         escolher_teste();
         ler_predefinido_EEPROM(); 
       }
-      else if((y >= 88) && (y <= 344))//**************** Controle deslizante - inÃƒÂ­cio.
+      else if((y >= 44) && (y <= 172))//**************** Controle deslizante - inÃƒÂ­cio.
       {
         teste_em_andamento = true;
-        if((x >= 98) && (x<=186))
+        if((x >= 49) && (x<=93))
         {
           y_tocado = y;
-          desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 98, 88, 186, 344);
-          wled_out_temp = map(y_tocado, 344, 88, 0, 510);
+          desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 49, 44, 93, 172);
+          wled_out_temp = map(y_tocado, 172, 44, 0, 255);
 
           if(wled_out_temp >=100)
           {
-            myGLCD.printNumI(wled_out_temp, 122, 372); 
+            myGLCD.printNumI(wled_out_temp, 61, 186); 
           }
           else if((wled_out_temp >= 10) && (wled_out_temp < 100))
           {
-            myGLCD.print("0", 122, 372);  
-            myGLCD.printNumI(wled_out_temp, 138, 372); 
+            myGLCD.print("0", 61, 186);  
+            myGLCD.printNumI(wled_out_temp, 69, 186); 
           } 
           else if(wled_out_temp < 10)
           {
-            myGLCD.print("00", 122, 372);  
-            myGLCD.printNumI(wled_out_temp, 154, 372); 
+            myGLCD.print("00", 61, 186);  
+            myGLCD.printNumI(wled_out_temp, 77, 186); 
           }         
         }
-        else if((x >= 202) && (x <= 290)) //**************** Controle deslizante
+        else if((x >= 101) && (x <= 145)) //**************** Controle deslizante
         {
           y_tocado = y;
-          desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 202, 88, 290, 344);
-          bled_out_temp = map(y_tocado, 344, 88, 0, 510);
+          desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 101, 44, 145, 172);
+          bled_out_temp = map(y_tocado, 172, 44, 0, 255);
 
           if(bled_out_temp >= 100)
           {
-            myGLCD.printNumI(bled_out_temp, 226, 372);
+            myGLCD.printNumI(bled_out_temp, 113, 186);
           }
           else if((bled_out_temp >= 10) && (bled_out_temp < 100))
           {
-            myGLCD.print("0", 226, 372);
-            myGLCD.printNumI(bled_out_temp, 242, 372);
+            myGLCD.print("0", 113, 186);
+            myGLCD.printNumI(bled_out_temp, 121, 186);
           }
           else if(bled_out_temp < 10)
           {
-            myGLCD.print("00", 226, 372);
-            myGLCD.printNumI(bled_out_temp, 258, 372);
+            myGLCD.print("00", 113, 186);
+            myGLCD.printNumI(bled_out_temp, 129, 186);
           }
         }
-        else if((x >= 306) && (x <= 394)) //**************** Controle deslizante
+        else if((x >= 153) && (x <= 197)) //**************** Controle deslizante
         {
           y_tocado = y;
-          desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 306, 88, 394, 344);
-          rbled_out_temp = map(y_tocado, 344, 88, 0, 510);
+          desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 153, 44, 197, 172);
+          rbled_out_temp = map(y_tocado, 172, 44, 0, 255);
 
           if(rbled_out_temp >= 100)
           {
-            myGLCD.printNumI(rbled_out_temp, 330, 372);
+            myGLCD.printNumI(rbled_out_temp, 165, 186);
           }
           else if((rbled_out_temp >= 10) && (rbled_out_temp < 100))
           {
-            myGLCD.print("0", 330, 186);
-            myGLCD.printNumI(rbled_out_temp, 346, 372);
+            myGLCD.print("0", 165, 186);
+            myGLCD.printNumI(rbled_out_temp, 173, 186);
           }
           else if(rbled_out_temp < 10)
           {
-            myGLCD.print("00", 330, 372);
-            myGLCD.printNumI(rbled_out_temp, 362, 372);
+            myGLCD.print("00", 165, 186);
+            myGLCD.printNumI(rbled_out_temp, 181, 186);
           }
         }
-        else if((x >= 410) && (x <= 498)) //**************** Controle deslizante
+        else if((x >= 205) && (x <= 249)) //**************** Controle deslizante
         {
           y_tocado = y;
-          desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 410, 88, 498, 344);
-          rled_out_temp = map(y_tocado, 344, 88, 0, 510);
+          desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 205, 44, 249, 172);
+          rled_out_temp = map(y_tocado, 172, 44, 0, 255);
 
           if(rled_out_temp >= 100)
           {
-            myGLCD.printNumI(rled_out_temp, 434, 372);
+            myGLCD.printNumI(rled_out_temp, 217, 186);
           }
           else if((rled_out_temp >= 10) && (rled_out_temp < 100))
           {
-            myGLCD.print("0", 434, 372);
-            myGLCD.printNumI(rled_out_temp, 450, 372);
+            myGLCD.print("0", 217, 186);
+            myGLCD.printNumI(rled_out_temp, 225, 186);
           }          
           else if(rled_out_temp < 10)
           {
-            myGLCD.print("00", 434, 372);
-            myGLCD.printNumI(rled_out_temp, 466, 372);
+            myGLCD.print("00", 217, 186);
+            myGLCD.printNumI(rled_out_temp, 233, 186);
           }          
         }       
-        else if((x >= 514) && (x <= 602)) //**************** Controle deslizante
+        else if((x >= 257) && (x <= 301)) //**************** Controle deslizante
         {
           y_tocado = y;
-          desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 514, 88, 602, 344); 
-          uvled_out_temp = map(y_tocado, 344, 88, 0, 510);
+          desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 257, 44, 301, 172); 
+          uvled_out_temp = map(y_tocado, 172, 44, 0, 255);
           if(uvled_out_temp >= 100)
           {
-            myGLCD.printNumI(uvled_out_temp, 538, 372);
+            myGLCD.printNumI(uvled_out_temp, 269, 186);
           }
           else if((uvled_out_temp >= 10) && (uvled_out_temp < 100))
           {
-            myGLCD.print("0", 538, 372);
-            myGLCD.printNumI(uvled_out_temp, 554, 372);
+            myGLCD.print("0", 269, 186);
+            myGLCD.printNumI(uvled_out_temp, 277, 186);
           }
           else if(uvled_out_temp < 10)
           {
-            myGLCD.print("00", 538, 372);
-            myGLCD.printNumI(uvled_out_temp, 570, 372);
+            myGLCD.print("00", 269, 186);
+            myGLCD.printNumI(uvled_out_temp, 285, 186);
           } 
         }
       }//**************** Controle deslizante - fim.
 
-      else if((y >= 36) && (y <= 82))// BotÃƒÂ£o mais
+      else if((y >= 18) && (y <= 41))// BotÃƒÂ£o mais
       {
         teste_em_andamento = true;
-        if((x >= 98) && (x<=186))
+        if((x >= 49) && (x<=93))
         {
-          //waitForIt(98, 36, 186, 82);
+          //waitForIt(49, 18, 93, 41);
           wled_out_temp += 1;
           delay(50);
-          y_tocado = map(wled_out_temp, 510, 0, 88, 344);
-          desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 98, 88, 186, 344);
+          y_tocado = map(wled_out_temp, 255, 0, 44, 172);
+          desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 49, 44, 93, 172);
           if(wled_out_temp >=100)
           {
-            myGLCD.printNumI(wled_out_temp, 122, 372); 
+            myGLCD.printNumI(wled_out_temp, 61, 186); 
           }
           else if((wled_out_temp >= 10) && (wled_out_temp < 100))
           {
-            myGLCD.print("0", 122, 372);  
-            myGLCD.printNumI(wled_out_temp, 138, 372); 
+            myGLCD.print("0", 61, 186);  
+            myGLCD.printNumI(wled_out_temp, 69, 186); 
           } 
           else if(wled_out_temp < 10)
           {
-            myGLCD.print("00", 122, 372);  
-            myGLCD.printNumI(wled_out_temp, 134, 372); 
+            myGLCD.print("00", 61, 186);  
+            myGLCD.printNumI(wled_out_temp, 77, 186); 
           }  
         }
-        if((x >= 202) && (x <= 290)) // BotÃƒÂ£o mais
+        if((x >= 101) && (x <= 145)) // BotÃƒÂ£o mais
         {
-          //waitForIt(202, 36, 290, 82);
+          //waitForIt(101, 18, 145, 41);
           bled_out_temp += 1;
           delay(50);
-          y_tocado = map(bled_out_temp, 510, 0, 88, 344);
-          desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 202, 88, 290, 344);
+          y_tocado = map(bled_out_temp, 255, 0, 44, 172);
+          desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 101, 44, 145, 172);
 
           if(bled_out_temp >= 100)
           {
-            myGLCD.printNumI(bled_out_temp, 226, 372);
+            myGLCD.printNumI(bled_out_temp, 113, 186);
           }
           else if((bled_out_temp >= 10) && (bled_out_temp < 100))
           {
-            myGLCD.print("0", 226, 372);
-            myGLCD.printNumI(bled_out_temp, 242, 372);
+            myGLCD.print("0", 113, 186);
+            myGLCD.printNumI(bled_out_temp, 121, 186);
           }
           else if(bled_out_temp < 10)
           {
-            myGLCD.print("00", 226, 372);
-            myGLCD.printNumI(bled_out_temp, 258, 372);
+            myGLCD.print("00", 113, 186);
+            myGLCD.printNumI(bled_out_temp, 129, 186);
           }
         }
-        else if((x >= 306) && (x <= 394)) // BotÃƒÂ£o mais
+        else if((x >= 153) && (x <= 197)) // BotÃƒÂ£o mais
         {
-          //waitForIt(306, 36, 394, 82);
+          //waitForIt(153, 18, 197, 41);
           rbled_out_temp += 1;
           delay(50);
-          y_tocado = map(rbled_out_temp, 510, 0, 88, 344);
-          desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 306, 88, 394, 344);
+          y_tocado = map(rbled_out_temp, 255, 0, 44, 172);
+          desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 153, 44, 197, 172);
           if(rbled_out_temp >= 100)
           {
-            myGLCD.printNumI(rbled_out_temp, 330, 372);
+            myGLCD.printNumI(rbled_out_temp, 165, 186);
           }
           else if((rbled_out_temp >= 10) && (rbled_out_temp < 100))
           {
-            myGLCD.print("0", 330, 372);
-            myGLCD.printNumI(rbled_out_temp, 346, 372);
+            myGLCD.print("0", 165, 186);
+            myGLCD.printNumI(rbled_out_temp, 173, 186);
           }
           else if(rbled_out_temp < 10)
           {
-            myGLCD.print("00", 330, 372);
-            myGLCD.printNumI(rbled_out_temp, 362, 372);
+            myGLCD.print("00", 165, 186);
+            myGLCD.printNumI(rbled_out_temp, 181, 186);
           }
         }
-        if((x >= 410) && (x <= 498)) // BotÃƒÂ£o mais
+        if((x >= 205) && (x <= 249)) // BotÃƒÂ£o mais
         {
-          //waitForIt(410, 36, 498, 82);
+          //waitForIt(205, 18, 249, 41);
           rled_out_temp += 1;
           delay(50);
-          y_tocado = map(rled_out_temp, 510, 0, 88, 344);
-          desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 410, 88, 498, 344);
+          y_tocado = map(rled_out_temp, 255, 0, 44, 172);
+          desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 205, 44, 249, 172);
 
           if(rled_out_temp >= 100)
           {
-            myGLCD.printNumI(rled_out_temp, 434, 372);
+            myGLCD.printNumI(rled_out_temp, 217, 186);
           }
           else if((rled_out_temp >= 10) && (rled_out_temp < 100))
           {
-            myGLCD.print("0", 434, 372);
-            myGLCD.printNumI(rled_out_temp, 450, 372);
+            myGLCD.print("0", 217, 186);
+            myGLCD.printNumI(rled_out_temp, 225, 186);
           }          
           else if(rled_out_temp < 10)
           {
-            myGLCD.print("00", 434, 372);
-            myGLCD.printNumI(rled_out_temp, 466, 372);
+            myGLCD.print("00", 217, 186);
+            myGLCD.printNumI(rled_out_temp, 233, 186);
           }
         }       
-        if((x >= 514) && (x <= 602)) // BotÃƒÂ£o mais
+        if((x >= 257) && (x <= 301)) // BotÃƒÂ£o mais
         {
-          //waitForIt(514, 36, 602, 82);
+          //waitForIt(257, 18, 301, 41);
           uvled_out_temp += 1;
           delay(50);
-          y_tocado = map(uvled_out_temp, 510, 0, 88, 344);
-          desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 514, 88, 602, 344);
+          y_tocado = map(uvled_out_temp, 255, 0, 44, 172);
+          desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 257, 44, 301, 172);
           if(uvled_out_temp >= 100)
           {
-            myGLCD.printNumI(uvled_out_temp, 538, 372);
+            myGLCD.printNumI(uvled_out_temp, 269, 186);
           }
           else if((uvled_out_temp >= 10) && (uvled_out_temp < 100))
           {
-            myGLCD.print("0", 538, 372);
-            myGLCD.printNumI(uvled_out_temp, 554, 372);
+            myGLCD.print("0", 269, 186);
+            myGLCD.printNumI(uvled_out_temp, 277, 186);
           }
           else if(uvled_out_temp < 10)
           {
-            myGLCD.print("00", 538, 372);
-            myGLCD.printNumI(uvled_out_temp, 570, 372);
+            myGLCD.print("00", 269, 186);
+            myGLCD.printNumI(uvled_out_temp, 285, 186);
           }
         }
       }
-      else if((y >= 402) && (y <= 448))
+      else if((y >= 201) && (y <= 224))
       {
         teste_em_andamento = true;
 
-        if((x >= 98) && (x <= 186)) // BotÃƒÂ£o menos
+        if((x >= 49) && (x <= 93)) // BotÃƒÂ£o menos
         {
-          //waitForIt(98, 402, 186, 448); 
+          //waitForIt(49, 201, 93, 224); 
           wled_out_temp -= 1;
           delay(50);
-          y_tocado = map(wled_out_temp, 510, 0, 88, 344);
-          desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 98, 88, 186, 344);
+          y_tocado = map(wled_out_temp, 255, 0, 44, 172);
+          desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 49, 44, 93, 172);
           if(wled_out_temp >=100)
           {
-            myGLCD.printNumI(wled_out_temp, 122, 372); 
+            myGLCD.printNumI(wled_out_temp, 61, 186); 
           }
           else if((wled_out_temp >= 10) && (wled_out_temp < 100))
           {
-            myGLCD.print("0", 122, 372);  
-            myGLCD.printNumI(wled_out_temp, 138, 372); 
+            myGLCD.print("0", 61, 186);  
+            myGLCD.printNumI(wled_out_temp, 69, 186); 
           } 
           else if(wled_out_temp < 10)
           {
-            myGLCD.print("00", 122, 372);  
-            myGLCD.printNumI(wled_out_temp, 154, 372); 
+            myGLCD.print("00", 61, 186);  
+            myGLCD.printNumI(wled_out_temp, 77, 186); 
           }
         }
-        else if((x >= 202) && (x <= 290)) // BotÃƒÂ£o menos
+        else if((x >= 101) && (x <= 145)) // BotÃƒÂ£o menos
         {
-          //waitForIt(202, 402, 290, 448);
+          //waitForIt(101, 201, 145, 224);
           bled_out_temp -= 1;
           delay(50);
-          y_tocado = map(bled_out_temp, 510, 0, 88, 344);
-          desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 202, 88, 290, 344);
+          y_tocado = map(bled_out_temp, 255, 0, 44, 172);
+          desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 101, 44, 145, 172);
 
           if(bled_out_temp >= 100)
           {
-            myGLCD.printNumI(bled_out_temp, 226, 372);
+            myGLCD.printNumI(bled_out_temp, 113, 186);
           }
           else if((bled_out_temp >= 10) && (bled_out_temp < 100))
           {
-            myGLCD.print("0", 226, 372);
-            myGLCD.printNumI(bled_out_temp, 242, 372);
+            myGLCD.print("0", 113, 186);
+            myGLCD.printNumI(bled_out_temp, 121, 186);
           }
           else if(bled_out_temp < 10)
           {
-            myGLCD.print("00", 226, 372);
-            myGLCD.printNumI(bled_out_temp, 258, 372);
+            myGLCD.print("00", 113, 186);
+            myGLCD.printNumI(bled_out_temp, 129, 186);
           }
         }
-        else if((x >= 306) && (x <= 394)) // BotÃƒÂ£o menos
+        else if((x >= 153) && (x <= 197)) // BotÃƒÂ£o menos
         {
-          //waitForIt(306, 402, 394, 448);
+          //waitForIt(153, 201, 197, 224);
           rbled_out_temp -= 1;
           delay(50);
-          y_tocado = map(rbled_out_temp, 510, 0, 88, 344);
+          y_tocado = map(rbled_out_temp, 255, 0, 44, 172);
 
-          desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 306, 88, 394, 344);
+          desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 153, 44, 197, 172);
           if(rbled_out_temp >= 100)
           {
-            myGLCD.printNumI(rbled_out_temp, 330, 372);
+            myGLCD.printNumI(rbled_out_temp, 165, 186);
           }
           else if((rbled_out_temp >= 10) && (rbled_out_temp < 100))
           {
-            myGLCD.print("0", 330, 372);
-            myGLCD.printNumI(rbled_out_temp, 346, 372);
+            myGLCD.print("0", 165, 186);
+            myGLCD.printNumI(rbled_out_temp, 173, 186);
           }
           else if(rbled_out_temp < 10)
           {
-            myGLCD.print("00", 330, 372);
-            myGLCD.printNumI(rbled_out_temp, 362, 372);
+            myGLCD.print("00", 165, 186);
+            myGLCD.printNumI(rbled_out_temp, 181, 186);
           }
         }
-        else if((x >= 410) && (x <= 498)) // BotÃƒÂ£o menos
+        else if((x >= 205) && (x <= 249)) // BotÃƒÂ£o menos
         {
-          //waitForIt(410, 410, 498, 448);
+          //waitForIt(205, 201, 249, 224);
           rled_out_temp -= 1;
           delay(50);
-          y_tocado = map(rled_out_temp, 510, 0, 88, 344);
-          desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 410, 88, 498, 344);
+          y_tocado = map(rled_out_temp, 255, 0, 44, 172);
+          desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 205, 44, 249, 172);
 
           if(rled_out_temp >= 100)
           {
-            myGLCD.printNumI(rled_out_temp, 434, 372);
+            myGLCD.printNumI(rled_out_temp, 217, 186);
           }
           else if((rled_out_temp >= 10) && (rled_out_temp < 100))
           {
-            myGLCD.print("0", 434, 372);
-            myGLCD.printNumI(rled_out_temp, 450, 372);
+            myGLCD.print("0", 217, 186);
+            myGLCD.printNumI(rled_out_temp, 225, 186);
           }
           else if(rled_out_temp < 10)
           {
-            myGLCD.print("00", 434, 372);
-            myGLCD.printNumI(rled_out_temp, 466, 372);
+            myGLCD.print("00", 217, 186);
+            myGLCD.printNumI(rled_out_temp, 233, 186);
           }
         }       
-        else if((x >= 514) && (x <= 602)) // BotÃƒÂ£o menos
+        else if((x >= 257) && (x <= 301)) // BotÃƒÂ£o menos
         {
-          //waitForIt(514, 402, 602, 448);  
+          //waitForIt(257, 201, 301, 224);  
           uvled_out_temp -= 1;
           delay(50);
-          y_tocado = map(uvled_out_temp, 510, 0, 88, 344);
-          desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 514, 88, 602, 344);
+          y_tocado = map(uvled_out_temp, 255, 0, 44, 172);
+          desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 257, 44, 301, 172);
           if(uvled_out_temp >= 100)
           {
-            myGLCD.printNumI(uvled_out_temp, 538, 372);
+            myGLCD.printNumI(uvled_out_temp, 269, 186);
           }
           else if((uvled_out_temp >= 10) && (uvled_out_temp < 100))
           {
-            myGLCD.print("0", 538, 372);
-            myGLCD.printNumI(uvled_out_temp, 554, 372);
+            myGLCD.print("0", 269, 186);
+            myGLCD.printNumI(uvled_out_temp, 277, 186);
           }
           else if(uvled_out_temp < 10)
           {
-            myGLCD.print("00", 538, 372);
-            myGLCD.printNumI(uvled_out_temp, 570, 372);
+            myGLCD.print("00", 269, 186);
+            myGLCD.printNumI(uvled_out_temp, 285, 186);
           }
         }
       }
-      break;
+      break; 
     case 23:// -------------------------------- Rever configuraÃƒÂ§ÃƒÂ£o das dosadoras modo personalizado ------------------------------------------
-      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) // volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen = 1;
         clearScreen();
-        menuScreen(); 
+        menuScreen();
       }
-      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3]))           // volta ao menu de revisÃƒÂ£o das dosadoras
+      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3])) // volta ao menu de revisÃƒÂ£o das dosadoras
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen=34;
@@ -2153,21 +2153,21 @@ void processMyTouch()
       }
       break;
     case 24:// -------------------------------------- Desativar dosadoras ------------------------------------------
-      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) // volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen = 1;
         clearScreen();
-        menuScreen();    
+        menuScreen();
       }
-      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3]))           // volta ao menu desativar dosadoras
+      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3])) // volta ao menu desativar dosadoras
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen = 35;
         clearScreen();
         desativar_dosadoras(true);
       }
-      else if ((x >= 100) && (x <= 220) && (y >= 45) && (y <= 85))           //Ativar/desativar dosadora 4
+      else if ((x >= 100) && (x <= 220) && (y >= 45) && (y <= 85)) //Ativar/desativar dosadora 4
       {
         //waitForIt(100, 45, 220, 85);
 
@@ -2179,9 +2179,9 @@ void processMyTouch()
         else
         {
           desativar_dosadoras_2(true);
-        }          
+        }
       }
-      else if ((x >= 100) && (x <= 220) && (y >= 115) && (y <= 155))           //Ativar/desatiavr dosadora 5
+      else if ((x >= 100) && (x <= 220) && (y >= 115) && (y <= 155)) //Ativar/desatiavr dosadora 5
       {
         //waitForIt(100, 115, 220, 155);
 
@@ -2193,9 +2193,9 @@ void processMyTouch()
         else
         {
           desativar_dosadoras_2(true);
-        }          
+        }
       }
-      else if ((x >= 100) && (x <= 220) && (y >= 185) && (y <= 225))           //Ativar/desatiavr dosadora 6
+      else if ((x >= 100) && (x <= 220) && (y >= 185) && (y <= 225)) //Ativar/desatiavr dosadora 6
       {
         //waitForIt(100, 185, 220, 225);
 
@@ -2207,9 +2207,9 @@ void processMyTouch()
         else
         {
           desativar_dosadoras_2(true);
-        }          
+        }
       }
-      else if ((x>=salV[0]) && (x<=salV[2]) && (y>=salV[1]) && (y<=salV[3]))           //Salvar alteraÃƒÂ§ÃƒÂµes
+      else if ((x>=salV[0]) && (x<=salV[2]) && (y>=salV[1]) && (y<=salV[3])) //Salvar alteraÃƒÂ§ÃƒÂµes
       {
         //waitForIt(salV[0], salV[1], salV[2], salV[3]);
         if(bitRead(ativar_desativar,4) == false)
@@ -2224,35 +2224,35 @@ void processMyTouch()
         {
           modo_personalizado_on_6 = 0;
         }
-        Salvar_dosadora_EEPROM(); 
+        Salvar_dosadora_EEPROM();
         dispScreen = 8;
         clearScreen();
-        menu_dosadoras();       
+        menu_dosadoras();
       }
       break;
     case 25:// ------------------------------------ Escolher teste dos leds --------------------------------------------
-      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu 1
+      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) // volta ao menu 1
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen = 1;
         clearScreen();
-        menuScreen();    
-      } 
-      else if ((x>=testI[0]) && (x<=testI[2]) && (y>=testI[1]) && (y<=testI[3]))           // Teste individual
+        menuScreen();
+      }
+      else if ((x>=testI[0]) && (x<=testI[2]) && (y>=testI[1]) && (y<=testI[3])) // Teste individual
       {
         //waitForIt(testI[0], testI[1], testI[2], testI[3]);
         dispScreen = 22;
         clearScreen();
-        teste_individual_leds(); 
-      }   
-      else if ((x>=testT[0]) && (x<=testT[2]) && (y>=testT[1]) && (y<=testT[3]))           // Testar todos
+        teste_individual_leds();
+      }
+      else if ((x>=testT[0]) && (x<=testT[2]) && (y>=testT[1]) && (y<=testT[3])) // Testar todos
       {
         //waitForIt(testT[0], testT[1], testT[2], testT[3]);
         dispScreen = 3;
         clearScreen();
-        testScreen(true); 
-      }            
-      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3]))           // volta ao menu desativar dosadoras
+        testScreen(true);
+      }
+      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3])) // volta ao menu desativar dosadoras
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen=40;
@@ -2261,7 +2261,7 @@ void processMyTouch()
       }
       break;
     case 26: //------------------------------------ calibrar dosadoras -------------------------------------------
-      if ((x>=almP[0]) && x<=almP[2] && (y>=almP[1]) && (y<=almP[3]))            //fator calibracao mais.
+      if ((x>=almP[0]) && x<=almP[2] && (y>=almP[1]) && (y<=almP[3])) //fator calibracao mais.
       {
         //waitForIt(almP[0], almP[1], almP[2], almP[3]);
         fator_calib_dosadora[dosadora_selecionada] += 0.1;
@@ -2271,7 +2271,7 @@ void processMyTouch()
         }
         calibrar_dosadoras();
       }
-      else if ((x>=almM[0]) && x<=almM[2] && (y>=almM[1]) && (y<=almM[3]))            //fator calibracao menos.
+      else if ((x>=almM[0]) && x<=almM[2] && (y>=almM[1]) && (y<=almM[3])) //fator calibracao menos.
       {
         //waitForIt(almM[0], almM[1], almM[2], almM[3]);
         fator_calib_dosadora[dosadora_selecionada] -= 0.1;
@@ -2280,7 +2280,7 @@ void processMyTouch()
           fator_calib_dosadora[dosadora_selecionada] = 99.9;
         }
         calibrar_dosadoras();
-      }     
+      }
       else if ((x>=salV[0]) && x<=salV[2] && (y>=salV[1]) && (y<=salV[3]))
       {
         //waitForIt(salV[0], salV[1], salV[2], salV[3]); // FunÃƒÂ§ÃƒÂ£o salvar
@@ -2290,7 +2290,7 @@ void processMyTouch()
         fator_calib_dosadora_4 = fator_calib_dosadora[3];
         fator_calib_dosadora_5 = fator_calib_dosadora[4];
         fator_calib_dosadora_6 = fator_calib_dosadora[5];
-        Salvar_calib_dosadora_EEPROM(); 
+        Salvar_calib_dosadora_EEPROM();
 
         dispScreen = 21;
         clearScreen();
@@ -2303,8 +2303,8 @@ void processMyTouch()
         modo_manual = false;
         modo_personalizado = false;
         modo_calibrar = true;
-      }      
-      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3]))           // Volta a tela altera configuracao das dosadoras
+      }
+      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3])) // Volta a tela altera configuracao das dosadoras
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen = 21;
@@ -2335,10 +2335,10 @@ void processMyTouch()
           strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[17])));
           printButton(buffer, iniciaR[0], iniciaR[1], iniciaR[2], iniciaR[3]);
         }
-      }      
+      }
       break;
-    case 27:   // ----------------------------------------- Config dosagem manual --------------------------------------
-      if ((x>=almP[0]) && (x<=almP[2]) && (y>=almP[1]) && (y<=almP[3]))            //dose manual mais.
+    case 27: // ----------------------------------------- Config dosagem manual --------------------------------------
+      if ((x>=almP[0]) && (x<=almP[2]) && (y>=almP[1]) && (y<=almP[3])) //dose manual mais.
       {
         //waitForIt(almP[0], almP[1], almP[2], almP[3]);
         dose_dosadora_manual[dosadora_selecionada] += 0.5;
@@ -2348,7 +2348,7 @@ void processMyTouch()
         }
         config_dosagem_manual();
       }
-      else if ((x >= almM[0]) && (x <= almM[2]) && (y >= almM[1]) && (y <= almM[3]))            //dose manual menos.
+      else if ((x >= almM[0]) && (x <= almM[2]) && (y >= almM[1]) && (y <= almM[3])) //dose manual menos.
       {
         //waitForIt(almM[0], almM[1], almM[2], almM[3]);
         dose_dosadora_manual[dosadora_selecionada] -= 0.5;
@@ -2358,7 +2358,7 @@ void processMyTouch()
         }
         config_dosagem_manual();
       }
-      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3]))           // Volta a tela altera configuracao das dosadoras
+      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3])) // Volta a tela altera configuracao das dosadoras
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen = 21;
@@ -2382,7 +2382,7 @@ void processMyTouch()
           printButton_verde(buffer, iniciaR[0], iniciaR[1], iniciaR[2], iniciaR[3]);
 
           tempo_dosagem = map ((dose_dosadora_manual[dosadora_selecionada]*2), 0, fator_calib_dosadora[dosadora_selecionada], 0, 60000);
-          tempo_dosagem /= 2;                 
+          tempo_dosagem /= 2;
           delay(10000);
           digitalWrite(dosadora[dosadora_selecionada], HIGH);
           delay(tempo_dosagem);
@@ -2390,61 +2390,61 @@ void processMyTouch()
 
           strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[17])));
           printButton(buffer, iniciaR[0], iniciaR[1], iniciaR[2], iniciaR[3]);
-        }   
-      }      
+        }
+      }
       break;
 
-    case 28:  //--------------------------------Escolher canal LEDS-----------------------------------
-      if ((x >= tempG[0]) && (x <= tempG[2]) && (y >= tempG[1]) && (y <= tempG[3]))           
+    case 28: //--------------------------------Escolher canal LEDS-----------------------------------
+      if ((x >= tempG[0]) && (x <= tempG[2]) && (y >= tempG[1]) && (y <= tempG[3]))
       {
         //waitForIt(tempG[0], tempG[1], tempG[2], tempG[3]);
         cor_selecionada = 0;
         dispScreen=5;
-        clearScreen(); 
+        clearScreen();
         ledSetScreen();
       }
-      else if ((x >= phA[0]) && (x <= phA[2]) && (y>=phA[1]) && (y<=phA[3]))           
+      else if ((x >= phA[0]) && (x <= phA[2]) && (y>=phA[1]) && (y<=phA[3]))
       {
         //waitForIt(phA[0], phA[1], phA[2], phA[3]);
         cor_selecionada = 1;
         dispScreen=5;
-        clearScreen(); 
+        clearScreen();
         ledSetScreen();
-      } 
-      else if ((x >= phR[0]) && (x <= phR[2]) && (y >= phR[1]) && (y <= phR[3]))           
+      }
+      else if ((x >= phR[0]) && (x <= phR[2]) && (y >= phR[1]) && (y <= phR[3]))
       {
         //waitForIt(phR[0], phR[1], phR[2], phR[3]);
         cor_selecionada = 2;
         dispScreen=5;
-        clearScreen(); 
-        ledSetScreen(); 
+        clearScreen();
+        ledSetScreen();
       }
 
-      else if ((x >= orP[0]) && (x <= orP[2]) && (y >= orP[1]) && (y <= orP[3]))           
+      else if ((x >= orP[0]) && (x <= orP[2]) && (y >= orP[1]) && (y <= orP[3]))
       {
         //waitForIt(orP[0], orP[1], orP[2], orP[3]);
         cor_selecionada = 3;
         dispScreen=5;
-        clearScreen(); 
-        ledSetScreen(); 
-      } 
-      else if ((x >= denS[0]) && (x <= denS[2]) && (y >= denS[1]) && (y <= denS[3]))           
+        clearScreen();
+        ledSetScreen();
+      }
+      else if ((x >= denS[0]) && (x <= denS[2]) && (y >= denS[1]) && (y <= denS[3]))
       {
         //waitForIt(denS[0], denS[1], denS[2], denS[3]);
         cor_selecionada = 4;
         dispScreen=5;
-        clearScreen(); 
-        ledSetScreen(); 
-      }  
-      else if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3]))           /// volta ao menu
+        clearScreen();
+        ledSetScreen();
+      }
+      else if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3])) /// volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
-        menuScreen(); 
+        menuScreen();
         ReadFromEEPROM();
-      }          
-      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3]))           // Volta a tela altera configuracao das dosadoras
+      }
+      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3])) // Volta a tela altera configuracao das dosadoras
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen = 40;
@@ -2454,15 +2454,15 @@ void processMyTouch()
       }
       break;
 
-    case 29:   // ----------------------------------------- Config dosagem personalizada --------------------------------------
-      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+    case 29: // ----------------------------------------- Config dosagem personalizada --------------------------------------
+      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3])) // volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen = 1;
         clearScreen();
-        menuScreen(); 
+        menuScreen();
       }
-      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3]))           // Volta a tela altera configuracao das dosadoras
+      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3])) // Volta a tela altera configuracao das dosadoras
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen = 21;
@@ -2477,7 +2477,7 @@ void processMyTouch()
         modo_personalizado = true;
         modo_calibrar = false;
       }
-      else if ((y >= proX[1]) && (y <= proX[3]) && (x >= proX[0]) && (x <= proX[2])) 
+      else if ((y >= proX[1]) && (y <= proX[3]) && (x >= proX[0]) && (x <= proX[2]))
       {
         //waitForIt(proX[0], proX[1], proX[2], proX[3]); //PrÃƒÂ³ximo menu.
         dispScreen = 31;
@@ -2487,54 +2487,54 @@ void processMyTouch()
 
       else if ((y >= houU[1]) && (y <= houU[3])) // Buttons: Time UP
       {
-        if ((x >= houU[0]) && (x <= houU[2])) 
+        if ((x >= houU[0]) && (x <= houU[2]))
         {
           //waitForIt(houU[0], houU[1], houU[2], houU[3]);
           hora_inicial_dosagem_personalizada[dosadora_selecionada] = (hora_inicial_dosagem_personalizada[dosadora_selecionada] + 1) % 24;
           config_dosagem_personalizada();
-        } 
-        else if ((x >= minUT[0]) && (x <= minUT[2])) 
+        }
+        else if ((x >= minUT[0]) && (x <= minUT[2]))
         {
           //waitForIt(minUT[0], minUT[1], minUT[2], minUT[3]);
           minuto_inicial_dosagem_personalizada[dosadora_selecionada] = (minuto_inicial_dosagem_personalizada[dosadora_selecionada] + 1) % 60;
           config_dosagem_personalizada();
-        } 
+        }
 
-        else if ((x >= houU[0] + 155) && (x <= houU[2] + 155)) 
+        else if ((x >= houU[0] + 155) && (x <= houU[2] + 155))
         {
           //waitForIt(houU[0] + 155, houU[1], houU[2] + 155, houU[3]);
           hora_final_dosagem_personalizada[dosadora_selecionada] = (hora_final_dosagem_personalizada[dosadora_selecionada] + 1) % 24;
           config_dosagem_personalizada();
-        } 
-        else if ((x >= minUT[0] + 155) && (x <= minUT[2] + 155)) 
+        }
+        else if ((x >= minUT[0] + 155) && (x <= minUT[2] + 155))
         {
           //waitForIt(minUT[0] + 155, minUT[1], minUT[2] + 155, minUT[3]);
           minuto_final_dosagem_personalizada[dosadora_selecionada] = (minuto_final_dosagem_personalizada[dosadora_selecionada] + 1) % 60;
           config_dosagem_personalizada();
         }
 
-      } 
+      }
       else if ((y >= houD[1]) && (y <= houD[3])) // Buttons: Time DOWN
       {
-        if ((x >= houD[0]) && (x <= houD[2])) 
+        if ((x >= houD[0]) && (x <= houD[2]))
         {
           //waitForIt(houD[0], houD[1], houD[2], houD[3]);
           hora_inicial_dosagem_personalizada[dosadora_selecionada] = (hora_inicial_dosagem_personalizada[dosadora_selecionada] + 23) % 24;
           config_dosagem_personalizada();
-        } 
-        else if ((x >= minDT[0]) && (x <= minDT[2])) 
+        }
+        else if ((x >= minDT[0]) && (x <= minDT[2]))
         {
           //waitForIt(minDT[0], minDT[1], minDT[2], minDT[3]);
           minuto_inicial_dosagem_personalizada[dosadora_selecionada] = (minuto_inicial_dosagem_personalizada[dosadora_selecionada] + 59) % 60;
           config_dosagem_personalizada();
-        } 
-        else if ((x >= houD[0] + 155) && (x <= houD[2] + 155)) 
+        }
+        else if ((x >= houD[0] + 155) && (x <= houD[2] + 155))
         {
           //waitForIt(houD[0] + 155, houD[1], houD[2] + 155, houD[3]);
           hora_final_dosagem_personalizada[dosadora_selecionada] = (hora_final_dosagem_personalizada[dosadora_selecionada] + 23) % 24;
           config_dosagem_personalizada();
-        } 
-        else if ((x >= minDT[0] + 155) && (x <= minDT[2] + 155)) 
+        }
+        else if ((x >= minDT[0] + 155) && (x <= minDT[2] + 155))
         {
           //waitForIt(minDT[0] + 155, minDT[1], minDT[2] + 155, minDT[3]);
           minuto_final_dosagem_personalizada[dosadora_selecionada] = (minuto_final_dosagem_personalizada[dosadora_selecionada] + 59) % 60;
@@ -2542,93 +2542,93 @@ void processMyTouch()
         }
       }
 
-      else if ((x >= segU[0]) && (x <= segU[2]) && (y >= segU[1]) && (y <= segU[3])) 
+      else if ((x >= segU[0]) && (x <= segU[2]) && (y >= segU[1]) && (y <= segU[3]))
       {
-        if (segunda_dosagem_personalizada[dosadora_selecionada] == 1) 
+        if (segunda_dosagem_personalizada[dosadora_selecionada] == 1)
         {
           segunda_dosagem_personalizada[dosadora_selecionada] = 0;
           config_dosagem_personalizada();
-        } 
-        else 
+        }
+        else
         {
           segunda_dosagem_personalizada[dosadora_selecionada] = 1;
           config_dosagem_personalizada();
         }
       }
-      else if ((x >= terC[0]) && (x <= terC[2]) && (y >= terC[1]) && (y <= terC[3])) 
+      else if ((x >= terC[0]) && (x <= terC[2]) && (y >= terC[1]) && (y <= terC[3]))
       {
-        if (terca_dosagem_personalizada[dosadora_selecionada] == 2) 
+        if (terca_dosagem_personalizada[dosadora_selecionada] == 2)
         {
           terca_dosagem_personalizada[dosadora_selecionada] = 0;
           config_dosagem_personalizada();
-        } 
-        else 
+        }
+        else
         {
           terca_dosagem_personalizada[dosadora_selecionada] = 2;
           config_dosagem_personalizada();
         }
       }
-      else if ((x >= quaR[0]) && (x <= quaR[2]) && (y >= quaR[1]) && (y <= quaR[3])) 
+      else if ((x >= quaR[0]) && (x <= quaR[2]) && (y >= quaR[1]) && (y <= quaR[3]))
       {
 
-        if (quarta_dosagem_personalizada[dosadora_selecionada] == 3) 
+        if (quarta_dosagem_personalizada[dosadora_selecionada] == 3)
         {
           quarta_dosagem_personalizada[dosadora_selecionada] = 0;
           config_dosagem_personalizada();
-        } 
-        else 
+        }
+        else
         {
           quarta_dosagem_personalizada[dosadora_selecionada] = 3;
           config_dosagem_personalizada();
         }
       }
-      else if ((x >= quiN[0]) && (x <= quiN[2]) && (y >= quiN[1]) && (y <= quiN[3])) 
+      else if ((x >= quiN[0]) && (x <= quiN[2]) && (y >= quiN[1]) && (y <= quiN[3]))
       {
-        if (quinta_dosagem_personalizada[dosadora_selecionada] == 4) 
+        if (quinta_dosagem_personalizada[dosadora_selecionada] == 4)
         {
           quinta_dosagem_personalizada[dosadora_selecionada] = 0;
           config_dosagem_personalizada();
-        } 
-        else 
+        }
+        else
         {
           quinta_dosagem_personalizada[dosadora_selecionada] = 4;
           config_dosagem_personalizada();
         }
       }
-      if ((x >= sexT[0]) && (x <= sexT[2]) && (y >= sexT[1]) && (y <= sexT[3])) 
+      if ((x >= sexT[0]) && (x <= sexT[2]) && (y >= sexT[1]) && (y <= sexT[3]))
       {
-        if (sexta_dosagem_personalizada[dosadora_selecionada] == 5) 
+        if (sexta_dosagem_personalizada[dosadora_selecionada] == 5)
         {
           sexta_dosagem_personalizada[dosadora_selecionada] = 0;
           config_dosagem_personalizada();
-        } 
-        else 
+        }
+        else
         {
           sexta_dosagem_personalizada[dosadora_selecionada] = 5;
           config_dosagem_personalizada();
         }
       }
-      else if ((x >= sabA[0]) && (x <= sabA[2]) && (y >= sabA[1]) && (y <= sabA[3])) 
+      else if ((x >= sabA[0]) && (x <= sabA[2]) && (y >= sabA[1]) && (y <= sabA[3]))
       {
-        if (sabado_dosagem_personalizada[dosadora_selecionada] == 6) 
+        if (sabado_dosagem_personalizada[dosadora_selecionada] == 6)
         {
           sabado_dosagem_personalizada[dosadora_selecionada] = 0;
           config_dosagem_personalizada();
-        } 
-        else 
+        }
+        else
         {
           sabado_dosagem_personalizada[dosadora_selecionada] = 6;
           config_dosagem_personalizada();
         }
       }
-      else if ((x >= domI[0]) && (x <= domI[2]) && (y >= domI[1]) && (y <= domI[3])) 
+      else if ((x >= domI[0]) && (x <= domI[2]) && (y >= domI[1]) && (y <= domI[3]))
       {
-        if (domingo_dosagem_personalizada[dosadora_selecionada] == 7) 
+        if (domingo_dosagem_personalizada[dosadora_selecionada] == 7)
         {
           domingo_dosagem_personalizada[dosadora_selecionada] = 0;
           config_dosagem_personalizada();
-        } 
-        else 
+        }
+        else
         {
           domingo_dosagem_personalizada[dosadora_selecionada] = 7;
           config_dosagem_personalizada();
@@ -2636,65 +2636,65 @@ void processMyTouch()
       }
       break;
 
-    case 30:  // ----------------------------------------- Digitar a senha --------------------------------------------
+    case 30: // ----------------------------------------- Digitar a senha --------------------------------------------
 
-      if ((x>=boT1[0]) && (x<=boT1[2]) && (y>=boT1[1]) && (y<=boT1[3]))       // Button: 1
+      if ((x>=boT1[0]) && (x<=boT1[2]) && (y>=boT1[1]) && (y<=boT1[3])) // Button: 1
       {
         //waitForIt(boT1[0], boT1[1], boT1[2] ,boT1[3]);
         updateStr('1');
       }
 
-      else if ((x>=boT2[0]) && (x<=boT2[2]) && (y>=boT2[1]) && (y<=boT2[3]))  // Button: 2
+      else if ((x>=boT2[0]) && (x<=boT2[2]) && (y>=boT2[1]) && (y<=boT2[3])) // Button: 2
       {
         //waitForIt(boT2[0], boT2[1], boT2[2], boT2[3]);
         updateStr('2');
       }
-      else if ((x>=boT3[0]) && (x<=boT3[2]) && (y>=boT3[1]) && (y<=boT3[3]))  // Button: 3
+      else if ((x>=boT3[0]) && (x<=boT3[2]) && (y>=boT3[1]) && (y<=boT3[3])) // Button: 3
       {
         //waitForIt(boT3[0], boT3[1], boT3[2], boT3[3]);
         updateStr('3');
       }
-      else if ((x>=boT4[0]) && (x<=boT4[2]) && (y>=boT4[1]) && (y<=boT4[3]))  // Button: 4
+      else if ((x>=boT4[0]) && (x<=boT4[2]) && (y>=boT4[1]) && (y<=boT4[3])) // Button: 4
       {
         //waitForIt(boT4[0], boT4[1], boT4[2], boT4[3]);
         updateStr('4');
       }
-      else if ((x>=boT5[0]) && (x<=boT5[2]) && (y>=boT5[1]) && (y<=boT5[3]))  // Button: 5
+      else if ((x>=boT5[0]) && (x<=boT5[2]) && (y>=boT5[1]) && (y<=boT5[3])) // Button: 5
       {
         //waitForIt(boT5[0], boT5[1], boT5[2], boT5[3]);
         updateStr('5');
       }
 
-      else if ((x>=boT6[0]) && (x<=boT6[2]) && (y>=boT6[1]) && (y<=boT6[3]))  // Button: 6
+      else if ((x>=boT6[0]) && (x<=boT6[2]) && (y>=boT6[1]) && (y<=boT6[3])) // Button: 6
       {
         //waitForIt(boT6[0], boT6[1], boT6[2], boT6[3]);
         updateStr('6');
       }
-      else if ((x>=boT7[0]) && (x<=boT7[2]) && (y>=boT7[1]) && (y<=boT7[3]))  // Button: 7
+      else if ((x>=boT7[0]) && (x<=boT7[2]) && (y>=boT7[1]) && (y<=boT7[3])) // Button: 7
       {
         //waitForIt(boT7[0], boT7[1], boT7[2], boT7[3]);
         updateStr('7');
       }
-      else if ((x>=boT8[0]) && (x<=boT8[2]) && (y>=boT8[1]) && (y<=boT8[3]))  // Button: 8
+      else if ((x>=boT8[0]) && (x<=boT8[2]) && (y>=boT8[1]) && (y<=boT8[3])) // Button: 8
       {
         //waitForIt(boT8[0], boT8[1], boT8[2], boT8[3]);
         updateStr('8');
       }
-      else if ((x>=boT9[0]) && (x<=boT9[2]) && (y>=boT9[1]) && (y<=boT9[3]))  // Button: 9
+      else if ((x>=boT9[0]) && (x<=boT9[2]) && (y>=boT9[1]) && (y<=boT9[3])) // Button: 9
       {
         //waitForIt(boT9[0], boT9[1], boT9[2], boT9[3]);
         updateStr('9');
       }
-      else if ((x>=boT0[0]) && (x<=boT0[2]) && (y>=boT0[1]) && (y<=boT0[3]))  // Button: 0
+      else if ((x>=boT0[0]) && (x<=boT0[2]) && (y>=boT0[1]) && (y<=boT0[3])) // Button: 0
       {
         //waitForIt(boT0[0], boT0[1], boT0[2], boT0[3]);
         updateStr('0');
       }
 
-      else if ((x>=boTL[0]) && (x<=boTL[2]) && (y>=boTL[1]) && (y<=boTL[3]))  // Button: cancel
+      else if ((x>=boTL[0]) && (x<=boTL[2]) && (y>=boTL[1]) && (y<=boTL[3])) // Button: cancel
       {
         //waitForIt(boTL[0], boTL[1], boTL[2], boTL[3]);
-        for (int i=0; i < 7;i++) 
+        for (int i=0; i < 7;i++)
         {
           stCurrent[i] = '\0';
         }
@@ -2702,7 +2702,7 @@ void processMyTouch()
         myGLCD.setColor(0, 0, 0);
         myGLCD.fillRect (220, 420, 600, 450); // Clear password printed***************
       }
-      else if ((x>=boTE[0]) && (x<=boTE[2]) && (y>=boTE[1]) && (y<=boTE[3]))  // Button: enter
+      else if ((x>=boTE[0]) && (x<=boTE[2]) && (y>=boTE[1]) && (y<=boTE[3])) // Button: enter
       {
         //waitForIt(boTE[0], boTE[1], boTE[2], boTE[3]);
         if ((stCurrent[0] == senha [0]) && (stCurrent[1] == senha [1]) && (stCurrent[2] == senha [2]) && (stCurrent[3] == senha [3]) && (stCurrent[4] == senha [4]) && (stCurrent[5] == senha [5]) && stCurrentLen <=6)
@@ -2725,7 +2725,7 @@ void processMyTouch()
         {
           for(byte i = 0; i < 3; i++)
           {
-            myGLCD.setFont(BigFont);  
+            myGLCD.setFont(BigFont);
             myGLCD.setColor(255, 0, 0);
             strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[174])));
             myGLCD.print(buffer, 70, 384); // tabela_textos[174] = "PASSWORD INCORRECT!"
@@ -2745,7 +2745,7 @@ void processMyTouch()
           myGLCD.setColor(255, 0, 0);
           myGLCD.setBackColor(0, 0, 0);
 
-          strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[174]))); 
+          strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[174])));
           myGLCD.print(buffer, 70, 384); // tabela_textos[174] = "SENHA INCORRETA!"
 
           delay(1000);
@@ -2754,7 +2754,7 @@ void processMyTouch()
 
           for(byte i = 0; i < 3; i++)
           {
-            delay(500);  
+            delay(500);
             myGLCD.setColor(255, 0, 0);
             strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[175])));
             myGLCD.print(buffer, 70, 384); // "Up to 6 digits!"
@@ -2771,12 +2771,12 @@ void processMyTouch()
       }
       break;
     case 31:// ----------------------------------------- Dosagem personalizada --------------------------------------------
-      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3])) // volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen = 1;
         clearScreen();
-        menuScreen(); 
+        menuScreen();
       }
       else if ((y >= anT[1]) && (y <= anT[3]) && (x >= anT[0]) && (x <= anT[2])) // Volta ao menu dosagem personalizada
       {
@@ -2795,9 +2795,9 @@ void processMyTouch()
         }
         else if(dose_dosadora_personalizada[dosadora_selecionada] <= 9.5)
         {
-          myGLCD.setColor(0, 0, 0);                      
+          myGLCD.setColor(0, 0, 0);
           myGLCD.fillRect(100, 45, 185, 67);
-        }           
+        }
 
         config_dosagem_personalizada_2();
       }
@@ -2811,14 +2811,14 @@ void processMyTouch()
         }
         else if(dose_dosadora_personalizada[dosadora_selecionada] <= 9.5)
         {
-          myGLCD.setColor(0, 0, 0);                      
+          myGLCD.setColor(0, 0, 0);
           myGLCD.fillRect(100, 45, 185, 67);
         }
         config_dosagem_personalizada_2();
       }
-      else  if ((x >= durC[0]) && (x <= durC[2]) && (y >= durC[1]) && (y <= durC[3])) 
+      else if ((x >= durC[0]) && (x <= durC[2]) && (y >= durC[1]) && (y <= durC[3]))
       {
-        //waitForIt(durC[0], durC[1], durC[2], durC[3]); 
+        //waitForIt(durC[0], durC[1], durC[2], durC[3]);
         quantidade_dose_dosadora_personalizada[dosadora_selecionada] += 1;
         if(quantidade_dose_dosadora_personalizada[dosadora_selecionada] > 24)
         {
@@ -2826,7 +2826,7 @@ void processMyTouch()
         }
         config_dosagem_personalizada_2();
       }
-      else if ((x >= durB[0]) && (x <= durB[2]) && (y >= durB[1]) && (y <= durB[3])) 
+      else if ((x >= durB[0]) && (x <= durB[2]) && (y >= durB[1]) && (y <= durB[3]))
       {
         //waitForIt(durB[0], durB[1], durB[2], durB[3]);
         quantidade_dose_dosadora_personalizada[dosadora_selecionada] -= 1;
@@ -2834,9 +2834,9 @@ void processMyTouch()
         {
           quantidade_dose_dosadora_personalizada[dosadora_selecionada] = 24;
         }
-        config_dosagem_personalizada_2();        
+        config_dosagem_personalizada_2();
       }
-      else  if ((x >= sexT[0]) && (x<= sexT[2]) && (y >= sexT [1]) && (y <= sexT[3])) // Ativar ou desativar modo personalizado
+      else if ((x >= sexT[0]) && (x<= sexT[2]) && (y >= sexT [1]) && (y <= sexT[3])) // Ativar ou desativar modo personalizado
       {
         //waitForIt(sexT[0], sexT[1], sexT[2], sexT[3]);
         if(modo_personalizado_on[dosadora_selecionada] == 0)
@@ -2850,28 +2850,28 @@ void processMyTouch()
           config_dosagem_personalizada_2();
         }
       }
-      else if ((y >= prOK[1]) && (y <= prOK[3]) && (x >= prOK[0]) && (x <= prOK[2])) 
+      else if ((y >= prOK[1]) && (y <= prOK[3]) && (x >= prOK[0]) && (x <= prOK[2]))
       {
-        //waitForIt(prOK[0], prOK[1], prOK[2], prOK[3]); //funcao salvar          
-        if((hora_final_dosagem_personalizada[dosadora_selecionada] == hora_inicial_dosagem_personalizada[dosadora_selecionada]) 
+        //waitForIt(prOK[0], prOK[1], prOK[2], prOK[3]); //funcao salvar
+        if((hora_final_dosagem_personalizada[dosadora_selecionada] == hora_inicial_dosagem_personalizada[dosadora_selecionada])
           && (minuto_final_dosagem_personalizada[dosadora_selecionada] < (minuto_inicial_dosagem_personalizada[dosadora_selecionada]+10)))
         {
           setFont(SMALL, 255, 0, 0, 0, 0, 0);
 
-          strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[176])));            
+          strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[176])));
           myGLCD.print(buffer, 20, 110); // "INTERVAL BETWEEN START AND END"
 
-          strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[177]))); 
+          strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[177])));
           myGLCD.print(buffer, 35, 130); // MUST BE AT LEAST 10 MINUTES!
         }
         else if(hora_final_dosagem_personalizada[dosadora_selecionada] < hora_inicial_dosagem_personalizada[dosadora_selecionada])
         {
           setFont(SMALL, 255, 0, 0, 0, 0, 0);
 
-          strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[178]))); 
+          strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[178])));
           myGLCD.print(buffer, 50, 110); // "END TIME CAN NOT BE LESS THAN"
 
-          strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[179]))); 
+          strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[179])));
           myGLCD.print(buffer, 100, 130); // START TIME!
         }
         else if((hora_final_dosagem_personalizada[dosadora_selecionada] == hora_inicial_dosagem_personalizada[dosadora_selecionada])
@@ -2884,7 +2884,7 @@ void processMyTouch()
           selecionar_dosadora();
           setFont(SMALL, 255, 255, 255, 0, 0, 0);
 
-          strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[171]))); 
+          strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[171])));
           myGLCD.print(buffer, 15, 440); // "CUSTOM MODE SELECTED"
 
           modo_manual = false;
@@ -2893,48 +2893,48 @@ void processMyTouch()
 
           criar_arquivos();
           Salvar_dosadora_EEPROM();
-        }          
-      }       
+        }
+      }
       break;
     case 32: // -------------------------------- Rever configuraÃƒÂ§ÃƒÂ£o das dosadoras ------------------------------------------
-      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) // volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen = 1;
         clearScreen();
-        menuScreen(); 
+        menuScreen();
       }
-      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3]))           // volta ao menu das dosadoras
+      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3])) // volta ao menu das dosadoras
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen=8;
         clearScreen();
         menu_dosadoras();
       }
-      else if ((x>=manU[0]) && (x<=manU[2]) && (y>=manU[1]) && (y<=manU[3]))           // Rever configuraÃƒÂ§ÃƒÂ£o dosagem personalizada
+      else if ((x>=manU[0]) && (x<=manU[2]) && (y>=manU[1]) && (y<=manU[3])) // Rever configuraÃƒÂ§ÃƒÂ£o dosagem personalizada
       {
         //waitForIt(manU[0], manU[1], manU[2], manU[3]);
         dispScreen = 34;
         clearScreen();
         rever_dosagem_personalizada();
-      }  
-      break;     
+      }
+      break;
     case 34:// -------------------------------- Rever configuraÃƒÂ§ÃƒÂ£o das dosadoras personalizado ------------------------------------------
-      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) // volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen = 1;
         clearScreen();
-        menuScreen();    
+        menuScreen();
       }
-      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3]))           // volta ao menu de revisÃƒÂ£o das dosadoras
+      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3])) // volta ao menu de revisÃƒÂ£o das dosadoras
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen=32;
         clearScreen();
         rever_configuracao_dosadoras();
       }
-      else if ((x>=salV[0]) && (x<=salV[2]) && (y>=salV[1]) && (y<=salV[3]))           // Mais dosadoras
+      else if ((x>=salV[0]) && (x<=salV[2]) && (y>=salV[1]) && (y<=salV[3])) // Mais dosadoras
       {
         //waitForIt(salV[0], salV[1], salV[2], salV[3]);
         dispScreen=23;
@@ -2943,28 +2943,28 @@ void processMyTouch()
       }
       break;
     case 35:// -------------------------------------- Desativar dosadoras ------------------------------------------
-      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu
+      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) // volta ao menu
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen = 1;
         clearScreen();
-        menuScreen();    
+        menuScreen();
       }
-      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3]))           // volta ao menu desativar dosadoras
+      else if ((x>=volT[0]) && (x<=volT[2]) && (y>=volT[1]) && (y<=volT[3])) // volta ao menu desativar dosadoras
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen = 8;
         clearScreen();
         menu_dosadoras();
       }
-      else if ((x>=deS[0]) && (x<=deS[2]) && (y>=deS[1]) && (y<=deS[3]))           // volta ao menu desativar dosadoras
+      else if ((x>=deS[0]) && (x<=deS[2]) && (y>=deS[1]) && (y<=deS[3])) // volta ao menu desativar dosadoras
       {
         //waitForIt(deS[0], deS[1], deS[2], deS[3]);
         dispScreen = 24;
         clearScreen();
         desativar_dosadoras_2(true);
       }
-      else if ((x >= 100) && (x <= 220) && (y >= 45) && (y <= 85))           //Ativar/desatiavr dosadora 1
+      else if ((x >= 100) && (x <= 220) && (y >= 45) && (y <= 85)) //Ativar/desatiavr dosadora 1
       {
         //waitForIt(100, 45, 220, 85);
 
@@ -2976,9 +2976,9 @@ void processMyTouch()
         else
         {
           desativar_dosadoras(true);
-        }          
+        }
       }
-      else if ((x >= 100) && (x <= 220) && (y >= 115) && (y <= 155))           //Ativar/desatiavr dosadora 2
+      else if ((x >= 100) && (x <= 220) && (y >= 115) && (y <= 155)) //Ativar/desatiavr dosadora 2
       {
         //waitForIt(100, 115, 220, 155);
 
@@ -2990,9 +2990,9 @@ void processMyTouch()
         else
         {
           desativar_dosadoras(true);
-        }          
+        }
       }
-      else if ((x >= 100) && (x <= 220) && (y >= 185) && (y <= 225))           //Ativar/desatiavr dosadora 3
+      else if ((x >= 100) && (x <= 220) && (y >= 185) && (y <= 225)) //Ativar/desatiavr dosadora 3
       {
         //waitForIt(100, 185, 220, 225);
 
@@ -3004,9 +3004,9 @@ void processMyTouch()
         else
         {
           desativar_dosadoras(true);
-        }          
+        }
       }
-      else if ((x>=salV[0]) && (x<=salV[2]) && (y>=salV[1]) && (y<=salV[3]))           //Salvar alteraÃƒÂ§ÃƒÂµes
+      else if ((x>=salV[0]) && (x<=salV[2]) && (y>=salV[1]) && (y<=salV[3])) //Salvar alteraÃƒÂ§ÃƒÂµes
       {
         //waitForIt(salV[0], salV[1], salV[2], salV[3]);
         if(bitRead(ativar_desativar,1) == false)
@@ -3021,21 +3021,21 @@ void processMyTouch()
         {
           modo_personalizado_on_3= 0;
         }
-        Salvar_dosadora_EEPROM(); 
+        Salvar_dosadora_EEPROM();
         dispScreen = 8;
         clearScreen();
-        menu_dosadoras();       
+        menu_dosadoras();
       }
       break;
     case 36: // -------------------------------- Luz noturna --------------------------------------------
-      if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3]))           // volta a tela configurar leds
+      if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3])) // volta a tela configurar leds
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen=40;
         clearScreen();
-        config_leds(); 
+        config_leds();
       }
-      else if ((x>=salV[0]) && (x<=salV[2]) && (y>=salV[1]) && (y<=salV[3]))       //Funcao salvar
+      else if ((x>=salV[0]) && (x<=salV[2]) && (y>=salV[1]) && (y<=salV[3])) //Funcao salvar
       {
         //waitForIt(salV[0], salV[1], salV[2], salV[3]);
         MaxI = tMaxI;
@@ -3044,10 +3044,10 @@ void processMyTouch()
         Salvar_luz_noturna_EEPROM();
         clearScreen();
         config_leds();
-      } 
-      else if ((x>=temM[0]) && (x<=temM[2]))                         // Primeira coluna
+      }
+      else if ((x>=temM[0]) && (x<=temM[2])) // Primeira coluna
       {
-        if ((y>=temM[1]) && (y<=temM[3]))                      //press densidade minus
+        if ((y>=temM[1]) && (y<=temM[3])) //press densidade minus
         {
           //waitForIt(temM[0], temM[1], temM[2], temM[3]);
           tMaxI -= 1;
@@ -3055,7 +3055,7 @@ void processMyTouch()
           myGLCD.fillRect (256, 80, 360, 112);//Limpar texto
           luz_noturna();
         }
-        else if ((y>=almM[1]) && (y<=almM[3]))                        //press alarm minus
+        else if ((y>=almM[1]) && (y<=almM[3])) //press alarm minus
         {
           //waitForIt(almM[0], almM[1], almM[2], almM[3]);
           tMinI -= 1;
@@ -3064,9 +3064,9 @@ void processMyTouch()
           luz_noturna();
         }
       }
-      else if ((x>=temP[0]) && (x<=temP[2]))                             //Segunda coluna
+      else if ((x>=temP[0]) && (x<=temP[2])) //Segunda coluna
       {
-        if ((y>=temP[1]) && (y<=temP[3]))                      //press densidade plus
+        if ((y>=temP[1]) && (y<=temP[3])) //press densidade plus
         {
           //waitForIt(temP[0], temP[1], temP[2], temP[3]);
           tMaxI += 1;
@@ -3074,7 +3074,7 @@ void processMyTouch()
           myGLCD.fillRect (256, 80, 360, 112); //Limpar texto
           luz_noturna();
         }
-        else if ((y>=almP[1]) && (y<=almP[3]))                           //press alarm plus
+        else if ((y>=almP[1]) && (y<=almP[3])) //press alarm plus
         {
           //waitForIt(almP[0], almP[1], almP[2], almP[3]);
           tMinI += 1;
@@ -3083,23 +3083,23 @@ void processMyTouch()
           luz_noturna();
         }
       }
-      else if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu 1
-      {
-        //waitForIt(menU[0], menU[1], menU[2], menU[3]);
-        dispScreen=1;
-        clearScreen();
-        menuScreen();
-      } 
-      break;
-    case 37: // -------------------------------- Menu 2 -------------------------------------------------------------- 
-      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3]))           // Volta ao menu 1
+      else if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3])) // volta ao menu 1
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
         menuScreen();
       }
-      else if ((x>=tanD[0]) && (x<=tanD[2]) && (y>=tanD[1]) && (y<=tanD[3]))           // Sensores de temperatura
+      break;
+    case 37: // -------------------------------- Menu 2 --------------------------------------------------------------
+      if ((x>=menU[0]) && (x<=menU[2]) && (y>=menU[1]) && (y<=menU[3])) // Volta ao menu 1
+      {
+        //waitForIt(menU[0], menU[1], menU[2], menU[3]);
+        dispScreen=1;
+        clearScreen();
+        menuScreen();
+      }
+      else if ((x>=tanD[0]) && (x<=tanD[2]) && (y>=tanD[1]) && (y<=tanD[3])) // Sensores de temperatura
       {
         //waitForIt(tanD[0], tanD[1], tanD[2], tanD[3]);
         dispScreen=41;
@@ -3107,15 +3107,15 @@ void processMyTouch()
         procurar_sensores(true);
       }
       break;
-    case 38: // -------------------------------- Timers -------------------------------------------------------------- 
-      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3]))           // Volta ao menu 1
+    case 38: // -------------------------------- Timers --------------------------------------------------------------
+      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3])) // Volta ao menu 1
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
         menuScreen();
       }
-      else if ((x >= 14) && (x <= 112) && (y >= 44) && (y <= 478))           // Timer 1 
+      else if ((x >= 14) && (x <= 112) && (y >= 44) && (y <= 478)) // Timer 1
       {
         //waitForIt(7, 22, 56, 238);
         temporizador = 0;
@@ -3123,7 +3123,7 @@ void processMyTouch()
         clearScreen();
         config_timer(true);
       }
-      else if ((x >= 142) && (x <= 240) && (y >= 44) && (y <= 476))           // Timer 2 
+      else if ((x >= 142) && (x <= 240) && (y >= 44) && (y <= 476)) // Timer 2
       {
         //waitForIt(71, 22, 120, 238);
         temporizador = 1;
@@ -3131,7 +3131,7 @@ void processMyTouch()
         clearScreen();
         config_timer(true);
       }
-      else if ((x >= 270) && (x <= 368) && (y >= 44) && (y <= 476))           // Timer 3 
+      else if ((x >= 270) && (x <= 368) && (y >= 44) && (y <= 476)) // Timer 3
       {
         //waitForIt(135, 22, 184, 238);
         temporizador = 2;
@@ -3139,38 +3139,38 @@ void processMyTouch()
         clearScreen();
         config_timer(true);
       }
-      else if ((x >= 398) && (x <= 498) && (y >= 44) && (y <= 476))           // Timer 4 
+      else if ((x >= 398) && (x <= 498) && (y >= 44) && (y <= 476)) // Timer 4
       {
         //waitForIt(199, 22, 248, 238);
         temporizador = 3;
         dispScreen=39;
         clearScreen();
         config_timer(true);
-      } 
-      else if ((x >= 526) && (x <= 624) && (y >= 44) && (y <= 476))           // Timer 5 
+      }
+      else if ((x >= 526) && (x <= 624) && (y >= 44) && (y <= 476)) // Timer 5
       {
         //waitForIt(263, 22, 312, 238);
         temporizador = 4;
         dispScreen=39;
         clearScreen();
         config_timer(true);
-      }       
+      }
       break;
-    case 39:// -------------------------------- Configurar timers ------------------------------------------------------ 
-      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3]))           // Volta ao menu 2
+    case 39:// -------------------------------- Configurar timers ------------------------------------------------------
+      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3])) // Volta ao menu 2
       {
-        //waitForIt(menU[0], menU[1], menU[2], menU[3]);   
+        //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
         menuScreen();
       }
-      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3]))           // Selecionar timer
+      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3])) // Selecionar timer
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen=38;
         clearScreen();
-        TimerScreen(); 
-      } 
+        TimerScreen();
+      }
       else if ((x>=salV[0]) && x<=salV[2] && (y>=salV[1]) && (y<=salV[3]))
       {
         //waitForIt(salV[0], salV[1], salV[2], salV[3]); // FunÃƒÂ§ÃƒÂ£o salvar
@@ -3181,7 +3181,7 @@ void processMyTouch()
         salvar_timers_EEPROM();
         bitWrite(temporizador_modificado,(temporizador + 1),1);
       }
-      else if ((x >= 42) && (x <= 130) && (y >= 90) && (y <= 176))           // Hora ligar mais 
+      else if ((x >= 42) && (x <= 130) && (y >= 90) && (y <= 176)) // Hora ligar mais
       {
         //waitForIt(42, 90, 130, 176);
         on_hora[temporizador] += 1;
@@ -3190,19 +3190,19 @@ void processMyTouch()
           on_hora[temporizador] = 0;
         }
         config_timer();
-      } 
-      else if ((x >= 42) && (x <= 130) && (y >= 270) && (y <= 356))           // Hora ligar menos
+      }
+      else if ((x >= 42) && (x <= 130) && (y >= 270) && (y <= 356)) // Hora ligar menos
       {
         //waitForIt(21, 135, 65, 178);
         on_hora[temporizador] -= 1;
-        if(on_hora[temporizador] > 200) // 0 - 1 = 255 pois, byte varia de  0 a 255. 
+        if(on_hora[temporizador] > 200) // 0 - 1 = 255 pois, byte varia de 0 a 255.
         {
           on_hora[temporizador] = 23;
         }
         config_timer();
-      } 
+      }
 
-      else if ((x >= 178) && (x <= 266) && (y >= 90) && (y <= 356))           // Minuto ligar mais 
+      else if ((x >= 178) && (x <= 266) && (y >= 90) && (y <= 356)) // Minuto ligar mais
       {
         //waitForIt(89, 45, 133, 88);
         on_minuto[temporizador] += 1;
@@ -3211,18 +3211,18 @@ void processMyTouch()
           on_minuto[temporizador] = 0;
         }
         config_timer();
-      } 
-      else if ((x >= 178) && (x <= 266) && (y >= 270) && (y <= 356))           // Minuto ligar menos
+      }
+      else if ((x >= 178) && (x <= 266) && (y >= 270) && (y <= 356)) // Minuto ligar menos
       {
         //waitForIt(89, 135, 133, 178);
         on_minuto[temporizador] -= 1;
-        if(on_minuto[temporizador] > 200) // 0 - 1 = 255 pois, byte varia de  0 a 255. 
+        if(on_minuto[temporizador] > 200) // 0 - 1 = 255 pois, byte varia de 0 a 255.
         {
           on_minuto[temporizador] = 59;
         }
         config_timer();
       }
-      else if ((x >= 374) && (x <= 462) && (y >= 90) && (y <= 176))           // Hora desligar mais 
+      else if ((x >= 374) && (x <= 462) && (y >= 90) && (y <= 176)) // Hora desligar mais
       {
         //waitForIt(374, 90, 462, 176);
         off_hora[temporizador] += 1;
@@ -3231,19 +3231,19 @@ void processMyTouch()
           off_hora[temporizador] = 0;
         }
         config_timer();
-      } 
-      else if ((x >= 374) && (x <= 462) && (y >= 270) && (y <= 356))           // Hora desligar menos
+      }
+      else if ((x >= 374) && (x <= 462) && (y >= 270) && (y <= 356)) // Hora desligar menos
       {
         //waitForIt(187, 135, 231, 178);
         off_hora[temporizador] -= 1;
-        if(off_hora[temporizador] > 200) // 0 - 1 = 255 pois, byte varia de  0 a 255. 
+        if(off_hora[temporizador] > 200) // 0 - 1 = 255 pois, byte varia de 0 a 255.
         {
           off_hora[temporizador] = 23;
         }
         config_timer();
-      } 
+      }
 
-      else if ((x >= 510) && (x <= 598) && (y >= 90) && (y <= 176))           // Minuto desligar mais 
+      else if ((x >= 510) && (x <= 598) && (y >= 90) && (y <= 176)) // Minuto desligar mais
       {
         //waitForIt(255, 45, 299, 88);
         off_minuto[temporizador] += 1;
@@ -3252,18 +3252,18 @@ void processMyTouch()
           off_minuto[temporizador] = 0;
         }
         config_timer();
-      } 
-      else if ((x >= 510) && (x <= 498) && (y >= 270) && (y <= 356))           // Minuto desligar menos
+      }
+      else if ((x >= 510) && (x <= 498) && (y >= 270) && (y <= 356)) // Minuto desligar menos
       {
         //waitForIt(255, 135, 299, 178);
         off_minuto[temporizador] -= 1;
-        if(off_minuto[temporizador] > 200) // 0 - 1 = 255 pois, byte varia de  0 a 255. 
+        if(off_minuto[temporizador] > 200) // 0 - 1 = 255 pois, byte varia de 0 a 255.
         {
           off_minuto[temporizador] = 59;
         }
         config_timer();
       }
-      else  if ((x>=domI[0]-20) && (x<=domI[2]+20) && (y>=domI[1]) && (y<=domI[3]))           // Ativar / desativar timer
+      else if ((x>=domI[0]-20) && (x<=domI[2]+20) && (y>=domI[1]) && (y<=domI[3])) // Ativar / desativar timer
       {
         //waitForIt(domI[0]-20, domI[1], domI[2]+20, domI[3]);
         if(temporizador_ativado[temporizador] == 0)
@@ -3275,79 +3275,79 @@ void processMyTouch()
           temporizador_ativado[temporizador] = 0;
         }
         config_timer();
-      }  
+      }
 
       break;
     case 40://---------------------------------------- Configurar leds ----------------------------
-      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3]))           // Volta ao menu 1
+      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3])) // Volta ao menu 1
       {
-        //waitForIt(menU[0], menU[1], menU[2], menU[3]);   
+        //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
         menuScreen();
       }
 
-      else if ((x>=tanD[0]) && x<=tanD[2] && (y>=tanD[1]) && (y<=tanD[3]))           // Testar leds
+      else if ((x>=tanD[0]) && x<=tanD[2] && (y>=tanD[1]) && (y<=tanD[3])) // Testar leds
       {
-        //waitForIt(tanD[0], tanD[1], tanD[2], tanD[3]);   
+        //waitForIt(tanD[0], tanD[1], tanD[2], tanD[3]);
         dispScreen=25;
         clearScreen();
         escolher_teste();
       }
-      else if ((x>=tesT[0]) && x<=tesT[2] && (y>=tesT[1]) && (y<=tesT[3]))           // Alterar valores led
+      else if ((x>=tesT[0]) && x<=tesT[2] && (y>=tesT[1]) && (y<=tesT[3])) // Alterar valores led
       {
-        //waitForIt(tesT[0], tesT[1], tesT[2], tesT[3]);   
+        //waitForIt(tesT[0], tesT[1], tesT[2], tesT[3]);
         dispScreen=28;
         clearScreen();
-        escolher_canal(); 
+        escolher_canal();
       }
-      else if ((x>=temC[0]) && x<=temC[2] && (y>=temC[1]) && (y<=temC[3]))           // Luz Noturna
+      else if ((x>=temC[0]) && x<=temC[2] && (y>=temC[1]) && (y<=temC[3])) // Luz Noturna
       {
-        //waitForIt(temC[0], temC[1], temC[2], temC[3]);   
+        //waitForIt(temC[0], temC[1], temC[2], temC[3]);
         dispScreen=36;
         clearScreen();
         luz_noturna(true);
-      }    
-      else if ((x>=graF[0]) && x<=graF[2] && (y>=graF[1]) && (y<=graF[3]))           // coolers
+      }
+      else if ((x>=graF[0]) && x<=graF[2] && (y>=graF[1]) && (y<=graF[3])) // coolers
       {
-        //waitForIt(graF[0], graF[1], graF[2], graF[3]);   
+        //waitForIt(graF[0], graF[1], graF[2], graF[3]);
         dispScreen=42;
         clearScreen();
         configurar_coolers(true);
-      } 
-      else if ((x>=ledW[0]) && x<=ledW[2] && (y>=ledW[1]) && (y<=ledW[3]))           // Reduzir potÃƒÂªncia
+      }
+      else if ((x>=ledW[0]) && x<=ledW[2] && (y>=ledW[1]) && (y<=ledW[3])) // Reduzir potÃƒÂªncia
       {
-        //waitForIt(ledW[0], ledW[1], ledW[2], ledW[3]);   
+        //waitForIt(ledW[0], ledW[1], ledW[2], ledW[3]);
         dispScreen=43;
         clearScreen();
         reduzir_potencia(true);
       }
-      else if ((x >= tpaA[0]) && (x <= tpaA[2]) && (y >= tpaA[1]) && (y <= tpaA[3]))           // Pre definido
+      else if ((x >= tpaA[0]) && (x <= tpaA[2]) && (y >= tpaA[1]) && (y <= tpaA[3])) // Pre definido
       {
         //waitForIt(tpaA[0], tpaA[1], tpaA[2], tpaA[3]);
         dispScreen = 44;
         clearScreen();
-        pre_definido(true); 
+        pre_definido(true);
       }
       break;
     case 41://---------------------------------------- Configurar leds ----------------------------
-      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3]))           // Back to menu 2
+      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3])) // Back to menu 2
       {
-        //waitForIt(menU[0], menU[1], menU[2], menU[3]);   
+        //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=37;
         clearScreen();
         menuScreen_2();
       }
-      else if ((x>=busC[0]) && x<=busC[2] && (y>=busC[1]) && (y<=busC[3]))           // Search probes
+      else if ((x>=busC[0]) && x<=busC[2] && (y>=busC[1]) && (y<=busC[3])) // Search probes
       {
-        //waitForIt(busC[0], busC[1], busC[2], busC[3]);   
+        //waitForIt(busC[0], busC[1], busC[2], busC[3]);
         clearScreen();
         procurar_sensores(true);
-      }      
+      }
 
-      else if ((x>=sonD1[0]) && x<=sonD1[2] && (y>=sonD1[1]) && (y<=sonD1[3]))           // "PROBE 1"
+      else if ((x>=sonD1[0]) && x<=sonD1[2] && (y>=sonD1[1]) && (y<=sonD1[3])) // "PROBE 1"
       {
-        //waitForIt(sonD1[0], sonD1[1], sonD1[2], sonD1[3]);   
+        //waitForIt(sonD1[0], sonD1[1], sonD1[2], sonD1[3]);
         if(sonda_associada_1_temp == 1)
         {
           sonda_associada_1_temp = 2;
@@ -3361,10 +3361,10 @@ void processMyTouch()
           sonda_associada_1_temp = 1;
         }
         procurar_sensores();
-      }      
-      else if ((x>=sonD2[0]) && x<=sonD2[2] && (y>=sonD2[1]) && (y<=sonD2[3]))           // "PROBE 2"
+      }
+      else if ((x>=sonD2[0]) && x<=sonD2[2] && (y>=sonD2[1]) && (y<=sonD2[3])) // "PROBE 2"
       {
-        //waitForIt(sonD2[0], sonD2[1], sonD2[2], sonD2[3]);   
+        //waitForIt(sonD2[0], sonD2[1], sonD2[2], sonD2[3]);
 
         if(sonda_associada_2_temp == 1)
         {
@@ -3380,10 +3380,10 @@ void processMyTouch()
           sonda_associada_2_temp = 1;
         }
         procurar_sensores();
-      }      
-      else if ((x>=sonD3[0]) && x<=sonD3[2] && (y>=sonD3[1]) && (y<=sonD3[3]))           // "PROBE 3"
+      }
+      else if ((x>=sonD3[0]) && x<=sonD3[2] && (y>=sonD3[1]) && (y<=sonD3[3])) // "PROBE 3"
       {
-        //waitForIt(sonD3[0], sonD3[1], sonD3[2], sonD3[3]);  
+        //waitForIt(sonD3[0], sonD3[1], sonD3[2], sonD3[3]);
 
         if(sonda_associada_3_temp == 1)
         {
@@ -3399,32 +3399,32 @@ void processMyTouch()
           sonda_associada_3_temp = 1;
         }
         procurar_sensores();
-      }      
-      else if ((x>=prOK[0]) && x<=prOK[2] && (y>=prOK[1]) && (y<=prOK[3]))           // "PROBES"
+      }
+      else if ((x>=prOK[0]) && x<=prOK[2] && (y>=prOK[1]) && (y<=prOK[3])) // "PROBES"
       {
-        //waitForIt(prOK[0], prOK[1], prOK[2], prOK[3]);   
+        //waitForIt(prOK[0], prOK[1], prOK[2], prOK[3]);
         if((sonda_associada_1_temp == sonda_associada_2_temp) || (sonda_associada_1_temp == sonda_associada_3_temp) || (sonda_associada_2_temp == sonda_associada_3_temp))
         {
           setFont(LARGE, 255, 0, 0, 0, 0, 0);
           strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[223]))); // "DON'T ASSOCIATE 2 OR 3"
           myGLCD.print(buffer, 10, 160);
           strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[224]))); // "PROBES TO THE SAME PARAMETER!"
-          myGLCD.print(buffer, 10, 195); 
+          myGLCD.print(buffer, 10, 195);
         }
         else
         {
           sonda_associada_1 = sonda_associada_1_temp;
           sonda_associada_2 = sonda_associada_2_temp;
-          sonda_associada_3 = sonda_associada_3_temp;  
+          sonda_associada_3 = sonda_associada_3_temp;
 
           for(byte i = 0; i < 8; i++)
           {
             if(sonda_associada_1_temp == 1)
-            { 
+            {
               sensor_agua[i] = sonda1[i];
             }
             else if(sonda_associada_1_temp == 2)
-            { 
+            {
               sensor_agua[i] = sonda2[i];
             }
             else
@@ -3432,24 +3432,24 @@ void processMyTouch()
               sensor_agua[i] = sonda3[i];
             }
             if(sonda_associada_2_temp == 1)
-            { 
+            {
               sensor_dissipador[i] = sonda1[i];
             }
             else if(sonda_associada_2_temp == 2)
-            { 
+            {
               sensor_dissipador[i] = sonda2[i];
             }
             else
             {
               sensor_dissipador[i] = sonda3[i];
-            }        
+            }
 
             if(sonda_associada_3_temp == 1)
-            { 
+            {
               sensor_ambiente[i] = sonda1[i];
             }
             else if(sonda_associada_3_temp == 2)
-            { 
+            {
               sensor_ambiente[i] = sonda2[i];
             }
             else
@@ -3461,31 +3461,31 @@ void processMyTouch()
           temperatura_agua_temp = 0;
           temperatura_dissipador_temp = 0;
           temperatura_ambiente_temp = 0;
-          sensors.requestTemperatures();   // Chamada para todos os sensores.
-          tempC = (sensors.getTempC(sensor_agua));  // LÃƒÂª a temperatura da ÃƒÂ¡gua
+          sensors.requestTemperatures(); // Chamada para todos os sensores.
+          tempC = (sensors.getTempC(sensor_agua)); // LÃƒÂª a temperatura da ÃƒÂ¡gua
           tempH = (sensors.getTempC(sensor_dissipador)); // LÃƒÂª a temperatura do dissipador.
           tempA = (sensors.getTempC(sensor_ambiente)); // LÃƒÂª a temperatura do ambiente.
           
-          tempC = (tempC * 1.8) + 32.05;  /******************************************************** added for Fahrenheit *******************************************************************/
+          tempC = (tempC * 1.8) + 32.05; /******************************************************** added for Fahrenheit *******************************************************************/
           tempH = (tempH * 1.8) + 32.05;
           tempA = (tempA * 1.8) + 32.05;
           
           SaveDallasAddress ();
           dispScreen=37;
           clearScreen();
-          menuScreen_2(); 
+          menuScreen_2();
         }
-      }      
+      }
       break;
-    case 42://---------------------------------------- Configurar coolers ----------------------------     
-      if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3]))           // volta a tela configurar leds
+    case 42://---------------------------------------- Configurar coolers ----------------------------
+      if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3])) // volta a tela configurar leds
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen=40;
         clearScreen();
-        config_leds(); 
+        config_leds();
       }
-      else if ((x>=salV[0]) && (x<=salV[2]) && (y>=salV[1]) && (y<=salV[3]))       //FunÃƒÂ§ÃƒÂ£o salvar
+      else if ((x>=salV[0]) && (x<=salV[2]) && (y>=salV[1]) && (y<=salV[3])) //FunÃƒÂ§ÃƒÂ£o salvar
       {
         //waitForIt(salV[0], salV[1], salV[2], salV[3]);
         HtempMin = HtempMin_temp;
@@ -3494,10 +3494,10 @@ void processMyTouch()
         salvar_coolersEEPROM();
         clearScreen();
         config_leds();
-      } 
-      else if ((x>=temM[0]) && (x<=temM[2]))                         
+      }
+      else if ((x>=temM[0]) && (x<=temM[2]))
       {
-        if ((y>=temM[1]) && (y<=temM[3]))                   // Temperatura para velocidade mÃƒÂ­nima -   
+        if ((y>=temM[1]) && (y<=temM[3])) // Temperatura para velocidade mÃƒÂ­nima -
         {
           //waitForIt(temM[0], temM[1], temM[2], temM[3]);
           HtempMin_temp -= 0.1;
@@ -3509,7 +3509,7 @@ void processMyTouch()
           myGLCD.fillRect (256, 80, 360, 112); // Limpar texto
           configurar_coolers();
         }
-        else if ((y>=almM[1]) && (y<=almM[3]))                       // Temperatura para velocidade mÃƒÂ¡xima -
+        else if ((y>=almM[1]) && (y<=almM[3])) // Temperatura para velocidade mÃƒÂ¡xima -
         {
           //waitForIt(almM[0], almM[1], almM[2], almM[3]);
           HtempMax_temp -= 0.1;
@@ -3522,9 +3522,9 @@ void processMyTouch()
           configurar_coolers();
         }
       }
-      else if ((x>=temP[0]) && (x<=temP[2]))                          
+      else if ((x>=temP[0]) && (x<=temP[2]))
       {
-        if ((y>=temP[1]) && (y<=temP[3]))                      // Temperatura para velocidade mÃƒÂ­nima +
+        if ((y>=temP[1]) && (y<=temP[3])) // Temperatura para velocidade mÃƒÂ­nima +
         {
           //waitForIt(temP[0], temP[1], temP[2], temP[3]);
           HtempMin_temp += 0.1;
@@ -3536,7 +3536,7 @@ void processMyTouch()
           myGLCD.fillRect (256, 80, 360, 112); //Limpar texto
           configurar_coolers();
         }
-        else if ((y>=almP[1]) && (y<=almP[3]))                           // Temperatura para velocidade mÃƒÂ¡xima +
+        else if ((y>=almP[1]) && (y<=almP[3])) // Temperatura para velocidade mÃƒÂ¡xima +
         {
           //waitForIt(almP[0], almP[1], almP[2], almP[3]);
           HtempMax_temp += 0.1;
@@ -3549,30 +3549,30 @@ void processMyTouch()
           configurar_coolers();
         }
       }
-      else if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu 1
+      else if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3])) // volta ao menu 1
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
         menuScreen();
       }
-      break; 
-    case 43://---------------------------------------- Reduziir potÃƒÂªncia dos leds ---------------------------- 
-      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3]))           // volta ao menu 1
+      break;
+    case 43://---------------------------------------- Reduziir potÃƒÂªncia dos leds ----------------------------
+      if ((x>=menU[0]) && x<=menU[2] && (y>=menU[1]) && (y<=menU[3])) // volta ao menu 1
       {
         //waitForIt(menU[0], menU[1], menU[2], menU[3]);
         dispScreen=1;
         clearScreen();
         menuScreen();
-      }   
-      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3]))           // volta a tela configurar leds
+      }
+      else if ((x>=volT[0]) && x<=volT[2] && (y>=volT[1]) && (y<=volT[3])) // volta a tela configurar leds
       {
         //waitForIt(volT[0], volT[1], volT[2], volT[3]);
         dispScreen=40;
         clearScreen();
-        config_leds(); 
+        config_leds();
       }
-      else if ((x>=salV[0]) && (x<=salV[2]) && (y>=salV[1]) && (y<=salV[3]))       //FunÃƒÂ§ÃƒÂ£o salvar
+      else if ((x>=salV[0]) && (x<=salV[2]) && (y>=salV[1]) && (y<=salV[3])) //FunÃƒÂ§ÃƒÂ£o salvar
       {
         //waitForIt(salV[0], salV[1], salV[2], salV[3]);
         tempHR = tempHR_t;
@@ -3582,47 +3582,47 @@ void processMyTouch()
         clearScreen();
         config_leds();
       }
-      else if ((x>=tempeC[0]) && (x<=tempeC[2]) && (y>=tempeC[1]) && (y<=tempeC[3]))       //Temperatura +
+      else if ((x>=tempeC[0]) && (x<=tempeC[2]) && (y>=tempeC[1]) && (y<=tempeC[3])) //Temperatura +
       {
         //waitForIt(tempeC[0], tempeC[1], tempeC[2], tempeC[3]);
         tempHR_t += 1;
         if (tempHR_t >210)//99 C /******************************************************** changed for Fahrenheit *******************************************************************/
         {
           tempHR_t = 86; //30 C
-        }        
+        }
         reduzir_potencia();
       }
-      else if ((x>=tempeB[0]) && (x<=tempeB[2]) && (y>=tempeB[1]) && (y<=tempeB[3]))       //Temperatura -
+      else if ((x>=tempeB[0]) && (x<=tempeB[2]) && (y>=tempeB[1]) && (y<=tempeB[3])) //Temperatura -
       {
         //waitForIt(tempeB[0], tempeB[1], tempeB[2], tempeB[3]);
         tempHR_t -= 1;
         if (tempHR_t < 86) //30 C
         {
           tempHR_t =210; //99 C
-        }        
+        }
         reduzir_potencia();
-      }        
-      else if ((x>=potC[0]) && (x<=potC[2]) && (y>=potC[1]) && (y<=potC[3]))       //PotÃƒÂªncia +
+      }
+      else if ((x>=potC[0]) && (x<=potC[2]) && (y>=potC[1]) && (y<=potC[3])) //PotÃƒÂªncia +
       {
         //waitForIt(potC[0], potC[1], potC[2], potC[3]);
         potR_t += 1;
         if (potR_t >99) //99 C
         {
           potR_t = 1;
-        }        
+        }
         reduzir_potencia();
       }
-      else if ((x>=potB[0]) && (x<=potB[2]) && (y>=potB[1]) && (y<=potB[3]))    //PotÃƒÂªncia -
+      else if ((x>=potB[0]) && (x<=potB[2]) && (y>=potB[1]) && (y<=potB[3])) //PotÃƒÂªncia -
       {
         //waitForIt(potB[0], potB[1], potB[2], potB[3]);
         potR_t -= 1;
-        if (potR_t < 1) 
+        if (potR_t < 1)
         {
           potR_t =99; //99 C
-        }        
+        }
         reduzir_potencia();
       }
-      break; 
+      break;
     case 44://---------------------------------------- PotÃƒÂªncia prÃƒÂ©-definida para os leds ----------------------------
       if((x >= 410) && (x <= 630) && (y>= 190) && (y <= 360) && (horario_alterado == false))
       {
@@ -3636,76 +3636,76 @@ void processMyTouch()
       }
       if(horario_alterado == false)
       {
-        if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3]))           // volta ao menu 1
+        if ((x >= menU[0]) && (x <= menU[2]) && (y >= menU[1]) && (y <= menU[3])) // volta ao menu 1
         {
           //waitForIt(menU[0], menU[1], menU[2], menU[3]);
           dispScreen=1;
           clearScreen();
           menuScreen();
           ler_predefinido_EEPROM();
-        }   
-        else if ((x >= volT[0]) && (x <= volT[2]) && (y >= volT[1]) && (y <= volT[3]))           // volta a tela configurar leds
+        }
+        else if ((x >= volT[0]) && (x <= volT[2]) && (y >= volT[1]) && (y <= volT[3])) // volta a tela configurar leds
         {
           //waitForIt(volT[0], volT[1], volT[2], volT[3]);
           dispScreen=40;
           clearScreen();
           config_leds();
-          ler_predefinido_EEPROM(); 
+          ler_predefinido_EEPROM();
         }
-        else if ((x >= salV[0]) && (x <= salV[2]) && (y >= salV[1]) && (y <= salV[3]))           // volta a tela configurar leds
+        else if ((x >= salV[0]) && (x <= salV[2]) && (y >= salV[1]) && (y <= salV[3])) // volta a tela configurar leds
         {
           //waitForIt(salV[0], salV[1], salV[2], salV[3]);
           dispScreen=40;
           clearScreen();
           config_leds();
-          led_on_minuto = led_on_minuto_t; 
+          led_on_minuto = led_on_minuto_t;
           led_on_hora = led_on_hora_t;
-          led_off_minuto = led_off_minuto_t; 
+          led_off_minuto = led_off_minuto_t;
           led_off_hora = led_off_hora_t;
           predefinido = predefinido_t;
           pre_definido_ativado = pre_definido_ativado_t;
           pwm_pre_definido = pwm_pre_definido_t;
-          led_on_minuto = led_on_minuto_t; 
+          led_on_minuto = led_on_minuto_t;
           led_on_hora = led_on_hora_t;
-          led_off_minuto = led_off_minuto_t; 
+          led_off_minuto = led_off_minuto_t;
           led_off_hora = led_off_hora_t;
-          amanhecer_anoitecer = amanhecer_anoitecer_t;       
+          amanhecer_anoitecer = amanhecer_anoitecer_t;
           Salvar_predefinido_EEPROM();
-          hora_modificada = true; 
+          hora_modificada = true;
         }
         else if((x >= 420) && (x <= 620) && (y >= 120) && (y <= 180)) // Ativar / desativar
-        { 
+        {
           if(pre_definido_ativado_t == 1)
           {
-            pre_definido_ativado_t = 0; 
+            pre_definido_ativado_t = 0;
           }
           else
           {
-            pre_definido_ativado_t = 1; 
+            pre_definido_ativado_t = 1;
           }
           pre_definido();
         }
         else if((x >= 420) && (x <= 620) && (y >= 50) && (y <= 110)) // Controlar todos
-        { 
+        {
           if(predefinido_t == 1)
           {
-            predefinido_t = 0; 
+            predefinido_t = 0;
           }
           else
           {
-            predefinido_t = 1; 
+            predefinido_t = 1;
           }
           pre_definido();
-        }      
+        }
         else if((x >= 20) && (x <= 400) && (y >= 50) && (y <= 110)) // Controlar individualmente 10, 25, 200, 55
-        { 
+        {
           if(predefinido_t == 1)
           {
-            predefinido_t = 0; 
+            predefinido_t = 0;
           }
           else
           {
-            predefinido_t = 1; 
+            predefinido_t = 1;
           }
           pre_definido();
         }
@@ -3726,7 +3726,7 @@ void processMyTouch()
                   if(m == 0)
                   {
                     wled_out_temp += 1;
-                  } 
+                  }
                   else if(m == 1)
                   {
                     bled_out_temp += 1;
@@ -3759,7 +3759,7 @@ void processMyTouch()
                     if(m == 0)
                     {
                       wled_out_temp -= 1;
-                    } 
+                    }
                     else if(m == 1)
                     {
                       bled_out_temp -= 1;
@@ -3777,17 +3777,17 @@ void processMyTouch()
                       uvled_out_temp -= 1;
                     }
                   }
-                }              
+                }
               }
               pre_definido();
-            }            
-          }     
+            }
+          }
           else // Se predefinido igual a zero. Controlar individualmente.
           {
             if((x >= 420) && (x <= 480) && (y >= 400) && (y <= 460)) // PWM +
             {
               pwm_pre_definido_t += 1;
-              pre_definido(); 
+              pre_definido();
             }
             else if((x >= 560) && (x <= 620) && (y >= 400) && (y <= 460)) // PWM -
             {
@@ -3799,7 +3799,7 @@ void processMyTouch()
       }
       else // Configurar hora
       {
-        if ((x >= 60) && (x <= 110) && (y >= 90) && (y <= 140))           // Hora ligar mais 
+        if ((x >= 60) && (x <= 110) && (y >= 90) && (y <= 140)) // Hora ligar mais
         {
           //waitForIt(60, 90, 110, 140);
           led_on_hora_t += 1;
@@ -3808,19 +3808,19 @@ void processMyTouch()
             led_on_hora_t = 0;
           }
           pre_definido();
-        } 
-        else if ((x >= 60) && (x <= 110) && (y >= 210) && (y <= 260))           // Hora ligar menos
+        }
+        else if ((x >= 60) && (x <= 110) && (y >= 210) && (y <= 260)) // Hora ligar menos
         {
           //waitForIt(60, 210, 110, 260);
           led_on_hora_t -= 1;
-          if(led_on_hora_t > 200) // 0 - 1 = 255 pois, byte varia de  0 a 255. 
+          if(led_on_hora_t > 200) // 0 - 1 = 255 pois, byte varia de 0 a 255.
           {
             led_on_hora_t = 23;
           }
           pre_definido();
-        } 
+        }
 
-        else if ((x >= 200) && (x <= 250) && (y >= 90) && (y <= 140))           // Minuto ligar mais 
+        else if ((x >= 200) && (x <= 250) && (y >= 90) && (y <= 140)) // Minuto ligar mais
         {
           //waitForIt(100, 45, 125, 70);
           led_on_minuto_t += 1;
@@ -3829,18 +3829,18 @@ void processMyTouch()
             led_on_minuto_t = 0;
           }
           pre_definido();
-        } 
-        else if ((x >= 200) && (x <= 250) && (y >= 210) && (y <= 260))           // Minuto ligar menos
+        }
+        else if ((x >= 200) && (x <= 250) && (y >= 210) && (y <= 260)) // Minuto ligar menos
         {
           //waitForIt(200, 210, 250, 260);
           led_on_minuto_t -= 1;
-          if(led_on_minuto_t > 200) // 0 - 1 = 255 pois, byte varia de  0 a 255. 
+          if(led_on_minuto_t > 200) // 0 - 1 = 255 pois, byte varia de 0 a 255.
           {
             led_on_minuto_t = 59;
           }
           pre_definido();
         }
-        else if ((x >= 390) && (x <= 440) && (y >= 90) && (y <= 140))           // Hora desligar mais 
+        else if ((x >= 390) && (x <= 440) && (y >= 90) && (y <= 140)) // Hora desligar mais
         {
           //waitForIt(390, 90, 440, 140);
           led_off_hora_t += 1;
@@ -3849,19 +3849,19 @@ void processMyTouch()
             led_off_hora_t = 0;
           }
           pre_definido();
-        } 
-        else if ((x >= 390) && (x <= 440) && (y >= 210) && (y <= 260))           // Hora desligar menos
+        }
+        else if ((x >= 390) && (x <= 440) && (y >= 210) && (y <= 260)) // Hora desligar menos
         {
           //waitForIt(390, 210, 440, 260);
           led_off_hora_t -= 1;
-          if(led_off_hora_t > 200) // 0 - 1 = 255 pois, byte varia de  0 a 255. 
+          if(led_off_hora_t > 200) // 0 - 1 = 255 pois, byte varia de 0 a 255.
           {
             led_off_hora_t = 23;
           }
           pre_definido();
-        } 
+        }
 
-        else if ((x >= 530) && (x <= 580) && (y >= 90) && (y <= 140))           // Minuto desligar mais 
+        else if ((x >= 530) && (x <= 580) && (y >= 90) && (y <= 140)) // Minuto desligar mais
         {
           //waitForIt(530, 90, 580, 140);
           led_off_minuto_t += 1;
@@ -3870,18 +3870,18 @@ void processMyTouch()
             led_off_minuto_t = 0;
           }
           pre_definido();
-        } 
-        else if ((x >= 530) && (x <= 580) && (y >= 210) && (y <= 260))           // Minuto desligar menos
+        }
+        else if ((x >= 530) && (x <= 580) && (y >= 210) && (y <= 260)) // Minuto desligar menos
         {
           //waitForIt(265, 105, 290, 130);
           led_off_minuto_t -= 1;
-          if(led_off_minuto_t > 200) // 0 - 1 = 255 pois, byte varia de  0 a 255. 
+          if(led_off_minuto_t > 200) // 0 - 1 = 255 pois, byte varia de 0 a 255.
           {
             led_off_minuto_t = 59;
           }
           pre_definido();
         }
-        else if ((x >= 390) && (x <= 440) && (y >= 350) && (y <= 400))           // Amanhecer/anoitecer mais 
+        else if ((x >= 390) && (x <= 440) && (y >= 350) && (y <= 400)) // Amanhecer/anoitecer mais
         {
           //waitForIt(530, 90, 580, 140);
           amanhecer_anoitecer_t += 1;
@@ -3890,8 +3890,8 @@ void processMyTouch()
             amanhecer_anoitecer_t = 60;
           }
           pre_definido();
-        } 
-        else if ((x >= 200) && (x <= 250) && (y >= 350) && (y <= 400))           // Amanhecer/anoitecer menos
+        }
+        else if ((x >= 200) && (x <= 250) && (y >= 350) && (y <= 400)) // Amanhecer/anoitecer menos
         {
           //waitForIt(530, 210, 580, 260);
           amanhecer_anoitecer_t -= 1;
@@ -3901,16 +3901,16 @@ void processMyTouch()
           }
           pre_definido();
         }
-        else if ((x >= iniC[0]) && (x <= iniC[2]) && (y >= iniC[1]) && (y <= iniC[3]))           // PRONTO
+        else if ((x >= iniC[0]) && (x <= iniC[2]) && (y >= iniC[1]) && (y <= iniC[3])) // PRONTO
         {
           //waitForIt(iniC[0], iniC[1], iniC[2], iniC[3]);
           if(((NumMins(led_off_hora_t,led_off_minuto_t) + amanhecer_anoitecer) > 1439) || ((NumMins(led_on_hora_t,led_on_minuto_t) + amanhecer_anoitecer) > 1439))
           {
             setFont(SMALL, 255, 0, 0, 0, 0, 0);
-            strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[255]))); 
+            strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[255])));
             myGLCD.print(buffer, 60, 420); // "SUNSET OR SUNRISE + + DURATION DURATION"
 
-            strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[256]))); 
+            strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[256])));
             myGLCD.print(buffer, 140, 450); // "CAN'T EXCEED MIDNIGHT!"
           }
           else
@@ -3918,15 +3918,10 @@ void processMyTouch()
             clearScreen();
             pre_definido(true);
           }
-        }        
+        }
       }
-      break; 
+      break;
     }
   }
   delay(300);
 }
-
-
-
-
-
