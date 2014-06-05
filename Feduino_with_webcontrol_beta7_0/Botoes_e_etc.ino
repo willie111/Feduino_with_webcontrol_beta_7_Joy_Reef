@@ -1,160 +1,160 @@
 //**********************************************************************************************
 //*********************** BotÃƒÂµes dos menus *****************************************************
 //**********************************************************************************************
-const byte temM[]= {
-  90, 35, 115, 60};           // temp. minus
-const byte temP[]= {
-  205,35,230, 60};            // temp. plus
-const byte offM[]= {
-  90, 85, 115, 110};          // offset minus
-const byte offP[]= {
-  205, 85, 230, 110};         // offset plus
-const byte almM[]= {
-  90, 135, 115, 160};         // alarm minus
-const byte almP[]= {
-  205, 135, 230, 160};        // alarm plus
+const int temM[]= {
+  180, 70, 230, 120};           // temp. minus
+const int temP[]= {
+  410,70,460, 120};             // temp. plus
+const int offM[]= {
+  180, 170, 230, 220};          // offset minus
+const int offP[]= {
+  410, 170, 460, 220};          // offset plus
+const int almM[]= {
+  180, 270, 230, 320};          // alarm minus
+const int almP[]= {
+  410, 270, 460, 320};          // alarm plus
 const int iniC[]= {
-  650, 4, 788, 84};           // home
+  650, 4, 788, 84};             // home
 const int menU[]= {
-  650, 104, 788, 184};        // menu
+  650, 104, 788, 184};          // menu
 const int prOK[]= {
-  650, 400, 788, 476};        // ok
+  650, 400, 788, 476};          // ok
 const int salV[]= {
-  650, 300, 788, 380};        // save 
+  650, 300, 788, 380};          // save 
 const int deS[]= {
   650, 204, 788, 284};
 //const int xxxx[]= {650, 400, 788, 478};
-const byte tanD[]= {
-  20, 30, 255, 70};           // Time $ date
-const byte tesT[]= {
-  20, 80, 255, 120};          // Test LED
-const byte temC[]= {
-  20, 130, 255, 170};         // Temperature 
-const byte graF[]= {
-  20, 180, 255, 220};         // Graphs
+const int tanD[]= {
+  20, 40, 300, 120};            // Time $ date
+const int tesT[]= {
+  20, 140, 300, 220};           // Test LED
+const int temC[]= {
+  20, 240, 300, 320};           // Temperature 
+const int graF[]= {
+  20, 340, 300, 420};           // Graphs
 const int ledW[]= {
-  340, 30, 580, 70};          // Timers
+  340, 40, 620, 120};           // Timers
 
 const int savE[]= {
-  180, 213, 300, 245};         // Save Eeprom
-const byte leWB[]= {
-  5, 213, 90, 245};           // LED values show whites or blues
-const byte leST[]= {
-  100, 213, 170, 245};        // LED values change
+  360, 426, 600, 490};          // Save Eeprom
+const int leWB[]= {
+  10, 426, 180, 490};           // LED values show whites or blues
+const int leST[]= {
+  200, 426, 340, 490};          // LED values change
 
 const int tpaA[]= {
-  340, 80, 580, 120};         // auto-water change
+  340, 140, 620, 220};          // auto-water change
 const int dosA[]= {
-  340, 130, 580, 170};        // dosing pump
+  340, 240, 620, 320};          // dosing pump
 const int wavM[]= {
-  340, 180, 580, 220};        // Wavemaker
+  340, 340, 620, 420};          // Wavemaker
 const int volT[]= {
-  650, 400, 788, 476};        // back
+  650, 400, 788, 476};          // BACK
 const int testT[]= {
-  20, 30, 255, 70};           // Test all leds
+  80, 68, 560, 148};            // TEST ALL lED CHANNELS
 const int testI[]= {
-  340, 30, 580, 70};          // Test individual leds
+  80, 168, 560, 248};           // TEST EACH LED CHANNEL
 //-----------botoes graficos e parametros--------------------
-const byte tempG[]= {
-  20, 30, 255, 70};           // parametro/grafico de temperatura
-const byte phA[]= {
-  20, 80, 255, 120};          // parametro/grafico de ph do aqua
+const int tempG[]= {
+  20, 40, 300, 120};            // parametro/grafico de temperatura
+const int phA[]= {
+  20, 140, 300, 220};           // parametro/grafico de ph do aqua
 const int phR[]= {
-  20, 130, 255, 170};         // parametro/grafico de ph do aqua
-const byte orP[]= {
-  20, 180, 255, 220};         // parametro/grafico de orp
+  20, 240, 300, 320};           // parametro/grafico de ph do aqua
+const int orP[]= {
+  20, 340, 300, 420};           // parametro/grafico de orp
 const int denS[]= {
-  340, 30, 580, 70};          // parametro/grafico de densidade
+  340, 40, 620, 120};           // parametro/grafico de densidade
 //const int []= {340, 75, 580, 110};         
 //const int []= {340, 125, 580, 160};        
 
-const byte manU[]= {
-  20, 30, 255, 70};           // Dosagem manual
-const byte autO[]= {
-  20, 80, 255, 120};          // Dosagem automatica
-const byte perS[]= {
-  20, 80, 255, 120};          // Dosagem personalizada
-const byte reV[]= {
-  20, 130, 255, 170};         // rever cofig. dosagem personalizada
+const int manU[]= {
+  20, 40, 300, 120};            // Dosagem manual
+const int autO[]= {
+  20, 140, 300, 220};           // Dosagem automatica
+const int perS[]= {
+  20, 140, 300, 220};           // Dosagem personalizada
+const int reV[]= {
+  20, 240, 300, 320};           // rever cofig. dosagem personalizada
 const int atiV[]= {
-  340, 30, 580, 70};          // Ativar/desativar dosadoras   
-//const int []= {340, 80, 580, 120};         
-//const int []= {340, 130, 580, 170};          
+  340, 40, 620, 120};           // Ativar/desativar dosadoras   
+//const int []= {340, 140, 620, 220};         
+//const int []= {340, 240, 620, 320};          
 
-const byte dosa1[]= {
-  20, 30, 255, 70};            // Bomba dosadora 1
-const byte dosa2[]= {
-  20, 80, 255, 120};           // Bomba dosadora 2
-const byte dosa3[]= {
-  20, 130, 255, 170};          // Bomba dosadora 3
+const int dosa1[]= {
+  20, 40, 300, 120};           // Bomba dosadora 1
+const int dosa2[]= {
+  20, 140, 300, 220};          // Bomba dosadora 2
+const int dosa3[]= {
+  20, 240, 300, 320};          // Bomba dosadora 3
 const int dosa4[]= {
-  340, 30, 580, 70};           // Bomba dosadora 4
+  340, 40, 620, 120};          // Bomba dosadora 4
 const int dosa5[]= {
-  340, 80, 580, 120};          // Bomba dosadora 5
+  340, 140, 620, 220};         // Bomba dosadora 5
 const int dosa6[]= {
-  340, 130, 580, 170};         // Bomba dosadora 6
+  340, 240, 620, 320};         // Bomba dosadora 6
 //----------------------------------------------------
 
-const byte houU[]= {
-  70, 18, 95, 43};          // hour up
-const byte minU[]= {
-  160, 18, 185, 43};        // min up
-const byte minUT[]= {
-  120, 18, 145, 43};        // minutotpa mais
-const byte minDT[]= {
-  120, 69, 145, 92};        // minutotpa menos
-const byte houD[]= {
-  70, 69, 95, 92};          // hour down
-const byte minD[]= {
-  160, 69, 185, 92};        // min down
-const byte dayU[]= {
-  70, 102, 95, 127};        // day up
-const byte monU[]= {
-  160, 102, 185, 127};      // month up
+const int houU[]= {
+  140, 36, 190, 86};          // hour up
+const int minU[]= {
+  320, 36, 370, 86};          // min up
+const int minUT[]= {
+  240, 36, 290, 86};          // minutotpa mais
+const int minDT[]= {
+  240, 138, 290, 184};        // minutotpa menos
+const int houD[]= {
+  140, 138, 190, 184};        // hour down
+const int minD[]= {
+  320, 138, 370, 184};        // min down
+const int dayU[]= {
+  140, 204, 190, 254};        // day up
+const int monU[]= {
+  320, 204, 370, 254};        // month up
 const int yeaU[]= {
-  250, 102, 275, 127};      // year up
-const byte dayD[]= {
-  70, 152, 95, 177};        // day down
-const byte monD[]= {
-  160, 152, 185, 177};      // month down
+  500, 204, 550, 254};        // year up
+const int dayD[]= {
+  140, 304, 190, 354};        // day down
+const int monD[]= {
+  320, 304, 370, 354};        // month down
 const int yeaD[]= {
-  250, 152, 275, 177};      // year down
-const byte stsT[]= {
-  90, 155, 220, 225};       // start/stop
-const byte tenM[]= {
-  10, 170, 80, 210};        // -10s
+  500, 304, 550, 354};        // year down
+const int stsT[]= {
+  180, 310, 440, 450};        // start/stop
+const int tenM[]= {
+  20, 340, 160, 420};         // -10s
 const int tenP[]= {
-  230, 170, 300, 210};      // +10s
+  460, 340, 600, 420};        // +10s
 const int segC[]= {
-  250, 18, 275, 43};        // segundo para cima
+  500, 36, 550, 86};          //segundo para cima
 const int segB[]= {
-  250, 69, 275, 92};        // segundo para baixo
+  500, 138, 550, 184};        // segundo para baixo
 const int durC[]= {
-  275, 18, 300, 43};        // duracao tpa para cima
+  550, 36, 600, 86};          // duracao tpa para cima
 const int durB[]= {
-  275, 69, 300, 92};        // duracao tpa para baixo
-const byte segU[]= {
-  30, 99, 110, 139};        // Monday
-const byte terC[]= {
-  120, 99, 200, 139};       // Tuesday
+  550, 138, 600, 184};          // duracao tpa para baixo
+const int segU[]= {
+  60, 198, 220, 278};        // Monday
+const int terC[]= {
+  240, 198, 400, 278};       // Tuesday
 const int quaR[]= {
-  210, 99, 290, 139};       // Wednesday
-const byte quiN[]= {
-  30, 146, 110, 186};       // Thursday
-const byte sexT[]= {
-  120, 146, 200, 186};      // Friday
+  420, 198, 580, 278};       // Wednesday
+const int quiN[]= {
+  60, 292, 220, 372};       // Thursday
+const int sexT[]= {
+  240, 292, 400, 372};      // Friday
 const int sabA[]= {
-  210, 146, 290, 186};      // Saturday
-const byte domI[]= {
-  120, 193, 200, 233};      // Sunday
+  420, 292, 580, 372};      // Saturday
+const int domI[]= {
+  240, 386, 400, 466};      // Sunday
 const int caliB[]= {
-  340, 80, 580, 120};       // Probe Calibration
+  340, 340, 620, 420};       // Probe Calibration
 const byte iniciaR[]= {
-  120, 193, 200, 233};      // start calibration
+  240, 386, 400, 466};      // start calibration
 const byte anT[]= {
-  30, 193, 110, 233};       // previous
+  60, 386, 220, 466};       // previous
 const int proX[]= {
-  210, 193, 290, 233};      // next
+  420, 386, 580, 466};      // next
 const int busC[]= {
   400, 60, 600, 130};       // FIND PROBES
 const int sonD1[]= {
@@ -164,51 +164,51 @@ const int sonD2[]= {
 const int sonD3[]= {
   400, 360, 600, 410};      // Probe 3
 const int tempeC[]= {
-  265, 35, 290, 60};        // Temperatura reduzir potÃƒÂªncia +
+  530, 70, 580, 120};       // Temperatura reduzir potÃƒÂªncia +
 const int tempeB[]= {
-  265, 70, 290, 95};        // Temperatura reduzir potÃƒÂªncia -
+  530, 140, 580, 190};      // Temperatura reduzir potÃƒÂªncia -
 const int potC[]= {
-  265, 115, 290, 140};      // Reduzir potÃƒÂªncia + 
+  530, 230, 580, 280};      // Reduzir potÃƒÂªncia + 
 const int potB[]= {
-  265, 150, 290, 175};      // Reduzir potÃƒÂªncia - 
-const byte peRB[]= {
-  35, 145, 70, 185};        // minus  wavemaker
-const byte peRC[]= {        // period/duration buttons
-  200, 145, 235, 185};      // plus  wavemaker
-const byte PoTEB1[]= {
-  35, 115, 70, 155};        // minus wavemaker
-const byte PoTEC1[]= {      // pump 1
-  200, 115, 235, 155};      // plus wavemaker
-const byte PoTEB2[]= {
-  35, 185, 70, 225};        // minus wavemaker
-const byte PoTEC2[]= {      // pump 2
-  200, 185, 235, 225};      // plus wavemaker
+  530, 300, 580, 350};      // Reduzir potÃƒÂªncia - 
+const int peRB[]= {
+  90, 290, 125, 325};        // minus  wavemaker
+const int peRC[]= {        // period/duration buttons
+  255, 290, 290, 325};      // plus  wavemaker
+const int PoTEB1[]= {
+  90, 235, 125, 270};        // minus wavemaker
+const int PoTEC1[]= {      // pump 1
+  255, 235, 290, 270};      // plus wavemaker
+const int PoTEB2[]= {
+  90, 345, 125, 380};        // minus wavemaker
+const int PoTEC2[]= {      // pump 2
+  255, 345, 290, 380};      // plus wavemaker
 
 //----------------botoes solicitacao de senha-------------------------------------------------
-const byte boT1[]= {
-  10, 30, 62, 70};          // 1 button
-const byte boT2[]= {
-  72, 30, 124, 70};         // 2 button
-const byte boT3[]= {
-  134, 30, 186, 70};        // 3 button
-const byte boT4[]= {
-  196, 30, 248, 70};        // 4 button
+const int boT1[]= {
+  20, 40, 124, 120};          // 1 button
+const int boT2[]= {
+  144, 40, 248, 120};         // 2 button
+const int boT3[]= {
+  268, 40, 372, 120};        // 3 button
+const int boT4[]= {
+  392, 40, 496, 120};        // 4 button
 const int boT5[]= {
-  258, 30, 310, 70};        // 5 button
-const byte boT6[]= {
-  10, 80, 62, 120};         // 6 button
-const byte boT7[]= {
-  72, 80, 124, 120};        // 7 button
-const byte boT8[]= {
-  134, 80, 186, 120};       // 8 button
-const byte boT9[]= {
-  196, 80, 248, 120};       // 9 button
+  516, 40, 620, 120};        // 5 button
+const int boT6[]= {
+  20, 140, 124, 220};         // 6 button
+const int boT7[]= {
+  144, 140, 248, 220};        // 7 button
+const int boT8[]= {
+  268, 140, 372, 220};       // 8 button
+const int boT9[]= {
+  392, 140, 496, 220};       // 9 button
 const int boT0[]= {
-  258, 80, 310, 120};       // zero button 
-const byte boTL[]= {
-  10, 130, 155, 170};       // cancel button
+  516, 140, 620, 220};       // zero button 
+const int boTL[]= {
+  20, 240, 310, 320};       // cancel button
 const int boTE[]= {
-  165, 130, 310, 170};      // enter button
+  330, 240, 620, 320};      // enter button
 
 //**********************************************************************************************
 //***************************** function ********************************************************
@@ -229,19 +229,19 @@ void printButton(char* text, int x1, int y1, int x2, int y2, boolean setFont = f
   myGLCD.drawRoundRect (x1, y1, x2, y2);
 
   myGLCD.setBackColor(0, 0, 200);
-    if (setFont) {
+    //if (setFont) {
     myGLCD.setFont(BigFont); 
     fx = x1+(((x2 - x1+1)-(stl*16))/2);
     fy = y1+(((y2 - y1+1)-16)/2);
     myGLCD.print(text, fx, fy);
   }
-    else {
+   /* else {
     myGLCD.setFont(RusFont1); 
     fx = x1+(((x2 - x1)-(stl*8))/2);
     fy = y1+(((y2 - y1-1)-6)/2);
     myGLCD.print(text, fx, fy);
   }
-}
+}*/
 void printButton_verde(char* text, int x1, int y1, int x2, int y2, boolean setFont = false)
 {
   int stl = strlen(text);
@@ -253,19 +253,19 @@ void printButton_verde(char* text, int x1, int y1, int x2, int y2, boolean setFo
   myGLCD.drawRoundRect (x1, y1, x2, y2);
 
   myGLCD.setBackColor(0, 150, 86);
-  if (setFont) {
+  //if (setFont) {
     myGLCD.setFont(BigFont); 
     fx = x1+(((x2 - x1+1)-(stl*16))/2);
     fy = y1+(((y2 - y1+1)-16)/2);
     myGLCD.print(text, fx, fy);
   }
-  else {
+ /* else {
     myGLCD.setFont(RusFont1); 
     fx = x1+(((x2 - x1)-(stl*8))/2);
     fy = y1+(((y2 - y1-1)-6)/2);
     myGLCD.print(text, fx, fy);
   }
-}
+}*/
 void printButton_vermelho(char* text, int x1, int y1, int x2, int y2, boolean setFont = false)
 {
   int stl = strlen(text);
@@ -277,24 +277,24 @@ void printButton_vermelho(char* text, int x1, int y1, int x2, int y2, boolean se
   myGLCD.drawRoundRect (x1, y1, x2, y2);
 
   myGLCD.setBackColor(255, 0, 0);
-  if (setFont) {
+  //if (setFont) {
     myGLCD.setFont(BigFont); 
     fx = x1+(((x2 - x1+1)-(stl*16))/2);
     fy = y1+(((y2 - y1+1)-16)/2);
     myGLCD.print(text, fx, fy);
   }
-  else {
+  /* else {
     myGLCD.setFont(RusFont1); 
     fx = x1+(((x2 - x1)-(stl*8))/2);
     fy = y1+(((y2 - y1-1)-6)/2);
     myGLCD.print(text, fx, fy);
   }
-}
+}*/
 
 void printHeader(char* headline)
 {
   setFont(LARGE, 255, 255, 0, 255, 255, 0);
-  myGLCD.fillRect (1, 1, 638, 20);
+  myGLCD.fillRect (1, 1, 636, 20);
   myGLCD.setColor(0, 0, 0);
   myGLCD.print(headline, 5, 4);   
 }
