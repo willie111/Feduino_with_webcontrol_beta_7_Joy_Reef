@@ -129,12 +129,12 @@ void processMyTouch()
           t_temp.hour = (t_temp.hour+1) %24;
           if (t_temp.hour<10)
           {
-            myGLCD.printNumI(0, 156, 96);
-            myGLCD.printNumI(t_temp.hour, 172, 96);
+            myGLCD.printNumI(0, 152, 102);
+            myGLCD.printNumI(t_temp.hour, 168, 102);
           }
           else
           {
-            myGLCD.printNumI(t_temp.hour, 156, 96);
+            myGLCD.printNumI(t_temp.hour, 152, 102);
           }
         }
         else if ((x>=minU[0]) && (x<=minU[2]))
@@ -143,12 +143,12 @@ void processMyTouch()
           t_temp.min = (t_temp.min +1) %60;
           if (t_temp.min<10)
           {
-            myGLCD.printNumI(0, 336, 96);
-            myGLCD.printNumI(t_temp.min, 352, 96);
+            myGLCD.printNumI(0, 332, 96);
+            myGLCD.printNumI(t_temp.min, 348, 102);
           }
           else
           {
-            myGLCD.printNumI(t_temp.min, 336, 96);
+            myGLCD.printNumI(t_temp.min, 332, 102);
           }
         }
         else if ((x>=segC[0]) && (x<=segC[2]))
@@ -159,12 +159,12 @@ void processMyTouch()
             t_temp.sec=0;
           if (t_temp.sec<10)
           {
-            myGLCD.printNumI(0, 516, 96);
-            myGLCD.printNumI(t_temp.sec, 532, 96);
+            myGLCD.printNumI(0, 512, 96);
+            myGLCD.printNumI(t_temp.sec, 528, 102);
           }
           else
           {
-            myGLCD.printNumI(t_temp.sec, 516, 96);
+            myGLCD.printNumI(t_temp.sec, 512, 102);
           }
         }
       }
@@ -176,12 +176,12 @@ void processMyTouch()
           t_temp.hour =(t_temp.hour + 23)% 24;
           if (t_temp.hour<10)
           {
-            myGLCD.printNumI(0, 156, 96);
-            myGLCD.printNumI(t_temp.hour, 172, 96);
+            myGLCD.printNumI(0, 152, 102);
+            myGLCD.printNumI(t_temp.hour, 168, 102);
           }
           else
           {
-            myGLCD.printNumI(t_temp.hour, 156, 96);
+            myGLCD.printNumI(t_temp.hour, 152, 102);
           }
         }
         else if ((x>=minD[0]) && (x<=minD[2]))
@@ -190,12 +190,12 @@ void processMyTouch()
           t_temp.min =(t_temp.min +59) %60;
           if (t_temp.min<10)
           {
-            myGLCD.printNumI(0, 336, 96);
-            myGLCD.printNumI(t_temp.min, 352, 96);
+            myGLCD.printNumI(0, 332, 102);
+            myGLCD.printNumI(t_temp.min, 348, 102);
           }
           else
           {
-            myGLCD.printNumI(t_temp.min, 336, 96);
+            myGLCD.printNumI(t_temp.min, 332, 102);
           }
         }
         else if ((x>=segB[0]) && (x<=segB[2]))
@@ -204,12 +204,12 @@ void processMyTouch()
           t_temp.sec = (t_temp.sec +59) %60;
           if (t_temp.sec<10)
           {
-            myGLCD.printNumI(0, 516, 96);
-            myGLCD.printNumI(t_temp.sec, 532, 96);
+            myGLCD.printNumI(0, 512, 102);
+            myGLCD.printNumI(t_temp.sec, 528, 102);
           }
           else
           {
-            myGLCD.printNumI(t_temp.sec, 516, 96);
+            myGLCD.printNumI(t_temp.sec, 512, 102);
           }
         }
       }
@@ -223,12 +223,12 @@ void processMyTouch()
           t_temp.date=validateDate(t_temp.date, t_temp.mon, t_temp.year);
           if (t_temp.date<10)
           {
-            myGLCD.printNumI(0, 156, 264);
-            myGLCD.printNumI(t_temp.date, 172, 264);
+            myGLCD.printNumI(0, 152, 268);
+            myGLCD.printNumI(t_temp.date, 168, 268);
           }
           else
           {
-            myGLCD.printNumI(t_temp.date, 156, 264);
+            myGLCD.printNumI(t_temp.date, 152, 268);
           }
         }
         else if ((x>=monU[0]) && (x<=monU[2]))
@@ -241,12 +241,12 @@ void processMyTouch()
           }
           if (t_temp.mon<10)
           {
-            myGLCD.printNumI(0, 336, 264);
-            myGLCD.printNumI(t_temp.mon, 352, 264);
+            myGLCD.printNumI(0, 332, 268);
+            myGLCD.printNumI(t_temp.mon, 348, 268);
           }
           else
           {
-            myGLCD.printNumI(t_temp.mon, 336, 264);
+            myGLCD.printNumI(t_temp.mon, 332, 268);
           }
 
           t_temp.date=validateDateForMonth(t_temp.date, t_temp.mon, t_temp.year);
@@ -257,7 +257,7 @@ void processMyTouch()
           t_temp.year+=1;
           if (t_temp.year==2100)
             t_temp.year=2000;
-          myGLCD.printNumI(t_temp.year, 492, 264);
+          myGLCD.printNumI(t_temp.year, 492, 268);
 
           t_temp.date=validateDateForMonth(t_temp.date, t_temp.mon, t_temp.year);
         }
@@ -272,12 +272,12 @@ void processMyTouch()
           t_temp.date=validateDate(t_temp.date, t_temp.mon, t_temp.year);
           if (t_temp.date<10)
           {
-            myGLCD.printNumI(0, 156, 264);
-            myGLCD.printNumI(t_temp.date, 172, 264);
+            myGLCD.printNumI(0, 152, 268);
+            myGLCD.printNumI(t_temp.date, 168, 268);
           }
           else
           {
-            myGLCD.printNumI(t_temp.date, 156, 264);
+            myGLCD.printNumI(t_temp.date, 152, 268);
           }
         }
         else if ((x>=monD[0]) && (x<=monD[2]))
@@ -290,12 +290,12 @@ void processMyTouch()
           }
           if (t_temp.mon<10)
           {
-            myGLCD.printNumI(0, 336, 264);
-            myGLCD.printNumI(t_temp.mon, 352, 264);
+            myGLCD.printNumI(0, 332, 268);
+            myGLCD.printNumI(t_temp.mon, 348, 268);
           }
           else
           {
-            myGLCD.printNumI(t_temp.mon, 336, 264);
+            myGLCD.printNumI(t_temp.mon, 332, 268);
           }
           t_temp.date=validateDateForMonth(t_temp.date, t_temp.mon, t_temp.year);
         }
@@ -305,7 +305,7 @@ void processMyTouch()
           //waitForIt(yeaD[0], yeaD[1], yeaD[2], yeaD[3]);
           t_temp.year = (t_temp.year +2099) %2100;
 
-          myGLCD.printNumI(t_temp.year, 492, 264);
+          myGLCD.printNumI(t_temp.year, 492, 268);
           t_temp.date=validateDateForMonth(t_temp.date, t_temp.mon, t_temp.year);
         }
         t_temp.dow=calcDOW(t_temp.date, t_temp.mon, t_temp.year);
@@ -3906,7 +3906,7 @@ temp2beS = 40; */ /******************************************************** chan
           //waitForIt(iniC[0], iniC[1], iniC[2], iniC[3]);
           if(((NumMins(led_off_hora_t,led_off_minuto_t) + amanhecer_anoitecer) > 1439) || ((NumMins(led_on_hora_t,led_on_minuto_t) + amanhecer_anoitecer) > 1439))
           {
-            setFont(SMALL, 255, 0, 0, 0, 0, 0);
+            setFont(LARGE, 255, 0, 0, 0, 0, 0);
             strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[255])));
             myGLCD.print(buffer, 60, 420); // "SUNSET OR SUNRISE + + DURATION DURATION"
 
