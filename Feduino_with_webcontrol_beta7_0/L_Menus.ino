@@ -79,55 +79,55 @@ void setClock()
   myGLCD.print(buffer, 20, 268); // "DATE:"
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
-  myGLCD.print(":", 240, 96);
-  myGLCD.print(":", 420, 96);
+  myGLCD.print(":", 240, 102);
+  myGLCD.print(":", 420, 102);
 
   if (t_temp.hour<10)
   {
-    myGLCD.printNumI(0, 156, 96);
-    myGLCD.printNumI(t_temp.hour, 172, 96);
+    myGLCD.printNumI(0, 152, 102);
+    myGLCD.printNumI(t_temp.hour, 168, 102);
   }
   else
   {
-    myGLCD.printNumI(t_temp.hour, 156, 96);
+    myGLCD.printNumI(t_temp.hour, 152, 102);
   }
   if (t_temp.min<10)
   {
-    myGLCD.printNumI(0, 336, 96);
-    myGLCD.printNumI(t_temp.min, 352, 96);
+    myGLCD.printNumI(0, 332, 102);
+    myGLCD.printNumI(t_temp.min, 348, 102);
   }
   else
   {
-    myGLCD.printNumI(t_temp.min, 336, 96);
+    myGLCD.printNumI(t_temp.min, 332, 102);
   }
   if (t_temp.sec<10)
   {
-    myGLCD.printNumI(0, 516, 102);
-    myGLCD.printNumI(t_temp.sec, 532, 96);
+    myGLCD.printNumI(0, 512, 102);
+    myGLCD.printNumI(t_temp.sec, 528, 102);
   }
   else
   {
-    myGLCD.printNumI(t_temp.sec, 516, 96);
+    myGLCD.printNumI(t_temp.sec, 512, 102);
   }
   if (t_temp.date<10)
   {
-    myGLCD.printNumI(0, 156, 264);
-    myGLCD.printNumI(t_temp.date, 172, 264);
+    myGLCD.printNumI(0, 152, 268);
+    myGLCD.printNumI(t_temp.date, 168, 268);
   }
   else
   {
-    myGLCD.printNumI(t_temp.date, 156, 264);
+    myGLCD.printNumI(t_temp.date, 152, 268);
   }
   if (t_temp.mon<10)
   {
-    myGLCD.printNumI(0, 336, 264);
-    myGLCD.printNumI(t_temp.mon, 352, 264);
+    myGLCD.printNumI(0, 332, 268);
+    myGLCD.printNumI(t_temp.mon, 348, 268);
   }
   else
   {
-    myGLCD.printNumI(t_temp.mon, 336, 264);
+    myGLCD.printNumI(t_temp.mon, 332, 268);
   }
-  myGLCD.printNumI(t_temp.year, 492, 264);
+  myGLCD.printNumI(t_temp.year, 492, 268);
 
 }
 
@@ -296,7 +296,7 @@ void tempScreen(boolean refreshAll=false)
     myGLCD.print(buffer, 170, 40); // "DESIRED TEMPERATURE:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[75])));
-    myGLCD.print(buffer, 180, 140); // "ALLOWABLE VARIATION:"
+    myGLCD.print(buffer, 173, 140); // "ALLOWABLE VARIATION:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[76])));
     myGLCD.print(buffer, 100, 240); // "VARIATION TO ACTIVATE ALARM:"
@@ -319,9 +319,9 @@ void tempScreen(boolean refreshAll=false)
   }
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
-  myGLCD.printNumF(temp2beS, 1, 280, 80);
-  myGLCD.printNumF(temp2beO, 1, 280, 180);
-  myGLCD.printNumF(temp2beA, 1, 280, 280);
+  myGLCD.printNumF(temp2beS, 1, 282, 80);
+  myGLCD.printNumF(temp2beO, 1, 285, 180);
+  myGLCD.printNumF(temp2beA, 1, 285, 280);
 }
 void ledSetScreen() //-------------------------------- Alterar valores ----------------------------------- tela =5
 {
@@ -503,17 +503,17 @@ void tpaScreen(boolean refreshAll = false) //-----------------------------------
     printButton("-", durB[0], durB[1], durB[2], durB[3], true); //min down
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
-    myGLCD.print(":", 105, 48);
-    myGLCD.setFont(RusFont1);
+    myGLCD.print(":", 208, 102);
+    myGLCD.setFont(BigFont);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[83])));
-    myGLCD.print(buffer, 10, 51); // "HORA:"
+    myGLCD.print(buffer, 40, 102); // "HORA:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[84])));
-    myGLCD.print(buffer, 157, 31); // "DURACAO MAXIMA"
+    myGLCD.print(buffer, 320, 82); // "DURACAO MAXIMA"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[85])));
-    myGLCD.print(buffer, 170, 46); // "POR ESTAGIO:"
+    myGLCD.print(buffer, 350, 122); // "POR ESTAGIO:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
     printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SALVAR"
@@ -608,31 +608,31 @@ void tpaScreen(boolean refreshAll = false) //-----------------------------------
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
   if (temp2hora < 10)
   {
-    myGLCD.printNumI(0, 70, 48);
-    myGLCD.printNumI(temp2hora, 86, 48);
+    myGLCD.printNumI(0, 150, 102);
+    myGLCD.printNumI(temp2hora, 166, 102);
   }
   else
   {
-    myGLCD.printNumI(temp2hora, 70, 48);
+    myGLCD.printNumI(temp2hora, 150, 102);
   }
 
   if (temp2minuto < 10)
   {
-    myGLCD.printNumI(0, 120, 48);
-    myGLCD.printNumI(temp2minuto, 136, 48);
+    myGLCD.printNumI(0, 250, 102);
+    myGLCD.printNumI(temp2minuto, 266, 102);
   }
   else
   {
-    myGLCD.printNumI(temp2minuto, 120, 48);
+    myGLCD.printNumI(temp2minuto, 250, 102);
   }
   if (temp2duracaomaximatpa < 10)
   {
-    myGLCD.printNumI(0, 275, 48);
-    myGLCD.printNumI(temp2duracaomaximatpa, 291, 48);
+    myGLCD.printNumI(0, 560, 102);
+    myGLCD.printNumI(temp2duracaomaximatpa, 576, 102);
   }
   else
   {
-    myGLCD.printNumI(temp2duracaomaximatpa, 275, 48);
+    myGLCD.printNumI(temp2duracaomaximatpa, 560, 102);
   }
 }
 void menu_dosadoras()//---------------------------------------------tela =8
@@ -1261,8 +1261,8 @@ void rever_dosagem_personalizada_2() // ----------------------------------------
   printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // "VOLTAR"
 
   myGLCD.setColor(161, 127, 73);
-  myGLCD.drawLine(1, 176, 638, 176);
-  myGLCD.drawLine(1, 316, 638, 316);
+  myGLCD.drawLine(2, 176, 638, 176);
+  myGLCD.drawLine(2, 316, 638, 316);
   myGLCD.drawLine(638, 30, 638, 478);
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
@@ -1285,7 +1285,7 @@ void rever_dosagem_personalizada_2() // ----------------------------------------
   myGLCD.print(":", 180, 100);
   myGLCD.print(":", 360, 100);
 
-  myGLCD.printNumF(dose_dosadora_4_personalizada, 1, 550, 100); //PosiÃƒÂ§ÃƒÂ£o correta
+  myGLCD.printNumF(dose_dosadora_4_personalizada, 2, 550, 100); //PosiÃƒÂ§ÃƒÂ£o correta
   myGLCD.printNumI(quantidade_dose_dosadora_4_personalizada, 340, 140);
 
   if(hora_inicial_dosagem_personalizada_4 < 10)
@@ -1295,422 +1295,422 @@ void rever_dosagem_personalizada_2() // ----------------------------------------
   }
   else
   {
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada_4, 72, 50);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada_4, 144, 100);
   }
   if(minuto_inicial_dosagem_personalizada_4 < 10)
   {
-    myGLCD.printNumI(0, 98, 50);
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_4, 106, 50);
+    myGLCD.printNumI(0, 196, 100);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_4, 212, 100);
   }
   else
   {
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_4, 98, 50);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_4, 196, 100);
   }
   if(hora_final_dosagem_personalizada_4 < 10)
   {
-    myGLCD.printNumI(0, 165, 50);
-    myGLCD.printNumI(hora_final_dosagem_personalizada_4, 173, 50);
+    myGLCD.printNumI(0, 330, 100);
+    myGLCD.printNumI(hora_final_dosagem_personalizada_4, 346, 100);
   }
   else
   {
-    myGLCD.printNumI(hora_final_dosagem_personalizada_4, 165, 50);
+    myGLCD.printNumI(hora_final_dosagem_personalizada_4, 330, 100);
   }
   if(minuto_final_dosagem_personalizada_4 < 10)
   {
-    myGLCD.printNumI(0, 188, 50);
-    myGLCD.printNumI(minuto_final_dosagem_personalizada_4, 196, 50);
+    myGLCD.printNumI(0, 376, 100);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada_4, 392, 100);
   }
   else
   {
-    myGLCD.printNumI(minuto_final_dosagem_personalizada_4, 188, 50);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada_4, 376, 100);
   }
   if(segunda_dosagem_personalizada_4 == 1)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-    printButton_verde(buffer, 110, 23, 130, 43);
+    printButton_verde(buffer, 220, 46, 260, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-    printButton(buffer, 110, 23, 130, 43);
+    printButton(buffer, 220, 46, 260, 86);
   }
   if(terca_dosagem_personalizada_4 == 2)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
-    printButton_verde(buffer, 140, 23, 160, 43);
+    printButton_verde(buffer, 280, 46, 320, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
-    printButton(buffer, 140, 23, 160, 43);
+    printButton(buffer, 280, 46, 320, 86);
   }
   if(quarta_dosagem_personalizada_4 == 3)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-    printButton_verde(buffer, 170, 23, 190, 43);
+    printButton_verde(buffer, 340, 46, 380, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-    printButton(buffer, 170, 23, 190, 43);
+    printButton(buffer, 340, 46, 380, 86);
   }
   if(quinta_dosagem_personalizada_4 == 4)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-    printButton_verde(buffer, 200, 23, 220, 43);
+    printButton_verde(buffer, 400, 46, 440, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-    printButton(buffer, 200, 23, 220, 43);
+    printButton(buffer, 400, 46, 440, 86);
   }
   if(sexta_dosagem_personalizada_4 == 5)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-    printButton_verde(buffer, 230, 23, 250, 43);
+    printButton_verde(buffer, 460, 46, 500, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-    printButton(buffer, 230, 23, 250, 43);
+    printButton(buffer, 460, 46, 500, 86);
   }
   if(sabado_dosagem_personalizada_4 == 6)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-    printButton_verde(buffer, 260, 23, 280, 43);
+    printButton_verde(buffer, 520, 46, 560, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-    printButton(buffer, 260, 23, 280, 43);
+    printButton(buffer, 520, 46, 560, 86);
   }
   if(domingo_dosagem_personalizada_4 == 7)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-    printButton_verde(buffer, 290, 23, 310, 43);
+    printButton_verde(buffer, 580, 46, 620, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-    printButton(buffer, 290, 23, 310, 43);
+    printButton(buffer, 580, 46, 620, 86);
   }
   if (modo_personalizado_on_4 == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton_verde(buffer, 200, 65, 245, 85);
+    printButton_verde(buffer, 400, 130, 490, 170);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton(buffer, 200, 65, 245, 85);
+    printButton(buffer, 400, 130, 490, 170);
   }
   if (modo_personalizado_on_4 == false)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-    printButton_verde(buffer, 250, 65, 295, 85);
+    printButton_verde(buffer, 500, 130, 490, 170);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-    printButton(buffer, 250, 65, 295, 85);
+    printButton(buffer, 500, 130, 490, 170);
   }
-  setFont(SMALL, 255, 255, 255, 0, 0, 0);
+  setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[212])));
-  myGLCD.print(buffer, 10, 100);
+  myGLCD.print(buffer, 20, 200);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[118])));
-  myGLCD.print(buffer, 10, 120);
+  myGLCD.print(buffer, 20, 240);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[119])));
-  myGLCD.print(buffer, 118, 120);
+  myGLCD.print(buffer, 236, 240);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[128])));
-  myGLCD.print(buffer, 10, 140);
+  myGLCD.print(buffer, 20, 280);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[121])));
-  myGLCD.print(buffer, 215, 120);
+  myGLCD.print(buffer, 430, 240);
 
-  myGLCD.print(":", 90, 120);
-  myGLCD.print(":", 180, 120);
+  myGLCD.print(":", 180, 240);
+  myGLCD.print(":", 360, 240);
 
-  myGLCD.printNumF(dose_dosadora_5_personalizada, 1, 275, 120);
-  myGLCD.printNumI(quantidade_dose_dosadora_5_personalizada, 170, 140);
+  myGLCD.printNumF(dose_dosadora_5_personalizada, 2, 550, 240);
+  myGLCD.printNumI(quantidade_dose_dosadora_5_personalizada, 340, 280);
 
   if(hora_inicial_dosagem_personalizada_5 < 10)
   {
-    myGLCD.printNumI(0, 72, 120);
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada_5, 80, 120);
+    myGLCD.printNumI(0, 144, 240);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada_5,160, 240);
   }
   else
   {
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada_5, 72, 120);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada_5, 144, 240);
   }
   if(minuto_inicial_dosagem_personalizada_5 < 10)
   {
-    myGLCD.printNumI(0, 98, 120);
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_5, 106, 120);
+    myGLCD.printNumI(0, 196, 240);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_5, 212, 240);
   }
   else
   {
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_5, 98, 120);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_5, 196, 240);
   }
   if(hora_final_dosagem_personalizada_5 < 10)
   {
-    myGLCD.printNumI(0, 165, 120);
-    myGLCD.printNumI(hora_final_dosagem_personalizada_5, 173, 120);
+    myGLCD.printNumI(0, 330, 240);
+    myGLCD.printNumI(hora_final_dosagem_personalizada_5, 346, 240);
   }
   else
   {
-    myGLCD.printNumI(hora_final_dosagem_personalizada_5, 165, 120);
+    myGLCD.printNumI(hora_final_dosagem_personalizada_5, 330, 240);
   }
   if(minuto_final_dosagem_personalizada_5 < 10)
   {
-    myGLCD.printNumI(0, 188, 120);
-    myGLCD.printNumI(minuto_final_dosagem_personalizada_5, 196, 120);
+    myGLCD.printNumI(0, 376, 240);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada_5, 392, 240);
   }
   else
   {
-    myGLCD.printNumI(minuto_final_dosagem_personalizada_5, 188, 120);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada_5, 376, 240);
   }
   if(segunda_dosagem_personalizada_5 == 1)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-    printButton_verde(buffer, 110, 93, 130, 113);
+    printButton_verde(buffer, 220, 186, 260, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-    printButton(buffer, 110, 93, 130, 113);
+    printButton(buffer, 220, 186, 260, 226);
   }
   if(terca_dosagem_personalizada_5 == 2)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
-    printButton_verde(buffer, 140, 93, 160, 113);
+    printButton_verde(buffer, 280, 186, 320, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
-    printButton(buffer, 140, 93, 160, 113);
+    printButton(buffer, 280, 186, 320, 226);
   }
   if(quarta_dosagem_personalizada_5 == 3)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-    printButton_verde(buffer, 170, 93, 190, 113);
+    printButton_verde(buffer, 340, 186, 380, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-    printButton(buffer, 170, 93, 190, 113);
+    printButton(buffer, 340, 186, 380, 226);
   }
   if(quinta_dosagem_personalizada_5 == 4)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-    printButton_verde(buffer, 200, 93, 220, 113);
+    printButton_verde(buffer, 400, 186, 440, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-    printButton(buffer, 200, 93, 220, 113);
+    printButton(buffer, 400, 186, 440, 226);
   }
   if(sexta_dosagem_personalizada_5 == 5)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-    printButton_verde(buffer, 230, 93, 250, 113);
+    printButton_verde(buffer, 460, 186, 500, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-    printButton(buffer, 230, 93, 250, 113);
+    printButton(buffer, 460, 186, 500, 226);
   }
   if(sabado_dosagem_personalizada_5 == 6)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-    printButton_verde(buffer, 260, 93, 280, 113);
+    printButton_verde(buffer, 520, 186, 560, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-    printButton(buffer, 260, 93, 280, 113);
+    printButton(buffer, 520, 186, 560, 226);
   }
   if(domingo_dosagem_personalizada_5 == 7)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-    printButton_verde(buffer, 290, 93, 310, 113);
+    printButton_verde(buffer, 580, 186, 620, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-    printButton(buffer, 290, 93, 310, 113);
+    printButton(buffer, 580, 186, 620, 226);
   }
   if (modo_personalizado_on_5 == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton_verde(buffer, 200, 135, 245, 155);
+    printButton_verde(buffer, 400, 270, 490, 310);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton(buffer, 200, 135, 245, 155);
+    printButton(buffer, 400, 270, 490, 310);
   }
   if (modo_personalizado_on_5 == false)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-    printButton_verde(buffer, 250, 135, 295, 155);
+    printButton_verde(buffer, 500, 270, 490, 310);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-    printButton(buffer, 250, 135, 295, 155);
+    printButton(buffer, 500, 270, 490, 310);
   }
-  setFont(SMALL, 255, 255, 255, 0, 0, 0);
+  setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[213])));
-  myGLCD.print(buffer, 10, 170);
+  myGLCD.print(buffer, 20, 340);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[118])));
-  myGLCD.print(buffer, 10, 190);
+  myGLCD.print(buffer, 20, 380);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[119])));
-  myGLCD.print(buffer, 118, 190);
+  myGLCD.print(buffer, 236, 380);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[128])));
-  myGLCD.print(buffer, 10, 210); // tabela_textos[128] = "QUANTIDADE DE DOSES:"
+  myGLCD.print(buffer, 20, 420); // tabela_textos[128] = "QUANTIDADE DE DOSES:"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[121])));
-  myGLCD.print(buffer, 215, 190);
+  myGLCD.print(buffer, 430, 380);
 
-  myGLCD.print(":", 90, 190);
-  myGLCD.print(":", 180, 190);
+  myGLCD.print(":", 180, 380);
+  myGLCD.print(":", 360, 380);
 
-  myGLCD.printNumF(dose_dosadora_6_personalizada, 1, 275, 190);
-  myGLCD.printNumI(quantidade_dose_dosadora_6_personalizada, 170, 210);
+  myGLCD.printNumF(dose_dosadora_6_personalizada, 2, 550, 380);
+  myGLCD.printNumI(quantidade_dose_dosadora_6_personalizada, 340, 420);
 
   if(hora_inicial_dosagem_personalizada_6 < 10)
   {
-    myGLCD.printNumI(0, 72, 190);
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada_6, 80, 190);
+    myGLCD.printNumI(0, 144, 380);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada_6, 160, 380);
   }
   else
   {
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada_6, 72, 190);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada_6, 144, 380);
   }
   if(minuto_inicial_dosagem_personalizada_6 < 10)
   {
-    myGLCD.printNumI(0, 98, 190);
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_6, 106, 190);
+    myGLCD.printNumI(0, 196, 380);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_6, 212, 380);
   }
   else
   {
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_6, 98, 190);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_6, 196, 380);
   }
   if(hora_final_dosagem_personalizada_6 < 10)
   {
-    myGLCD.printNumI(0, 165, 190);
-    myGLCD.printNumI(hora_final_dosagem_personalizada_6, 173, 190);
+    myGLCD.printNumI(0, 330, 380);
+    myGLCD.printNumI(hora_final_dosagem_personalizada_6, 346, 380);
   }
   else
   {
-    myGLCD.printNumI(hora_final_dosagem_personalizada_6, 165, 190);
+    myGLCD.printNumI(hora_final_dosagem_personalizada_6, 330, 380);
   }
   if(minuto_final_dosagem_personalizada_6 < 10)
   {
-    myGLCD.printNumI(0, 188, 190);
-    myGLCD.printNumI(minuto_final_dosagem_personalizada_6, 196, 190);
+    myGLCD.printNumI(0, 376, 380);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada_6, 392, 380);
   }
   else
   {
-    myGLCD.printNumI(minuto_final_dosagem_personalizada_6, 188, 190);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada_6, 376, 380);
   }
   if(segunda_dosagem_personalizada_6 == 1)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-    printButton_verde(buffer, 110, 163, 130, 183);
+    printButton_verde(buffer, 220, 326, 260, 366);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-    printButton(buffer, 110, 163, 130, 183);
+    printButton(buffer, 220, 326, 260, 366);
   }
   if(terca_dosagem_personalizada_6 == 2)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
-    printButton_verde(buffer, 140, 163, 160, 183);
+    printButton_verde(buffer, 280, 326, 320, 366);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
-    printButton(buffer, 140, 163, 160, 183);
+    printButton(buffer, 280, 326, 320, 366);
   }
   if(quarta_dosagem_personalizada_6 == 3)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-    printButton_verde(buffer, 170, 163, 190, 183);
+    printButton_verde(buffer, 340, 326, 380, 366);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-    printButton(buffer, 170, 163, 190, 183);
+    printButton(buffer, 340, 326, 380, 366);
   }
   if(quinta_dosagem_personalizada_6 == 4)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-    printButton_verde(buffer, 200, 163, 220, 183);
+    printButton_verde(buffer, 400, 326, 440, 366);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-    printButton(buffer, 200, 163, 220, 183);
+    printButton(buffer, 400, 326, 440, 366);
   }
   if(sexta_dosagem_personalizada_6 == 5)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-    printButton_verde(buffer, 230, 163, 250, 183);
+    printButton_verde(buffer, 460, 326, 500, 366);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-    printButton(buffer, 230, 163, 250, 183);
+    printButton(buffer, 460, 326, 500, 366);
   }
   if(sabado_dosagem_personalizada_6 == 6)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-    printButton_verde(buffer, 260, 163, 280, 183);
+    printButton_verde(buffer, 520, 326, 560, 366);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-    printButton(buffer, 260, 163, 280, 183);
+    printButton(buffer, 520, 326, 560, 366);
   }
   if(domingo_dosagem_personalizada_6 == 7)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-    printButton_verde(buffer, 290, 163, 310, 183);
+    printButton_verde(buffer, 580, 326, 620, 366);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-    printButton(buffer, 290, 163, 310, 183);
+    printButton(buffer, 580, 326, 620, 366);
   }
   if (modo_personalizado_on_6 == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton_verde(buffer, 200, 205, 245, 225);
+    printButton_verde(buffer, 400, 410, 490, 450);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton(buffer, 200, 205, 245, 225);
+    printButton(buffer, 400, 410, 490, 450);
   }
   if (modo_personalizado_on_6 == false)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-    printButton_verde(buffer, 250, 205, 295, 225);
+    printButton_verde(buffer, 500, 410, 490, 450);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-    printButton(buffer, 250, 205, 295, 225);
+    printButton(buffer, 500, 410, 490, 450);
   }
 }
 //---------------------------------------------Desativar dosadoras--------------------------------tela =24
@@ -1757,36 +1757,36 @@ void desativar_dosadoras_2(boolean refreshAll = false)
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
     printButton(buffer, volT[0], volT[1], volT[2], volT[3]);
 
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[211])));
-    myGLCD.print(buffer, 120, 30);
+    myGLCD.print(buffer, 240, 60);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[212])));
-    myGLCD.print(buffer, 120, 100);
+    myGLCD.print(buffer, 240, 200);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[213])));
-    myGLCD.print(buffer, 120, 170);
+    myGLCD.print(buffer, 240, 340);
 
-    setFont(SMALL, 255, 0, 0, 0, 0, 0);
+    setFont(LARGE, 255, 0, 0, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[141])));
-    myGLCD.print(buffer, 230, 60); //tabela_textos[141] = "USE ESTA"
+    myGLCD.print(buffer, 460, 120); //tabela_textos[141] = "USE ESTA"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[142])));
-    myGLCD.print(buffer, 230, 75); //tabela_textos[141] = "FUNCAO"
+    myGLCD.print(buffer, 460, 150); //tabela_textos[141] = "FUNCAO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[143])));
-    myGLCD.print(buffer, 230, 90); // tabela_textos[143] = "APENAS PARA"
+    myGLCD.print(buffer, 460, 180); // tabela_textos[143] = "APENAS PARA"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[144])));
-    myGLCD.print(buffer, 230, 105); //tabela_textos[144] = "DESATIVAR"
+    myGLCD.print(buffer, 460, 210); //tabela_textos[144] = "DESATIVAR"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[145])));
-    myGLCD.print(buffer, 230, 120); // tabela_textos[145] = "OS MODOS"
+    myGLCD.print(buffer, 460, 240); // tabela_textos[145] = "OS MODOS"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[146])));
-    myGLCD.print(buffer, 230, 135); // tabela_textos[146] = "DE DOSAGEM."
+    myGLCD.print(buffer, 460, 270); // tabela_textos[146] = "DE DOSAGEM."
   }
   if (bitRead(ativar_desativar,4) == true)
   {
@@ -1794,122 +1794,122 @@ void desativar_dosadoras_2(boolean refreshAll = false)
     printButton_verde(buffer, 100, 45, 220, 85); // tabela_textos[147]
 
     myGLCD.setColor(0, 0, 0);
-    myGLCD.fillRect (3, 26, 114, 43);
-    myGLCD.fillRect (3, 45, 95, 61);
-    myGLCD.fillRect (3, 60, 95, 76);
-    myGLCD.fillRect (3, 75, 95, 91);
+    myGLCD.fillRect (6, 52, 228, 86);
+    myGLCD.fillRect (6, 90, 190, 122);
+    myGLCD.fillRect (6, 120, 190, 152);
+    myGLCD.fillRect (3, 75, 190, 182);
 
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[149])));
-    myGLCD.print(buffer, 10, 30); // tabela_textos[149] = "UM DOS MODOS"
+    myGLCD.print(buffer, 20, 60); // tabela_textos[149] = "UM DOS MODOS"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 10, 45); // tabela_textos[150] = "DE DOSAGEM "
+    myGLCD.print(buffer, 20, 90); // tabela_textos[150] = "DE DOSAGEM "
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[151])));
-    myGLCD.print(buffer, 10, 60); // tabela_textos[151] = "ESTA:"
+    myGLCD.print(buffer, 20, 120); // tabela_textos[151] = "ESTA:"
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[152])));
-    printButton(buffer, 100, 45, 220, 85);
+    printButton(buffer, 200, 90, 440, 170);
 
-    setFont(SMALL, 255, 255, 0, 0, 0, 0);
+    setFont(LARGE, 255, 255, 0, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[153])));
-    myGLCD.print(buffer, 3, 30);
+    myGLCD.print(buffer, 6, 60);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 3, 45);
+    myGLCD.print(buffer, 6, 90);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[154])));
-    myGLCD.print(buffer, 3, 60);
+    myGLCD.print(buffer, 6, 120);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[155])));
-    myGLCD.print(buffer, 3, 75);
+    myGLCD.print(buffer, 6, 150);
   }
   if (bitRead(ativar_desativar,5) == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[147])));
-    printButton_verde(buffer, 100, 115, 220, 155);
+    printButton_verde(buffer, 200, 230, 440, 310);
 
     myGLCD.setColor(0, 0, 0);
-    myGLCD.fillRect (3, 96, 117, 113);
-    myGLCD.fillRect (3, 115, 95, 131);
-    myGLCD.fillRect (3, 130, 95, 146);
+    myGLCD.fillRect (6, 192, 234, 226);
+    myGLCD.fillRect (6, 230, 190, 262);
+    myGLCD.fillRect (6, 260, 190, 292);
     myGLCD.fillRect (3, 145, 95, 161);
 
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[149])));
-    myGLCD.print(buffer, 10, 100); // tabela_textos[149] = "UM DOS MODOS"
+    myGLCD.print(buffer, 20, 200); // tabela_textos[149] = "UM DOS MODOS"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 10, 115); // tabela_textos[150] = "DE DOSAGEM "
+    myGLCD.print(buffer, 20, 230); // tabela_textos[150] = "DE DOSAGEM "
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[151])));
-    myGLCD.print(buffer, 10, 130); // tabela_textos[151] = "ESTA:"
+    myGLCD.print(buffer, 20, 260); // tabela_textos[151] = "ESTA:"
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[152])));
-    printButton(buffer, 100, 115, 220, 155); // tabela_textos[152]
+    printButton(buffer, 200, 230, 440, 310); // tabela_textos[152]
 
-    setFont(SMALL, 255, 255, 0, 0, 0, 0);
+    setFont(LARGE, 255, 255, 0, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[153])));
-    myGLCD.print(buffer, 3, 100); // tabela_textos[153] = "AMBOS OS MODOS"
+    myGLCD.print(buffer, 6, 200); // tabela_textos[153] = "AMBOS OS MODOS"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 3, 115); //tabela_textos[150] = "DE DOSAGEM "
+    myGLCD.print(buffer, 6, 230); //tabela_textos[150] = "DE DOSAGEM "
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[154])));
-    myGLCD.print(buffer, 3, 130); // tabela_textos[154] = "ESTAO OU"
+    myGLCD.print(buffer, 6, 260); // tabela_textos[154] = "ESTAO OU"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[155])));
-    myGLCD.print(buffer, 3, 145); // tabela_textos[155] = "SERAO:"
+    myGLCD.print(buffer, 6, 290); // tabela_textos[155] = "SERAO:"
   }
   if (bitRead(ativar_desativar,6) == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[147])));
-    printButton_verde(buffer, 100, 185, 220, 225);
+    printButton_verde(buffer, 100, 370, 440, 450);
 
     myGLCD.setColor(0, 0, 0);
-    myGLCD.fillRect (3, 166, 117, 183);
-    myGLCD.fillRect (3, 185, 95, 201);
-    myGLCD.fillRect (3, 200, 95, 216);
-    myGLCD.fillRect (3, 215, 95, 231);
+    myGLCD.fillRect (6, 332, 234, 183);
+    myGLCD.fillRect (6, 370, 190, 402);
+    myGLCD.fillRect (6, 400, 190, 432);
+    myGLCD.fillRect (6, 430, 190, 462);
 
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[149])));
-    myGLCD.print(buffer, 10, 170);
+    myGLCD.print(buffer, 20, 340);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 10, 185);
+    myGLCD.print(buffer, 20, 370);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[151])));
-    myGLCD.print(buffer, 10, 200);
+    myGLCD.print(buffer, 20, 400);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[152])));
-    printButton(buffer, 100, 185, 220, 225);
+    printButton(buffer, 200, 370, 440, 450);
 
-    setFont(SMALL, 255, 255, 0, 0, 0, 0);
+    setFont(LARGE, 255, 255, 0, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[153])));
-    myGLCD.print(buffer, 3, 170);
+    myGLCD.print(buffer, 6, 340);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 3, 185);
+    myGLCD.print(buffer, 6, 370);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[154])));
-    myGLCD.print(buffer, 3, 200);
+    myGLCD.print(buffer, 6, 400);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[155])));
-    myGLCD.print(buffer, 3, 215);
+    myGLCD.print(buffer, 6, 430);
   }
 }
 //---------------------------------------- OpÃƒÂ§ÃƒÂµes de teste dos leds ---------------------- tela =25
@@ -1959,65 +1959,65 @@ void calibrar_dosadoras(boolean refreshAll=false)
     printButton("+", almP[0], almP[1], almP[2], almP[3], true); //alarm plus
 
     myGLCD.setColor(255, 255, 255);
-    myGLCD.drawRect(20, 50, 310, 125);
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);
+    myGLCD.drawRect(40, 100, 620, 250);
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[105])));
-    myGLCD.print(buffer, 30, 55); // "COLOQUE O RECIPIENTE SOB O BICO"
+    myGLCD.print(buffer, 60, 110); // "COLOQUE O RECIPIENTE SOB O BICO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[106])));
-    myGLCD.print(buffer, 30, 70); // "DOSADOR E CLIQUE EM INICIAR."
+    myGLCD.print(buffer, 60, 140); // "DOSADOR E CLIQUE EM INICIAR."
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[107])));
-    myGLCD.print(buffer, 30, 85); // "EM SEGUIDA INSIRA O VALOR OBTIDO"
+    myGLCD.print(buffer, 60, 170); // "EM SEGUIDA INSIRA O VALOR OBTIDO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[108])));
-    myGLCD.print(buffer, 30, 100); // "EM ML NO CAMPO ABAIXO."
+    myGLCD.print(buffer, 60, 200); // "EM ML NO CAMPO ABAIXO."
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[109])));
-    myGLCD.print(buffer, 5, 165); // "PARA MELHORES RESULTADOS REPITA O TESTE"
+    myGLCD.print(buffer, 10, 330); // "PARA MELHORES RESULTADOS REPITA O TESTE"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[110])));
-    myGLCD.print(buffer, 35, 177); // "ALGUMAS VEZES E USE UMA MEDIA."
+    myGLCD.print(buffer, 70, 354); // "ALGUMAS VEZES E USE UMA MEDIA."
   }
   myGLCD.setColor(0, 0, 0);
-  myGLCD.fillRect(117, 135, 203, 160);
+  myGLCD.fillRect(234, 270, 406, 320);
 
   if(modo_calibrar == true)
   {
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
-    myGLCD.printNumF(fator_calib_dosadora[dosadora_selecionada],1, 130, 140);
+    myGLCD.printNumF(fator_calib_dosadora[dosadora_selecionada],2, 260, 280);
 
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
     if(dosadora_selecionada == 0)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[111])));
-      myGLCD.print(buffer, 80, 30); // tabela_textos[111] = "DOSADORA 1 SELECIONADA"
+      myGLCD.print(buffer, 160, 60); // tabela_textos[111] = "DOSADORA 1 SELECIONADA"
     }
     if(dosadora_selecionada == 1)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[112])));
-      myGLCD.print(buffer, 80, 30); // tabela_textos[112] = "DOSADORA 2 SELECIONADA"
+      myGLCD.print(buffer, 160, 60); // tabela_textos[112] = "DOSADORA 2 SELECIONADA"
     }
     if(dosadora_selecionada == 2)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[113])));
-      myGLCD.print(buffer, 80, 30); // tabela_textos[113] = "DOSADORA 3 SELECIONADA"
+      myGLCD.print(buffer, 160, 60); // tabela_textos[113] = "DOSADORA 3 SELECIONADA"
     }
     if(dosadora_selecionada == 3)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[207])));
-      myGLCD.print(buffer, 80, 30); // tabela_textos[207] = "DOSADORA 4 SELECIONADA"
+      myGLCD.print(buffer, 160, 60); // tabela_textos[207] = "DOSADORA 4 SELECIONADA"
     }
     if(dosadora_selecionada == 4)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[208])));
-      myGLCD.print(buffer, 80, 30); // tabela_textos[208] = "DOSADORA 5 SELECIONADA"
+      myGLCD.print(buffer, 160, 60); // tabela_textos[208] = "DOSADORA 5 SELECIONADA"
     }
     if(dosadora_selecionada == 5)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[209])));
-      myGLCD.print(buffer, 80, 30); // tabela_textos[209] = "DOSADORA 6 SELECIONADA"
+      myGLCD.print(buffer, 160, 60); // tabela_textos[209] = "DOSADORA 6 SELECIONADA"
     }
   }
 }
@@ -2044,59 +2044,59 @@ void config_dosagem_manual(boolean refreshAll=false) // ----------tela =27
     myGLCD.setColor(255, 255, 255);
     myGLCD.drawRect(20, 50, 310, 125);
 
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[114])));
-    myGLCD.print(buffer, 30, 55); // "SELECIONE O VOLUME A SER DOSADO"
+    myGLCD.print(buffer, 60, 110); // "SELECIONE O VOLUME A SER DOSADO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[115])));
-    myGLCD.print(buffer, 30, 70); // "EM ML NO CAMPO ABAIXO E"
+    myGLCD.print(buffer, 60, 140); // "EM ML NO CAMPO ABAIXO E"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[116])));
-    myGLCD.print(buffer, 30, 85); // "EM SEGUIDA TOQUE EM INICIAR."
+    myGLCD.print(buffer, 60, 170); // "EM SEGUIDA TOQUE EM INICIAR."
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[117])));
-    myGLCD.print(buffer, 30, 100); // "A DOSAGEM INICIARA EM 10 SEGUNDOS"
+    myGLCD.print(buffer, 60, 200); // "A DOSAGEM INICIARA EM 10 SEGUNDOS"
   }
   myGLCD.setColor(0, 0, 0);
-  myGLCD.fillRect(117, 135, 203, 160);
+  myGLCD.fillRect(234, 270, 406, 320);
 
   if(modo_manual == true)
   {
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
-    myGLCD.printNumF(dose_dosadora_manual[dosadora_selecionada],1, 130, 140);
+    myGLCD.printNumF(dose_dosadora_manual[dosadora_selecionada],2, 260, 280);
 
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     if(dosadora_selecionada == 0)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[111])));
-      myGLCD.print(buffer, 80, 30); // tabela_textos[111] = "DOSADORA 1 SELECIONADA"
+      myGLCD.print(buffer, 160, 60); // tabela_textos[111] = "DOSADORA 1 SELECIONADA"
     }
     if(dosadora_selecionada == 1)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[112])));
-      myGLCD.print(buffer, 80, 30); // tabela_textos[112] = "DOSADORA 2 SELECIONADA"
+      myGLCD.print(buffer, 160, 60); // tabela_textos[112] = "DOSADORA 2 SELECIONADA"
     }
     if(dosadora_selecionada == 2)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[113])));
-      myGLCD.print(buffer, 80, 30); // tabela_textos[113] = "DOSADORA 3 SELECIONADA"
+      myGLCD.print(buffer, 160, 60); // tabela_textos[113] = "DOSADORA 3 SELECIONADA"
     }
     if(dosadora_selecionada == 3)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[207])));
-      myGLCD.print(buffer, 80, 30); // tabela_textos[207] = "DOSADORA 4 SELECIONADA"
+      myGLCD.print(buffer, 160, 60); // tabela_textos[207] = "DOSADORA 4 SELECIONADA"
     }
     if(dosadora_selecionada == 4)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[208])));
-      myGLCD.print(buffer, 80, 30); // tabela_textos[208] = "DOSADORA 5 SELECIONADA"
+      myGLCD.print(buffer, 160, 60); // tabela_textos[208] = "DOSADORA 5 SELECIONADA"
     }
     if(dosadora_selecionada == 5)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[209])));
-      myGLCD.print(buffer, 80, 30); // tabela_textos[209] = "DOSADORA 6 SELECIONADA"
+      myGLCD.print(buffer, 160, 60); // tabela_textos[209] = "DOSADORA 6 SELECIONADA"
     }
   }
 }
@@ -2149,15 +2149,15 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
     printButton("-", minDT[0]+155, minDT[1], minDT[2]+155, minDT[3], true); //minuto menos
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
-    myGLCD.print(":", 105, 48);
-    myGLCD.print(":", 105 + 155, 48);
-    myGLCD.setFont(RusFont1);
+    myGLCD.print(":", 210, 96);
+    myGLCD.print(":", 210 + 310, 96);
+    myGLCD.setFont(BigFont);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[118])));
-    myGLCD.print(buffer, 5, 51);
+    myGLCD.print(buffer, 10, 102);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[119])));
-    myGLCD.print(buffer, 172, 51);
+    myGLCD.print(buffer, 344, 102);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[135])));
     printButton(buffer, proX[0], proX[1], proX[2], proX[3]); // "PROXIMO"
@@ -2246,77 +2246,77 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
   if (hora_inicial_dosagem_personalizada[dosadora_selecionada] < 10)
   {
-    myGLCD.printNumI(0, 70, 48);
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada[dosadora_selecionada], 86, 48);
+    myGLCD.printNumI(0, 140, 96);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada[dosadora_selecionada], 172, 96);
   }
   else
   {
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada[dosadora_selecionada], 70, 48);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada[dosadora_selecionada], 140, 96);
   }
 
   if (minuto_inicial_dosagem_personalizada[dosadora_selecionada] < 10)
   {
-    myGLCD.printNumI(0, 120, 48);
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada[dosadora_selecionada], 136, 48);
+    myGLCD.printNumI(0, 240, 96);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada[dosadora_selecionada], 272, 96);
   }
   else
   {
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada[dosadora_selecionada], 120, 48);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada[dosadora_selecionada], 240, 96);
   }
   if (hora_final_dosagem_personalizada[dosadora_selecionada] < 10)
   {
-    myGLCD.printNumI(0, 70 + 155, 48);
-    myGLCD.printNumI(hora_final_dosagem_personalizada[dosadora_selecionada], 86 + 155, 48);
+    myGLCD.printNumI(0, 140 + 310, 96);
+    myGLCD.printNumI(hora_final_dosagem_personalizada[dosadora_selecionada], 172 + 310, 96);
   }
   else
   {
-    myGLCD.printNumI(hora_final_dosagem_personalizada[dosadora_selecionada], 70 + 155, 48);
+    myGLCD.printNumI(hora_final_dosagem_personalizada[dosadora_selecionada], 140 + 310, 96);
   }
 
   if (minuto_final_dosagem_personalizada[dosadora_selecionada] < 10)
   {
-    myGLCD.printNumI(0, 120 + 155, 48);
-    myGLCD.printNumI(minuto_final_dosagem_personalizada[dosadora_selecionada], 136 + 155, 48);
+    myGLCD.printNumI(0, 240 + 310, 96);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada[dosadora_selecionada], 272 + 310, 96);
   }
   else
   {
-    myGLCD.printNumI(minuto_final_dosagem_personalizada[dosadora_selecionada], 120 + 155, 48);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada[dosadora_selecionada], 240 + 310, 96);
   }
 
-  setFont(SMALL, 255, 255, 255, 0, 0, 0);
+  setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
   if(dosadora_selecionada == 0)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[102])));
-    myGLCD.print(buffer, 10, 198); // "DOSADORA 1"; // tabela_textos[102]
+    myGLCD.print(buffer, 20, 396); // "DOSADORA 1"; // tabela_textos[102]
   }
   else if(dosadora_selecionada == 1)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[103])));
-    myGLCD.print(buffer, 10, 198); // "DOSADORA 2"; // tabela_textos[103]
+    myGLCD.print(buffer, 20, 396); // "DOSADORA 2"; // tabela_textos[103]
   }
   else if(dosadora_selecionada == 2)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[104])));
-    myGLCD.print(buffer, 10, 198); // "DOSADORA 3"; // tabela_textos[104]
+    myGLCD.print(buffer, 20, 396); // "DOSADORA 3"; // tabela_textos[104]
   }
   else if(dosadora_selecionada == 3)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[204])));
-    myGLCD.print(buffer, 10, 198); // "DOSADORA 4"; // tabela_textos[204]
+    myGLCD.print(buffer, 20, 396); // "DOSADORA 4"; // tabela_textos[204]
   }
   else if(dosadora_selecionada == 4)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[205])));
-    myGLCD.print(buffer, 10, 198); // "DOSADORA 5"; // tabela_textos[205]
+    myGLCD.print(buffer, 20, 396); // "DOSADORA 5"; // tabela_textos[205]
   }
   else if(dosadora_selecionada == 5)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[206])));
-    myGLCD.print(buffer, 10, 198); // "DOSADORA 6"; // tabela_textos[206]
+    myGLCD.print(buffer, 20, 396); // "DOSADORA 6"; // tabela_textos[206]
   }
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[125])));
-  myGLCD.print(buffer, 10, 218); // "SELECIONADA"; // tabela_textos[125]
+  myGLCD.print(buffer, 20, 436); // "SELECIONADA"; // tabela_textos[125]
 
 }
 
@@ -2377,65 +2377,65 @@ void config_dosagem_personalizada_2(boolean refreshAll=false) // ----------tela 
     myGLCD.setFont(RusFont1);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[120])));
-    myGLCD.print(buffer, 10, 31); // "SELECIONE O"
+    myGLCD.print(buffer, 20, 62); // "SELECIONE O"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[121])));
-    myGLCD.print(buffer, 10, 55); // "VOLUME "
+    myGLCD.print(buffer, 20, 110); // "VOLUME "
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[122])));
-    myGLCD.print(buffer, 10, 75); // "(ML/DIA):"
+    myGLCD.print(buffer, 20, 150); // "(ML/DIA):"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[123])));
-    myGLCD.print(buffer, 190, 46); // "QUANTIDADE"
+    myGLCD.print(buffer, 380, 92); // "QUANTIDADE"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[124])));
-    myGLCD.print(buffer, 190, 61); // "DE DOSES:"
+    myGLCD.print(buffer, 380, 122); // "DE DOSES:"
   }
 
   if (modo_personalizado == true)
   {
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
-    myGLCD.printNumF(dose_dosadora_personalizada[dosadora_selecionada], 1, 100, 48);
+    myGLCD.printNumF(dose_dosadora_personalizada[dosadora_selecionada], 2, 200, 96);
     if (quantidade_dose_dosadora_personalizada[dosadora_selecionada] < 10)
     {
-      myGLCD.printNumI(0, 275, 48);
-      myGLCD.printNumI(quantidade_dose_dosadora_personalizada[dosadora_selecionada], 291, 48);
+      myGLCD.printNumI(0, 550, 96);
+      myGLCD.printNumI(quantidade_dose_dosadora_personalizada[dosadora_selecionada], 582, 96);
     }
     else
     {
-      myGLCD.printNumI(quantidade_dose_dosadora_personalizada[dosadora_selecionada], 275, 48);
+      myGLCD.printNumI(quantidade_dose_dosadora_personalizada[dosadora_selecionada], 550, 96);
     }
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     if(dosadora_selecionada == 0)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[111])));
-      myGLCD.print(buffer, 125, 213);
+      myGLCD.print(buffer, 250, 426);
     }
     else if(dosadora_selecionada == 1)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[112])));
-      myGLCD.print(buffer, 125, 213);
+      myGLCD.print(buffer, 250, 426);
     }
     else if(dosadora_selecionada == 2)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[113])));
-      myGLCD.print(buffer, 125, 213);
+      myGLCD.print(buffer, 250, 426);
     }
     else if(dosadora_selecionada == 3)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[207])));
-      myGLCD.print(buffer, 125, 213);
+      myGLCD.print(buffer, 250, 426);
     }
     else if(dosadora_selecionada == 4)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[208])));
-      myGLCD.print(buffer, 125, 213);
+      myGLCD.print(buffer, 250, 426);
     }
     else if(dosadora_selecionada == 5)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[209])));
-      myGLCD.print(buffer, 125, 213);
+      myGLCD.print(buffer, 250, 426);
     }
     if (modo_personalizado_on[dosadora_selecionada] == 1)
     {
@@ -2485,456 +2485,456 @@ void rever_dosagem_personalizada() // ------------------------------------------
   printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // "VOLTAR"
 
   myGLCD.setColor(161, 127, 73);
-  myGLCD.drawLine(1, 88, 319, 88);
-  myGLCD.drawLine(1, 158, 319, 158);
-  myGLCD.drawLine(319, 15, 319, 239);
+  myGLCD.drawLine(2, 176, 638, 176);
+  myGLCD.drawLine(2, 316, 638, 316);
+  myGLCD.drawLine(638, 30, 638, 478);
 
-  setFont(SMALL, 255, 255, 255, 0, 0, 0);
+  setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[129])));
-  myGLCD.print(buffer, 10, 30); // tabela_textos[129]
+  myGLCD.print(buffer, 20, 60); // tabela_textos[129]
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[118])));
-  myGLCD.print(buffer, 10, 50);
+  myGLCD.print(buffer, 20, 100);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[119])));
-  myGLCD.print(buffer, 118, 50);
+  myGLCD.print(buffer, 232, 100);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[128])));
-  myGLCD.print(buffer, 10, 70);
+  myGLCD.print(buffer, 20, 140);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[121])));
-  myGLCD.print(buffer, 215, 50); //PosiÃƒÂ§ÃƒÂ£o correta
+  myGLCD.print(buffer, 430, 100); //PosiÃƒÂ§ÃƒÂ£o correta
 
-  myGLCD.print(":", 90, 50);
-  myGLCD.print(":", 180, 50);
+  myGLCD.print(":", 180, 100);
+  myGLCD.print(":", 360, 100);
 
-  myGLCD.printNumF(dose_dosadora_1_personalizada, 1, 275, 50); //PosiÃƒÂ§ÃƒÂ£o correta
-  myGLCD.printNumI(quantidade_dose_dosadora_1_personalizada, 170, 70);
+  myGLCD.printNumF(dose_dosadora_1_personalizada, 2, 550, 100); //PosiÃƒÂ§ÃƒÂ£o correta
+  myGLCD.printNumI(quantidade_dose_dosadora_1_personalizada, 340, 140);
 
   if(hora_inicial_dosagem_personalizada_1 < 10)
   {
-    myGLCD.printNumI(0, 72, 50);
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada_1, 80, 50);
+    myGLCD.printNumI(0, 144, 100);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada_1, 160, 100);
   }
   else
   {
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada_1, 72, 50);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada_1, 144, 100);
   }
   if(minuto_inicial_dosagem_personalizada_1 < 10)
   {
-    myGLCD.printNumI(0, 98, 50);
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_1, 106, 50);
+    myGLCD.printNumI(0, 196, 100);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_1, 212, 100);
   }
   else
   {
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_1, 98, 50);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_1, 196, 100);
   }
   if(hora_final_dosagem_personalizada_1 < 10)
   {
-    myGLCD.printNumI(0, 165, 50);
-    myGLCD.printNumI(hora_final_dosagem_personalizada_1, 173, 50);
+    myGLCD.printNumI(0, 230, 100);
+    myGLCD.printNumI(hora_final_dosagem_personalizada_1, 346, 100);
   }
   else
   {
-    myGLCD.printNumI(hora_final_dosagem_personalizada_1, 165, 50);
+    myGLCD.printNumI(hora_final_dosagem_personalizada_1, 330, 100);
   }
   if(minuto_final_dosagem_personalizada_1 < 10)
   {
-    myGLCD.printNumI(0, 188, 50);
-    myGLCD.printNumI(minuto_final_dosagem_personalizada_1, 196, 50);
+    myGLCD.printNumI(0, 276, 100);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada_1, 392, 100);
   }
   else
   {
-    myGLCD.printNumI(minuto_final_dosagem_personalizada_1, 188, 50);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada_1, 376, 100);
   }
   if(segunda_dosagem_personalizada_1 == 1)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-    printButton_verde(buffer, 110, 23, 130, 43);
+    printButton_verde(buffer, 220, 46, 260, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-    printButton(buffer, 110, 23, 130, 43);
+    printButton(buffer, 220, 46, 260, 86);
   }
   if(terca_dosagem_personalizada_1 == 2)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
-    printButton_verde(buffer, 140, 23, 160, 43);
+    printButton_verde(buffer, 280, 46, 320, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
-    printButton(buffer, 140, 23, 160, 43);
+    printButton(buffer, 280, 46, 320, 86);
   }
   if(quarta_dosagem_personalizada_1 == 3)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-    printButton_verde(buffer, 170, 23, 190, 43);
+    printButton_verde(buffer, 340, 46, 380, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-    printButton(buffer, 170, 23, 190, 43);
+    printButton(buffer, 340, 46, 380, 86);
   }
   if(quinta_dosagem_personalizada_1 == 4)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-    printButton_verde(buffer, 200, 23, 220, 43);
+    printButton_verde(buffer, 400, 46, 440, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-    printButton(buffer, 200, 23, 220, 43);
+    printButton(buffer, 400, 46, 440, 86);
   }
   if(sexta_dosagem_personalizada_1 == 5)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-    printButton_verde(buffer, 230, 23, 250, 43);
+    printButton_verde(buffer, 460, 46, 500, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-    printButton(buffer, 230, 23, 250, 43);
+    printButton(buffer, 460, 46, 500, 86);
   }
   if(sabado_dosagem_personalizada_1 == 6)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-    printButton_verde(buffer, 260, 23, 280, 43);
+    printButton_verde(buffer, 520, 46, 560, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-    printButton(buffer, 260, 23, 280, 43);
+    printButton(buffer, 520, 46, 560, 86);
   }
   if(domingo_dosagem_personalizada_1 == 7)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-    printButton_verde(buffer, 290, 23, 310, 43);
+    printButton_verde(buffer, 580, 46, 620, 86);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-    printButton(buffer, 290, 23, 310, 43);
+    printButton(buffer, 580, 46, 620, 86);
   }
   if (modo_personalizado_on_1 == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton_verde(buffer, 200, 65, 245, 85);
+    printButton_verde(buffer, 400, 130, 490, 170);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton(buffer, 200, 65, 245, 85);
+    printButton(buffer, 400, 130, 490, 170);
   }
   if (modo_personalizado_on_1 == false)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-    printButton_verde(buffer, 250, 65, 295, 85);
+    printButton_verde(buffer, 500, 130, 590, 170);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-    printButton(buffer, 250, 65, 295, 85);
+    printButton(buffer, 500, 130, 590, 170);
   }
-  setFont(SMALL, 255, 255, 255, 0, 0, 0);
+  setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[130])));
-  myGLCD.print(buffer, 10, 100);
+  myGLCD.print(buffer, 20, 200);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[118])));
-  myGLCD.print(buffer, 10, 120);
+  myGLCD.print(buffer, 20, 240);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[119])));
-  myGLCD.print(buffer, 118, 120);
+  myGLCD.print(buffer, 236, 240);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[128])));
-  myGLCD.print(buffer, 10, 140);
+  myGLCD.print(buffer, 20, 280);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[121])));
-  myGLCD.print(buffer, 215, 120);
+  myGLCD.print(buffer, 430, 360);
 
-  myGLCD.print(":", 90, 120);
-  myGLCD.print(":", 180, 120);
+  myGLCD.print(":", 180, 240);
+  myGLCD.print(":", 360, 240);
 
-  myGLCD.printNumF(dose_dosadora_2_personalizada, 1, 275, 120);
-  myGLCD.printNumI(quantidade_dose_dosadora_2_personalizada, 170, 140);
+  myGLCD.printNumF(dose_dosadora_2_personalizada, 2, 550, 240);
+  myGLCD.printNumI(quantidade_dose_dosadora_2_personalizada, 340, 280);
 
   if(hora_inicial_dosagem_personalizada_2 < 10)
   {
-    myGLCD.printNumI(0, 72, 120);
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada_2, 80, 120);
+    myGLCD.printNumI(0, 144, 240);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada_2, 160, 240);
   }
   else
   {
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada_2, 72, 120);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada_2, 144, 240);
   }
   if(minuto_inicial_dosagem_personalizada_2 < 10)
   {
-    myGLCD.printNumI(0, 98, 120);
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_2, 106, 120);
+    myGLCD.printNumI(0, 196, 240);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_2, 212, 240);
   }
   else
   {
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_2, 98, 120);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_2, 196, 240);
   }
   if(hora_final_dosagem_personalizada_2 < 10)
   {
     myGLCD.printNumI(0, 165, 120);
-    myGLCD.printNumI(hora_final_dosagem_personalizada_2, 173, 120);
+    myGLCD.printNumI(hora_final_dosagem_personalizada_2, 346, 240);
   }
   else
   {
-    myGLCD.printNumI(hora_final_dosagem_personalizada_2, 165, 120);
+    myGLCD.printNumI(hora_final_dosagem_personalizada_2, 230, 240);
   }
   if(minuto_final_dosagem_personalizada_2 < 10)
   {
     myGLCD.printNumI(0, 188, 120);
-    myGLCD.printNumI(minuto_final_dosagem_personalizada_2, 196, 120);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada_2, 392, 240);
   }
   else
   {
-    myGLCD.printNumI(minuto_final_dosagem_personalizada_2, 188, 120);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada_2, 376, 240);
   }
   if(segunda_dosagem_personalizada_2 == 1)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-    printButton_verde(buffer, 110, 93, 130, 113);
+    printButton_verde(buffer, 220,186, 260, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-    printButton(buffer, 110, 93, 130, 113);
+    printButton(buffer, 220, 186, 260, 226);
   }
   if(terca_dosagem_personalizada_2 == 2)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
-    printButton_verde(buffer, 140, 93, 160, 113);
+    printButton_verde(buffer, 280, 186, 320, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
-    printButton(buffer, 140, 93, 160, 113);
+    printButton(buffer, 280,186, 320, 226);
   }
   if(quarta_dosagem_personalizada_2 == 3)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-    printButton_verde(buffer, 170, 93, 190, 113);
+    printButton_verde(buffer, 340, 186, 380, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-    printButton(buffer, 170, 93, 190, 113);
+    printButton(buffer, 340, 186, 380, 226);
   }
   if(quinta_dosagem_personalizada_2 == 4)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-    printButton_verde(buffer, 200, 93, 220, 113);
+    printButton_verde(buffer, 400, 186, 440, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-    printButton(buffer, 200, 93, 220, 113);
+    printButton(buffer, 400, 186, 440, 226);
   }
   if(sexta_dosagem_personalizada_2 == 5)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-    printButton_verde(buffer, 230, 93, 250, 113);
+    printButton_verde(buffer, 460, 186, 500, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-    printButton(buffer, 230, 93, 250, 113);
+    printButton(buffer, 460, 186, 500, 226);
   }
   if(sabado_dosagem_personalizada_2 == 6)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-    printButton_verde(buffer, 260, 93, 280, 113);
+    printButton_verde(buffer, 520, 186, 560, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-    printButton(buffer, 260, 93, 280, 113);
+    printButton(buffer, 520, 186, 560, 226);
   }
   if(domingo_dosagem_personalizada_2 == 7)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-    printButton_verde(buffer, 290, 93, 310, 113);
+    printButton_verde(buffer, 580, 186, 260, 226);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-    printButton(buffer, 290, 93, 310, 113);
+    printButton(buffer, 580, 186, 620, 226);
   }
   if (modo_personalizado_on_2 == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton_verde(buffer, 200, 135, 245, 155);
+    printButton_verde(buffer, 400, 270, 490, 310);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton(buffer, 200, 135, 245, 155);
+    printButton(buffer, 400, 270, 490, 310);
   }
   if (modo_personalizado_on_2 == false)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-    printButton_verde(buffer, 250, 135, 295, 155);
+    printButton_verde(buffer, 500, 270, 590, 310);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-    printButton(buffer, 250, 135, 295, 155);
+    printButton(buffer, 500, 270, 590, 310);
   }
-  setFont(SMALL, 255, 255, 255, 0, 0, 0);
+  setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[131])));
-  myGLCD.print(buffer, 10, 170);
+  myGLCD.print(buffer, 20, 340);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[118])));
-  myGLCD.print(buffer, 10, 190);
+  myGLCD.print(buffer, 20, 380);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[119])));
-  myGLCD.print(buffer, 118, 190);
+  myGLCD.print(buffer, 236, 380);
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[128])));
-  myGLCD.print(buffer, 10, 210); // tabela_textos[128] = "QUANTIDADE DE DOSES:"
+  myGLCD.print(buffer, 20, 420); // tabela_textos[128] = "QUANTIDADE DE DOSES:"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[121])));
-  myGLCD.print(buffer, 215, 190);
+  myGLCD.print(buffer, 430, 380);
 
-  myGLCD.print(":", 90, 190);
-  myGLCD.print(":", 180, 190);
+  myGLCD.print(":", 180, 380);
+  myGLCD.print(":", 360, 380);
 
-  myGLCD.printNumF(dose_dosadora_3_personalizada, 1, 275, 190);
-  myGLCD.printNumI(quantidade_dose_dosadora_3_personalizada, 170, 210);
+  myGLCD.printNumF(dose_dosadora_3_personalizada, 2, 550, 380);
+  myGLCD.printNumI(quantidade_dose_dosadora_3_personalizada, 340, 460);
 
   if(hora_inicial_dosagem_personalizada_3 < 10)
   {
-    myGLCD.printNumI(0, 72, 190);
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada_3, 80, 190);
+    myGLCD.printNumI(0, 144, 380);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada_3, 160, 380);
   }
   else
   {
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada_3, 72, 190);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada_3, 144, 380);
   }
   if(minuto_inicial_dosagem_personalizada_3 < 10)
   {
-    myGLCD.printNumI(0, 98, 190);
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_3, 106, 190);
+    myGLCD.printNumI(0, 206, 380);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_3, 424, 380);
   }
   else
   {
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_3, 98, 190);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada_3, 196, 380);
   }
   if(hora_final_dosagem_personalizada_3 < 10)
   {
     myGLCD.printNumI(0, 165, 190);
-    myGLCD.printNumI(hora_final_dosagem_personalizada_3, 173, 190);
+    myGLCD.printNumI(hora_final_dosagem_personalizada_3, 346, 380);
   }
   else
   {
-    myGLCD.printNumI(hora_final_dosagem_personalizada_3, 165, 190);
+    myGLCD.printNumI(hora_final_dosagem_personalizada_3, 330, 380);
   }
   if(minuto_final_dosagem_personalizada_3 < 10)
   {
-    myGLCD.printNumI(0, 188, 190);
-    myGLCD.printNumI(minuto_final_dosagem_personalizada_3, 196, 190);
+    myGLCD.printNumI(0, 376, 380);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada_3, 392, 380);
   }
   else
   {
-    myGLCD.printNumI(minuto_final_dosagem_personalizada_3, 188, 190);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada_3, 376, 380);
   }
   if(segunda_dosagem_personalizada_3 == 1)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-    printButton_verde(buffer, 110, 163, 130, 183);
+    printButton_verde(buffer, 220, 126, 260, 366);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-    printButton(buffer, 110, 163, 130, 183);
+    printButton(buffer, 220, 326, 260, 363);
   }
   if(terca_dosagem_personalizada_3 == 2)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
-    printButton_verde(buffer, 140, 163, 160, 183);
+    printButton_verde(buffer, 240, 326, 320, 366);
   }
   else
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));/////////////////////////////////////
     printButton(buffer, 140, 163, 160, 183);
   }
   if(quarta_dosagem_personalizada_3 == 3)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-    printButton_verde(buffer, 170, 163, 190, 183);
+    printButton_verde(buffer, 340, 326, 380, 366);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-    printButton(buffer, 170, 163, 190, 183);
+    printButton(buffer, 340, 326, 380, 366);
   }
   if(quinta_dosagem_personalizada_3 == 4)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-    printButton_verde(buffer, 200, 163, 220, 183);
+    printButton_verde(buffer, 400, 326, 440, 366);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-    printButton(buffer, 200, 163, 220, 183);
+    printButton(buffer, 400, 326, 440, 366);
   }
   if(sexta_dosagem_personalizada_3 == 5)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-    printButton_verde(buffer, 230, 163, 250, 183);
+    printButton_verde(buffer, 460, 326, 500, 366);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-    printButton(buffer, 230, 163, 250, 183);
+    printButton(buffer, 460, 326, 500, 366);
   }
   if(sabado_dosagem_personalizada_3 == 6)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-    printButton_verde(buffer, 260, 163, 280, 183);
+    printButton_verde(buffer, 520, 326, 560, 366);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-    printButton(buffer, 260, 163, 280, 183);
+    printButton(buffer, 520,326, 560, 366);
   }
   if(domingo_dosagem_personalizada_3 == 7)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-    printButton_verde(buffer, 290, 163, 310, 183);
+    printButton_verde(buffer, 580, 326, 620, 366);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-    printButton(buffer, 290, 163, 310, 183);
+    printButton(buffer, 580, 326, 620, 366);
   }
   if (modo_personalizado_on_3 == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton_verde(buffer, 200, 205, 245, 225);
+    printButton_verde(buffer, 400, 410, 490, 450);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton(buffer, 200, 205, 245, 225);
+    printButton(buffer, 400, 410, 490, 450);
   }
   if (modo_personalizado_on_3 == false)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-    printButton_verde(buffer, 250, 205, 295, 225);
+    printButton_verde(buffer, 500, 410, 590, 450);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-    printButton(buffer, 250, 205, 295, 225);
+    printButton(buffer, 500, 410, 590, 450);
   }
 }
 
@@ -2985,159 +2985,159 @@ void desativar_dosadoras(boolean refreshAll = false)
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[210])));
     printButton(buffer, deS[0], deS[1], deS[2], deS[3]); //"MAIS"
 
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[129])));
-    myGLCD.print(buffer, 120, 30);
+    myGLCD.print(buffer, 240, 60);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[130])));
-    myGLCD.print(buffer, 120, 100);
+    myGLCD.print(buffer, 240, 200);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[131])));
-    myGLCD.print(buffer, 120, 170);
+    myGLCD.print(buffer, 240, 340);
 
-    setFont(SMALL, 255, 0, 0, 0, 0, 0);
+    setFont(LARGE, 255, 0, 0, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[141])));
-    myGLCD.print(buffer, 230, 60); //tabela_textos[141] = "USE ESTA"
+    myGLCD.print(buffer, 460, 120); //tabela_textos[141] = "USE ESTA"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[142])));
-    myGLCD.print(buffer, 230, 75); //tabela_textos[141] = "FUNCAO"
+    myGLCD.print(buffer, 460, 150); //tabela_textos[141] = "FUNCAO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[143])));
-    myGLCD.print(buffer, 230, 90); // tabela_textos[143] = "APENAS PARA"
+    myGLCD.print(buffer, 460, 180); // tabela_textos[143] = "APENAS PARA"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[144])));
-    myGLCD.print(buffer, 230, 105); //tabela_textos[144] = "DESATIVAR"
+    myGLCD.print(buffer, 460, 210); //tabela_textos[144] = "DESATIVAR"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[145])));
-    myGLCD.print(buffer, 230, 120); // tabela_textos[145] = "OS MODOS"
+    myGLCD.print(buffer, 460, 240); // tabela_textos[145] = "OS MODOS"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[146])));
-    myGLCD.print(buffer, 230, 135); // tabela_textos[146] = "DE DOSAGEM."
+    myGLCD.print(buffer, 460, 270); // tabela_textos[146] = "DE DOSAGEM."
   }
   if (bitRead(ativar_desativar,1) == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[147])));
-    printButton_verde(buffer, 100, 45, 220, 85); // tabela_textos[147]
+    printButton_verde(buffer, 200, 90, 440, 170); // tabela_textos[147]
 
     myGLCD.setColor(0, 0, 0);
-    myGLCD.fillRect (3, 26, 117, 43);
-    myGLCD.fillRect (3, 45, 95, 61);
-    myGLCD.fillRect (3, 60, 95, 76);
-    myGLCD.fillRect (3, 75, 95, 91);
+    myGLCD.fillRect (6, 52, 234, 86);
+    myGLCD.fillRect (6, 90, 190, 122);
+    myGLCD.fillRect (6, 120, 190, 152);
+    myGLCD.fillRect (6, 150, 190, 182);
 
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[149])));
-    myGLCD.print(buffer, 10, 30); // tabela_textos[149] = "UM DOS MODOS"
+    myGLCD.print(buffer, 20, 60); // tabela_textos[149] = "UM DOS MODOS"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 10, 45); // tabela_textos[150] = "DE DOSAGEM "
+    myGLCD.print(buffer, 20, 90); // tabela_textos[150] = "DE DOSAGEM "
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[151])));
-    myGLCD.print(buffer, 10, 60); // tabela_textos[151] = "ESTA:"
+    myGLCD.print(buffer, 20, 120); // tabela_textos[151] = "ESTA:"
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[152])));
-    printButton(buffer, 100, 45, 220, 85);
+    printButton(buffer, 200, 90, 440, 170);
 
-    setFont(SMALL, 255, 255, 0, 0, 0, 0);
+    setFont(LARGE, 255, 255, 0, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[153])));
-    myGLCD.print(buffer, 3, 30);
+    myGLCD.print(buffer, 6, 60);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 3, 45);
+    myGLCD.print(buffer, 6, 90);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[154])));
-    myGLCD.print(buffer, 3, 60);
+    myGLCD.print(buffer, 6, 120);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[155])));
-    myGLCD.print(buffer, 3, 75);
+    myGLCD.print(buffer, 6, 150);
   }
   if (bitRead(ativar_desativar,2) == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[147])));
-    printButton_verde(buffer, 100, 115, 220, 155);
+    printButton_verde(buffer, 200, 230, 440, 310);
 
     myGLCD.setColor(0, 0, 0);
-    myGLCD.fillRect (3, 96, 117, 113);
-    myGLCD.fillRect (3, 115, 95, 131);
-    myGLCD.fillRect (3, 130, 95, 146);
-    myGLCD.fillRect (3, 145, 95, 161);
+    myGLCD.fillRect (6, 192, 234, 226);
+    myGLCD.fillRect (6, 230, 190, 262);
+    myGLCD.fillRect (6, 260, 190, 292);
+    myGLCD.fillRect (6, 290, 190, 322);
 
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[149])));
-    myGLCD.print(buffer, 10, 100); // "BOTH MODES"
+    myGLCD.print(buffer, 20, 200); // "BOTH MODES"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 10, 115); // "OF DOSAGE"
+    myGLCD.print(buffer, 20, 230); // "OF DOSAGE"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[151])));
-    myGLCD.print(buffer, 10, 130); // "ARE OR:"
+    myGLCD.print(buffer, 20, 260); // "ARE OR:"
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[152])));
-    printButton(buffer, 100, 115, 220, 155); // "DEACTIVATED"
+    printButton(buffer, 200, 230, 440, 310); // "DEACTIVATED"
 
-    setFont(SMALL, 255, 255, 0, 0, 0, 0);
+    setFont(LARGE, 255, 255, 0, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[153])));
-    myGLCD.print(buffer, 3, 100); // "BOTH MODES"
+    myGLCD.print(buffer, 6, 200); // "BOTH MODES"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 3, 115); // "OF DOSAGE"
+    myGLCD.print(buffer, 6, 230); // "OF DOSAGE"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[154])));
-    myGLCD.print(buffer, 3, 130); // "ARE OR"
+    myGLCD.print(buffer, 6, 260); // "ARE OR"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[155])));
-    myGLCD.print(buffer, 3, 145); // "WILL BE:"
+    myGLCD.print(buffer, 6, 290); // "WILL BE:"
   }
   if (bitRead(ativar_desativar,3) == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[147])));
-    printButton_verde(buffer, 100, 185, 220, 225); // "ACTIVATED"
+    printButton_verde(buffer, 200, 370, 440, 450); // "ACTIVATED"
 
     myGLCD.setColor(0, 0, 0);
-    myGLCD.fillRect (3, 166, 117, 183);
-    myGLCD.fillRect (3, 185, 95, 201);
-    myGLCD.fillRect (3, 200, 95, 216);
-    myGLCD.fillRect (3, 215, 95, 231);
+    myGLCD.fillRect (6, 332, 234, 366);
+    myGLCD.fillRect (6, 370, 190, 402);
+    myGLCD.fillRect (6, 400, 190, 432);
+    myGLCD.fillRect (6, 430, 190, 462);
 
-    setFont(SMALL, 255, 255, 255, 0, 0, 0);
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[149])));
-    myGLCD.print(buffer, 10, 170);
+    myGLCD.print(buffer, 20, 340);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 10, 185);
+    myGLCD.print(buffer, 20, 370);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[151])));
-    myGLCD.print(buffer, 10, 200);
+    myGLCD.print(buffer, 20, 400);
   }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[152])));
-    printButton(buffer, 100, 185, 220, 225);
+    printButton(buffer, 200, 370, 440, 450);
 
-    setFont(SMALL, 255, 255, 0, 0, 0, 0);
+    setFont(LARGE, 255, 255, 0, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[153])));
-    myGLCD.print(buffer, 3, 170);
+    myGLCD.print(buffer, 6, 340);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[150])));
-    myGLCD.print(buffer, 3, 185);
+    myGLCD.print(buffer, 6, 370);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[154])));
-    myGLCD.print(buffer, 3, 200);
+    myGLCD.print(buffer, 6, 400);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[155])));
-    myGLCD.print(buffer, 3, 215);
+    myGLCD.print(buffer, 6, 460);
   }
 }
 
@@ -3156,16 +3156,16 @@ void luz_noturna(boolean refreshAll=false)
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[180])));
-    myGLCD.print(buffer, 180, 140); // "ILUMINACAO MAXIMA:"
+    myGLCD.print(buffer, 187, 140); // "ILUMINACAO MAXIMA:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[156])));
-    myGLCD.print(buffer, 180, 340); // "ILUMINACAO MINIMA:"
+    myGLCD.print(buffer, 187, 340); // "ILUMINACAO MINIMA:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[157])));
-    myGLCD.print(buffer, 250, 40); // "LUA CHEIA:"
+    myGLCD.print(buffer, 226, 40); // "LUA CHEIA:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[158])));
-    myGLCD.print(buffer, 2600, 240); // "LUA NOVA:"
+    myGLCD.print(buffer, 225, 240); // "LUA NOVA:"
 
     printButton("-", temM[0], temM[1], temM[2], temM[3], true); //Lua cheia menos
     printButton("+", temP[0], temP[1], temP[2], temP[3], true); //Lua cheia mais
@@ -3186,8 +3186,8 @@ void luz_noturna(boolean refreshAll=false)
   }
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
-  myGLCD.printNumI(tMaxI, 270, 80);
-  myGLCD.printNumI(tMinI, 270, 280);
+  myGLCD.printNumI(tMaxI, 300, 85);
+  myGLCD.printNumI(tMinI, 300, 285);
 }
 
 //--------------------------------------------- Menu 2 -------------------------------- tela =37
@@ -3927,7 +3927,7 @@ void configurar_coolers(boolean refreshAll = false)
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[230])));
-    myGLCD.print(buffer, 230, 40); // "INIACIAR EM:"
+    myGLCD.print(buffer, 220, 40); // "INIACIAR EM:"
 
     //myGLCD.print("(20 ----- 35)", 220, 140); // interval /******************************************************** changed for Fahrenheit *******************************************************************/
     myGLCD.print("(68 ----- 95)", 220, 140); // interval // CHANGE VALUES FOR F SCALE TO (68 --- 84)
@@ -3945,8 +3945,8 @@ void configurar_coolers(boolean refreshAll = false)
   }
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
-  myGLCD.printNumF(HtempMin_temp, 1, 260, 80); // the 130 is coordinate to move number left or right ***************** need to change for Fahrenheit, longer number string **********
-  myGLCD.printNumF(HtempMax_temp, 1, 260, 280);
+  myGLCD.printNumF(HtempMin_temp, 1, 290, 80); // the 130 is coordinate to move number left or right ***************** need to change for Fahrenheit, longer number string **********
+  myGLCD.printNumF(HtempMax_temp, 1, 290, 280);
 }
 
 //------------------------------- Configurar temperatura para os coolers -------------------------------- tela =43
@@ -3983,9 +3983,9 @@ void reduzir_potencia(boolean refreshAll = false)
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[233]))); // "SE A TEMPERATURA ALCANCAR"
     myGLCD.print(buffer, 40, 118);
 
-    myGLCD.drawCircle(590, 118, 2);
+    myGLCD.drawCircle(593, 119, 2);
     //myGLCD.print(" C ", 299, 59); /******************************************************** changed for Fahrenheit *******************************************************************/
-    myGLCD.print(" F ", 598, 118);
+    myGLCD.print(" F ", 595, 118);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[234]))); // "REDUZIR POTENCIA EM"
     myGLCD.print(buffer, 130, 280);
@@ -3995,8 +3995,8 @@ void reduzir_potencia(boolean refreshAll = false)
   myGLCD.fillRect(450, 270, 520, 310); // Apaga valores
 
   setFont(LARGE, 0, 255, 0, 0, 0, 0);
-  myGLCD.printNumI(tempHR_t, 450, 110);
-  myGLCD.printNumI(potR_t, 450, 270);
+  myGLCD.printNumI(tempHR_t, 450, 118);
+  myGLCD.printNumI(potR_t, 450, 280);
 }
 
 //------------------------------- LED PRESET -------------------------------- tela =44
@@ -4117,7 +4117,7 @@ void pre_definido(boolean refreshAll = false)
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[247])));
       printButton_verde(buffer, 20, 50, 400, 110); // "CONT. INDIVIDUALMENTE"
 
-      myGLCD.setFont(RusFont1);
+      myGLCD.setFont(BigFont);
 
       for(i = 0; i < 5; i++)
       {
@@ -4202,7 +4202,7 @@ void pre_definido(boolean refreshAll = false)
         myGLCD.drawRoundRect(20, 120 + (i * 60) + j, 260, 180 + (i * 60) + j);
 
         myGLCD.setBackColor(100, 100, 100);
-        myGLCD.setFont(RusFont1);
+        myGLCD.setFont(BigFont);
 
         if(i == 0)
         {
@@ -4324,34 +4324,34 @@ void pre_definido(boolean refreshAll = false)
 
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
-    myGLCD.print(":",140, 166);
-    myGLCD.print(":",472, 166);
+    myGLCD.print(":",140, 168);
+    myGLCD.print(":",472, 168);
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
     if (led_on_hora_t < 10)
     {
-      myGLCD.print("0",54, 160);
-      myGLCD.printNumI(led_on_hora_t, 88, 160);
+      myGLCD.print("0",54, 166);
+      myGLCD.printNumI(led_on_hora_t, 70, 166);
     }
     else
     {
-      myGLCD.printNumI(led_on_hora_t, 54, 160);
+      myGLCD.printNumI(led_on_hora_t, 54, 166);
     }
 
     if (led_on_minuto_t < 10)
     {
-      myGLCD.print("0", 196, 160);
-      myGLCD.printNumI(led_on_minuto_t, 212, 160);
+      myGLCD.print("0", 196, 166);
+      myGLCD.printNumI(led_on_minuto_t, 212, 166);
     }
     else
     {
-      myGLCD.printNumI(led_on_minuto_t, 196, 160);
+      myGLCD.printNumI(led_on_minuto_t, 196, 166);
     }
 
     if (led_off_hora_t < 10)
     {
-      myGLCD.print("0",386, 160);
-      myGLCD.printNumI(led_off_hora_t, 402, 160);
+      myGLCD.print("0",386, 166);
+      myGLCD.printNumI(led_off_hora_t, 402, 166);
     }
     else
     {
@@ -4360,22 +4360,22 @@ void pre_definido(boolean refreshAll = false)
 
     if (led_off_minuto_t < 10)
     {
-      myGLCD.print("0",542, 160);
-      myGLCD.printNumI(led_off_minuto_t, 558, 160);
+      myGLCD.print("0",542, 166);
+      myGLCD.printNumI(led_off_minuto_t, 558, 166);
     }
     else
     {
-      myGLCD.printNumI(led_off_minuto_t, 542, 160);
+      myGLCD.printNumI(led_off_minuto_t, 542, 166);
     }
 
     if (amanhecer_anoitecer_t < 100)
     {
       myGLCD.print(" ", 272, 358);
-      myGLCD.printNumI(amanhecer_anoitecer_t, 288, 358);
+      myGLCD.printNumI(amanhecer_anoitecer_t, 290, 370);
     }
     else
     {
-      myGLCD.printNumI(amanhecer_anoitecer_t, 272, 358);
+      myGLCD.printNumI(amanhecer_anoitecer_t, 290, 375);
     }
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[252])));
     printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "PRONTO"
