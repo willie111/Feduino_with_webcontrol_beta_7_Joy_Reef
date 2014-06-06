@@ -327,7 +327,7 @@ byte rled_out_temp;
 byte uvled_out_temp;
 byte moonled_out;
 boolean periodo_selecionado = false;
-byte y_tocado;
+int y_tocado;
 boolean teste_em_andamento = false;
 byte cor_selecionada = 0;
 // bit 1 = led white
