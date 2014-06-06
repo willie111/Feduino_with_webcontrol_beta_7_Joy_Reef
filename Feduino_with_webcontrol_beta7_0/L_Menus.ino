@@ -357,7 +357,7 @@ void ledSetScreen() //-------------------------------- Alterar valores ---------
    for (int i = 0; i < 12; i++) 
   {
     myGLCD.setColor(0, 255, 255);
-    myGLCD.printNumI((i*2), (i*52)+26, 22); 
+    myGLCD.printNumI((i*2), (i*52)+26, 44); 
     if(i == 11)
     {
       myGLCD.print("0", (i*52)+34, 72);
@@ -372,8 +372,8 @@ void ledSetScreen() //-------------------------------- Alterar valores ---------
       myGLCD.setColor(255, 255, 255);
       myGLCD.printNumI(cor[cor_selecionada][a], (i*52)+14, (j*36)+108);
       myGLCD.setColor(100, 100, 100);
-      myGLCD.drawRect((i*52)+4, (j*36)+100, (i*52)+60, (j*36)+136);
-      myGLCD.drawRect((i*52)+4, 32, (i*52)+60, 100);//
+      myGLCD.drawRect((i*52)+8, (j*36)+100, (i*52)+60, (j*36)+136);
+      myGLCD.drawRect((i*52)+8, 32, (i*52)+60, 100);//
     }
   }
 
@@ -428,7 +428,7 @@ void ledChangeScreen(boolean refreshAll=false)    //----------------------------
     for (int i=0; i<12; i++) 
     {
       myGLCD.setColor(0, 255, 255);
-      myGLCD.printNumI(((i*2)), (i*52)+26, 22);
+      myGLCD.printNumI(((i*2)), (i*52)+26, 44);
       if(i == 11)
       {
         myGLCD.print("0", (i*52)+34, 66);
@@ -457,7 +457,7 @@ void ledChangeScreen(boolean refreshAll=false)    //----------------------------
     setFont(LARGE, 255, 0, 0, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[203])));
-    myGLCD.print(buffer,50, 105);  // tabela_textos[203] = "SELECIONE UM PERIODO."
+    myGLCD.print(buffer,100, 210);  // tabela_textos[203] = "SELECIONE UM PERIODO."
 
   }
 
