@@ -1807,8 +1807,8 @@ temp2beS = 40; */ /******************************************************** chan
           }
           else if((wled_out_temp >= 10) && (wled_out_temp < 100))
           {
-            myGLCD.print("0", 61, 186);  
-            myGLCD.printNumI(wled_out_temp, 69, 186); 
+            myGLCD.print("0", 122, 372);  
+            myGLCD.printNumI(wled_out_temp, 138, 372); 
           } 
           else if(wled_out_temp < 10)
           {
@@ -1858,7 +1858,7 @@ temp2beS = 40; */ /******************************************************** chan
             myGLCD.printNumI(rbled_out_temp, 362, 372);
           }
         }
-        else if((x >= 410) && (x <= 598)) //**************** Controle deslizante
+        else if((x >= 410) && (x <= 498)) //**************** Controle deslizante
         {
           y_tocado = y;
           desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 410, 88, 498, 344);
