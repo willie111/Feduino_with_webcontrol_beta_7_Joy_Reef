@@ -353,8 +353,8 @@ void ledSetScreen() //-------------------------------- Alterar valores ---------
     printHeader(buffer); // "POTENCIA LEDS VIOLETAS: 255 = 100%"
   } 
 
-  setFont(SMALL, 255, 255, 255, 0, 0, 0);
-  for (int i = 0; i < 12; i++) 
+  setFont(LARGE, 255, 255, 255, 0, 0, 0);
+   for (int i = 0; i < 12; i++) 
   {
     myGLCD.setColor(0, 255, 255);
     myGLCD.printNumI((i*2), (i*26)+13, 22); 
@@ -424,7 +424,7 @@ void ledChangeScreen(boolean refreshAll=false)    //----------------------------
       printHeader(buffer); // nome_canal[16] = "ALTERAR POTENCIA DOS LEDS VIOLETA"
     }
 
-    setFont(SMALL, 0, 255, 255, 0,0,0);
+    setFont(LARGE, 0, 255, 255, 0,0,0);
     for (int i=0; i<12; i++) 
     {
       myGLCD.setColor(0, 255, 255);
@@ -454,7 +454,7 @@ void ledChangeScreen(boolean refreshAll=false)    //----------------------------
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
     printButton(buffer, volT[0], volT[1], volT[2], volT[3]);  // tabela_textos[66] = "VOLTAR"
 
-    setFont(SMALL, 255, 0, 0, 0, 0, 0);
+    setFont(LARGE, 255, 0, 0, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[203])));
     myGLCD.print(buffer,50, 105);  // tabela_textos[203] = "SELECIONE UM PERIODO."
@@ -473,7 +473,7 @@ void ledChangeScreen(boolean refreshAll=false)    //----------------------------
   {
     mensagem = false;
     myGLCD.setColor(0, 0, 0);
-    myGLCD.fillRect(45, 105, 300, 121); //Apaga mensagem.
+    myGLCD.fillRect(45, 105, 300, 121); //Apaga mensagem
   }
 }
 
@@ -1142,17 +1142,17 @@ void teste_individual_leds()
 
   printButton("+", 98, 36, 186, 82, true);    // "+"
   printButton("+", 202, 36, 290, 82, true);  // "+"
-  printButton("+", 306, 36, 394, 82, true);  // "+"
+  printButton("+", 306, 36, 384, 82, true);  // "+"
   printButton("+", 410, 36, 498, 82, true);  // "+"
   printButton("+", 514, 36, 602, 82, true);  // "+"
 
   printButton("-", 98, 402, 186, 448, true);    // "-"
   printButton("-", 202, 402, 290, 448, true);  // "-"
-  printButton("-", 306, 402, 394, 448, true);  // "-"
+  printButton("-", 306, 402, 384, 448, true);  // "-"
   printButton("-", 410, 402, 498, 448, true);  // "-"
   printButton("-", 514, 402, 602, 448, true);  // "-"
 
-  myGLCD.setFont(BigFont);
+  myGLCD.setFont(RusFont1);
   myGLCD.setBackColor(0,0,0);
 
   myGLCD.setColor(cor_canal1[0], cor_canal1[1],cor_canal1[2]); 
@@ -1201,13 +1201,13 @@ void teste_individual_leds()
 
   myGLCD.setColor(190, 190, 190);
   for (int i=0; i<10; i++){               // Escala % 
-    myGLCD.drawLine(62, (i*26)+88, 76, (i*26)+88); 
+    myGLCD.drawLine(31, (i*26)+88, 76, (i*26)+88); 
   } 
   for (int i=0; i<10; i++){              
-    myGLCD.drawLine(62, (i*26)+102, 68, (i*26)+102); 
+    myGLCD.drawLine(31, (i*26)+102, 78, (i*26)+102); 
   } 
 
-  myGLCD.setFont(BigFont);
+  myGLCD.setFont(RusFont1);
   myGLCD.print("%", 40, 50);     // %
   myGLCD.print("100", 10, 82);   // 100
   myGLCD.print("90", 24, 108);   // 90
@@ -1223,9 +1223,9 @@ void teste_individual_leds()
 
   myGLCD.setColor(180, 180, 180);                  
   for (int i=0; i<10; i++){                      // escalas de linhas pontilhadas horizontais 
-    for(int k=92; k<622; k++){ 
-      myGLCD.drawPixel(k,(i*26)+88); 
-      k=k+4;
+    for(int k=46; k<311; k++){ 
+      myGLCD.drawPixel(k,(i*13)+44); 
+      k=k+2;
     } 
   } 
 
