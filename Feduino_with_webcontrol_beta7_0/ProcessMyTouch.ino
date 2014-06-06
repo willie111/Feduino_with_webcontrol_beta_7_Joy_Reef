@@ -611,7 +611,7 @@ temp2beS = 40; */ /******************************************************** chan
             cor[cor_selecionada][k] += 1;
             delay(50);
             myGLCD.setColor(0,0,0);
-            myGLCD.fillRect((i * 76) + 24, 200, (i * 76) + 36, 420);
+            myGLCD.fillRect((i * 76) + 24, 400, (i * 76) + 36, 420);
             setFont(LARGE, 255, 255, 255, 0, 0, 0);
             myGLCD.printNumI( cor[cor_selecionada][k], (i * 76) + 24, 400);
             y_tocado = map(cor[cor_selecionada][k], 255, 0, 160, 390);
