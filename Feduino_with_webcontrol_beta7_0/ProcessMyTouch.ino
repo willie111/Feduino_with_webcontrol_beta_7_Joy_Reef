@@ -634,7 +634,7 @@ temp2beS = 40; */ /******************************************************** chan
             myGLCD.fillRect((i * 76) + 12, 400, (i * 76) + 72, 420);
             setFont(LARGE, 255, 255, 255, 0, 0, 0);
             myGLCD.printNumI( cor[cor_selecionada][k], (i * 76) + 12, 400);
-            y_tocado = map(cor[cor_selecionada][k], 255, 0, 160, 290);
+            y_tocado = map(cor[cor_selecionada][k], 255, 0, 160, 390);
             setor_selecionado = i;
             desenhar_barras_periodo ();
           }
