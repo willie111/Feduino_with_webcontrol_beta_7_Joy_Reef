@@ -1142,17 +1142,17 @@ void teste_individual_leds()
 
   printButton("+", 98, 36, 186, 82, true);    // "+"
   printButton("+", 202, 36, 290, 82, true);  // "+"
-  printButton("+", 306, 36, 384, 82, true);  // "+"
+  printButton("+", 306, 36, 394, 82, true);  // "+"
   printButton("+", 410, 36, 498, 82, true);  // "+"
   printButton("+", 514, 36, 602, 82, true);  // "+"
 
   printButton("-", 98, 402, 186, 448, true);    // "-"
   printButton("-", 202, 402, 290, 448, true);  // "-"
-  printButton("-", 306, 402, 384, 448, true);  // "-"
+  printButton("-", 306, 402, 394, 448, true);  // "-"
   printButton("-", 410, 402, 498, 448, true);  // "-"
   printButton("-", 514, 402, 602, 448, true);  // "-"
 
-  myGLCD.setFont(RusFont1);
+  myGLCD.setFont(BigFont);
   myGLCD.setBackColor(0,0,0);
 
   myGLCD.setColor(cor_canal1[0], cor_canal1[1],cor_canal1[2]); 
@@ -1201,13 +1201,13 @@ void teste_individual_leds()
 
   myGLCD.setColor(190, 190, 190);
   for (int i=0; i<10; i++){               // Escala % 
-    myGLCD.drawLine(61, (i*26)+88, 69, (i*26)+88); 
+    myGLCD.drawLine(61, (i*26)+88, 78, (i*26)+88); 
   } 
   for (int i=0; i<10; i++){              
-    myGLCD.drawLine(61, (i*26)+102, 78, (i*26)+102); 
+    myGLCD.drawLine(61, (i*26)+102, 69, (i*26)+102); 
   } 
 
-  myGLCD.setFont(RusFont1);
+  myGLCD.setFont(BigFont);
   myGLCD.print("%", 40, 50); // %
   myGLCD.print("100", 10, 82); // 100
   myGLCD.print("90", 24, 108); // 90
