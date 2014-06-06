@@ -549,7 +549,7 @@ temp2beS = 40; */ /******************************************************** chan
             else
             {
               myGLCD.printNumI((oldLCT*2), (oldLCT*52)+20, 44);
-              myGLCD.printNumI(((oldLCT*2)+4), (oldLCT*52)+20, 66);
+              myGLCD.printNumI(((oldLCT*2)+2), (oldLCT*52)+20, 66);
             }
             myGLCD.setColor(255, 0, 0);
             myGLCD.fillRect((LedChangTime*52)+10, 42, (LedChangTime*52)+58, 90);
@@ -564,7 +564,7 @@ temp2beS = 40; */ /******************************************************** chan
             else
             {
               myGLCD.printNumI((LedChangTime*2), (LedChangTime*52)+20, 44);
-              myGLCD.printNumI(((LedChangTime*2)+4), (LedChangTime*52)+20, 66);              
+              myGLCD.printNumI(((LedChangTime*2)+2), (LedChangTime*52)+20, 66);              
             }
             myGLCD.setColor(100, 100, 100);
             myGLCD.drawLine(8, 90, 632,90);
@@ -631,7 +631,7 @@ temp2beS = 40; */ /******************************************************** chan
             cor[cor_selecionada][k] -= 1;
             delay(50);
             myGLCD.setColor(0,0,0);
-            myGLCD.fillRect((i * 76) + 12, 400, (i * 76) + 72, 420);
+            myGLCD.fillRect((i * 76) + 24, 400, (i * 76) + 72, 420);
             setFont(LARGE, 255, 255, 255, 0, 0, 0);
             myGLCD.printNumI( cor[cor_selecionada][k], (i * 76) + 12, 400);
             y_tocado = map(cor[cor_selecionada][k], 255, 0, 160, 390);
