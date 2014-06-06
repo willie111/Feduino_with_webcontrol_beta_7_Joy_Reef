@@ -1792,18 +1792,18 @@ temp2beS = 40; */ /******************************************************** chan
         escolher_teste();
         ler_predefinido_EEPROM(); 
       }
-      else if((y >= 44) && (y <= 172))//**************** Controle deslizante - inÃƒÂ­cio.
+      else if((y >= 88) && (y <= 344))//**************** Controle deslizante - inÃƒÂ­cio.
       {
         teste_em_andamento = true;
-        if((x >= 49) && (x<=93))
+        if((x >= 98) && (x<=186))
         {
           y_tocado = y;
-          desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 49, 44, 93, 172);
-          wled_out_temp = map(y_tocado, 172, 44, 0, 255);
+          desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 98, 88, 186, 344);
+          wled_out_temp = map(y_tocado, 344, 88, 0, 255);
 
           if(wled_out_temp >=100)
           {
-            myGLCD.printNumI(wled_out_temp, 61, 186); 
+            myGLCD.printNumI(wled_out_temp, 122, 372); 
           }
           else if((wled_out_temp >= 10) && (wled_out_temp < 100))
           {
@@ -1812,203 +1812,203 @@ temp2beS = 40; */ /******************************************************** chan
           } 
           else if(wled_out_temp < 10)
           {
-            myGLCD.print("00", 61, 186);  
-            myGLCD.printNumI(wled_out_temp, 77, 186); 
+            myGLCD.print("00", 122, 372);  
+            myGLCD.printNumI(wled_out_temp, 154, 372); 
           }         
         }
-        else if((x >= 101) && (x <= 145)) //**************** Controle deslizante
+        else if((x >= 202) && (x <= 290)) //**************** Controle deslizante
         {
           y_tocado = y;
-          desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 101, 44, 145, 172);
-          bled_out_temp = map(y_tocado, 172, 44, 0, 255);
+          desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 202, 88, 290, 344);
+          bled_out_temp = map(y_tocado, 344, 88, 0, 255);
 
           if(bled_out_temp >= 100)
           {
-            myGLCD.printNumI(bled_out_temp, 113, 186);
+            myGLCD.printNumI(bled_out_temp, 226, 372);
           }
           else if((bled_out_temp >= 10) && (bled_out_temp < 100))
           {
-            myGLCD.print("0", 113, 186);
-            myGLCD.printNumI(bled_out_temp, 121, 186);
+            myGLCD.print("0", 226, 372);
+            myGLCD.printNumI(bled_out_temp, 242, 372);
           }
           else if(bled_out_temp < 10)
           {
-            myGLCD.print("00", 113, 186);
-            myGLCD.printNumI(bled_out_temp, 129, 186);
+            myGLCD.print("00", 226, 372);
+            myGLCD.printNumI(bled_out_temp, 258, 372);
           }
         }
-        else if((x >= 153) && (x <= 197)) //**************** Controle deslizante
+        else if((x >= 306) && (x <= 394)) //**************** Controle deslizante
         {
           y_tocado = y;
-          desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 153, 44, 197, 172);
-          rbled_out_temp = map(y_tocado, 172, 44, 0, 255);
+          desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 306, 88, 394, 344);
+          rbled_out_temp = map(y_tocado, 344, 88, 0, 255);
 
           if(rbled_out_temp >= 100)
           {
-            myGLCD.printNumI(rbled_out_temp, 165, 186);
+            myGLCD.printNumI(rbled_out_temp, 330, 372);
           }
           else if((rbled_out_temp >= 10) && (rbled_out_temp < 100))
           {
-            myGLCD.print("0", 165, 186);
-            myGLCD.printNumI(rbled_out_temp, 173, 186);
+            myGLCD.print("0", 330, 372);
+            myGLCD.printNumI(rbled_out_temp, 344, 372);
           }
           else if(rbled_out_temp < 10)
           {
-            myGLCD.print("00", 165, 186);
-            myGLCD.printNumI(rbled_out_temp, 181, 186);
+            myGLCD.print("00", 330, 372);
+            myGLCD.printNumI(rbled_out_temp, 362, 372);
           }
         }
-        else if((x >= 205) && (x <= 249)) //**************** Controle deslizante
+        else if((x >= 410) && (x <= 598)) //**************** Controle deslizante
         {
           y_tocado = y;
-          desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 205, 44, 249, 172);
-          rled_out_temp = map(y_tocado, 172, 44, 0, 255);
+          desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 410, 88, 498, 344);
+          rled_out_temp = map(y_tocado, 344, 88, 0, 255);
 
           if(rled_out_temp >= 100)
           {
-            myGLCD.printNumI(rled_out_temp, 217, 186);
+            myGLCD.printNumI(rled_out_temp, 434, 372);
           }
           else if((rled_out_temp >= 10) && (rled_out_temp < 100))
           {
-            myGLCD.print("0", 217, 186);
-            myGLCD.printNumI(rled_out_temp, 225, 186);
+            myGLCD.print("0", 434, 372);
+            myGLCD.printNumI(rled_out_temp, 450, 372);
           }          
           else if(rled_out_temp < 10)
           {
-            myGLCD.print("00", 217, 186);
-            myGLCD.printNumI(rled_out_temp, 233, 186);
+            myGLCD.print("00", 434, 372);
+            myGLCD.printNumI(rled_out_temp, 466, 372);
           }          
         }       
-        else if((x >= 257) && (x <= 301)) //**************** Controle deslizante
+        else if((x >= 514) && (x <= 602)) //**************** Controle deslizante
         {
           y_tocado = y;
-          desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 257, 44, 301, 172); 
-          uvled_out_temp = map(y_tocado, 172, 44, 0, 255);
+          desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 514, 88, 602, 344); 
+          uvled_out_temp = map(y_tocado, 344, 88, 0, 255);
           if(uvled_out_temp >= 100)
           {
-            myGLCD.printNumI(uvled_out_temp, 269, 186);
+            myGLCD.printNumI(uvled_out_temp, 538, 372);
           }
           else if((uvled_out_temp >= 10) && (uvled_out_temp < 100))
           {
-            myGLCD.print("0", 269, 186);
-            myGLCD.printNumI(uvled_out_temp, 277, 186);
+            myGLCD.print("0", 538, 372);
+            myGLCD.printNumI(uvled_out_temp, 554, 372);
           }
           else if(uvled_out_temp < 10)
           {
-            myGLCD.print("00", 269, 186);
-            myGLCD.printNumI(uvled_out_temp, 285, 186);
+            myGLCD.print("00", 538, 372);
+            myGLCD.printNumI(uvled_out_temp, 554, 372);
           } 
         }
       }//**************** Controle deslizante - fim.
 
-      else if((y >= 18) && (y <= 41))// BotÃƒÂ£o mais
+      else if((y >= 36) && (y <= 82))// BotÃƒÂ£o mais
       {
         teste_em_andamento = true;
-        if((x >= 49) && (x<=93))
+        if((x >= 98) && (x<=186))
         {
-          //waitForIt(49, 18, 93, 41);
+          //waitForIt(98, 36, 186, 82);
           wled_out_temp += 1;
           delay(50);
-          y_tocado = map(wled_out_temp, 255, 0, 44, 172);
-          desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 49, 44, 93, 172);
+          y_tocado = map(wled_out_temp, 255, 0, 88, 344);
+          desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 98, 88, 186, 344);
           if(wled_out_temp >=100)
           {
-            myGLCD.printNumI(wled_out_temp, 61, 186); 
+            myGLCD.printNumI(wled_out_temp, 122, 372); 
           }
           else if((wled_out_temp >= 10) && (wled_out_temp < 100))
           {
-            myGLCD.print("0", 61, 186);  
-            myGLCD.printNumI(wled_out_temp, 69, 186); 
+            myGLCD.print("0", 122, 372);  
+            myGLCD.printNumI(wled_out_temp, 138, 372); 
           } 
           else if(wled_out_temp < 10)
           {
-            myGLCD.print("00", 61, 186);  
-            myGLCD.printNumI(wled_out_temp, 77, 186); 
+            myGLCD.print("00", 122, 372);  
+            myGLCD.printNumI(wled_out_temp, 154, 372); 
           }  
         }
-        if((x >= 101) && (x <= 145)) // BotÃƒÂ£o mais
+        if((x >= 202) && (x <= 290)) // BotÃƒÂ£o mais
         {
-          //waitForIt(101, 18, 145, 41);
+          //waitForIt(202, 36, 290, 82);
           bled_out_temp += 1;
           delay(50);
-          y_tocado = map(bled_out_temp, 255, 0, 44, 172);
-          desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 101, 44, 145, 172);
+          y_tocado = map(bled_out_temp, 255, 0, 88, 344);
+          desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 202, 88, 290, 344);
 
           if(bled_out_temp >= 100)
           {
-            myGLCD.printNumI(bled_out_temp, 113, 186);
+            myGLCD.printNumI(bled_out_temp, 226, 372);
           }
           else if((bled_out_temp >= 10) && (bled_out_temp < 100))
           {
-            myGLCD.print("0", 113, 186);
-            myGLCD.printNumI(bled_out_temp, 121, 186);
+            myGLCD.print("0", 226, 372);
+            myGLCD.printNumI(bled_out_temp, 242, 372);
           }
           else if(bled_out_temp < 10)
           {
-            myGLCD.print("00", 113, 186);
-            myGLCD.printNumI(bled_out_temp, 129, 186);
+            myGLCD.print("00", 226, 372);
+            myGLCD.printNumI(bled_out_temp, 258, 372);
           }
         }
         else if((x >= 153) && (x <= 197)) // BotÃƒÂ£o mais
         {
-          //waitForIt(153, 18, 197, 41);
+          //waitForIt(306, 36, 394, 83);
           rbled_out_temp += 1;
           delay(50);
-          y_tocado = map(rbled_out_temp, 255, 0, 44, 172);
-          desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 153, 44, 197, 172);
+          y_tocado = map(rbled_out_temp, 255, 0, 88, 344);
+          desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 306, 88, 394, 344);
           if(rbled_out_temp >= 100)
           {
-            myGLCD.printNumI(rbled_out_temp, 165, 186);
+            myGLCD.printNumI(rbled_out_temp, 330, 372);
           }
           else if((rbled_out_temp >= 10) && (rbled_out_temp < 100))
           {
-            myGLCD.print("0", 165, 186);
+            myGLCD.print("0", 330, 372);
             myGLCD.printNumI(rbled_out_temp, 173, 186);
           }
           else if(rbled_out_temp < 10)
           {
-            myGLCD.print("00", 165, 186);
-            myGLCD.printNumI(rbled_out_temp, 181, 186);
+            myGLCD.print("00", 330, 372);
+            myGLCD.printNumI(rbled_out_temp, 362, 372);
           }
         }
-        if((x >= 205) && (x <= 249)) // BotÃƒÂ£o mais
+        if((x >= 410) && (x <= 498)) // BotÃƒÂ£o mais
         {
-          //waitForIt(205, 18, 249, 41);
+          //waitForIt(410, 36, 498, 82);
           rled_out_temp += 1;
           delay(50);
-          y_tocado = map(rled_out_temp, 255, 0, 44, 172);
-          desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 205, 44, 249, 172);
+          y_tocado = map(rled_out_temp, 255, 0, 88, 344);
+          desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 410,88, 498, 344);
 
           if(rled_out_temp >= 100)
           {
-            myGLCD.printNumI(rled_out_temp, 217, 186);
+            myGLCD.printNumI(rled_out_temp, 434, 372);
           }
           else if((rled_out_temp >= 10) && (rled_out_temp < 100))
           {
-            myGLCD.print("0", 217, 186);
-            myGLCD.printNumI(rled_out_temp, 225, 186);
+            myGLCD.print("0", 434, 372);
+            myGLCD.printNumI(rled_out_temp, 450, 372);
           }          
           else if(rled_out_temp < 10)
           {
-            myGLCD.print("00", 217, 186);
-            myGLCD.printNumI(rled_out_temp, 233, 186);
+            myGLCD.print("00", 434, 372);
+            myGLCD.printNumI(rled_out_temp, 466, 372);
           }
         }       
-        if((x >= 257) && (x <= 301)) // BotÃƒÂ£o mais
+        if((x >= 514) && (x <= 602)) // BotÃƒÂ£o mais
         {
-          //waitForIt(257, 18, 301, 41);
+          //waitForIt(257, 36, 602, 82);
           uvled_out_temp += 1;
           delay(50);
-          y_tocado = map(uvled_out_temp, 255, 0, 44, 172);
-          desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 257, 44, 301, 172);
+          y_tocado = map(uvled_out_temp, 255, 0, 88, 344);
+          desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 514, 88, 602, 344);
           if(uvled_out_temp >= 100)
           {
-            myGLCD.printNumI(uvled_out_temp, 269, 186);
+            myGLCD.printNumI(uvled_out_temp, 538, 372);
           }
           else if((uvled_out_temp >= 10) && (uvled_out_temp < 100))
           {
-            myGLCD.print("0", 269, 186);
-            myGLCD.printNumI(uvled_out_temp, 277, 186);
+            myGLCD.print("0", 538, 372);
+            myGLCD.printNumI(uvled_out_temp, 554, 372);
           }
           else if(uvled_out_temp < 10)
           {
@@ -2017,121 +2017,121 @@ temp2beS = 40; */ /******************************************************** chan
           }
         }
       }
-      else if((y >= 201) && (y <= 224))
+      else if((y >= 402) && (y <= 448))
       {
         teste_em_andamento = true;
 
-        if((x >= 49) && (x <= 93)) // BotÃƒÂ£o menos
+        if((x >=98) && (x <= 186)) // BotÃƒÂ£o menos
         {
-          //waitForIt(49, 201, 93, 224); 
+          //waitForIt(98, 402, 186, 448); 
           wled_out_temp -= 1;
           delay(50);
-          y_tocado = map(wled_out_temp, 255, 0, 44, 172);
-          desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 49, 44, 93, 172);
+          y_tocado = map(wled_out_temp, 255, 0, 88, 344);
+          desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 98, 88, 186, 344);
           if(wled_out_temp >=100)
           {
-            myGLCD.printNumI(wled_out_temp, 61, 186); 
+            myGLCD.printNumI(wled_out_temp, 122, 272); 
           }
           else if((wled_out_temp >= 10) && (wled_out_temp < 100))
           {
-            myGLCD.print("0", 61, 186);  
-            myGLCD.printNumI(wled_out_temp, 69, 186); 
+            myGLCD.print("0", 122, 372);  
+            myGLCD.printNumI(wled_out_temp, 138, 372); 
           } 
           else if(wled_out_temp < 10)
           {
-            myGLCD.print("00", 61, 186);  
-            myGLCD.printNumI(wled_out_temp, 77, 186); 
+            myGLCD.print("00", 122, 372);  
+            myGLCD.printNumI(wled_out_temp, 154, 372); 
           }
         }
-        else if((x >= 101) && (x <= 145)) // BotÃƒÂ£o menos
+        else if((x >= 202) && (x <= 290)) // BotÃƒÂ£o menos
         {
-          //waitForIt(101, 201, 145, 224);
+          //waitForIt(202, 402, 290, 448);
           bled_out_temp -= 1;
           delay(50);
-          y_tocado = map(bled_out_temp, 255, 0, 44, 172);
-          desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 101, 44, 145, 172);
+          y_tocado = map(bled_out_temp, 255, 0, 88, 344);
+          desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 202, 88, 290, 344);
 
           if(bled_out_temp >= 100)
           {
-            myGLCD.printNumI(bled_out_temp, 113, 186);
+            myGLCD.printNumI(bled_out_temp, 226, 372);
           }
           else if((bled_out_temp >= 10) && (bled_out_temp < 100))
           {
-            myGLCD.print("0", 113, 186);
-            myGLCD.printNumI(bled_out_temp, 121, 186);
+            myGLCD.print("0", 226, 372);
+            myGLCD.printNumI(bled_out_temp, 242, 372);
           }
           else if(bled_out_temp < 10)
           {
-            myGLCD.print("00", 113, 186);
-            myGLCD.printNumI(bled_out_temp, 129, 186);
+            myGLCD.print("00", 226, 372);
+            myGLCD.printNumI(bled_out_temp, 258, 372);
           }
         }
-        else if((x >= 153) && (x <= 197)) // BotÃƒÂ£o menos
+        else if((x >= 306) && (x <= 294)) // BotÃƒÂ£o menos
         {
-          //waitForIt(153, 201, 197, 224);
+          //waitForIt(306, 402, 394, 448);
           rbled_out_temp -= 1;
           delay(50);
-          y_tocado = map(rbled_out_temp, 255, 0, 44, 172);
+          y_tocado = map(rbled_out_temp, 255, 0, 88, 344);
 
-          desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 153, 44, 197, 172);
+          desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 306, 88, 394, 344);
           if(rbled_out_temp >= 100)
           {
-            myGLCD.printNumI(rbled_out_temp, 165, 186);
+            myGLCD.printNumI(rbled_out_temp, 330, 372);
           }
           else if((rbled_out_temp >= 10) && (rbled_out_temp < 100))
           {
-            myGLCD.print("0", 165, 186);
-            myGLCD.printNumI(rbled_out_temp, 173, 186);
+            myGLCD.print("0", 330, 372);
+            myGLCD.printNumI(rbled_out_temp, 346, 372);
           }
           else if(rbled_out_temp < 10)
           {
-            myGLCD.print("00", 165, 186);
+            myGLCD.print("00", 330, 372);
             myGLCD.printNumI(rbled_out_temp, 181, 186);
           }
         }
-        else if((x >= 205) && (x <= 249)) // BotÃƒÂ£o menos
+        else if((x >= 410) && (x <= 498)) // BotÃƒÂ£o menos
         {
-          //waitForIt(205, 201, 249, 224);
+          //waitForIt(410, 402, 498, 448);
           rled_out_temp -= 1;
           delay(50);
-          y_tocado = map(rled_out_temp, 255, 0, 44, 172);
-          desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 205, 44, 249, 172);
+          y_tocado = map(rled_out_temp, 255, 0, 88, 344);
+          desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 410, 88, 498, 344);
 
           if(rled_out_temp >= 100)
           {
-            myGLCD.printNumI(rled_out_temp, 217, 186);
+            myGLCD.printNumI(rled_out_temp, 434, 372);
           }
           else if((rled_out_temp >= 10) && (rled_out_temp < 100))
           {
-            myGLCD.print("0", 217, 186);
-            myGLCD.printNumI(rled_out_temp, 225, 186);
+            myGLCD.print("0", 434, 372);
+            myGLCD.printNumI(rled_out_temp, 450, 372);
           }
           else if(rled_out_temp < 10)
           {
-            myGLCD.print("00", 217, 186);
-            myGLCD.printNumI(rled_out_temp, 233, 186);
+            myGLCD.print("00", 434, 372);
+            myGLCD.printNumI(rled_out_temp, 466, 372);
           }
         }       
-        else if((x >= 257) && (x <= 301)) // BotÃƒÂ£o menos
+        else if((x >= 514) && (x <= 602)) // BotÃƒÂ£o menos
         {
-          //waitForIt(257, 201, 301, 224);  
+          //waitForIt(514, 402, 602, 448);  
           uvled_out_temp -= 1;
           delay(50);
-          y_tocado = map(uvled_out_temp, 255, 0, 44, 172);
-          desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 257, 44, 301, 172);
+          y_tocado = map(uvled_out_temp, 255, 0, 88, 344);
+          desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 514, 88, 602, 344);
           if(uvled_out_temp >= 100)
           {
-            myGLCD.printNumI(uvled_out_temp, 269, 186);
+            myGLCD.printNumI(uvled_out_temp, 538, 372);
           }
           else if((uvled_out_temp >= 10) && (uvled_out_temp < 100))
           {
-            myGLCD.print("0", 269, 186);
-            myGLCD.printNumI(uvled_out_temp, 277, 186);
+            myGLCD.print("0", 538, 372);
+            myGLCD.printNumI(uvled_out_temp, 554, 372);
           }
           else if(uvled_out_temp < 10)
           {
-            myGLCD.print("00", 269, 186);
-            myGLCD.printNumI(uvled_out_temp, 285, 186);
+            myGLCD.print("00", 538, 372);
+            myGLCD.printNumI(uvled_out_temp, 570, 372);
           }
         }
       }
