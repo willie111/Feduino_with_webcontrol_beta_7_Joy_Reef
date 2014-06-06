@@ -1963,7 +1963,7 @@ temp2beS = 40; */ /******************************************************** chan
           else if((rbled_out_temp >= 10) && (rbled_out_temp < 100))
           {
             myGLCD.print("0", 330, 372);
-            myGLCD.printNumI(rbled_out_temp, 173, 186);
+            myGLCD.printNumI(rbled_out_temp, 353, 372);
           }
           else if(rbled_out_temp < 10)
           {
@@ -2012,8 +2012,8 @@ temp2beS = 40; */ /******************************************************** chan
           }
           else if(uvled_out_temp < 10)
           {
-            myGLCD.print("00", 269, 186);
-            myGLCD.printNumI(uvled_out_temp, 285, 186);
+            myGLCD.print("00", 538, 372);
+            myGLCD.printNumI(uvled_out_temp, 570, 372);
           }
         }
       }
@@ -2030,7 +2030,7 @@ temp2beS = 40; */ /******************************************************** chan
           desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 98, 88, 186, 344);
           if(wled_out_temp >=100)
           {
-            myGLCD.printNumI(wled_out_temp, 122, 272); 
+            myGLCD.printNumI(wled_out_temp, 122, 372); 
           }
           else if((wled_out_temp >= 10) && (wled_out_temp < 100))
           {
