@@ -564,7 +564,7 @@ temp2beS = 40; */ /******************************************************** chan
             else
             {
               myGLCD.printNumI((LedChangTime*2), (LedChangTime*52)+20, 44);
-              myGLCD.printNumI(((LedChangTime*2)+4), (LedChangTime*52)+10, 66);              
+              myGLCD.printNumI(((LedChangTime*2)+4), (LedChangTime*52)+20, 66);              
             }
             myGLCD.setColor(100, 100, 100);
             myGLCD.drawLine(8, 90, 632,90);
