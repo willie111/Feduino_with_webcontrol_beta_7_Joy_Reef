@@ -1201,49 +1201,49 @@ void teste_individual_leds()
 
   myGLCD.setColor(190, 190, 190);
   for (int i=0; i<10; i++){               // Escala % 
-    myGLCD.drawLine(31, (i*26)+88, 76, (i*26)+88); 
+    myGLCD.drawLine(61, (i*26)+88, 69, (i*26)+88); 
   } 
   for (int i=0; i<10; i++){              
-    myGLCD.drawLine(31, (i*26)+102, 78, (i*26)+102); 
+    myGLCD.drawLine(61, (i*26)+102, 78, (i*26)+102); 
   } 
 
   myGLCD.setFont(RusFont1);
-  myGLCD.print("%", 40, 50);     // %
-  myGLCD.print("100", 10, 82);   // 100
-  myGLCD.print("90", 24, 108);   // 90
-  myGLCD.print("80", 24, 134);   // 80
-  myGLCD.print("70", 24, 160);   // 70
-  myGLCD.print("60", 24, 186);   // 60
-  myGLCD.print("50", 24, 212);  // 50
-  myGLCD.print("40", 24, 238);  // 40
-  myGLCD.print("30", 24, 264);  // 30
-  myGLCD.print("20", 24, 290);  // 20
-  myGLCD.print("10", 24, 316);  // 10
-  myGLCD.print("0", 40, 342);   // 0
+  myGLCD.print("%", 40, 50); // %
+  myGLCD.print("100", 10, 82); // 100
+  myGLCD.print("90", 24, 108); // 90
+  myGLCD.print("80", 24, 134); // 80
+  myGLCD.print("70", 24, 160); // 70
+  myGLCD.print("60", 24, 186); // 60
+  myGLCD.print("50", 24, 212); // 50
+  myGLCD.print("40", 24, 238); // 40
+  myGLCD.print("30", 24, 264); // 30
+  myGLCD.print("20", 24, 290); // 20
+  myGLCD.print("10", 24, 316); // 10
+  myGLCD.print("0", 40, 342); // 0
 
   myGLCD.setColor(180, 180, 180);                  
   for (int i=0; i<10; i++){                      // escalas de linhas pontilhadas horizontais 
-    for(int k=46; k<311; k++){ 
-      myGLCD.drawPixel(k,(i*13)+44); 
+    for(int k=92; k<622; k++){ 
+      myGLCD.drawPixel(k,(i*26)+88); 
       k=k+2;
     } 
   } 
 
   //void desenhar_barras(int sbR, int sbG, int sbB, int sbX1, int sbY1, int sbX2, int sbY2)
 
-  y_tocado = map(wled_out_temp, 510, 0, 88, 344);
+  y_tocado = map(wled_out_temp, 255, 0, 88, 344);
   desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 98, 88, 186, 344);
 
-  y_tocado = map(bled_out_temp, 510, 0, 88, 344);
+  y_tocado = map(bled_out_temp, 255, 0, 88, 344);
   desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 202, 88, 290, 344);
 
-  y_tocado = map(rbled_out_temp, 510, 0, 88, 344);
+  y_tocado = map(rbled_out_temp, 255, 0, 88, 344);
   desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 306, 88, 394, 344);
 
-  y_tocado = map(rled_out_temp, 510, 0, 88, 344);
+  y_tocado = map(rled_out_temp, 255, 0, 88, 344);
   desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 410, 88, 498, 344);
 
-  y_tocado = map(uvled_out_temp, 510, 0, 88, 344);
+  y_tocado = map(uvled_out_temp, 255, 0, 88, 344);
   desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 514, 88, 602, 344);                                                             
 }
 void rever_dosagem_personalizada_2() // ------------------------------------------------------------------ tela =23
