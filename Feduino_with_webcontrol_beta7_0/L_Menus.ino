@@ -357,23 +357,23 @@ void ledSetScreen() //-------------------------------- Alterar valores ---------
    for (int i = 0; i < 12; i++) 
   {
     myGLCD.setColor(0, 255, 255);
-    myGLCD.printNumI((i*2), (i*26)+13, 22); 
+    myGLCD.printNumI((i*2), (i*52)+26, 22); 
     if(i == 11)
     {
-      myGLCD.print("0", (i*26)+17, 36);
+      myGLCD.print("0", (i*52)+34, 72);
     }
     else
     {
-      myGLCD.printNumI(((i*2)+2), (i*26)+13, 36);
+      myGLCD.printNumI(((i*2)+2), (i*52)+26, 72);
     }
     for (int j=0; j<8; j++) 
     {
       a = (i*8)+j;         
       myGLCD.setColor(255, 255, 255);
-      myGLCD.printNumI(cor[cor_selecionada][a], (i*26)+7, (j*18)+54);
+      myGLCD.printNumI(cor[cor_selecionada][a], (i*52)+14, (j*36)+108);
       myGLCD.setColor(100, 100, 100);
-      myGLCD.drawRect((i*26)+4, (j*18)+50, (i*26)+30, (j*18)+68);
-      myGLCD.drawRect((i*26)+4, 16, (i*26)+30, 50);//
+      myGLCD.drawRect((i*52)+4, (j*36)+100, (i*52)+60, (j*36)+136);
+      myGLCD.drawRect((i*52)+4, 32, (i*52)+60, 100);//
     }
   }
 
@@ -428,18 +428,18 @@ void ledChangeScreen(boolean refreshAll=false)    //----------------------------
     for (int i=0; i<12; i++) 
     {
       myGLCD.setColor(0, 255, 255);
-      myGLCD.printNumI(((i*2)), (i*26)+13, 22);
+      myGLCD.printNumI(((i*2)), (i*52)+26, 22);
       if(i == 11)
       {
-        myGLCD.print("0", (i*26)+17, 33);
+        myGLCD.print("0", (i*52)+34, 66);
       }
       else
       {
-        myGLCD.printNumI(((i*2)+2), (i*26)+13, 33);
+        myGLCD.printNumI(((i*2)+2), (i*52)+26, 66);
       }
 
       myGLCD.setColor(100, 100, 100);
-      myGLCD.drawRect((i*26)+4, 20 , (i*26)+30, 45);
+      myGLCD.drawRect((i*52)+8, 40 , (i*52)+60, 90);
     }
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
@@ -465,15 +465,15 @@ void ledChangeScreen(boolean refreshAll=false)    //----------------------------
   {
     for (int i=0; i<8; i++)
     { 
-      printButton("+", (i*38)+5, 50, (i*38)+39, 75, LARGE);
-      printButton("-", (i*38)+5, 214, (i*38)+39, 239, LARGE);
+      printButton("+", (i*76)+10, 100, (i*76)+78, 150, LARGE);
+      printButton("-", (i*76)+10, 428, (i*76)+78, 478, LARGE);
     }
   }
   if((mensagem == true) && (periodo_selecionado == true))
   {
     mensagem = false;
     myGLCD.setColor(0, 0, 0);
-    myGLCD.fillRect(45, 105, 300, 121); //Apaga mensagem
+    myGLCD.fillRect(90, 210, 600, 242); //Apaga mensagem
   }
 }
 
