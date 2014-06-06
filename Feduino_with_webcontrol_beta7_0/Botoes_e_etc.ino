@@ -329,20 +329,22 @@ int NumMins(uint8_t ScheduleHour, uint8_t ScheduleMinute)
 //                   cor,       cor,   cor    locaÃƒÂ§ÃƒÂ£o x1, locaÃƒÂ§ÃƒÂ£o y1, locaÃƒÂ§ÃƒÂ£o x2, locaÃƒÂ§ÃƒÂ£o y2
 void desenhar_barras(int sbR, int sbG, int sbB, int sbX1, int sbY1, int sbX2, int sbY2)
 { 
-  myGLCD.setColor(sbR, sbG, sbB);          
-  myGLCD.fillRect(sbX1, y_tocado, sbX2, sbY2);  
+  myGLCD.setColor(sbR, sbG, sbB);
+  myGLCD.fillRect(sbX1, y_tocado, sbX2, sbY2);
   myGLCD.setColor(0, 0, 0);  
   myGLCD.fillRect(sbX1+1, y_tocado, sbX2-1, sbY1);
   myGLCD.setColor(sbR, sbG, sbB);            
   myGLCD.drawLine(sbX1, sbY1, sbX2, sbY1);
-  myGLCD.drawLine(sbX1, sbY2, sbX2, sbY2);  
+  myGLCD.drawLine(sbX1, sbY2, sbX2, sbY2);
+  
 }
 
 void desenhar_barras_periodo ()
 {
-  myGLCD.setColor(cor_canal [cor_selecionada][0], cor_canal [cor_selecionada][1], cor_canal [cor_selecionada][2]); 
-  myGLCD.drawRect((setor_selecionado * 38)+5, 80, (setor_selecionado * 38)+39, 195); 
-  desenhar_barras(cor_canal [cor_selecionada][0], cor_canal [cor_selecionada][1], cor_canal [cor_selecionada][2], (setor_selecionado * 38)+5, 80, (setor_selecionado * 38)+39, 195);
+  myGLCD.setColor(cor_canal [cor_selecionada][0], cor_canal [cor_selecionada][1], cor_canal [cor_selecionada][2]);
+  myGLCD.drawRect((setor_selecionado * 76)+10, 160, (setor_selecionado * 76)+78, 290); 
+  desenhar_barras(cor_canal [cor_selecionada][0], cor_canal [cor_selecionada][1], cor_canal [cor_selecionada][2], (setor_selecionado * 76)+10, 160, (setor_selecionado * 76)+78, 290);
 }
 
 
+  
