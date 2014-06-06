@@ -522,13 +522,13 @@ temp2beS = 40; */ /******************************************************** chan
         ledSetScreen();
         periodo_selecionado = false;
       }
-      else if ((y>=15) && (y<=40))                                    // SeleÃƒÂ§ÃƒÂ£o de perÃƒÂ­odo
+      else if ((y>=30) && (y<=80))                                    // SeleÃƒÂ§ÃƒÂ£o de perÃƒÂ­odo
       {
-        if ((x>=4) && (x<=316))
+        if ((x>=8) && (x<=632))
         {
           periodo_selecionado = true;
           int oldLCT = LedChangTime;
-          LedChangTime = map(x, 3, 320, 0, 12);                
+          LedChangTime = map(x, 6, 640, 0, 24);                
 
           if (oldLCT != LedChangTime)                        // RealÃƒÂ§ar perÃƒÂ­odo tocado
           {
@@ -543,98 +543,98 @@ temp2beS = 40; */ /******************************************************** chan
 
             if(oldLCT == 11)
             {
-              myGLCD.printNumI((oldLCT*2), (oldLCT*26)+10, 22);
-              myGLCD.print("0", (oldLCT*26)+14, 33);            
+              myGLCD.printNumI((oldLCT*2), (oldLCT*52)+20, 22);
+              myGLCD.print("0", (oldLCT*52)+28, 66);            
             }
             else
             {
-              myGLCD.printNumI((oldLCT*2), (oldLCT*26)+10, 22);
-              myGLCD.printNumI(((oldLCT*2)+2), (oldLCT*26)+10, 33);
+              myGLCD.printNumI((oldLCT*2), (oldLCT*52)+20, 22);
+              myGLCD.printNumI(((oldLCT*2)+2), (oldLCT*52)+20, 66);
             }
             myGLCD.setColor(255, 0, 0);
-            myGLCD.fillRect((LedChangTime*26)+5, 21, (LedChangTime*26)+29, 45);
+            myGLCD.fillRect((LedChangTime*52)+10, 42, (LedChangTime*52)+38, 90);
 
             setFont(SMALL, 255, 255, 255, 255, 0, 0);
 
             if(LedChangTime == 11)
             {
-              myGLCD.printNumI((LedChangTime*2), (LedChangTime*26)+10, 22);
-              myGLCD.print("0", (LedChangTime*26)+14, 33);
+              myGLCD.printNumI((LedChangTime*2), (LedChangTime*52)+10, 22);
+              myGLCD.print("0", (LedChangTime*52)+28, 66);
             }
             else
             {
-              myGLCD.printNumI((LedChangTime*2), (LedChangTime*26)+10, 22);
-              myGLCD.printNumI(((LedChangTime*2)+2), (LedChangTime*26)+10, 33);              
+              myGLCD.printNumI((LedChangTime*2), (LedChangTime*52)+20, 22);
+              myGLCD.printNumI(((LedChangTime*2)+2), (LedChangTime*52)+10, 66);              
             }
             myGLCD.setColor(100, 100, 100);
-            myGLCD.drawLine(4, 45, 316,45);
+            myGLCD.drawLine(8, 90, 632,90);
 
             for (int i = 0; i < 8; i++)                          // Imprime valores do perÃƒÂ­odo.
             {
               int k=(LedChangTime * 8) + i;
               myGLCD.setColor(0,0,0);
-              myGLCD.fillRect((i * 38) + 12, 200, (i * 38) + 36, 210); 
+              myGLCD.fillRect((i * 76) + 24, 400, (i * 76) + 72, 420); 
               setFont(SMALL, 255, 255, 255, 0, 0, 0);
-              myGLCD.printNumI( cor[cor_selecionada][k], (i * 38) + 12, 200);
-              y_tocado = map(cor[cor_selecionada][k], 255, 0, 80, 195);
+              myGLCD.printNumI( cor[cor_selecionada][k], (i * 76) + 24, 400);
+              y_tocado = map(cor[cor_selecionada][k], 510, 0, 160, 390);
               setor_selecionado = i;
               desenhar_barras_periodo ();
             }
           }
         }
       }
-      else if((y >= 80) && (y <= 195))
+      else if((y >= 160) && (y <= 390))
       {
         for (int i = 0; i < 8; i++) {                
-          if ((x >= (i * 38) + 5) && (x <= (i * 38) + 39)) 
+          if ((x >= (i * 76) + 10) && (x <= (i * 76) + 78)) 
           {
             int k= (LedChangTime * 8) + i;
             y_tocado = y;
-            cor[cor_selecionada][k] = map(y_tocado, 195, 80, 0, 255);
+            cor[cor_selecionada][k] = map(y_tocado, 390, 160, 0, 255);
             myGLCD.setColor(0,0,0);
-            myGLCD.fillRect((i * 38) + 12, 200, (i * 38) + 36, 210);
+            myGLCD.fillRect((i * 76) + 24, 400, (i * 76) + 72, 420);
             setFont(SMALL, 255, 255, 255, 0, 0, 0);
-            myGLCD.printNumI( cor[cor_selecionada][k], (i * 38) + 12, 200);
+            myGLCD.printNumI( cor[cor_selecionada][k], (i * 76) + 24, 400);
             setor_selecionado = i;
             desenhar_barras_periodo ();
           }
         }     
       } 
-      else if ((y >= 50) && (y <= 75) && (periodo_selecionado == true))       // BotÃƒÂ£o +
+      else if ((y >= 100) && (y <= 150) && (periodo_selecionado == true))       // BotÃƒÂ£o +
       {
         for (int i = 0; i < 8; i++) 
         {                
-          if ((x >= (i * 38) + 5) && (x <= (i * 38) + 39)) 
+          if ((x >= (i * 76) + 10) && (x <= (i * 76) + 78)) 
           {
             //waitForIt((i*38)+5, 50, (i*38)+39, 75); 
             int k= (LedChangTime * 8) + i;
             cor[cor_selecionada][k] += 1;
             delay(50);
             myGLCD.setColor(0,0,0);
-            myGLCD.fillRect((i * 38) + 12, 200, (i * 38) + 36, 210);
+            myGLCD.fillRect((i * 76) + 24, 200, (i * 76) + 36, 420);
             setFont(SMALL, 255, 255, 255, 0, 0, 0);
-            myGLCD.printNumI( cor[cor_selecionada][k], (i * 38) + 12, 200);
-            y_tocado = map(cor[cor_selecionada][k], 255, 0, 80, 195);
+            myGLCD.printNumI( cor[cor_selecionada][k], (i * 76) + 24, 400);
+            y_tocado = map(cor[cor_selecionada][k], 255, 0, 160, 390);
             setor_selecionado = i;
             desenhar_barras_periodo ();
           }
         }
       }
-      else if ((y>=214) && (y<=239)  && (periodo_selecionado == true))     // BotÃƒÂ£o -
+      else if ((y>=428) && (y<=478)  && (periodo_selecionado == true))     // BotÃƒÂ£o -
       {
         for (int i = 0; i < 8; i++) 
         {                
-          if ((x >= (i * 38) + 5) && (x <= (i * 38) + 39)) 
+          if ((x >= (i * 76) +10) && (x <= (i *76) + 78)) 
           {
-            //waitForIt((i*38)+5, 214, (i*38)+39, 239);
+            //waitForIt((i*76)+10, 428, (i*76)+78, 478);
             int k= (LedChangTime * 8) + i;
             cor[cor_selecionada][k] -= 1;
             delay(50);
             myGLCD.setColor(0,0,0);
-            myGLCD.fillRect((i * 38) + 12, 200, (i * 38) + 36, 210);
+            myGLCD.fillRect((i * 76) + 24, 400, (i * 76) + 72, 420);
             setFont(SMALL, 255, 255, 255, 0, 0, 0);
-            myGLCD.printNumI( cor[cor_selecionada][k], (i * 38) + 12, 200);
-            y_tocado = map(cor[cor_selecionada][k], 255, 0, 80, 195);
+            myGLCD.printNumI( cor[cor_selecionada][k], (i * 76) + 24, 400);
+            y_tocado = map(cor[cor_selecionada][k], 255, 0, 160, 290);
             setor_selecionado = i;
             desenhar_barras_periodo ();
           }
