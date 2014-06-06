@@ -1140,111 +1140,111 @@ void teste_individual_leds()
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
   printButton(buffer, volT[0], volT[1], volT[2], volT[3]);  // "VOLTAR"
 
-  printButton("+", 49, 18, 93, 41, true);    // "+"
-  printButton("+", 101, 18, 145, 41, true);  // "+"
-  printButton("+", 153, 18, 197, 41, true);  // "+"
-  printButton("+", 205, 18, 249, 41, true);  // "+"
-  printButton("+", 257, 18, 301, 41, true);  // "+"
+  printButton("+", 98, 36, 186, 82, true);    // "+"
+  printButton("+", 202, 36, 290, 82, true);  // "+"
+  printButton("+", 306, 36, 394, 82, true);  // "+"
+  printButton("+", 410, 36, 498, 82, true);  // "+"
+  printButton("+", 514, 36, 602, 82, true);  // "+"
 
-  printButton("-", 49, 201, 93, 224, true);    // "-"
-  printButton("-", 101, 201, 145, 224, true);  // "-"
-  printButton("-", 153, 201, 197, 224, true);  // "-"
-  printButton("-", 205, 201, 249, 224, true);  // "-"
-  printButton("-", 257, 201, 301, 224, true);  // "-"
+  printButton("-", 98, 402, 186, 448, true);    // "-"
+  printButton("-", 202, 402, 290, 448, true);  // "-"
+  printButton("-", 306, 402, 394, 448, true);  // "-"
+  printButton("-", 410, 402, 498, 448, true);  // "-"
+  printButton("-", 514, 402, 602, 448, true);  // "-"
 
-  myGLCD.setFont(RusFont1);
+  myGLCD.setFont(BigFont);
   myGLCD.setBackColor(0,0,0);
 
   myGLCD.setColor(cor_canal1[0], cor_canal1[1],cor_canal1[2]); 
-  myGLCD.drawRect(49, 44, 93, 172);   // % bar place holder 
+  myGLCD.drawRect(98, 88, 186, 344);   // % bar place holder 
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[1])));
-  myGLCD.print(buffer, 61, 176);   //  Branco
+  myGLCD.print(buffer, 122, 352);   //  Branco
 
-  myGLCD.printNumI(wled_out_temp, 61, 186);
+  myGLCD.printNumI(wled_out_temp, 122, 372);
 
   myGLCD.setColor(cor_canal2[0], cor_canal2[1],cor_canal2[2]); 
-  myGLCD.drawRect(101, 44, 145, 172);  // % bar place holder
+  myGLCD.drawRect(202, 88, 290, 344);  // % bar place holder
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[2])));
-  myGLCD.print(buffer, 113, 176);    // Azul
+  myGLCD.print(buffer, 226, 352);    // Azul
 
-  myGLCD.printNumI(bled_out_temp, 113, 186);
+  myGLCD.printNumI(bled_out_temp, 226, 372);
 
   myGLCD.setColor(cor_canal3[0], cor_canal3[1],cor_canal3[2]); 
-  myGLCD.drawRect(153, 44, 197, 172); //  % bar place holder 
+  myGLCD.drawRect(306, 88, 394, 344); //  % bar place holder 
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[3])));
-  myGLCD.print(buffer, 165, 176);   // Azul Royal
+  myGLCD.print(buffer, 330, 352);   // Azul Royal
 
-  myGLCD.printNumI(rbled_out_temp, 165, 186);
+  myGLCD.printNumI(rbled_out_temp, 330, 372);
 
   myGLCD.setColor(cor_canal4[0], cor_canal4[1],cor_canal4[2]); 
-  myGLCD.drawRect(205, 44, 249, 172); // % bar place holder;
+  myGLCD.drawRect(410, 88, 498, 344); // % bar place holder;
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[4])));
-  myGLCD.print(buffer, 217, 176);   // Vermelho
+  myGLCD.print(buffer, 434, 352);   // Vermelho
 
-  myGLCD.printNumI(rled_out_temp, 217, 186);
+  myGLCD.printNumI(rled_out_temp, 434, 372);
 
   myGLCD.setColor(cor_canal5[0], cor_canal5[1],cor_canal5[2]);  
-  myGLCD.drawRect(257, 44, 301, 172); // % bar place holder
+  myGLCD.drawRect(514, 88, 602, 344); // % bar place holder
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[5])));
-  myGLCD.print(buffer, 269, 176);   // Violeta  
+  myGLCD.print(buffer, 538, 352);   // Violeta  
 
-  myGLCD.printNumI(uvled_out_temp, 269, 186);   
+  myGLCD.printNumI(uvled_out_temp, 538, 372);   
 
-  setFont(SMALL, 255, 255, 255, 0, 0, 0); 
-  myGLCD.drawRect(30, 173, 315, 173);     // Eixo x
-  myGLCD.drawRect(30, 173, 30, 44);       // eixo y  
+  setFont(LARGE, 255, 255, 255, 0, 0, 0); 
+  myGLCD.drawRect(60, 346, 630, 346);     // Eixo x
+  myGLCD.drawRect(60, 346, 60, 88);       // eixo y  
 
   myGLCD.setColor(190, 190, 190);
   for (int i=0; i<10; i++){               // Escala % 
-    myGLCD.drawLine(31, (i*13)+44, 38, (i*13)+44); 
+    myGLCD.drawLine(62, (i*26)+88, 76, (i*26)+88); 
   } 
   for (int i=0; i<10; i++){              
-    myGLCD.drawLine(31, (i*13)+51, 34, (i*13)+51); 
+    myGLCD.drawLine(62, (i*26)+102, 68, (i*26)+102); 
   } 
 
-  myGLCD.setFont(RusFont1);
-  myGLCD.print("%", 20, 25);     // %
-  myGLCD.print("100", 5, 41);   // 100
-  myGLCD.print("90", 12, 54);   // 90
-  myGLCD.print("80", 12, 67);   // 80
-  myGLCD.print("70", 12, 80);   // 70
-  myGLCD.print("60", 12, 93);   // 60
-  myGLCD.print("50", 12, 106);  // 50
-  myGLCD.print("40", 12, 119);  // 40
-  myGLCD.print("30", 12, 132);  // 30
-  myGLCD.print("20", 12, 145);  // 20
-  myGLCD.print("10", 12, 158);  // 10
-  myGLCD.print("0", 20, 171);   // 0
+  myGLCD.setFont(BigFont);
+  myGLCD.print("%", 40, 50);     // %
+  myGLCD.print("100", 10, 82);   // 100
+  myGLCD.print("90", 24, 108);   // 90
+  myGLCD.print("80", 24, 134);   // 80
+  myGLCD.print("70", 24, 160);   // 70
+  myGLCD.print("60", 24, 186);   // 60
+  myGLCD.print("50", 24, 212);  // 50
+  myGLCD.print("40", 24, 238);  // 40
+  myGLCD.print("30", 24, 264);  // 30
+  myGLCD.print("20", 24, 290);  // 20
+  myGLCD.print("10", 24, 316);  // 10
+  myGLCD.print("0", 40, 342);   // 0
 
   myGLCD.setColor(180, 180, 180);                  
   for (int i=0; i<10; i++){                      // escalas de linhas pontilhadas horizontais 
-    for(int k=46; k<311; k++){ 
-      myGLCD.drawPixel(k,(i*13)+44); 
-      k=k+2;
+    for(int k=92; k<622; k++){ 
+      myGLCD.drawPixel(k,(i*26)+88); 
+      k=k+4;
     } 
   } 
 
   //void desenhar_barras(int sbR, int sbG, int sbB, int sbX1, int sbY1, int sbX2, int sbY2)
 
-  y_tocado = map(wled_out_temp, 255, 0, 44, 172);
-  desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 49, 44, 93, 172);
+  y_tocado = map(wled_out_temp, 510, 0, 88, 344);
+  desenhar_barras(cor_canal1[0], cor_canal1[1],cor_canal1[2], 98, 88, 186, 344);
 
-  y_tocado = map(bled_out_temp, 255, 0, 44, 172);
-  desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 101, 44, 145, 172);
+  y_tocado = map(bled_out_temp, 510, 0, 88, 344);
+  desenhar_barras(cor_canal2[0], cor_canal2[1],cor_canal2[2], 202, 88, 290, 344);
 
-  y_tocado = map(rbled_out_temp, 255, 0, 44, 172);
-  desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 153, 44, 197, 172);
+  y_tocado = map(rbled_out_temp, 510, 0, 88, 344);
+  desenhar_barras(cor_canal3[0], cor_canal3[1],cor_canal3[2], 306, 88, 394, 344);
 
-  y_tocado = map(rled_out_temp, 255, 0, 44, 172);
-  desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 205, 44, 249, 172);
+  y_tocado = map(rled_out_temp, 510, 0, 88, 344);
+  desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 410, 88, 498, 344);
 
-  y_tocado = map(uvled_out_temp, 255, 0, 44, 172);
-  desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 257, 44, 301, 172);                                                             
+  y_tocado = map(uvled_out_temp, 510, 0, 88, 344);
+  desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 514, 88, 602, 344);                                                             
 }
 void rever_dosagem_personalizada_2() // ------------------------------------------------------------------ tela =23
 {
