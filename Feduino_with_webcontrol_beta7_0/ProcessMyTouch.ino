@@ -1949,7 +1949,7 @@ temp2beS = 40; */ /******************************************************** chan
             myGLCD.printNumI(bled_out_temp, 258, 372);
           }
         }
-        else if((x >= 153) && (x <= 197)) // BotÃƒÂ£o mais
+        else if((x >= 306) && (x <= 394)) // BotÃƒÂ£o mais
         {
           //waitForIt(306, 36, 394, 83);
           rbled_out_temp += 1;
@@ -2066,7 +2066,7 @@ temp2beS = 40; */ /******************************************************** chan
             myGLCD.printNumI(bled_out_temp, 258, 372);
           }
         }
-        else if((x >= 306) && (x <= 294)) // BotÃƒÂ£o menos
+        else if((x >= 306) && (x <= 394)) // BotÃƒÂ£o menos
         {
           //waitForIt(306, 402, 394, 448);
           rbled_out_temp -= 1;
