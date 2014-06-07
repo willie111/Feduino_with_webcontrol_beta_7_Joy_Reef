@@ -2257,7 +2257,7 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
   if (minuto_inicial_dosagem_personalizada[dosadora_selecionada] < 10)
   {
     myGLCD.printNumI(0, 240, 96);
-    myGLCD.printNumI(minuto_inicial_dosagem_personalizada[dosadora_selecionada], 272, 96);
+    myGLCD.printNumI(minuto_inicial_dosagem_personalizada[dosadora_selecionada], 256, 96);
   }
   else
   {
@@ -2266,7 +2266,7 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
   if (hora_final_dosagem_personalizada[dosadora_selecionada] < 10)
   {
     myGLCD.printNumI(0, 140 + 310, 96);
-    myGLCD.printNumI(hora_final_dosagem_personalizada[dosadora_selecionada], 172 + 310, 96);
+    myGLCD.printNumI(hora_final_dosagem_personalizada[dosadora_selecionada], 156 + 310, 96);
   }
   else
   {
@@ -2276,7 +2276,7 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
   if (minuto_final_dosagem_personalizada[dosadora_selecionada] < 10)
   {
     myGLCD.printNumI(0, 240 + 310, 96);
-    myGLCD.printNumI(minuto_final_dosagem_personalizada[dosadora_selecionada], 272 + 310, 96);
+    myGLCD.printNumI(minuto_final_dosagem_personalizada[dosadora_selecionada], 256 + 310, 96);
   }
   else
   {
@@ -2399,7 +2399,7 @@ void config_dosagem_personalizada_2(boolean refreshAll=false) // ----------tela 
     if (quantidade_dose_dosadora_personalizada[dosadora_selecionada] < 10)
     {
       myGLCD.printNumI(0, 550, 96);
-      myGLCD.printNumI(quantidade_dose_dosadora_personalizada[dosadora_selecionada], 582, 96);
+      myGLCD.printNumI(quantidade_dose_dosadora_personalizada[dosadora_selecionada], 566, 96);
     }
     else
     {
