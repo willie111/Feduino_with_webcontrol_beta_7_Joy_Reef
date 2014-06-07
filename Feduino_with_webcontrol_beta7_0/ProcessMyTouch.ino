@@ -2167,9 +2167,9 @@ temp2beS = 40; */ /******************************************************** chan
         clearScreen();
         desativar_dosadoras(true);
       }
-      else if ((x >= 100) && (x <= 220) && (y >= 45) && (y <= 85)) //Ativar/desativar dosadora 4
+      else if ((x >= 200) && (x <= 440) && (y >= 90) && (y <= 170)) //Ativar/desativar dosadora 4
       {
-        //waitForIt(100, 45, 220, 85);
+        //waitForIt(200, 90, 440, 170);
 
         if(bitRead(ativar_desativar,4) == true)
         {
@@ -2181,9 +2181,9 @@ temp2beS = 40; */ /******************************************************** chan
           desativar_dosadoras_2(true);
         }
       }
-      else if ((x >= 100) && (x <= 220) && (y >= 115) && (y <= 155)) //Ativar/desatiavr dosadora 5
+      else if ((x >= 200) && (x <= 440) && (y >= 230) && (y <= 310)) //Ativar/desatiavr dosadora 5
       {
-        //waitForIt(100, 115, 220, 155);
+        //waitForIt(200, 230, 440, 310);
 
         if(bitRead(ativar_desativar,5) == true)
         {
@@ -2195,9 +2195,9 @@ temp2beS = 40; */ /******************************************************** chan
           desativar_dosadoras_2(true);
         }
       }
-      else if ((x >= 100) && (x <= 220) && (y >= 185) && (y <= 225)) //Ativar/desatiavr dosadora 6
+      else if ((x >= 200) && (x <= 440) && (y >= 370) && (y <= 450)) //Ativar/desatiavr dosadora 6
       {
-        //waitForIt(100, 185, 220, 225);
+        //waitForIt(200, 370, 440, 450);
 
         if(bitRead(ativar_desativar,6) == true)
         {
@@ -2364,7 +2364,7 @@ temp2beS = 40; */ /******************************************************** chan
         dispScreen = 21;
         clearScreen();
         selecionar_dosadora();
-        setFont(SMALL, 255, 255, 255, 0, 0, 0);
+        setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
         strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[164])));
         myGLCD.print(buffer, 30, 440); // "MANUAL MODE SELECTED"
@@ -2468,10 +2468,10 @@ temp2beS = 40; */ /******************************************************** chan
         dispScreen = 21;
         clearScreen();
         selecionar_dosadora();
-        setFont(SMALL, 255, 255, 255, 0, 0, 0);
+        setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
         strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[171])));
-        myGLCD.print(buffer, 15, 440); // "CUSTOM MODE SELECTED"
+        myGLCD.print(buffer, 30, 440); // "CUSTOM MODE SELECTED"
 
         modo_manual = false;
         modo_personalizado = true;
@@ -2500,15 +2500,15 @@ temp2beS = 40; */ /******************************************************** chan
           config_dosagem_personalizada();
         }
 
-        else if ((x >= houU[0] + 155) && (x <= houU[2] + 155))
+        else if ((x >= houU[0] + 310) && (x <= houU[2] + 310))
         {
-          //waitForIt(houU[0] + 155, houU[1], houU[2] + 155, houU[3]);
+          //waitForIt(houU[0] + 310, houU[1], houU[2] + 310, houU[3]);
           hora_final_dosagem_personalizada[dosadora_selecionada] = (hora_final_dosagem_personalizada[dosadora_selecionada] + 1) % 24;
           config_dosagem_personalizada();
         }
-        else if ((x >= minUT[0] + 155) && (x <= minUT[2] + 155))
+        else if ((x >= minUT[0] + 310) && (x <= minUT[2] + 310))
         {
-          //waitForIt(minUT[0] + 155, minUT[1], minUT[2] + 155, minUT[3]);
+          //waitForIt(minUT[0] + 310, minUT[1], minUT[2] + 310, minUT[3]);
           minuto_final_dosagem_personalizada[dosadora_selecionada] = (minuto_final_dosagem_personalizada[dosadora_selecionada] + 1) % 60;
           config_dosagem_personalizada();
         }
@@ -2528,15 +2528,15 @@ temp2beS = 40; */ /******************************************************** chan
           minuto_inicial_dosagem_personalizada[dosadora_selecionada] = (minuto_inicial_dosagem_personalizada[dosadora_selecionada] + 59) % 60;
           config_dosagem_personalizada();
         }
-        else if ((x >= houD[0] + 155) && (x <= houD[2] + 155))
+        else if ((x >= houD[0] + 310) && (x <= houD[2] + 310))
         {
-          //waitForIt(houD[0] + 155, houD[1], houD[2] + 155, houD[3]);
+          //waitForIt(houD[0] + 310, houD[1], houD[2] + 310, houD[3]);
           hora_final_dosagem_personalizada[dosadora_selecionada] = (hora_final_dosagem_personalizada[dosadora_selecionada] + 23) % 24;
           config_dosagem_personalizada();
         }
-        else if ((x >= minDT[0] + 155) && (x <= minDT[2] + 155))
+        else if ((x >= minDT[0] + 310) && (x <= minDT[2] + 310))
         {
-          //waitForIt(minDT[0] + 155, minDT[1], minDT[2] + 155, minDT[3]);
+          //waitForIt(minDT[0] + 310, minDT[1], minDT[2] + 310, minDT[3]);
           minuto_final_dosagem_personalizada[dosadora_selecionada] = (minuto_final_dosagem_personalizada[dosadora_selecionada] + 59) % 60;
           config_dosagem_personalizada();
         }
@@ -2713,7 +2713,7 @@ temp2beS = 40; */ /******************************************************** chan
           myGLCD.setBackColor(0, 0, 0);
 
           strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[173])));
-          myGLCD.print(buffer, 70, 384); // tabela_textos[173] = "CORRECT PASSWORD"
+          myGLCD.print(buffer, 102, 384); // tabela_textos[173] = "CORRECT PASSWORD"
 
           delay(500);
           dispScreen=1;
@@ -2796,7 +2796,7 @@ temp2beS = 40; */ /******************************************************** chan
         else if(dose_dosadora_personalizada[dosadora_selecionada] <= 9.5)
         {
           myGLCD.setColor(0, 0, 0);
-          myGLCD.fillRect(100, 45, 185, 67);
+          myGLCD.fillRect(200, 90, 370, 134);
         }
 
         config_dosagem_personalizada_2();
@@ -2812,7 +2812,7 @@ temp2beS = 40; */ /******************************************************** chan
         else if(dose_dosadora_personalizada[dosadora_selecionada] <= 9.5)
         {
           myGLCD.setColor(0, 0, 0);
-          myGLCD.fillRect(100, 45, 185, 67);
+          myGLCD.fillRect(200, 90, 370, 134);
         }
         config_dosagem_personalizada_2();
       }
@@ -2856,23 +2856,23 @@ temp2beS = 40; */ /******************************************************** chan
         if((hora_final_dosagem_personalizada[dosadora_selecionada] == hora_inicial_dosagem_personalizada[dosadora_selecionada])
           && (minuto_final_dosagem_personalizada[dosadora_selecionada] < (minuto_inicial_dosagem_personalizada[dosadora_selecionada]+10)))
         {
-          setFont(SMALL, 255, 0, 0, 0, 0, 0);
+          setFont(LARGE, 255, 0, 0, 0, 0, 0);
 
           strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[176])));
-          myGLCD.print(buffer, 20, 110); // "INTERVAL BETWEEN START AND END"
+          myGLCD.print(buffer, 40, 220); // "INTERVAL BETWEEN START AND END"
 
           strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[177])));
-          myGLCD.print(buffer, 35, 130); // MUST BE AT LEAST 10 MINUTES!
+          myGLCD.print(buffer, 70, 260); // MUST BE AT LEAST 10 MINUTES!
         }
         else if(hora_final_dosagem_personalizada[dosadora_selecionada] < hora_inicial_dosagem_personalizada[dosadora_selecionada])
         {
-          setFont(SMALL, 255, 0, 0, 0, 0, 0);
+          setFont(LARGE, 255, 0, 0, 0, 0, 0);
 
           strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[178])));
-          myGLCD.print(buffer, 50, 110); // "END TIME CAN NOT BE LESS THAN"
+          myGLCD.print(buffer, 100, 220); // "END TIME CAN NOT BE LESS THAN"
 
           strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[179])));
-          myGLCD.print(buffer, 100, 130); // START TIME!
+          myGLCD.print(buffer, 200, 260); // START TIME!
         }
         else if((hora_final_dosagem_personalizada[dosadora_selecionada] == hora_inicial_dosagem_personalizada[dosadora_selecionada])
           && (minuto_final_dosagem_personalizada[dosadora_selecionada] >= (minuto_inicial_dosagem_personalizada[dosadora_selecionada] + 10))
@@ -2882,10 +2882,10 @@ temp2beS = 40; */ /******************************************************** chan
           dispScreen =21;
           clearScreen();
           selecionar_dosadora();
-          setFont(SMALL, 255, 255, 255, 0, 0, 0);
+          setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
           strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[171])));
-          myGLCD.print(buffer, 15, 440); // "CUSTOM MODE SELECTED"
+          myGLCD.print(buffer, 30, 440); // "CUSTOM MODE SELECTED"
 
           modo_manual = false;
           modo_personalizado = true;
@@ -2964,9 +2964,9 @@ temp2beS = 40; */ /******************************************************** chan
         clearScreen();
         desativar_dosadoras_2(true);
       }
-      else if ((x >= 100) && (x <= 220) && (y >= 45) && (y <= 85)) //Ativar/desatiavr dosadora 1
+      else if ((x >= 200) && (x <= 440) && (y >= 90) && (y <= 170)) //Ativar/desatiavr dosadora 1
       {
-        //waitForIt(100, 45, 220, 85);
+        //waitForIt(200, 90, 440, 170);
 
         if(bitRead(ativar_desativar,1) == true)
         {
@@ -2978,9 +2978,9 @@ temp2beS = 40; */ /******************************************************** chan
           desativar_dosadoras(true);
         }
       }
-      else if ((x >= 100) && (x <= 220) && (y >= 115) && (y <= 155)) //Ativar/desatiavr dosadora 2
+      else if ((x >= 200) && (x <= 440) && (y >= 230) && (y <= 310)) //Ativar/desatiavr dosadora 2
       {
-        //waitForIt(100, 115, 220, 155);
+        //waitForIt(200, 230, 440, 310);
 
         if(bitRead(ativar_desativar,2) == true)
         {
@@ -2992,9 +2992,9 @@ temp2beS = 40; */ /******************************************************** chan
           desativar_dosadoras(true);
         }
       }
-      else if ((x >= 100) && (x <= 220) && (y >= 185) && (y <= 225)) //Ativar/desatiavr dosadora 3
+      else if ((x >= 200) && (x <= 440) && (y >= 370) && (y <= 450)) //Ativar/desatiavr dosadora 3
       {
-        //waitForIt(100, 185, 220, 225);
+        //waitForIt(200, 370, 440, 450);
 
         if(bitRead(ativar_desativar,3) == true)
         {
