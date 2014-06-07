@@ -36,11 +36,11 @@ const int ledW[]= {
   340, 40, 620, 120};           // Timers
 
 const int savE[]= {
-  360, 426, 600, 490};          // Save Eeprom
+  360, 426, 600, 470};          // Save Eeprom
 const int leWB[]= {
-  10, 426, 180, 490};           // LED values show whites or blues
+  10, 426, 180, 470};           // LED values show whites or blues
 const int leST[]= {
-  200, 426, 340, 490};          // LED values change
+  200, 426, 340, 470};          // LED values change
 
 const int tpaA[]= {
   340, 140, 620, 220};          // auto-water change
