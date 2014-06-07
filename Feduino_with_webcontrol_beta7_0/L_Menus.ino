@@ -2247,7 +2247,7 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
   if (hora_inicial_dosagem_personalizada[dosadora_selecionada] < 10)
   {
     myGLCD.printNumI(0, 140, 96);
-    myGLCD.printNumI(hora_inicial_dosagem_personalizada[dosadora_selecionada], 172, 96);
+    myGLCD.printNumI(hora_inicial_dosagem_personalizada[dosadora_selecionada], 156, 96);
   }
   else
   {
