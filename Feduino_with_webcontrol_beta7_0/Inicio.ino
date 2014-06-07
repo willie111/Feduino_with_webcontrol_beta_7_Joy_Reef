@@ -1,5 +1,5 @@
 //---------------------------------------Tela inicial ----------------------------------------------tela =0
-vvoid mainScreen(boolean refreshAll=false)
+void mainScreen(boolean refreshAll=false)
 {
   int ledLevel, s, u;
   String oldval, rtc1, rtcm, oldano;
