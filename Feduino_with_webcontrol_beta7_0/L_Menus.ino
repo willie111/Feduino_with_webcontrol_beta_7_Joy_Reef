@@ -327,37 +327,37 @@ void ledSetScreen() //-------------------------------- Alterar valores ---------
 {
   int a;
 
-  if (cor_selecionada == 0) 
+  if (cor_selecionada == 0)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[17])));
     printHeader(buffer); // "POTENCIA DOS LEDS BRANCOS: 255 = 100%"
   }
-  else if (cor_selecionada == 1) 
+  else if (cor_selecionada == 1)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[18])));
     printHeader(buffer); // "POTENCIA LEDS AZUIS: 255 = 100%"
-  }  
-  else if (cor_selecionada == 2) 
+  }
+  else if (cor_selecionada == 2)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[19])));
     printHeader(buffer); // "POTENCIA LEDS AZUIS ROYAL: 255 = 100%"
-  } 
-  else if (cor_selecionada == 3) 
+  }
+  else if (cor_selecionada == 3)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[20])));
     printHeader(buffer); // "POTENCIA LEDS VERMELHOS: 255 = 100%"
-  } 
-  else if (cor_selecionada == 4) 
+  }
+  else if (cor_selecionada == 4)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[21])));
     printHeader(buffer); // "POTENCIA LEDS VIOLETAS: 255 = 100%"
-  } 
+  }
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
-   for (int i = 0; i < 12; i++) 
+   for (int i = 0; i < 12; i++)
   {
     myGLCD.setColor(0, 255, 255);
-    myGLCD.printNumI((i*2), (i*52)+26, 44); 
+    myGLCD.printNumI((i*2), (i*52)+26, 44);
     if(i == 11)
     {
       myGLCD.print("0", (i*52)+34, 72);
@@ -366,9 +366,9 @@ void ledSetScreen() //-------------------------------- Alterar valores ---------
     {
       myGLCD.printNumI(((i*2)+2), (i*52)+26, 72);
     }
-    for (int j=0; j<8; j++) 
+    for (int j=0; j<8; j++)
     {
-      a = (i*8)+j;         
+      a = (i*8)+j;
       myGLCD.setColor(255, 255, 255);
       myGLCD.printNumI(cor[cor_selecionada][a], (i*52)+14, (j*36)+108);
       myGLCD.setColor(100, 100, 100);
@@ -387,13 +387,13 @@ void ledSetScreen() //-------------------------------- Alterar valores ---------
   printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[210])));
   printButton(buffer, leWB[0], leWB[1], leWB[2], leWB[3], SMALL); // tabela_textos[210] = "MAIS"
 }
 
-void ledChangeScreen(boolean refreshAll=false)    //--------------------------------------- PotÃƒÂªncia dos leds------------------------------ tela =6
+void ledChangeScreen(boolean refreshAll=false) //--------------------------------------- PotÃƒÂªncia dos leds------------------------------ tela =6
 {
   if(refreshAll == true)
   {
@@ -425,7 +425,7 @@ void ledChangeScreen(boolean refreshAll=false)    //----------------------------
     }
 
     setFont(LARGE, 0, 255, 255, 0,0,0);
-    for (int i=0; i<12; i++) 
+    for (int i=0; i<12; i++)
     {
       myGLCD.setColor(0, 255, 255);
       myGLCD.printNumI(((i*2)), (i*52)+26, 44);
@@ -449,22 +449,22 @@ void ledChangeScreen(boolean refreshAll=false)    //----------------------------
     printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
-    printButton(buffer, menU[0], menU[1], menU[2], menU[3]);  // "MENU 1";
+    printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
-    printButton(buffer, volT[0], volT[1], volT[2], volT[3]);  // tabela_textos[66] = "VOLTAR"
+    printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // tabela_textos[66] = "VOLTAR"
 
     setFont(LARGE, 255, 0, 0, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[203])));
-    myGLCD.print(buffer,100, 210);  // tabela_textos[203] = "SELECIONE UM PERIODO."
+    myGLCD.print(buffer,100, 210); // tabela_textos[203] = "SELECIONE UM PERIODO."
 
   }
 
   if(periodo_selecionado == true)
   {
     for (int i=0; i<8; i++)
-    { 
+    {
       printButton("+", (i*76)+10, 100, (i*76)+78, 150, LARGE);
       printButton("-", (i*76)+10, 428, (i*76)+78, 478, LARGE);
     }
@@ -609,7 +609,7 @@ void tpaScreen(boolean refreshAll = false) //-----------------------------------
   if (temp2hora < 10)
   {
     myGLCD.printNumI(0, 140, 96);
-    myGLCD.printNumI(temp2hora, 172, 96);
+    myGLCD.printNumI(temp2hora, 156, 96);
   }
   else
   {
@@ -619,7 +619,7 @@ void tpaScreen(boolean refreshAll = false) //-----------------------------------
   if (temp2minuto < 10)
   {
     myGLCD.printNumI(0, 240, 96);
-    myGLCD.printNumI(temp2minuto, 272, 96);
+    myGLCD.printNumI(temp2minuto, 256, 96);
   }
   else
   {
@@ -1132,80 +1132,80 @@ void teste_individual_leds()
   printHeader(buffer); // tabela_textos[16] "TESTAR VARIACAO DE LUMINOSIDADE"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
   printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
-  printButton(buffer, volT[0], volT[1], volT[2], volT[3]);  // "VOLTAR"
+  printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // "VOLTAR"
 
-  printButton("+", 98, 36, 186, 82, true);    // "+"
-  printButton("+", 202, 36, 290, 82, true);  // "+"
-  printButton("+", 306, 36, 394, 82, true);  // "+"
-  printButton("+", 410, 36, 498, 82, true);  // "+"
-  printButton("+", 514, 36, 602, 82, true);  // "+"
+  printButton("+", 98, 36, 186, 82, true); // "+"
+  printButton("+", 202, 36, 290, 82, true); // "+"
+  printButton("+", 306, 36, 394, 82, true); // "+"
+  printButton("+", 410, 36, 498, 82, true); // "+"
+  printButton("+", 514, 36, 602, 82, true); // "+"
 
-  printButton("-", 98, 402, 186, 448, true);    // "-"
-  printButton("-", 202, 402, 290, 448, true);  // "-"
-  printButton("-", 306, 402, 394, 448, true);  // "-"
-  printButton("-", 410, 402, 498, 448, true);  // "-"
-  printButton("-", 514, 402, 602, 448, true);  // "-"
+  printButton("-", 98, 402, 186, 448, true); // "-"
+  printButton("-", 202, 402, 290, 448, true); // "-"
+  printButton("-", 306, 402, 394, 448, true); // "-"
+  printButton("-", 410, 402, 498, 448, true); // "-"
+  printButton("-", 514, 402, 602, 448, true); // "-"
 
   myGLCD.setFont(BigFont);
   myGLCD.setBackColor(0,0,0);
 
-  myGLCD.setColor(cor_canal1[0], cor_canal1[1],cor_canal1[2]); 
-  myGLCD.drawRect(98, 88, 186, 344);   // % bar place holder 
+  myGLCD.setColor(cor_canal1[0], cor_canal1[1],cor_canal1[2]);
+  myGLCD.drawRect(98, 88, 186, 344); // % bar place holder
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[1])));
-  myGLCD.print(buffer, 122, 352);   //  Branco
+  myGLCD.print(buffer, 122, 352); // Branco
 
   myGLCD.printNumI(wled_out_temp, 122, 372);
 
-  myGLCD.setColor(cor_canal2[0], cor_canal2[1],cor_canal2[2]); 
-  myGLCD.drawRect(202, 88, 290, 344);  // % bar place holder
+  myGLCD.setColor(cor_canal2[0], cor_canal2[1],cor_canal2[2]);
+  myGLCD.drawRect(202, 88, 290, 344); // % bar place holder
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[2])));
-  myGLCD.print(buffer, 226, 352);    // Azul
+  myGLCD.print(buffer, 226, 352); // Azul
 
   myGLCD.printNumI(bled_out_temp, 226, 372);
 
-  myGLCD.setColor(cor_canal3[0], cor_canal3[1],cor_canal3[2]); 
-  myGLCD.drawRect(306, 88, 394, 344); //  % bar place holder 
+  myGLCD.setColor(cor_canal3[0], cor_canal3[1],cor_canal3[2]);
+  myGLCD.drawRect(306, 88, 394, 344); // % bar place holder
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[3])));
-  myGLCD.print(buffer, 330, 352);   // Azul Royal
+  myGLCD.print(buffer, 330, 352); // Azul Royal
 
   myGLCD.printNumI(rbled_out_temp, 330, 372);
 
-  myGLCD.setColor(cor_canal4[0], cor_canal4[1],cor_canal4[2]); 
+  myGLCD.setColor(cor_canal4[0], cor_canal4[1],cor_canal4[2]);
   myGLCD.drawRect(410, 88, 498, 344); // % bar place holder;
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[4])));
-  myGLCD.print(buffer, 434, 352);   // Vermelho
+  myGLCD.print(buffer, 434, 352); // Vermelho
 
   myGLCD.printNumI(rled_out_temp, 434, 372);
 
-  myGLCD.setColor(cor_canal5[0], cor_canal5[1],cor_canal5[2]);  
+  myGLCD.setColor(cor_canal5[0], cor_canal5[1],cor_canal5[2]);
   myGLCD.drawRect(514, 88, 602, 344); // % bar place holder
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[5])));
-  myGLCD.print(buffer, 538, 352);   // Violeta  
+  myGLCD.print(buffer, 538, 352); // Violeta
 
-  myGLCD.printNumI(uvled_out_temp, 538, 372);   
+  myGLCD.printNumI(uvled_out_temp, 538, 372);
 
-  setFont(LARGE, 255, 255, 255, 0, 0, 0); 
-  myGLCD.drawRect(60, 346, 630, 346);     // Eixo x
-  myGLCD.drawRect(60, 346, 60, 88);       // eixo y  
+  setFont(LARGE, 255, 255, 255, 0, 0, 0);
+  myGLCD.drawRect(60, 346, 630, 346); // Eixo x
+  myGLCD.drawRect(60, 346, 60, 88); // eixo y
 
   myGLCD.setColor(190, 190, 190);
-  for (int i=0; i<10; i++){               // Escala % 
-    myGLCD.drawLine(61, (i*26)+88, 78, (i*26)+88); 
-  } 
-  for (int i=0; i<10; i++){              
-    myGLCD.drawLine(61, (i*26)+102, 69, (i*26)+102); 
-  } 
+  for (int i=0; i<10; i++){ // Escala %
+    myGLCD.drawLine(61, (i*26)+88, 78, (i*26)+88);
+  }
+  for (int i=0; i<10; i++){
+    myGLCD.drawLine(61, (i*26)+102, 69, (i*26)+102);
+  }
 
   myGLCD.setFont(BigFont);
   myGLCD.print("%", 40, 50); // %
@@ -1221,13 +1221,13 @@ void teste_individual_leds()
   myGLCD.print("10", 24, 316); // 10
   myGLCD.print("0", 40, 342); // 0
 
-  myGLCD.setColor(180, 180, 180);                  
-  for (int i=0; i<10; i++){                      // escalas de linhas pontilhadas horizontais 
-    for(int k=92; k<622; k++){ 
-      myGLCD.drawPixel(k,(i*26)+88); 
+  myGLCD.setColor(180, 180, 180);
+  for (int i=0; i<10; i++){ // escalas de linhas pontilhadas horizontais
+    for(int k=92; k<622; k++){
+      myGLCD.drawPixel(k,(i*26)+88);
       k=k+2;
-    } 
-  } 
+    }
+  }
 
   //void desenhar_barras(int sbR, int sbG, int sbB, int sbX1, int sbY1, int sbX2, int sbY2)
 
@@ -1244,7 +1244,7 @@ void teste_individual_leds()
   desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 410, 88, 498, 344);
 
   y_tocado = map(uvled_out_temp, 255, 0, 88, 344);
-  desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 514, 88, 602, 344);                                                             
+  desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 514, 88, 602, 344);
 }
 void rever_dosagem_personalizada_2() // ------------------------------------------------------------------ tela =23
 {
@@ -1285,7 +1285,7 @@ void rever_dosagem_personalizada_2() // ----------------------------------------
   myGLCD.print(":", 180, 100);
   myGLCD.print(":", 360, 100);
 
-  myGLCD.printNumF(dose_dosadora_4_personalizada, 2, 550, 100); //PosiÃƒÂ§ÃƒÂ£o correta
+  myGLCD.printNumF(dose_dosadora_4_personalizada, 1, 550, 100); //PosiÃƒÂ§ÃƒÂ£o correta
   myGLCD.printNumI(quantidade_dose_dosadora_4_personalizada, 340, 140);
 
   if(hora_inicial_dosagem_personalizada_4 < 10)
@@ -1402,7 +1402,7 @@ void rever_dosagem_personalizada_2() // ----------------------------------------
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton(buffer, 400, 130, 590, 170);
+    printButton(buffer, 400, 130, 490, 170);
   }
   if (modo_personalizado_on_4 == false)
   {
@@ -1412,7 +1412,7 @@ void rever_dosagem_personalizada_2() // ----------------------------------------
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-    printButton(buffer, 500, 130, 590, 170);
+    printButton(buffer, 500, 130, 490, 170);
   }
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
