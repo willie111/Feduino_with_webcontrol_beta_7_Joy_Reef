@@ -35,7 +35,7 @@ void menuScreen()
   printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 2";
 }
 
-// ------------------------- RTC ------------------------------------------------------ tela =2
+// ------------------------- CLOCK AND CALENDER SETTINGS ------------------------------------------------------ tela =2
 void setClock()
 {
   t_temp = rtc.getTime();
@@ -131,7 +131,7 @@ void setClock()
 
 }
 
-void testScreen(boolean refreshAll=false)//-------------------------------- Teste do leds ------------------------------------- tela =3
+void testScreen(boolean refreshAll=false)//------------------------ TEST ALL LEDS ------------------------------------- tela =3
 {
   char bufferL[9];
   String led;
@@ -323,7 +323,7 @@ void tempScreen(boolean refreshAll=false)
   myGLCD.printNumF(temp2beO, 1, 285, 180);
   myGLCD.printNumF(temp2beA, 1, 285, 280);
 }
-void ledSetScreen() //-------------------------------- Alterar valores ----------------------------------- tela =5
+void ledSetScreen() //-------------------------------- ALTER LED VALUES SCREEN ----------------------------------- tela =5
 {
   int a;
 
@@ -393,7 +393,7 @@ void ledSetScreen() //-------------------------------- Alterar valores ---------
   printButton(buffer, leWB[0], leWB[1], leWB[2], leWB[3], SMALL); // tabela_textos[210] = "MAIS"
 }
 
-void ledChangeScreen(boolean refreshAll=false) //--------------------------------------- PotÃƒÂªncia dos leds------------------------------ tela =6
+void ledChangeScreen(boolean refreshAll=false) //---------------------------------------  LED POWER ------------------------------ tela =6
 {
   if(refreshAll == true)
   {
@@ -477,7 +477,7 @@ void ledChangeScreen(boolean refreshAll=false) //-------------------------------
   }
 }
 
-void tpaScreen(boolean refreshAll = false) //-------------------------------------------------------- tela =7
+void tpaScreen(boolean refreshAll = false) //-------------------- AUTO-WATER CHANGE CONFIGURATION SCREEN ------------------------------------ tela =7
 {
   if(refreshAll)
   {
@@ -628,14 +628,14 @@ void tpaScreen(boolean refreshAll = false) //-----------------------------------
   if (temp2duracaomaximatpa < 10)
   {
     myGLCD.printNumI(0, 550, 96);
-    myGLCD.printNumI(temp2duracaomaximatpa, 582, 96);
+    myGLCD.printNumI(temp2duracaomaximatpa, 566, 96);
   }
   else
   {
     myGLCD.printNumI(temp2duracaomaximatpa, 550, 96);
   }
 }
-void menu_dosadoras()//---------------------------------------------tela =8
+void menu_dosadoras()//-------------------- DOSAGE PREFERENCE SELECTION SCREEN-------------------------tela =8
 {
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[33])));
   printHeader(buffer); // tabela_textos[33] = "ALTERAR CONFIGURACAO DAS DOSADORAS"
@@ -662,7 +662,7 @@ void menu_dosadoras()//---------------------------------------------tela =8
   printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 }
 
-void graficoScreen()//------------------------------------------------------------tela =9
+void graficoScreen()//------------------------- GRAPH SELECTION MENU SCREEN ----------------------------------tela =9
 {
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[34])));
@@ -691,7 +691,7 @@ void graficoScreen()//----------------------------------------------------------
 
 }
 
-void waveScreen(boolean refreshAll = false)///------------------------------------------------------------------tela =10
+void waveScreen(boolean refreshAll = false)///-------------------------- WAVEMAKER CONFIGURATION SCREEN ----------------------------------------tela =10
 {
   if(refreshAll == true)
   {
@@ -852,7 +852,7 @@ void waveScreen(boolean refreshAll = false)///----------------------------------
 }
 
 
-void parametroScreen()//-------------------------------------------------------------------tela =14
+void parametroScreen()//------------------------- PARAMETER SELECT MENU SCREEN ------------------------------------------tela =14
 {
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[36])));
   printHeader(buffer); // tabela_textos[36] = "ESCOLHA UM PARAMETRO"
@@ -882,7 +882,7 @@ void parametroScreen()//--------------------------------------------------------
   printButton(buffer, caliB[0], caliB[1], caliB[2], caliB[3]); // "CALIBRAR SONDAS"
 
 }
-//---------------------------------------------PH do reator--------------------------------tela =15 ----------
+//--------------------------------------------- CONFIGURE CALCIUM REACTOR pH --------------------------------tela =15 ----------
 void config_phR_Screen(boolean refreshAll=false)
 {
 
@@ -933,7 +933,7 @@ void config_phR_Screen(boolean refreshAll=false)
   myGLCD.printNumF(PHR2beA, 1, 280, 280);
 }
 
-//---------------------------------------------ORP--------------------------------tela =16 ----------
+//--------------------------------------------- CONFIGURE ORP --------------------------------tela =16 ----------
 void config_orp_Screen(boolean refreshAll=false)
 {
 
@@ -985,7 +985,7 @@ void config_orp_Screen(boolean refreshAll=false)
   myGLCD.printNumI(ORP2beO, 300, 180);
   myGLCD.printNumI(ORP2beA, 300, 280);
 }
-//---------------------------------------------PH do aquario--------------------------------tela =18 ----------
+//--------------------------------------------- CONFIGURE AQUARIUM pH --------------------------------tela =18 ----------
 
 void config_phA_Screen(boolean refreshAll=false)
 {
@@ -1035,7 +1035,7 @@ void config_phA_Screen(boolean refreshAll=false)
   myGLCD.printNumF(PHA2beO, 1, 280, 180);
   myGLCD.printNumF(PHA2beA, 1, 280, 280);
 }
-//---------------------------------------------configurar densidade--------------------------------tela =20 ----------
+//--------------------------------------------- CONFIGURE DENSITY --------------------------------tela =20 ----------
 void config_dens_Screen(boolean refreshAll=false)
 {
 
@@ -1086,7 +1086,7 @@ void config_dens_Screen(boolean refreshAll=false)
   myGLCD.printNumI(DEN2beA, 300, 280);
 }
 
-void selecionar_dosadora()//---------------------------------------------tela =21
+void selecionar_dosadora()//------------- DOSING PUMP SELECT SCREEN--------------------------------tela =21
 {
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[41])));
@@ -1119,7 +1119,7 @@ void selecionar_dosadora()//---------------------------------------------tela =2
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
   printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // "VOLTAR"
 }
-//--------------------------- teste manual dos leds ----------------------------------------------------- tela =22
+//--------------------------- TEST INDIVIDUAL LEDS --------------------------------------------------- tela =22
 void teste_individual_leds()
 {
   bled_out_temp = bled_out;
@@ -1246,7 +1246,7 @@ void teste_individual_leds()
   y_tocado = map(uvled_out_temp, 255, 0, 88, 344);
   desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 514, 88, 602, 344);
 }
-void rever_dosagem_personalizada_2() // ------------------------------------------------------------------ tela =23
+void rever_dosagem_personalizada_2() // ---------------------------- REVIEW CUSTOM DOSAGE -------------------------------------- tela =23
 {
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[50])));
   printHeader(buffer); // tabela_textos[50] = "REVER CONF. DA DOSAGEM PERSONALIZADA"
@@ -1713,7 +1713,7 @@ void rever_dosagem_personalizada_2() // ----------------------------------------
     printButton(buffer, 500, 410, 590, 450);
   }
 }
-//---------------------------------------------Desativar dosadoras--------------------------------tela =24
+//---------------------------------------------DEACTIVAVATE DOSING PUMPS-------------------------------tela =24
 void desativar_dosadoras_2(boolean refreshAll = false)
 {
   if(refreshAll == true)
@@ -1912,7 +1912,7 @@ void desativar_dosadoras_2(boolean refreshAll = false)
     myGLCD.print(buffer, 6, 430);
   }
 }
-//---------------------------------------- OpÃƒÂ§ÃƒÂµes de teste dos leds ---------------------- tela =25
+//---------------------------------------- TEST LED MENU SCREEN ---------------------- tela =25
 void escolher_teste()
 {
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[49])));
@@ -1933,7 +1933,7 @@ void escolher_teste()
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
   printButton(buffer, volT[0], volT[1], volT[2], volT[3]);// "VOLTAR
 }
-//---------------------------------------- Calibrar dosadoras ---------------------- tela =26
+//---------------------------------------- CALIBRATE DOSAGE PUMPS ---------------------- tela =26
 void calibrar_dosadoras(boolean refreshAll=false)
 {
   if(refreshAll)
@@ -2022,7 +2022,7 @@ void calibrar_dosadoras(boolean refreshAll=false)
   }
 }
 
-void config_dosagem_manual(boolean refreshAll=false) // ----------tela =27
+void config_dosagem_manual(boolean refreshAll=false) // ----- CONFIGURE MANUAL DOSAGE SCREEN ----tela =27
 {
   if(refreshAll)
   {
@@ -2100,7 +2100,7 @@ void config_dosagem_manual(boolean refreshAll=false) // ----------tela =27
     }
   }
 }
-void escolher_canal() //---------------------------------------------------------- tela =28
+void escolher_canal() //--------------------------- LED CHANNELS ------------------------------- tela =28
 {
   strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[11])));
   printHeader(buffer); // nome_canal[11] = "ESCOLHA UMA COR"
@@ -2130,7 +2130,7 @@ void escolher_canal() //--------------------------------------------------------
   printButton(buffer, denS[0], denS[1], denS[2], denS[3]); // "VIOLETA"
 }
 
-void config_dosagem_personalizada(boolean refreshAll=false) // -------------------tela =29
+void config_dosagem_personalizada(boolean refreshAll=false) // ----------- CONFIGURE CUSTON DOSAGE --------tela =29
 {
   if(refreshAll)
   {
@@ -2320,7 +2320,7 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
 
 }
 
-void solicitar_senha() //---------------tela =30
+void solicitar_senha() //----------- SECURITY CODE SCREEN ----tela =30
 {
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[46])));
   printHeader(buffer); // tabela_textos[46] = "DIGITE A SENHA"
@@ -2347,7 +2347,7 @@ void solicitar_senha() //---------------tela =30
 
 }
 
-void config_dosagem_personalizada_2(boolean refreshAll=false) // ----------tela =31
+void config_dosagem_personalizada_2(boolean refreshAll=false) // -----CIONFIGURE CUSTOM DOSAGE ----tela =31
 {
   if(refreshAll)
   {
@@ -2450,7 +2450,7 @@ void config_dosagem_personalizada_2(boolean refreshAll=false) // ----------tela 
   }
 }
 
-void rever_configuracao_dosadoras()//---------------------------------------------tela =32
+void rever_configuracao_dosadoras()//------------------- REVIEW DOSAGE SETTINGS ----------------------tela =32
 {
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[44])));
   printHeader(buffer); // tabela_textos[44] = "REVER CONFIG. DOSADORAS"
@@ -2467,7 +2467,7 @@ void rever_configuracao_dosadoras()//-------------------------------------------
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
   printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // tabela_textos[66]
 }
-void rever_dosagem_personalizada() // ------------------------------------------------------------------tela =34
+void rever_dosagem_personalizada() // ----------------------------------- CUSTOM DOSAGE -------------------------------tela =34
 {
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[50])));
   printHeader(buffer); // tabela_textos[50] = "REVER CONF. DA DOSAGEM PERSONALIZADA"
@@ -2938,7 +2938,7 @@ void rever_dosagem_personalizada() // ------------------------------------------
   }
 }
 
-//---------------------------------------------Desativar dosadoras--------------------------------tela =35 ----------
+//--------------------------------------------- DEACTIVATE DOSING PUMPS --------------------------------tela =35 ----------
 void desativar_dosadoras(boolean refreshAll = false)
 {
   if(refreshAll == true)
@@ -3141,7 +3141,7 @@ void desativar_dosadoras(boolean refreshAll = false)
   }
 }
 
-//--------------------------------------------- PotÃƒÂªncia mÃƒÂ­nima e mÃƒÂ¡xima para a luz noturna -------------------------------- tela =36
+//--------------------------------------------- MOONLIGHT SETTINGS -------------------------------- tela =36
 void luz_noturna(boolean refreshAll=false)
 {
 
