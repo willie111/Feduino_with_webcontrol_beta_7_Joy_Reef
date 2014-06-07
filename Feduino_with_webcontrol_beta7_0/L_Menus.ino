@@ -609,7 +609,7 @@ void tpaScreen(boolean refreshAll = false) //-----------------------------------
   if (temp2hora < 10)
   {
     myGLCD.printNumI(0, 140, 96);
-    myGLCD.printNumI(temp2hora, 166, 96);
+    myGLCD.printNumI(temp2hora, 172, 96);
   }
   else
   {
@@ -1402,7 +1402,7 @@ void rever_dosagem_personalizada_2() // ----------------------------------------
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-    printButton(buffer, 400, 130, 490, 170);
+    printButton(buffer, 400, 130, 590, 170);
   }
   if (modo_personalizado_on_4 == false)
   {
