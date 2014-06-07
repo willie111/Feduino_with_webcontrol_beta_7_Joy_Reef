@@ -3253,7 +3253,7 @@ temp2beS = 40; */ /******************************************************** chan
         }
         config_timer();
       }
-      else if ((x >= 510) && (x <= 598) && (y >= 270) && (y <= 356)) // Minuto desligar menos
+      else if ((x >= 510) && (x <= 498) && (y >= 270) && (y <= 356)) // Minuto desligar menos
       {
         //waitForIt(255, 135, 299, 178);
         off_minuto[temporizador] -= 1;
