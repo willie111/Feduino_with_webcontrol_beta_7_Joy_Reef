@@ -1434,7 +1434,7 @@ void rever_dosagem_personalizada_2() // ----------------------------------------
   myGLCD.print(":", 180, 240);
   myGLCD.print(":", 360, 240);
 
-  myGLCD.printNumF(dose_dosadora_5_personalizada, 2, 550, 240);
+  myGLCD.printNumF(dose_dosadora_5_personalizada, 1, 550, 240);
   myGLCD.printNumI(quantidade_dose_dosadora_5_personalizada, 340, 280);
 
   if(hora_inicial_dosagem_personalizada_5 < 10)
@@ -1583,7 +1583,7 @@ void rever_dosagem_personalizada_2() // ----------------------------------------
   myGLCD.print(":", 180, 380);
   myGLCD.print(":", 360, 380);
 
-  myGLCD.printNumF(dose_dosadora_6_personalizada, 2, 550, 380);
+  myGLCD.printNumF(dose_dosadora_6_personalizada, 1, 550, 380);
   myGLCD.printNumI(quantidade_dose_dosadora_6_personalizada, 340, 420);
 
   if(hora_inicial_dosagem_personalizada_6 < 10)
