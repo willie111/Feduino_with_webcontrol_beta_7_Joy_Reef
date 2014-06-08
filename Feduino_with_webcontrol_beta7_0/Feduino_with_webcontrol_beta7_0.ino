@@ -89,25 +89,25 @@ char buffer[50];
 //****************************************************************************************************
 // Pins 0 and 1 reserved for serial port 0.
 const byte alarmPin = 0;            // Pin to trigger alarm
-const byte desativarFanPin = 1;     // Pin that disables the fan...................orange wire..Male DB9
+const byte desativarFanPin = 1;     // Pin that disables the fan.
 // Pin 2 reserved for the INT RFM12B.
 // Pins 3, 4, 5, 6 and 7 reserved for the Touch.
 // Pin 5 is also the chip select the SD card.
-const byte ledPinUV = 8;            // Pin violet LEDs.............................purple wire..Male DB9
-const byte ledPinBlue = 9;          // Pin green LEDs..............................green wire...Male DB9
-const byte ledPinWhite = 10;        // Pin white LEDs..............................grey wire....Male DB9
-const byte ledPinRoyBlue = 11;      // Pin royal blue LEDs.........................blue wire....Male DB9
-const byte ledPinRed = 12;          // Pin red LEDs................................red wire.....Male DB9
-const byte fanPin = 13;             // Pin that controls the fan speed Heatsink....brown wire...Male DB9
+const byte ledPinUV = 8;            // Pin violet LEDs.
+const byte ledPinBlue = 9;          // Pin green LEDs.
+const byte ledPinWhite = 10;        // Pin white LEDs.
+const byte ledPinRoyBlue = 11;      // Pin royal blue LEDs.
+const byte ledPinRed = 12;          // Pin red LEDs.
+const byte fanPin = 13;             // Pin that controls the fan speed Heatsink.
 // 14 & 15 pins reserved for serial port 3 that communicates with the "Stamps"
 const byte multiplexadorS0Pin = 16; // Pin S0 control of stamps
 const byte multiplexadorS1Pin = 17; // Pin S1 control of stamps
 // 18 & 19 pins reserved for the RTC.
 // 20 & 21 pins reserved for the PCF8575 I2C communication.
 // Pins 22 ~ 41 reserved for LCD.
-const byte aquecedorPin = 42;       // Pin heater..................................purple wire..........Female DB9...Relay channel 1
-const byte chillerPin = 43;         // Pin chiller.................................red wire.............Female DB9...Relay channel 2
-const byte ledPinMoon = 44;         // Pin moon light..............................yellow wire..Male DB9
+const byte aquecedorPin = 42;       // Pin heater.
+const byte chillerPin = 43;         // Pin chiller.
+const byte ledPinMoon = 44;         // Pin moon light.
 const byte wavemaker1 = 45;         // Pin wavemaker 1
 const byte wavemaker2 = 46;         // Pin wavemaker 2
 const byte ozonizadorPin = 47;      // Pin ozone
@@ -115,21 +115,21 @@ const byte reatorPin = 48;          // Pin calcium reactor
 const byte sensoresPin = 49;        // Pin one wire temperature sensors
 // Pins 50, 51, & 52 reserved for SPI communication
 // Pin 53 reserved for "slave select the ethernet shield.
-const int sensor1 = A0;             // Analog pin that checks for voltage from the saltwater mixing tank float. // for the auto water change
-const int sensor2 = A1;             // Analog pin that checks for voltage at the bottom of the sump float.      // for the auto water change
-const int sensor3 = A2;             // Analog pin that checks for voltage at the top of the sump float.         // for the auto water change
-const int sensor4 = A3;             // Analog pin that checks for voltage at the reservoir float.               // for the ATO container
-const int sensor5 = A4;             // Analog pin that checks the level of the reef tank sump.                  // for the ATO 
-const int sensor6 = A5;             // Analog pin that checks the level of the ATO reservoir.                   // for the ATO 
-const int bomba1Pin = A6;           // Pump that draws water from saltwater mixing tank.                        // these pumps for the automatic water change system 
-const int bomba2Pin = A7;           // Pump that draws water from the sump.                                     // these pumps for the automatic water change system 
-const int bomba3Pin = A8;           // Pump that draws water from the reservoir to put in the sump.             // these pumps for the automatic water change system 
-const int dosadora1 = A9;           // Dosing pump 1.....................................blue wire........Female DB9..Relay channel 3                                                          
-const int dosadora2 = A10;          // Dosing pump 2.....................................grey wire........Female DB9..Relay channel 4                                                         
-const int dosadora3 = A11;          // Dosing pump 3.....................................yellow wire......Female DB9..Relay channel 5                                                          
-const int dosadora4 = A12;          // Dosing pump 4.....................................orange wire......Female DB9..Relay channel 6
-const int dosadora5 = A13;          // Dosing pump 5.....................................brown wire.......Female DB9..Relay channel 7
-const int dosadora6 = A14;          // Dosing pump 6.....................................green wire.......Female DB9..Relay channel 8
+const int sensor1 = A0;             // Analog pin that checks for voltage from the saltwater mixing tank float. 
+const int sensor2 = A1;             // Analog pin that checks for voltage at the bottom of the sump float.      
+const int sensor3 = A2;             // Analog pin that checks for voltage at the top of the sump float.        
+const int sensor4 = A3;             // Analog pin that checks for voltage at the reservoir float.              
+const int sensor5 = A4;             // Analog pin that checks the level of the reef tank sump.                 
+const int sensor6 = A5;             // Analog pin that checks the level of the ATO reservoir.                   
+const int bomba1Pin = A6;           // Pump that draws water from saltwater mixing tank.                      
+const int bomba2Pin = A7;           // Pump that draws water from the sump.                                    
+const int bomba3Pin = A8;           // Pump that draws water from the reservoir to put in the sump.          
+const int dosadora1 = A9;           // Dosing pump 1.                                                         
+const int dosadora2 = A10;          // Dosing pump 2.                                                         
+const int dosadora3 = A11;          // Dosing pump 3.                                                         
+const int dosadora4 = A12;          // Dosing pump 4.
+const int dosadora5 = A13;          // Dosing pump 5.
+const int dosadora6 = A14;          // Dosing pump 6.
 // Pin A15 reserved for SS RFM12B
 //*****************************************************************************************************
 //***************************************** PCF8575TS *************************************************
@@ -172,7 +172,7 @@ DS1307 rtc(20, 21);       // Indicates which pins are connected to the RTC.
 Time t_temp, t;
 
 //*******************************************************************************************************
-//********************** VariÃƒÂ¡veis das fuÃƒÂ§ÃƒÂµes do touch screen e tela inicial ****************************
+//************************** LCD/TFT touch screen and display  ******************************************
 //*******************************************************************************************************
 //UTFT        myGLCD(X, 38,39,40,41); // "X" is the screen you are using
 //UTFT        myGLCD(ITDB50, 38,39,40,41);
@@ -247,10 +247,10 @@ byte alarmORP = 10;          // Variation to trigger the alarm
 //*****************************************************************************************
 //************************ Variable speed control of heatsink cooling fans ****************
 //*****************************************************************************************
-float HtempMin = 80;    // temperature to start the operation of the heatsink fan Ã‚Â°F scale
-float HtempMax = 90;    // PWM fans should be at maximum speed when the sink is 90Ã‚Â°F
-//float HtempMin = 30.5;    // temperature to start the operation of the heatsink fan Ã‚Â°c scale /******************************************************** changed for Fahrenheit *******************************************************************/
-//float HtempMax = 40.5;    // PWM fans should be at maximum speed when the sink is 40Ã‚Â°c
+float HtempMin = 80;    // temperature to start the operation of the heatsink fan 80°F 
+float HtempMax = 90;    // PWM fans should be at maximum speed when the sink is 90°F
+//float HtempMin = 30.5;    // temperature to start the operation of the heatsink fan °c scale
+//float HtempMax = 40.5;    // PWM fans should be at maximum speed when the sink is 40 °c
 
 //*****************************************************************************************
 //**************** Temporary variable speed control of heatsink cooling fans **************
@@ -262,8 +262,8 @@ float HtempMax_temp = 0;    // Declares that the fans should be at maximum speed
 //*************************** Control variables of the heat sink temperature **************
 //*****************************************************************************************
 float tempH = 0;    // Heatsink temperature
-byte tempHR =95;   // Temperature to reduce power of leds Ã‚Â°F scale
-//byte tempHR = 60;   // Temperature to reduce power of leds Ã‚Â°C scale  /******************************************************** changed for Fahrenheit *******************************************************************/
+byte tempHR =95;   // Temperature to reduce power of leds 95°F 
+//byte tempHR = 60;   // Temperature to reduce power of leds 60°C  
 byte potR = 30;     // Percentage to be reduced.
 
 
