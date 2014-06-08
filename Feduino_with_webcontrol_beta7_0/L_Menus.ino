@@ -4207,18 +4207,18 @@ void pre_definido(boolean refreshAll = false)
         {
           strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[6])));
           myGLCD.print(buffer, 30, 144 + (i * 60) + j); // "WHITE"
-          myGLCD.print(":", 126, 144 + (i * 60) + j);
-          myGLCD.print(" ", 142, 144 + (i * 60) + j);
-          myGLCD.printNumI(wled_out_temp, 142, 144 + (i * 60) + j);
+          myGLCD.print(":", 190, 144 + (i * 60) + j);
+          myGLCD.print(" ", 206, 144 + (i * 60) + j);
+          myGLCD.printNumI(wled_out_temp, 206, 144 + (i * 60) + j);
 
         }
         if(i == 1)
         {
           strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[7])));
           myGLCD.print(buffer, 30, 144 + (i * 60) + j); // "GREEN"
-          myGLCD.print(":", 94, 144 + (i * 60) + j);
-          myGLCD.print(" ", 110, 144 + (i * 60) + j);
-          myGLCD.printNumI(bled_out_temp, 110, 144 + (i * 60) + j);
+          myGLCD.print(":", 190, 144 + (i * 60) + j);
+          myGLCD.print(" ", 206, 144 + (i * 60) + j);
+          myGLCD.printNumI(bled_out_temp, 206, 144 + (i * 60) + j);
         }
         if(i == 2)
         {
@@ -4232,17 +4232,17 @@ void pre_definido(boolean refreshAll = false)
         {
           strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[9])));
           myGLCD.print(buffer, 30, 144 + (i * 60) + j); // "RED"
-          myGLCD.print(":", 158, 144 + (i * 60) + j);
-          myGLCD.print(" ", 174, 144 + (i * 60) + j);
-          myGLCD.printNumI(rled_out_temp, 174, 144 + (i * 60) + j);
+          myGLCD.print(":", 190, 144 + (i * 60) + j);
+          myGLCD.print(" ", 206, 144 + (i * 60) + j);
+          myGLCD.printNumI(rled_out_temp, 206, 144 + (i * 60) + j);
         }
         if(i == 4)
         {
           strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[10])));
           myGLCD.print(buffer, 30, 144 + (i * 60) + j); // "VIOLET"
-          myGLCD.print(":", 142, 144 + (i * 60) + j);
-          myGLCD.print(" ", 158, 144 + (i * 60) + j);
-          myGLCD.printNumI(uvled_out_temp, 158, 144 + (i * 60) + j);
+          myGLCD.print(":", 190, 144 + (i * 60) + j);
+          myGLCD.print(" ", 206, 144 + (i * 60) + j);
+          myGLCD.printNumI(uvled_out_temp, 206, 144 + (i * 60) + j);
         }
       }
     }
