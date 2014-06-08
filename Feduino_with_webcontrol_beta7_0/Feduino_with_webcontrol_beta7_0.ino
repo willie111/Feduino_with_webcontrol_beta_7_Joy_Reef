@@ -48,6 +48,11 @@
 // Uncomment the line Corresponding to your language
 
 #define ENGLISH
+//#define FRENCH
+//#define GERMAN
+//#define ITALIAN
+//#define PORTUGUESE
+//#define SPANISH
 
 //*************************************************************************************************
 //********************** libraries used ***********************************************************
