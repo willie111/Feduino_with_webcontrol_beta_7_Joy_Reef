@@ -4124,15 +4124,15 @@ void pre_definido(boolean refreshAll = false)
 
         if(i == 0)
         {
-          myGLCD.setColor(cor_canal1[0], cor_canal1[1], cor_canal1[2]);
+           myGLCD.setColor(cor_canal1[0], cor_canal1[1], cor_canal1[2]);
           myGLCD.fillRoundRect(20, 120 + (i * 60) + j, 260, 180 + (i * 60) + j);
           myGLCD.setColor(0, 0, 0);
           myGLCD.setBackColor(cor_canal1[0], cor_canal1[1], cor_canal1[2]);
           strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[6])));
           myGLCD.print(buffer, 30, 144 + (i * 60) + j); // "BRANCO"
-          myGLCD.print(":", 126, 144 + (i * 60) + j);
-          myGLCD.print(" ", 142, 144 + (i * 60) + j);
-          myGLCD.printNumI(wled_out_temp, 142, 144 + (i * 60) + j);
+          myGLCD.print(":", 190, 144 + (i * 60) + j);
+          myGLCD.print(" ", 206, 144 + (i * 60) + j);
+          myGLCD.printNumI(wled_out_temp, 206, 144 + (i * 60) + j);
         }
         else if(i == 1)
         {
@@ -4142,9 +4142,9 @@ void pre_definido(boolean refreshAll = false)
           myGLCD.setBackColor(cor_canal2[0], cor_canal2[1], cor_canal2[2]);
           strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[7])));
           myGLCD.print(buffer, 30, 144 + (i * 60) + j); // "AZUL"
-          myGLCD.print(":", 94, 144 + (i * 60) + j);
-          myGLCD.print(" ", 110, 144 + (i * 60) + j);
-          myGLCD.printNumI(bled_out_temp, 110, 144 + (i * 60) + j);
+          myGLCD.print(":", 190, 144 + (i * 60) + j);
+          myGLCD.print(" ", 206, 144 + (i * 60) + j);
+          myGLCD.printNumI(bled_out_temp, 206, 144 + (i * 60) + j);
         }
         else if(i == 2)
         {
@@ -4166,9 +4166,9 @@ void pre_definido(boolean refreshAll = false)
           myGLCD.setBackColor(cor_canal4[0], cor_canal4[1], cor_canal4[2]);
           strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[9])));
           myGLCD.print(buffer, 30, 144 + (i * 60) + j); // "VERMELHO"
-          myGLCD.print(":", 158, 144 + (i * 60) + j);
-          myGLCD.print(" ", 174, 144 + (i * 60) + j);
-          myGLCD.printNumI(rled_out_temp, 174, 144 + (i * 60) + j);
+          myGLCD.print(":", 190, 144 + (i * 60) + j);
+          myGLCD.print(" ", 206, 144 + (i * 60) + j);
+          myGLCD.printNumI(rled_out_temp, 206, 144 + (i * 60) + j);
         }
         else if(i == 4)
         {
@@ -4178,9 +4178,9 @@ void pre_definido(boolean refreshAll = false)
           myGLCD.setBackColor(cor_canal5[0], cor_canal5[1], cor_canal5[2]);
           strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[10])));
           myGLCD.print(buffer, 30, 144 + (i * 60) + j); // "VIOLETA"
-          myGLCD.print(":", 142 , 144 + (i * 60) + j);
-          myGLCD.print(" ", 158, 144 + (i * 60) + j);
-          myGLCD.printNumI(uvled_out_temp, 158, 144 + (i * 60) + j);
+          myGLCD.print(":", 190 , 144 + (i * 60) + j);
+          myGLCD.print(" ", 206, 144 + (i * 60) + j);
+          myGLCD.printNumI(uvled_out_temp, 206, 144 + (i * 60) + j);
         }
         myGLCD.setColor(255, 255, 255);
         myGLCD.drawRoundRect(20, 120 + (i * 60) + j, 260, 180 + (i * 60) + j);
