@@ -608,31 +608,31 @@ void tpaScreen(boolean refreshAll = false) //-----------------------------AUTO-W
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
   if (temp2hora < 10)
   {
-    myGLCD.printNumI(0, 140, 96);
-    myGLCD.printNumI(temp2hora, 156, 96);
+    myGLCD.printNumI(0, 148, 96);
+    myGLCD.printNumI(temp2hora, 164, 96);
   }
   else
   {
-    myGLCD.printNumI(temp2hora, 140, 96);
+    myGLCD.printNumI(temp2hora, 148, 96);
   }
 
   if (temp2minuto < 10)
   {
-    myGLCD.printNumI(0, 240, 96);
-    myGLCD.printNumI(temp2minuto, 256, 96);
+    myGLCD.printNumI(0, 248, 96);
+    myGLCD.printNumI(temp2minuto, 264, 96);
   }
   else
   {
-    myGLCD.printNumI(temp2minuto, 240, 96);
+    myGLCD.printNumI(temp2minuto, 248, 96);
   }
   if (temp2duracaomaximatpa < 10)
   {
-    myGLCD.printNumI(0, 550, 96);
-    myGLCD.printNumI(temp2duracaomaximatpa, 582, 96);
+    myGLCD.printNumI(0, 560, 96);
+    myGLCD.printNumI(temp2duracaomaximatpa, 576, 96);
   }
   else
   {
-    myGLCD.printNumI(temp2duracaomaximatpa, 550, 96);
+    myGLCD.printNumI(temp2duracaomaximatpa, 560, 96);
   }
 }
 void menu_dosadoras()//---------------------------------------------tela =8
