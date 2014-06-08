@@ -1872,7 +1872,7 @@ void desativar_dosadoras_2(boolean refreshAll = false)
   if (bitRead(ativar_desativar,6) == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[147])));
-    printButton_verde(buffer, 100, 370, 440, 450);
+    printButton_verde(buffer, 200, 370, 440, 450);
 
     myGLCD.setColor(0, 0, 0);
     myGLCD.fillRect (6, 332, 234, 183);
