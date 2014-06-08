@@ -3627,8 +3627,8 @@ temp2beS = 40; */ /******************************************************** chan
       if((x >= 410) && (x <= 630) && (y>= 190) && (y <= 360) && (horario_alterado == false))
       {
         myGLCD.setColor(255, 0, 0);
-        myGLCD.drawRect(410, 190, 630, 360);
-        myGLCD.drawRect(412, 192, 628, 358);
+        myGLCD.drawRect(420, 190, 620, 364);
+        myGLCD.drawRect(422, 192, 618, 362);
         delay(200);
         clearScreen();
         horario_alterado = true;
