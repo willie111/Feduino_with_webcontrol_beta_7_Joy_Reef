@@ -1875,7 +1875,7 @@ void desativar_dosadoras_2(boolean refreshAll = false)
     printButton_verde(buffer, 200, 370, 440, 450);
 
     myGLCD.setColor(0, 0, 0);
-    myGLCD.fillRect (6, 332, 234, 183);
+    myGLCD.fillRect (6, 332, 234, 366);
     myGLCD.fillRect (6, 370, 190, 402);
     myGLCD.fillRect (6, 400, 190, 432);
     myGLCD.fillRect (6, 430, 190, 462);
