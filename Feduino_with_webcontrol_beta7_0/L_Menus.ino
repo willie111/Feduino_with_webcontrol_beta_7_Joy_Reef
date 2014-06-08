@@ -1837,7 +1837,7 @@ void desativar_dosadoras_2(boolean refreshAll = false)
     myGLCD.fillRect (6, 192, 234, 226);
     myGLCD.fillRect (6, 230, 190, 262);
     myGLCD.fillRect (6, 260, 190, 292);
-    myGLCD.fillRect (3, 145, 190, 322);
+    myGLCD.fillRect (6, 290, 190, 322);
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
