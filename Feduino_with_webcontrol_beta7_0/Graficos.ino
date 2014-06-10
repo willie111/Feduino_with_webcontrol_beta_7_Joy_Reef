@@ -206,7 +206,7 @@ void tempgScreen()//------------------------------------------------------------
 
       if(j < 250)
       {
-        myGLCD.drawPixel((40 + j), grafico);
+        myGLCD.drawPixel((80 + j), grafico);
       }
     }
   }
