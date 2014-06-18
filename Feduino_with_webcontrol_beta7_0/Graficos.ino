@@ -19,7 +19,7 @@ void tempgScreen()//------------------------------------------------------------
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
-  for(float i = 81.5; i > 71.6; i -= .9)   // Fahrenheit scale 81.5---71.6
+  for(float i = 80; i > 75; i -= .5)   // Fahrenheit scale 80---75
    //(float i = 27.5; i > 22; i -= .5) // Celsius scale 27.5--22 
   {
     myGLCD.printNumF(i, 1, 5, 3 + f);
@@ -32,6 +32,7 @@ void tempgScreen()//------------------------------------------------------------
     myGLCD.printNumI(i, f, 386);
     f -= 40;
   }
+  myGLCD.print("75.0", 5, 363);
   myGLCD.print("0", 550, 386); 
   myGLCD.drawCircle(30, 32, 2);
   myGLCD.print("F", 40, 36);  
@@ -109,31 +110,31 @@ void tempgScreen()//------------------------------------------------------------
   linhaG =(setTempC+offTempC);
   linhaB =(setTempC-offTempC);
 
-  if ((linhaR >= 71.6) && (linhaR <= 81.5))
-    x= (380 - ((linhaR - 71.6) * 60));
+  if ((linhaR >= 75) && (linhaR <= 80))
+    x= (380 - ((linhaR - 75) * 60));
 
-  else if (linhaR > 81.5)
+  else if (linhaR > 80)
     x = 60;
 
-  else if (linhaR < 71.6)
+  else if (linhaR < 75)
     x = 380;
 
-  if ((linhaG >= 71.6) && (linhaG <= 81.5))
-    y = (380-((linhaG - 71.6) * 60));
+  if ((linhaG >= 75) && (linhaG <= 80))
+    y = (380-((linhaG - 75) * 60));
 
-  else if (linhaG > 81.5)
+  else if (linhaG > 80)
     y = 60;
 
-  else if (linhaG < 71.6)
+  else if (linhaG < 75)
     y = 380;
 
-  if ((linhaB >= 71.6) && (linhaB <= 81.5))
-    z = (380 -((linhaB - 71.6) * 60));
+  if ((linhaB >= 75) && (linhaB <= 80))
+    z = (380 -((linhaB - 75) * 60));
 
-  else if (linhaB > 81.5)
+  else if (linhaB > 80)
     z = 60;
 
-  else if (linhaB < 71.6)
+  else if (linhaB < 75)
     z = 380;
     
 //--------------------------------------------end F or C -----------------------------------------------//
@@ -187,15 +188,15 @@ void tempgScreen()//------------------------------------------------------------
       k = 0;
 /********************************************************************** added for Fahrenheit *******************************************************************/
       //if ((media) > 27.5)
-      if ((media) > 81.5)
+      if ((media) > 80)
       {
         grafico = 60;
       }
       //else if ((media >= 22.5) && (media <= 27.5))
-      else if ((media >= 71.6) && (media <= 81.5))
+      else if ((media >= 75) && (media <= 80))
       {
         //grafico = (190 -((media - 22.5) * 30));
-        grafico = (380 -((media - 71.6) * 30));
+        grafico = (380 -((media - 75) * 30));
       }
       else
       {
@@ -203,9 +204,9 @@ void tempgScreen()//------------------------------------------------------------
       }
       setFont(LARGE, 255, 0, 255, 0, 0, 0);
 
-      if(j < 250)
+      if(j < 500)
       {
-        myGLCD.drawPixel((81.5 + j), grafico);
+        myGLCD.drawPixel((80 + j), grafico);
       }
     }
   }
