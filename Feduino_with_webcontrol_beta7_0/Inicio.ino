@@ -46,7 +46,7 @@ void mainScreen(boolean refreshAll=false)
     myGLCD.printNumI(t.date, 270, 454);
     myGLCD.print(",", 308, 454);    
     myGLCD.printNumI(t.year, 328, 454);
-    myGLCD.print("REDTOP03", 478, 454);            // I added this line and put in my forum handle, just to help fill the empty space there :)
+    myGLCD.print("FERDUINO", 478, 454);            // I added this line and put in my forum handle, just to help fill the empty space there :)
 
     char bufferLP[16];
     LP.toCharArray(bufferLP, 16);
