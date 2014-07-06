@@ -499,9 +499,7 @@ int done = 0;
 char stCurrent[7]="";
 char limpar_senha [7] = "";
 byte stCurrentLen=0;
-char senha [7] = {'\0'}; // Enter your password here. The character '\ 0' should not be changed. 6 numbers max.
-//char senha [7] = {'1','2','3','4','5','6','\0'}; // replace only the numbers 1 through 6 and leave the format as this
-// if you would prefer to not use the password, just leave as I have it above, when prompted for password, just hit enter
+char senha [7] = {'0','1','2','8','6','7','\0'}; // Enter your password here. The character '\ 0' should not be changed.change only the numbers
 //*****************************************************************************************
 //************************** dosing variables ******************************************
 //*****************************************************************************************
