@@ -40,11 +40,16 @@ void processMyTouch()
   {
     switch (dispScreen)
     {
-    case 0: // Screen start
+    case 0: // skip password screen
+       dispScreen=1;
+       clearScreen();
+       menuScreen();
+       break;
+    /* case 0: // use password screen
       dispScreen=30;
       clearScreen();
       solicitar_senha();
-      break;
+      break; */
     case 1: //------------------------------------menu-------------------------------------------------
       if ((x>=tanD[0]) && (x<=tanD[2])) //first column
       {
