@@ -8,5 +8,3 @@ void updateStr(int val)
   setFont(LARGE, 0, 255, 0, 0, 0, 0);
   myGLCD.print("*", 110 +((stCurrentLen -1)*16), 210);
 }
-
-
