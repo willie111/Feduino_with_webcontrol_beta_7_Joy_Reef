@@ -3,11 +3,11 @@ prog_char texto1[] PROGMEM = "MENU 1";                                      // t
 prog_char texto2[] PROGMEM = "MENU 2";                                      // tabela_textos[2]
 prog_char texto3[] PROGMEM = "TIME AND DATE";                               // tabela_textos[3]
 prog_char texto4[] PROGMEM = "TEST LEDS";                                   // tabela_textos[4]
-prog_char texto5[] PROGMEM = "PARAM.CONTROL";                              // tabela_textos[5]
-prog_char texto6[] PROGMEM = "GRAPHS";                                      // tabela_textos[6]
+prog_char texto5[] PROGMEM = "PARAMETER MENU";                              // tabela_textos[5]
+prog_char texto6[] PROGMEM = "PARAMETER GRAPHS";                            // tabela_textos[6]
 prog_char texto7[] PROGMEM = "ADJUST LEDS";                                 // tabela_textos[7]
-prog_char texto8[] PROGMEM = "WATER CHANGE";                                // tabela_textos[8] // Automatic Water Change
-prog_char texto9[] PROGMEM = "DOSING PUMPS";                                // tabela_textos[9]
+prog_char texto8[] PROGMEM = "AUTO WATER CHANGE";                           // tabela_textos[8] // Automatic Water Change
+prog_char texto9[] PROGMEM = "DOSING MENU";                                 // tabela_textos[9]
 prog_char texto10[] PROGMEM = "WAVEMAKER";                                  // tabela_textos[10]
 prog_char texto11[] PROGMEM = "HOME";                                       // tabela_textos[11]
 prog_char texto12[] PROGMEM = "CHANGE TIME AND DATE";                       // tabela_textos[12]
@@ -28,8 +28,8 @@ prog_char texto26[] PROGMEM = "ORP GRAPH";                                  // t
 prog_char texto27[] PROGMEM = "WATER pH GRAPH";                             // tabela_textos[27]
 prog_char texto28[] PROGMEM = "CALCIUM REACTOR pH GRAPH";                   // tabela_textos[28]
 prog_char texto29[] PROGMEM = "DENSITY GRAPH";                              // tabela_textos[29]
-prog_char texto30[] PROGMEM = "  LED POWER GRAPH";                          // tabela_textos[30]
-prog_char texto31[] PROGMEM = "RETURN :";                                   // tabela_textos[31] // name timer 1 whatever is needed here 7 letters max:
+prog_char texto30[] PROGMEM = "FERDUINO AQUATROLLER";                       // tabela_textos[30]
+prog_char texto31[] PROGMEM = "Return :";                                   // tabela_textos[31] // name timer 1 whatever is needed here 7 letters max:
 prog_char texto32[] PROGMEM = "SET DAYS & TIME FOR AUTO WATER CHANGE";      // tabela_textos[32]
 prog_char texto33[] PROGMEM = "DOSING PUMPS SETUP";                         // tabela_textos[33]
 prog_char texto34[] PROGMEM = "SELECT A GRAPH";                             // tabela_textos[34]
@@ -57,13 +57,13 @@ prog_char texto55[] PROGMEM = "SET TIMER 2";                                // t
 prog_char texto56[] PROGMEM = "SET TIMER 3";                                // tabela_textos[56]
 prog_char texto57[] PROGMEM = "SET TIMER 4";                                // tabela_textos[57]
 prog_char texto58[] PROGMEM = "SET TIMER 5";                                // tabela_textos[58]
-prog_char texto59[] PROGMEM = "MON";                                     // tabela_textos[59]
-prog_char texto60[] PROGMEM = "TUE";                                    // tabela_textos[60]
-prog_char texto61[] PROGMEM = "WED";                                  // tabela_textos[61]
-prog_char texto62[] PROGMEM = "THU";                                   // tabela_textos[62]
-prog_char texto63[] PROGMEM = "FRI";                                     // tabela_textos[63]
-prog_char texto64[] PROGMEM = "SAT";                                   // tabela_textos[64]
-prog_char texto65[] PROGMEM = "SUN";                                     // tabela_textos[65]
+prog_char texto59[] PROGMEM = "MON";                                        // tabela_textos[59]
+prog_char texto60[] PROGMEM = "TUE";                                        // tabela_textos[60]
+prog_char texto61[] PROGMEM = "WED";                                        // tabela_textos[61]
+prog_char texto62[] PROGMEM = "THU";                                        // tabela_textos[62]
+prog_char texto63[] PROGMEM = "FRI";                                        // tabela_textos[63]
+prog_char texto64[] PROGMEM = "SAT";                                        // tabela_textos[64]
+prog_char texto65[] PROGMEM = "SUN";                                        // tabela_textos[65]
 prog_char texto66[] PROGMEM = "BACK";                                       // tabela_textos[66]
 prog_char texto67[] PROGMEM = "TEST EACH";                                  // tabela_textos[67]
 prog_char texto68[] PROGMEM = "TEST ALL";                                   // tabela_textos[68]
@@ -75,28 +75,28 @@ prog_char texto73[] PROGMEM = "SUN";                                        // t
 prog_char texto74[] PROGMEM = "DESIRED TEMPERATURE:";                       // tabela_textos[74]
 prog_char texto75[] PROGMEM = "ALLOWABLE VARIATION:";                       // tabela_textos[75]
 prog_char texto76[] PROGMEM = "VARIATION TO ACTIVATE ALARM:";               // tabela_textos[76]
-prog_char texto77[] PROGMEM = "SKIMMER:";                                   // tabela_textos[77] // name timer 2 whatever is needed here 7 letters max:
-prog_char texto78[] PROGMEM = "CL PUMP:";                                   // tabela_textos[78] // name timer 3 whatever is needed here 7 letters max:
-prog_char texto79[] PROGMEM = "REFUGEM:";                                   // tabela_textos[79] // name timer 4 whatever is needed here 7 letters max:
-prog_char texto80[] PROGMEM = "FRAG   :";                                   // tabela_textos[80] // name timer 5 whatever is needed here 7 letters max:
+prog_char texto77[] PROGMEM = "Skimmer:";                                   // tabela_textos[77] // name timer 2 whatever is needed here 7 letters max:
+prog_char texto78[] PROGMEM = "CL Pump:";                                   // tabela_textos[78] // name timer 3 whatever is needed here 7 letters max:
+prog_char texto79[] PROGMEM = "Refugum:";                                   // tabela_textos[79] // name timer 4 whatever is needed here 7 letters max:
+prog_char texto80[] PROGMEM = "Frag   :";                                   // tabela_textos[80] // name timer 5 whatever is needed here 7 letters max:
 prog_char texto81[] PROGMEM = "MODIFY";                                     // tabela_textos[81]
 prog_char texto82[] PROGMEM = "SAVE TO EEPROM";                             // tabela_textos[82]
 prog_char texto83[] PROGMEM = "TIME:";                                      // tabela_textos[83]
 prog_char texto84[] PROGMEM = "MAX. DURATION";                              // tabela_textos[84]
 prog_char texto85[] PROGMEM = "OF STAGE:";                                  // tabela_textos[85]
 prog_char texto86[] PROGMEM = "ERROR!";                                     // tabela_textos[86]
-prog_char texto87[] PROGMEM = "NORM";                                     // tabela_textos[87]
+prog_char texto87[] PROGMEM = "NORM";                                       // tabela_textos[87]
 prog_char texto88[] PROGMEM = "MANUAL";                                     // tabela_textos[88]
 prog_char texto89[] PROGMEM = "CONSUME:";                                   // tabela_textos[89]
 prog_char texto90[] PROGMEM = "CUSTOM";                                     // tabela_textos[90]
-prog_char texto91[] PROGMEM = "REVIEW CONFIG.";                               // tabela_textos[91]
+prog_char texto91[] PROGMEM = "REVIEW CONFIG.";                             // tabela_textos[91]
 prog_char texto92[] PROGMEM = "DEACTIVATE MODES";                           // tabela_textos[92]
 prog_char texto93[] PROGMEM = "TEMPERATURE";                                // tabela_textos[93]
 prog_char texto94[] PROGMEM = "TANK pH";                                    // tabela_textos[94]
 prog_char texto95[] PROGMEM = "REACTOR pH";                                 // tabela_textos[95]
-prog_char texto96[] PROGMEM = "ORP";                                        // tabela_textos[96]
+prog_char texto96[] PROGMEM = "REDOX POTENTIAL";                            // tabela_textos[96]
 prog_char texto97[] PROGMEM = "DENSITY";                                    // tabela_textos[97]
-prog_char texto98[] PROGMEM = "CALIBRATE PROBE";                          // tabela_textos[98]
+prog_char texto98[] PROGMEM = "CALIBRATE PROBE";                            // tabela_textos[98]
 prog_char texto99[] PROGMEM = "DESIRED pH:";                                // tabela_textos[99]
 prog_char texto100[] PROGMEM = "DESIRED ORP:";                              // tabela_textos[100]
 prog_char texto101[] PROGMEM = "DESIRED DENSITY:";                          // tabela_textos[101]
@@ -119,7 +119,7 @@ prog_char texto117[] PROGMEM = "DOSAGE STARTS IN 10 SECONDS";               // t
 prog_char texto118[] PROGMEM = "BEGIN:";                                    // tabela_textos[118]
 prog_char texto119[] PROGMEM = "END:";                                      // tabela_textos[119]
 prog_char texto120[] PROGMEM = "SELECT";                                    // tabela_textos[120]
-prog_char texto121[] PROGMEM = "ML.IN:";                                 // tabela_textos[121]
+prog_char texto121[] PROGMEM = "ML.IN:";                                    // tabela_textos[121]
 prog_char texto122[] PROGMEM = "(ML/DAY):";                                 // tabela_textos[122]
 prog_char texto123[] PROGMEM = "QUANTITY";                                  // tabela_textos[123]
 prog_char texto124[] PROGMEM = "OF DOSE:";                                  // tabela_textos[124]
@@ -179,27 +179,27 @@ prog_char texto177[] PROGMEM = "MUST BE AT LEAST 10 MINUTES!";              // t
 prog_char texto178[] PROGMEM = "END TIME CAN NOT BE LESS THAN";             // tabela_textos[178]
 prog_char texto179[] PROGMEM = "START TIME!";                               // tabela_textos[179]
 prog_char texto180[] PROGMEM = "MAXIMUM LIGHTING";                          // tabela_textos[180]
-prog_char texto181[] PROGMEM = "% Illuminated";                             // tabela_textos[181]
-prog_char texto182[] PROGMEM = "Lunar Phase-";                              // tabela_textos[182]
-prog_char texto183[] PROGMEM = "LED    Temp.";                              // tabela_textos[183]
-prog_char texto184[] PROGMEM = "Water  Temp.";                              // tabela_textos[184]
-prog_char texto185[] PROGMEM = "Aquarium pH.";                              // tabela_textos[185]
-prog_char texto186[] PROGMEM = "Reactor  pH.";                              // tabela_textos[186]
-prog_char texto187[] PROGMEM = "Density     ";                              // tabela_textos[187]
-prog_char texto188[] PROGMEM = "ORP         ";                              // tabela_textos[188]
-prog_char texto189[] PROGMEM = "Chiller/Fans";                              // tabela_textos[189]
-prog_char texto190[] PROGMEM = "Heater      ";                              // tabela_textos[190]
-prog_char texto191[] PROGMEM = "Calc.Reactor";                              // tabela_textos[191]
-prog_char texto192[] PROGMEM = "Ozone       ";                              // tabela_textos[192]
-prog_char texto193[] PROGMEM = "ATO Refill  ";                              // tabela_textos[193]
-prog_char texto194[] PROGMEM = "ATO Level   ";                              // tabela_textos[194]
-prog_char texto195[] PROGMEM = "Water Change";                              // tabela_textos[195]
-prog_char texto196[] PROGMEM = "Low!";                                      // tabela_textos[196]
-prog_char texto197[] PROGMEM = "Normal";                                    // tabela_textos[197]
+prog_char texto181[] PROGMEM = "Illumination";                              // tabela_textos[181]
+prog_char texto182[] PROGMEM = "Lunar Phase:";                              // tabela_textos[182]
+prog_char texto183[] PROGMEM = "LED Heatsink Tmp:";                         // tabela_textos[183]
+prog_char texto184[] PROGMEM = "Aquarium H2O Tmp:";                         // tabela_textos[184]
+prog_char texto185[] PROGMEM = "Aquarium H2O pH.:";                         // tabela_textos[185]
+prog_char texto186[] PROGMEM = "Calcium  Rx. pH.:";                         // tabela_textos[186]
+prog_char texto187[] PROGMEM = "Aquarium Density:";                         // tabela_textos[187]
+prog_char texto188[] PROGMEM = "Redox  Potential:";                         // tabela_textos[188]
+prog_char texto189[] PROGMEM = "Aquarium Cooling:";                         // tabela_textos[189]
+prog_char texto190[] PROGMEM = "Aquarium Heating:";                         // tabela_textos[190]
+prog_char texto191[] PROGMEM = "Calcium  Reactor:";                         // tabela_textos[191]
+prog_char texto192[] PROGMEM = "Ozone  Generator:";                         // tabela_textos[192]
+prog_char texto193[] PROGMEM = "Aquarium Top Off:";                         // tabela_textos[193]
+prog_char texto194[] PROGMEM = "Reservoir  Level:";                         // tabela_textos[194]
+prog_char texto195[] PROGMEM = "Auto H2O Changer:";                         // tabela_textos[195]
+prog_char texto196[] PROGMEM = "  Low! ";                                   // tabela_textos[196]
+prog_char texto197[] PROGMEM = " Normal";                                   // tabela_textos[197]
 prog_char texto198[] PROGMEM = "THU";                                       // tabela_textos[198] 
 prog_char texto199[] PROGMEM = "FRI";                                       // tabela_textos[199]  
 prog_char texto200[] PROGMEM = "SAT";                                       // tabela_textos[200] 
-prog_char texto201[] PROGMEM = "LED CONFIG.";                               // tabela_textos[201]
+prog_char texto201[] PROGMEM = "LED MENU";                                  // tabela_textos[201]
 prog_char texto202[] PROGMEM = "LED CONFIGURATION";                         // tabela_textos[202]
 prog_char texto203[] PROGMEM = "SELECT PERIOD.";                            // tabela_textos[203]
 prog_char texto204[] PROGMEM = "DOSE PUMP 4";                               // tabela_textos[204]
@@ -224,18 +224,18 @@ prog_char texto222[] PROGMEM = "USE FOR ROOM TEMP.";                        // t
 prog_char texto223[] PROGMEM = "CAN'T USE THE SAME PROBE";                  // tabela_textos[223]
 prog_char texto224[] PROGMEM = "FOR MULTIPLE PARAMETERS!";                  // tabela_textos[224]
 prog_char texto225[] PROGMEM = "..FORMATTING  EEPROM..";                    // tabela_textos[225]
-prog_char texto226[] PROGMEM = "Room    Temp.";                             // tabela_textos[226]
+prog_char texto226[] PROGMEM = "Ambient Room Tmp:";                          // tabela_textos[226]
 prog_char texto227[] PROGMEM = "TEMP. PROBES";                              // tabela_textos[227]
 prog_char texto228[] PROGMEM = "HEATSINK FAN";                              // tabela_textos[228]
 prog_char texto229[] PROGMEM = "TEMPERATURE SETUP FOR FAN SPEED CONTROL";   // tabela_textos[229]
 prog_char texto230[] PROGMEM = "FANS START AT:";                            // tabela_textos[230]
 prog_char texto231[] PROGMEM = "RUN MAXIMUM SPEED IF:";                     // tabela_textos[231]
-prog_char texto232[] PROGMEM = "PROTECT LEDS";                              // tabela_textos[232]
+prog_char texto232[] PROGMEM = "LED PROTECTION";                            // tabela_textos[232]
 prog_char texto233[] PROGMEM = "HEATSINK TEMP. RISES TO";                   // tabela_textos[233]
 prog_char texto234[] PROGMEM = " REDUCE LEDS TO";                           // tabela_textos[234]
 prog_char texto235[] PROGMEM = "TEMPERATURE FOR LED POWER REDUCTION";       // tabela_textos[235]
-prog_char texto236[] PROGMEM = "Temp. High!";                               // tabela_textos[236] 
-prog_char texto237[] PROGMEM = "Temp. Dropped! ";                           // tabela_textos[237]
+prog_char texto236[] PROGMEM = "  Temp.   High!  ";                         // tabela_textos[236] 
+prog_char texto237[] PROGMEM = " Temp.  Dropped! ";                         // tabela_textos[237]
 prog_char texto238[] PROGMEM = "PERIOD";                                    // tabela_textos[238]
 prog_char texto239[] PROGMEM = "ALTERNATING";                               // tabela_textos[239]
 prog_char texto240[] PROGMEM = "SYNCRONIZED";                               // tabela_textos[240]
@@ -299,23 +299,23 @@ char* tabela_textos[] PROGMEM =
 char* tabela_textos_fase[] PROGMEM =
 {
 "", // tabela_textos_fase[0]
-" New Moon",         // tabela_textos_phase[1]
-" Waxing Cresent",     // tabela_textos_phase[2]
-" Full Moon",        // tabela_textos_phase[3]
-" Waning Cresent",     // tabela_textos_phase[4]  
+" New  Moon",       // tabela_textos_phase[1]
+"Waxing Crescent",  // tabela_textos_phase[2]
+" Full Moon",       // tabela_textos_phase[3]
+"Waning Crescent",  // tabela_textos_phase[4]  
 };
 
 prog_char  nomecanal0 [] PROGMEM = "";                  // channel name[0]
 prog_char  nomecanal1 [] PROGMEM = "WHI";               // channel name[01]  = White 
 prog_char  nomecanal2 [] PROGMEM = "GRN";               // channel name[02]  = Green 
-prog_char  nomecanal3 [] PROGMEM = "RBL";               // channel name[03]  = Royal Blue 
+prog_char  nomecanal3 [] PROGMEM = "BLU";               // channel name[03]  = Royal Blue 
 prog_char  nomecanal4 [] PROGMEM = "RED";               // channel name[04]  = Red
 prog_char  nomecanal5 [] PROGMEM = "VIO";               // channel name[05]  = Violet
-prog_char  nomecanal6 [] PROGMEM = "WHITE";             // channel name[06]  = White 
-prog_char  nomecanal7 [] PROGMEM = "GREEN";             // channel name[07]  = Green
-prog_char  nomecanal8 [] PROGMEM = "BLUE";              // channel name[08]  = Blue 
-prog_char  nomecanal9 [] PROGMEM = "RED";               // channel name[09]  = Red
-prog_char  nomecanal10 [] PROGMEM = "VIOLET";           // channel name[10]  = Violet
+prog_char  nomecanal6 [] PROGMEM = "White";             // channel name[06]  = White 
+prog_char  nomecanal7 [] PROGMEM = "Green";             // channel name[07]  = Green
+prog_char  nomecanal8 [] PROGMEM = "Blue";              // channel name[08]  = Blue 
+prog_char  nomecanal9 [] PROGMEM = "Red";               // channel name[09]  = Red
+prog_char  nomecanal10 [] PROGMEM = "Violet";           // channel name[10]  = Violet
 prog_char  nomecanal11 [] PROGMEM = "CHOOSE LED";
 prog_char  nomecanal12 [] PROGMEM = "WHITE LED POWER CHANGE";
 prog_char  nomecanal13 [] PROGMEM = "GREEN LED POWER CHANGE"; 
