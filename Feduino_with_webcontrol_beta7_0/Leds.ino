@@ -27,7 +27,7 @@ void LED_levels_output()
   } 
   if(temperatura_alta == true)
   {
-    if(tempH <= (tempHR - 5)) // Se a temperatura estiver 5Ã‚Â°C abaixo do especificado a potÃƒÂªncia volta ao valor normal.   
+    if(tempH <= (tempHR - 5)) // Se a temperatura estiver 5°C abaixo do especificado a potência volta ao valor normal.   
     {
       reduzir = 1.00;
       temperatura_alta = false;
@@ -284,30 +284,3 @@ int check( byte *pt1, byte *pt2, int lstep)
   } 
   return result;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
