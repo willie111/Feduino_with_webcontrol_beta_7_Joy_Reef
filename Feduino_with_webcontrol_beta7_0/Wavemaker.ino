@@ -3,7 +3,7 @@ void Grafico_WaveMaker()
   int Pump1PWM_t;
   int Pump2PWM_t;
 
-  int bar = map(Pump1PWM, 0, 510, 450,-60);   
+  int bar = map(Pump1PWM, 0, 510, 450, -60);   
 
   if (bar < -60 )
   {
@@ -96,8 +96,7 @@ void Wavemaker()
   else if(modo_selecionado == 2)
   {
     value = int(128 + 127 * sin(2  *  PI / periodo * times));
-    Pump1PWM = value;
-    Pump2PWM = value;
+    Pump1PWM = Pump2PWM = value;
   }
 
   else if(modo_selecionado == 3)
@@ -132,18 +131,7 @@ void Wavemaker()
       Pump1PWM = 255 - value;
       Pump2PWM = value;  
 
-      if(conta < 61)
-      {
-        if (Pump1PWM < 128)
-        {
-          Pump1PWM += 128;
-        }
-        if (Pump2PWM < 128)
-        {
-          Pump2PWM += 128;
-        }
-      }
-      else if(conta > 81)
+      if((conta < 61) ||(conta > 81))
       {
         if (Pump1PWM < 128)
         {
@@ -166,7 +154,6 @@ void Wavemaker()
         }
       }
     }
-
     if (conta >= 142) // Opposite and same
     {
       conta = 0;
@@ -177,42 +164,9 @@ else if(modo_selecionado == 5)
  Pump1PWM = Pump1PWM_temp;
  Pump2PWM = Pump2PWM_temp;
 }
-  if(Pump1PWM > 255)
-  {
-    Pump1PWM = 255;
-  }
-  else if(Pump1PWM < 0)
-  {
-    Pump1PWM = 0;
-  }
-  else if(Pump2PWM > 255)
-  {
-    Pump2PWM = 255;
-  } 
-  else if(Pump2PWM < 0)
-  {
-    Pump2PWM = 0;
-  }
-  
-/************** next 7 and last lines below were added to reduce wave pump power after lights out at night time *********************/
-/************************** for no wave power change comment out the next 7 and last lines ******************************************/
-
-  if((bled_out == 0) && (wled_out == 0) && (rbled_out  == 0) && (rled_out == 0) && (uvled_out == 0))
-  {
-  analogWrite(wavemaker1, int(Pump1PWM * 0.75)); // 0.75 for 75% power, change to 0.50 for 50% power, change to 0.25 for 25% power
-  analogWrite(wavemaker2, int(Pump2PWM * 0.75)); // 0.75 for 75% power, change to 0.50 for 50% power, change to 0.25 for 25% power
-  }
-  else
-  {
   analogWrite(wavemaker1, Pump1PWM);
-  analogWrite(wavemaker2, Pump2PWM);   
-  }
-  
-/********* this little thing below is needed for night time pump power reduction, otherwise comment it out with the above stuff *****/
-
+  analogWrite(wavemaker2, Pump2PWM);
 }
-
-
 
 
 
