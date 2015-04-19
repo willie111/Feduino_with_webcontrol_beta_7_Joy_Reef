@@ -90,5 +90,3 @@ byte validateDate(byte d, byte m, word y)
 
   return od;
 }
-
-
