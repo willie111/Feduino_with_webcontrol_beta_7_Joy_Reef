@@ -481,4 +481,4 @@ void ler_predefinido_EEPROM()
     uvled_out_temp = EEPROM.read(823);
     amanhecer_anoitecer = EEPROM.read(824);
   }
-}
+} 
