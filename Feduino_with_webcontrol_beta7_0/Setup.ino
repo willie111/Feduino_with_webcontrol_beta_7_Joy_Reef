@@ -48,13 +48,13 @@ void setup()
   pinMode(ChipSelect_RFM, OUTPUT);         // Pino A15;
 
   //**************** PCF8575 ****************
-  
-   pinMode (temporizador1, OUTPUT);         // Pino 80;
-   pinMode (temporizador2, OUTPUT);         // Pino 81;
-   pinMode (temporizador3, OUTPUT);         // Pino 82;
-   pinMode (temporizador4, OUTPUT);         // Pino 83;
-   pinMode (temporizador5, OUTPUT);         // Pino 84;
-   pinMode (solenoide1Pin, OUTPUT);         // Pino 85;
+  //pinMode (temporizador1, OUTPUT);         // Pino 80;
+  //pinMode (temporizador2, OUTPUT);         // Pino 81;
+  //pinMode (temporizador3, OUTPUT);         // Pino 82;
+  //pinMode (temporizador4, OUTPUT);         // Pino 83;
+  //pinMode (temporizador5, OUTPUT);         // Pino 84;
+  //pinMode (solenoide1Pin, OUTPUT);         // Pino 85;
+
 
   myGLCD.InitLCD(LANDSCAPE); // Orientação da imagem no LCD.
   clearScreen();             // Limpa o LCD.
@@ -75,7 +75,7 @@ void setup()
   tempH = (tempH * 1.8) + 32;
   tempA = (tempA * 1.8) + 32;
 
-   /*  if(PCF8575TS_S == true)
+     if(PCF8575TS_S == true)
    {
    PCF8575.begin(endereco_PCF8575TS); // Inicia a comunicação com o PCF8575TS
    for(int i = 0; i < 16; i++)
@@ -84,7 +84,7 @@ void setup()
    delay(100);
    PCF8575.digitalWrite(i, LOW);
    }
-   }*/
+   }
 
   rtc.halt(false); // Inicia o funcionamento do RTC.
 
@@ -133,7 +133,7 @@ void setup()
   while(!card.init(SPI_HALF_SPEED, ChipSelect_SD)) // Inicia a comunicação com o cartão SD.
   {
     setFont(LARGE, 255, 0, 0, 0, 0, 0);
-    myGLCD.print("PLEASE INSERT A SD CARD.", CENTER, 115); 
+    myGLCD.print("PLEASE INSERT A SD CARD.", CENTER, 230); 
     Serial.println(F("Please insert a SD CARD"));
   }
   volume.init(&card);
