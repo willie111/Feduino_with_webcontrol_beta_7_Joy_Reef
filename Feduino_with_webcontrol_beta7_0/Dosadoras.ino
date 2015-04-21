@@ -34,27 +34,27 @@ void criar_arquivos()
         file.print("000");  
         file.print(minuto11);
         file.write((uint8_t*)"\0", 1);
-        writeCRLF(file);
+        //writeCRLF(file);
       }
       else if(( minuto11 > 10) && (minuto11 < 100))
       {
         file.print("00");
         file.print(minuto11);
         file.write((uint8_t*)"\0", 1);
-        writeCRLF(file);
+        //writeCRLF(file);
       }
       else if(( minuto11 >= 100) && (minuto11 < 1000))
       {
         file.print("0");
         file.print(minuto11);
         file.write((uint8_t*)"\0", 1);
-        writeCRLF(file);
+        //writeCRLF(file);
       }
       else if(minuto11 >= 1000)
       {
         file.print(minuto11);
         file.write((uint8_t*)"\0", 1);
-        writeCRLF(file);
+        //writeCRLF(file);
       }
     }
     file.close();
@@ -156,3 +156,5 @@ void config_valores_salvar_dosadoras()
     domingo_dosagem_personalizada_e[i] = domingo_dosagem_personalizada[i];
   }
 }
+
+
