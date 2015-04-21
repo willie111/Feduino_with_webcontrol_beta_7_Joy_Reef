@@ -48,11 +48,7 @@
 // Uncomment the line corresponding to your language.
 
  #define ENGLISH    // If this program is useful for you, make a donation to help with development. Paypal: fefegarcia_1@hotmail.com
-// #define FRENCH     // Si ce programme est utile pour vous, faire un don pour aider au développement. Paypal: fefegarcia_1@hotmail.com
-// #define GERMAN     // Wenn dieses Programm ist nützlich für Sie, eine Spende an mit Entwicklung zu helfen. Paypal: fefegarcia_1@hotmail.com
-// #define ITALIAN    // Se questo programma è utile per voi, fare una donazione per aiutare con lo sviluppo. Paypal: fefegarcia_1@hotmail.com
-//#define PORTUGUESE   // Se este programa é útil para você, faça uma doação para ajudar no desenvolvimento. Paypal: fefegarcia_1@hotmail.com
-// #define SPANISH    // Si este programa es útil para usted, hacer una donación para ayudar con el desarrollo. Paypal: fefegarcia_1@hotmail.com
+
 
 
 //*************************************************************************************************
@@ -70,7 +66,7 @@
 #include <SdFat.h>
 #include <SdFatUtil.h>
 #include <avr/pgmspace.h>
-//#include <PCF8575.h>
+#include <PCF8575.h>
 //#include <JeeLib.h>
 #include <Base64.h>
 #include <SPI.h> 
@@ -86,136 +82,138 @@ extern uint8_t BigFont[];     // Declara que fontes vamos usar
 char buffer[50];
 
 //****************************************************************************************************
-//****************** Define funções dos pinos digitais e analógicos **********************************
+//****************** Defines functions of digital and analog pins ************************************
 //****************************************************************************************************
-// Pinos 0 e 1 reservados para a porta serial 0.
-const byte alarmPin = 0;          // Pino que aciona o alarme
-const byte desativarFanPin = 1;   // Pino que desativa os coolers.
-// Pino 2 reservado para INT do RFM12B.
-// Pinos 3, 4, 5, 6 e 7 reservados para o touch.
-// Pino 5 também é o chip select do cartão SD.
-const byte ledPinUV = 8;         // Pino que liga os leds violeta
-const byte ledPinBlue = 9;       // Pino que liga os leds azuis
-const byte ledPinWhite = 10;     // Pino que liga os leds brancos
-const byte ledPinRoyBlue = 11;   // Pino que liga os leds "royal blue"
-const byte ledPinRed = 12;       // Pino que liga os leds vermelho
-const byte fanPin = 13;          // Pino que controla a velocidade das ventoinhas do dissipador
-// Pinos 14 e 15 reservados para a porta serial 3 que se comunica com os "Stamps"
-const byte multiplexadorS0Pin = 16; // Pino S0 de controle dos stamps
-const byte multiplexadorS1Pin = 17; // Pino S1 de controle dos stamps
-// Pinos 18 e 19 reservados para o RTC.
-// Pinos 20 e 21 reservados para comunicação I2C do PCF8575.
-// Pinos 22 à 41 reservados para o LCD.
-const byte aquecedorPin = 42;   // Pino que liga o aquecedor
-const byte chillerPin = 43;     // Pino que liga o chiller
-const byte ledPinMoon = 44;     // Pino que liga os leds da luz noturna
-const byte wavemaker1 = 45;     // Pino que controla o wavemaker 1
-const byte wavemaker2 = 46;     // Pino que controla o wavemaker 2
-const byte ozonizadorPin = 47;  // Pino que liga o ozonizador
-const byte reatorPin = 48;      // Pino que liga o CO2 do reator.
-const byte sensoresPin = 49;    // Pino que lê os sensores de temperatura
-// Pinos 50, 51 e 52 reservados para comunicação SPI
-// Pino 53 reservado para "select slave do ethernet shield.
-const byte sensor1 = 54;   // A0;      // Pino analógico que verifica se há tensão na bóia da quarentena.
-const byte sensor2 = 55;   // A1;      // Pino analógico que verifica se há tensão na bóia inferior do sump.
-const byte sensor3 = 56;   // A2;      // Pino analógico que verifica se há tensão na bóia superior do sump.
-const byte sensor4 = 57;   // A3;      // Pino analógico que verifica se há tensão na bóia inferior do reservatório.
-const byte sensor5 = 58;   // A4;      // Pino analógico que verifica o nível do reef.
-const byte sensor6 = 59;   // A5;      // Pino analógico que verifica o nível do fish only.
-const byte bomba1Pin = 60; // A6;      // Bomba que tira água da quarentena.
-const byte bomba2Pin = 61; // A7;      // Bomba que tira água do sump.
-const byte bomba3Pin = 62; // A8;      // Bomba que coloca água no sump.
-const byte dosadora1 = 63; // A9;      // Bomba dosadora 1
-const byte dosadora2 = 64; // A10;     // Bomba dosadora 2
-const byte dosadora3 = 65; // A11;     // Bomba dosadora 3
-const byte dosadora4 = 66; // A12;     // Bomba dosadora 4
-const byte dosadora5 = 67; // A13;     // Bomba dosadora 5
-const byte dosadora6 = 68; // A14;     // Bomba dosadora 6
-// Pino 69 (A15) reservado para SS do RFM12B
+// Pins 0 and 1 reserved for serial port 0.
+const byte alarmPin = 0;            // Pin to trigger alarm
+const byte desativarFanPin = 1;     // Pin on/off for heatsink fans................orange wire..Male DB9
+// Pin 2 reserved for the INT RFM12B.
+// Pins 3, 4, 5, 6 and 7 reserved for the Touch.
+// Pin 5 is also the chip select the SD card.
+const byte ledPinUV = 8;            // Pin violet LEDs.............................purple wire..Male DB9
+const byte ledPinBlue = 9;          // Pin green LEDs..............................green wire...Male DB9
+const byte ledPinWhite = 10;        // Pin white LEDs..............................grey wire....Male DB9
+const byte ledPinRoyBlue = 11;      // Pin royal blue LEDs.........................blue wire....Male DB9
+const byte ledPinRed = 12;          // Pin red LEDs................................red wire.....Male DB9
+const byte fanPin = 13;             // Pin that controls Heatsink PWM fan speed....brown wire...Male DB9
+// 14 & 15 pins reserved for serial port 3 that communicates with the "Stamps"
+const byte multiplexadorS0Pin = 16; // Pin S0 control of stamps
+const byte multiplexadorS1Pin = 17; // Pin S1 control of stamps
+// 18 & 19 pins reserved for the RTC.
+// 20 & 21 pins reserved for the PCF8575 I2C communication.
+// Pins 22 ~ 41 reserved for LCD.
+const byte aquecedorPin = 42;       // Pin heater..................................purple wire..........Female DB9...Relay channel 1
+const byte chillerPin = 43;         // Pin chiller.................................red wire.............Female DB9...Relay channel 2
+const byte ledPinMoon = 44;         // Pin moon light..............................yellow wire..Male DB9
+const byte wavemaker1 = 45;         // Pin wavemaker 1
+const byte wavemaker2 = 46;         // Pin wavemaker 2
+const byte ozonizadorPin = 47;      // Pin ozone
+const byte reatorPin = 48;          // Pin calcium reactor
+const byte sensoresPin = 49;        // Pin one wire temperature sensors
+// Pins 50, 51, & 52 reserved for SPI communication
+// Pin 53 reserved for "slave select the ethernet shield.
+const int sensor1 = A0;             // Analog pin that checks for voltage from the saltwater mixing tank float.....these 4 lines are for auto water change
+const int sensor2 = A1;             // Analog pin that checks for voltage at the bottom of the sump float.      
+const int sensor3 = A2;             // Analog pin that checks for voltage at the top of the sump float.         
+const int sensor4 = A3;             // Analog pin that checks for voltage at the reservoir float.               
+const int sensor5 = A4;             // Analog pin that checks the level of the reef tank sump......................these 2 lines for the ATO 
+const int sensor6 = A5;             // Analog pin that checks the level of the ATO reservoir.                    
+const int bomba1Pin = A6;           // Pump that draws water from saltwater mixing tank............................these 3 lines for the automatic water change system 
+const int bomba2Pin = A7;           // Pump that draws water from the sump.                                      
+const int bomba3Pin = A8;           // Pump that draws water from the reservoir to put in the sump.              
+const int dosadora1 = A9;           // Dosing pump 1.....................................blue wire........Female DB9..Relay channel 3                                                          
+const int dosadora2 = A10;          // Dosing pump 2.....................................grey wire........Female DB9..Relay channel 4                                                         
+const int dosadora3 = A11;          // Dosing pump 3.....................................yellow wire......Female DB9..Relay channel 5                                                          
+const int dosadora4 = A12;          // Dosing pump 4.....................................orange wire......Female DB9..Relay channel 6
+const int dosadora5 = A13;          // Dosing pump 5.....................................brown wire.......Female DB9..Relay channel 7
+const int dosadora6 = A14;          // Dosing pump 6.....................................green wire.......Female DB9..Relay channel 8
+// Pin A15 reserved for SS RFM12B
+//*****************************************************************************************************
+//***************************************** PCF8575TS *************************************************
+//*****************************************************************************************************
+const byte temporizador1 = 0;      // Pin for timer 1            
+const byte temporizador2 = 1;      // Pin for timer 2            
+const byte temporizador3 = 2;      // Pin for timer 3            
+const byte temporizador4 = 3;      // Pin for timer 4            
+const byte temporizador5 = 4;      // Pin for timer 5
+const byte solenoide1Pin = 5;      // Pin for turning on RO/DI when reservoir is low
 
-///**************** PCF8575 **********************************
-const byte temporizador1 = 80;       // P0       // Pino que liga o timer 1.
-const byte temporizador2 = 81;       // P1       // Pino que liga o timer 2.
-const byte temporizador3 = 82;       // P2       // Pino que liga o timer 3.
-const byte temporizador4 = 83;       // P3       // Pino que liga o timer 4.
-const byte temporizador5 = 84;       // P4       // Pino que liga o timer 5.
-const byte solenoide1Pin = 85;       // P5       // Liga a reposicao de água doce.
-
 //****************************************************************************************************
-//***************** Variáveis dos sensores de temperatura ********************************************
+//********************** Variables of temperature sensors ********************************************
 //****************************************************************************************************
-OneWire OneWireBus(sensoresPin);        // Sensores de temperatura
-DallasTemperature sensors(&OneWireBus); // Passa a nossa referência OneWire para sensores de temperatura.
-DeviceAddress sensor_agua;              // Atribui os endereços dos sensores de temperatura.
-DeviceAddress sensor_dissipador;        // Atribui os endereços dos sensores de temperatura.
-DeviceAddress sensor_ambiente;          // Atribui os endereços dos sensores de temperatura.
+OneWire OneWireBus(sensoresPin);         // Temperature sensor pin
+DallasTemperature sensors(&OneWireBus);  // reference to OneWire temperature sensors.
+DeviceAddress sensor_agua;               // Assigns the addresses of the temperature sensors.(water)
+DeviceAddress sensor_dissipador;         // Assigns the addresses of the temperature sensors.(heatsink)
+DeviceAddress sensor_ambiente;           // Assigns the addresses of the temperature sensors.(room/ambient)
 byte sonda_associada_1 = 1;
 byte sonda_associada_2 = 2;
 byte sonda_associada_3 = 3;
 
 //****************************************************************************************************
-//***************** Variáveis temporárias dos sensores de temperatura ********************************
+//************************ Temporary variables of temperature sensors ********************************
 //****************************************************************************************************
-DeviceAddress tempDeviceAddress; // Endereço temporário da sonda.
-DeviceAddress sonda1; // Endereço temporário da sonda1.
-DeviceAddress sonda2; // Endereço temporário da sonda2.
-DeviceAddress sonda3; // Endereço temporário da sonda3.
+DeviceAddress tempDeviceAddress;   // Temporary address probe.
+DeviceAddress sonda1;              // Temporary address probe1.
+DeviceAddress sonda2;              // Temporary address probe2.
+DeviceAddress sonda3;              // Temporary address probe3.
 byte sonda_associada_1_temp = 0;
 byte sonda_associada_2_temp = 0;
 byte sonda_associada_3_temp = 0;
 
 //*******************************************************************************************************
-//********************** Funções do RTC ********************************************************************
+//********************** Functions of the RTC ***********************************************************
 //*******************************************************************************************************
-//        (SDA,SCL) Indica em quais pinos o RTC está conectado.
-//DS1307 rtc(20, 21);     // Comente esta linha para usar o Ferduino Mega 2560
-DS1307 rtc(18, 19);  // Descomente esta linha para usar o Ferduino Mega 2560
+//       (SDA,SCL)
+DS1307 rtc(18, 19);       // Indicates which pins are connected for the RTC. uncomment this line when using PCF8575
+//DS1307 rtc(20, 21);       // Indicates which pins are connected for the RTC. comment this line when using PCF8575
 Time t_temp, t;
+// 18 & 19 pins reserved for the RTC.
+// 20 & 21 pins reserved for the PCF8575 I2C communication.
 
 //*******************************************************************************************************
-//********************** Variáveis das fuções do touch screen e tela inicial ****************************
+//*********************** Touch screen and display variables ********************************************
 //*******************************************************************************************************
-//UTFT        myGLCD(X, 38,39,40,41); // "X" is the screen you are using
-
-
-//UTFT        myGLCD(ITDB50, 38,39,40,41);
 UTFT        myGLCD(CTE70, 38,39,40,41);
-UTouch      myTouch(6,5,4,3,2);              // Comente esta linha para usar o Ferduino Mega 2560
-//UTouch      myTouch(7,6,5,4,3);           // Descomente esta linha para usar o Ferduino Mega 2560
+UTouch      myTouch(6,5,4,3,2); 
+//UTouch      myTouch(7,6,5,4,3);
 
-unsigned long previousMillis = 0;
+long previousMillis = 0;
+byte data[56];
 String day, ano; 
-byte whiteLed, blueLed, azulroyalLed, vermelhoLed, violetaLed;    // Valor anterior de PWM.
-byte dispScreen = 0;
+int whiteLed, blueLed, azulroyalLed, vermelhoLed, violetaLed;    // Previous value of PWM.
+int dispScreen = 0;
+//unsigned long previousMillis_2 = 0;
+//int interval = 30; // time in seconds til clock screen displays 
 
 //*****************************************************************************************
-//*********************** Parâmetros ******************************************************
+//*********************** parameters ******************************************************
 //*****************************************************************************************
 byte status_parametros = 0x0;
-//bit 0;   // Sinaliza que o chiller está ligado / desligado
-//bit 1;   // Sinaliza que o aquecedor está ligado / desligado  
-//bit 2;   // Sinaliza que o alarme de temperatura está ativo
-//bit 3;   // Sinaliza que o PH do aquário esta fora do especificado
-//bit 4;   // Sinaliza que a densidade esta fora do especificado
-//bit 5;   // Sinaliza que CO2 esta ligado / desligado
-//bit 6;   // Sinaliza que o PH do reator de cálcio esta fora do especificado
-//bit 7;   // Sinaliza que o ozonizador esta ligado / desligado
+//bit 0;   // Signals that the heater is switched on / off
+//bit 1;   // Signals that the chiller is switched on / off
+//bit 2;   // Signals that the temperature alarm is active
+//bit 3;   // Indicates that the PH of the tank is outside the specified
+//bit 4;   // Indicates that the density is outside the specified
+//bit 5;   // Signals that this CO2 on / off
+//bit 6;   // Signals that the pH of the calcium reactor is outside the specified
+//bit 7;   // Signals that the ozonator is on / off
 byte status_parametros_1 = 0x0;
-//bit 0    // Sinaliza que a ORP esta fora do especificado
+//bit 0    // Signals that the ORP is outside the specified
 
 //*****************************************************************************************
-//*********************** Variáveis do controle de temperatura da água ********************
+//*********************** Variable water temperature control ******************************
 //*****************************************************************************************
-float tempC = 0;               // Temperatura da água
-//float setTempC = 25.5;         // Temperatura desejada
+float tempC = 0;                 // Water temperature
+//float setTempC = 25.5;           // desired temperature *C /******************************************************** changed for Fahrenheit *******************************************************************/
 float setTempC = 78;             // desired temperature *F
-float offTempC = 0.5;          // Variação permitida da temperatura
-float alarmTempC = 1;          // Variacao para acionar o alarme de temperatura da água
-byte contador_temp = 0;
-float temperatura_agua_temp = 0; // Temperatura temporária
+float offTempC = 0.5;            // Permissible variation
+float alarmTempC = 1;            // Variation to trigger the alarm for water temperature
+int contador_temp = 0;
+float temperatura_agua_temp = 0; // temporary temperature
 
 //*****************************************************************************************
-//************************ Variáveis temporárias de controle de temperatura da água *******
+//****************** Variables controlling the pH of the aquarium *************************
 //*****************************************************************************************
 float temp2beS;           
 float temp2beO;
@@ -368,17 +366,13 @@ byte led_off_hora_t;
 byte amanhecer_anoitecer_t = 0;
 
 //*****************************************************************************************
-//************************* LED design ****************************************************
+//************************* LED design RGB channel colors *********************************
 //*****************************************************************************************     
-byte cor_canal1[] = {230, 246, 255};  // Cool White
-
-byte cor_canal2[] = {50, 205, 50};    // Green
-
-byte cor_canal3[] = {65, 105, 225};    // Royal Blue
-
-byte cor_canal4[] = {255, 0, 0};      // Red
-
-byte cor_canal5[] = {238, 130, 238};  // Violet
+byte cor_canal1[] = {153, 255, 255};   // White 
+byte cor_canal2[] = {0, 255, 0};       // Green   // {0, 125, 255}; // Blue
+byte cor_canal3[] = {0, 0, 255};       // Royal Blue
+byte cor_canal4[] = {255, 0, 0};       // Red
+byte cor_canal5[] = {138, 43, 226};    // Violet
 //*****************************************************************************************
 //************************ Variáveis da fase lunar ****************************************
 //*****************************************************************************************
@@ -437,14 +431,14 @@ byte Status = 0x0;
 //*****************************************************************************************
 boolean Ethernet_Shield = true; // Altere para "false" caso não tenha um Ethernet Shield conectado ao Arduino.
 
-const char *Username  = "ferduino";   // Coloque aqui o nome de usuário cadastrado no joy-reef.com
-const char *APIKEY = "eieio";           // Cole aqui a ApiKey gerada pelo joy-reef.com
+const char *Username  = "*******";   // user name for joy-reef.com
+const char *APIKEY = "******";           // ApiKey generated at joy-reef.com
 
 const byte maxima_tentativa = 3;                // Número máximo de tentativas de autenticação.
 const byte intervalo_tentativa = 15;   // Tempo  de espera (em minutos) para novas tentativas.
 
 byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED }; // Este MAC deve ser único na sua rede local.
-byte ip[] = {109, 77, 62, 383};                     // Configure o IP conforme a sua rede local.
+byte ip[] = {209, 97, 81, 183};                     // Configure o IP conforme a sua rede local.
 IPAddress dnsServer(8, 8, 8, 8);                    // Configure o IP conforme a sua rede local. Este é o DNS do Google, geralmente não é necessário mudar.
 IPAddress gateway(192, 168, 0, 1);                  // Configure o "Gateway" conforme a sua rede local.
 IPAddress subnet(255, 255, 255, 0);                 // Configure a máscara de rede conforme a sua rede local.
@@ -474,13 +468,14 @@ const byte orp = 2; // Y2
 const byte ec = 3;  // Y3
 
 //*****************************************************************************************
-//************************** Variáveis da solicitação de senha ****************************
+//************************** Variables password request ***********************************
+//******* to reactivate password protection, go to processmytouch tab, change case 0: *****
 //*****************************************************************************************
 char stCurrent[7]="";
 char limpar_senha [7] = "";
 byte stCurrentLen=0;
-const char senha [7] = {'0','1','2','8','6','7','\0'}; // Insira sua senha aqui. O caracter '\0' não deve ser alterado.
-
+char senha [7] = {'0','1','2','8','6','7','\0'}; // Enter your password here. The character '\ 0' and commas should not be changed. change only the numbers
+  
 //*****************************************************************************************
 //************************** Variáveis dosadoras ******************************************
 //*****************************************************************************************
@@ -568,10 +563,10 @@ byte temporizador_ativado[5];
 //*****************************************************************************************
 //************************** Variáveis do PCF8575 *****************************************
 //*****************************************************************************************
-/*
+
  boolean PCF8575TS_S = true; // Altere para "false" caso não tenha um PCF8575
  byte endereco_PCF8575TS = 0x20; // Endereço em hexadecimal = 0x20
-PCF8575 PCF8575;*/ 
+ PCF8575 PCF8575;
 
 //*****************************************************************************************
 //************************** Comunicação RF ***********************************************
@@ -591,9 +586,9 @@ byte consumo = 0;
 const byte SD_CARD = 0; 
 const byte ETHER_CARD = 1;
 const byte RFM = 2;
-//const byte ChipSelect_SD = 4; // Comente esta linha para usar o Ferduino Mega 2560
-const byte ChipSelect_SD = 5;  // Descomente esta linha para usar o Ferduino Mega 2560           
-const byte SelectSlave_ETH = 53;
+const byte ChipSelect_SD = 53; // Comente esta linha para usar o Ferduino Mega 2560
+//const byte ChipSelect_SD = 5;  // Descomente esta linha para usar o Ferduino Mega 2560           
+const byte SelectSlave_ETH = 4;
 const byte ChipSelect_RFM = 69; // A15
 
 //*****************************************************************************************
