@@ -13,11 +13,9 @@ void checkTempC()
     tempC = temperatura_agua_temp / 12;
     tempH = temperatura_dissipador_temp / 12;
     tempA = temperatura_ambiente_temp / 12;
-    
     tempC = (tempC * 1.8) + 32; /******************************************************** added for Fahrenheit *******************************************************************/
     tempH = (tempH * 1.8) + 32;
     tempA = (tempA * 1.8) + 32;
-    
     contador_temp = 0;
     temperatura_agua_temp = 0;
     temperatura_dissipador_temp = 0;
@@ -59,7 +57,8 @@ void checkTempC()
     }
   }
 
-  if ((tempC > 50) || (tempC <10))
+  if ((tempC > 122) || (tempC <50))
+     // ((tempC > 50) || (tempC <10))
   {
     bitWrite(status_parametros,0,0);
     bitWrite(status_parametros,1,0);
@@ -227,14 +226,14 @@ void reposicao_agua_doce () // abre a solenoide 1 se o nível estiver baixo e se
 {
   if((analogRead(sensor3) > 400) && (analogRead(sensor2) > 400) && (bitRead(tpa_status,1) == false) && (bitRead(status_parametros,0) == false) && (bitRead(tpa_status,2) == false))
   {
-    digitalWrite(solenoide1Pin,HIGH);
+    PCF8575.digitalWrite(solenoide1Pin,HIGH);
+    //digitalWrite(solenoide1Pin,HIGH);
     bitWrite(Status,1,1); //sinaliza reposição em andamento
   }
   else
   {
-    digitalWrite(solenoide1Pin,LOW);
+    PCF8575.digitalWrite(solenoide1Pin,LOW);
+    //digitalWrite(solenoide1Pin,LOW);
     bitWrite(Status,1,0); // sinaliza reposição em andamento
   }
 }
-
-
