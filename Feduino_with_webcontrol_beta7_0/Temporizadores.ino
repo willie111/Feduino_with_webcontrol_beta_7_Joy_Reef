@@ -8,12 +8,14 @@ void check_temporizadores()
       {
         if((NumMins(t.hour,t.min) >= NumMins(on_hora_e[i], on_minuto_e[i])) && (NumMins(t.hour,t.min) < NumMins(off_hora_e[i], off_minuto_e[i])))
         {
-          digitalWrite(temporizador_e[i], HIGH);
+        PCF8575.digitalWrite(temporizador1, HIGH);
+        //digitalWrite(temporizador1, HIGH);
           bitWrite(temporizador_status, (i + 1), 1);
         }
         else
         {
-          digitalWrite(temporizador_e[i], LOW);
+        PCF8575.digitalWrite(temporizador1, LOW);
+        //digitalWrite(temporizador1, LOW);
           bitWrite(temporizador_status, (i + 1), 0);
         }
       }
@@ -21,19 +23,22 @@ void check_temporizadores()
       {                     
         if(NumMins(t.hour,t.min) >= NumMins(on_hora_e[i], on_minuto_e[i]) || (NumMins(t.hour,t.min) < NumMins(off_hora_e[i], off_minuto_e[i]))) 
         {
-          digitalWrite(temporizador_e[i], HIGH);
+        PCF8575.digitalWrite(temporizador1, HIGH);
+        //digitalWrite(temporizador1, HIGH);
           bitWrite(temporizador_status, (i + 1), 1);
         }    
         else
         {
-          digitalWrite(temporizador_e[i], LOW);
+        PCF8575.digitalWrite(temporizador1, LOW);
+        //digitalWrite(temporizador1, HIGH);
           bitWrite(temporizador_status, (i + 1), 0);
         } 
       }
     }
     else
     {
-      digitalWrite(temporizador_e[i], LOW);
+        PCF8575.digitalWrite(temporizador1, LOW);
+        //digitalWrite(temporizador1, LOW);
       bitWrite(temporizador_status, (i + 1), 0);
       bitWrite(temporizador_modificado, (i + 1), 0);
     }
