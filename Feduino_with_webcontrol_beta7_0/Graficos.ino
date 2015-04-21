@@ -18,11 +18,11 @@ void tempgScreen()//------------------------------------------------------------
   printHeader(buffer); // tabela_textos[25] = "GRAFICO DE TEMPERATURA DA AGUA"
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
-  for(float i = 80; i > 75; i -= .5)   // Fahrenheit scale 81.5---71.6
+  for(float i = 80; i > 75; i -= 0.5)   // Fahrenheit scale 81.5---71.6
   //for(float i = 27.5; i > 22.0; i -= 0.5)
   {
     myGLCD.printNumF(i, 1, 5, 3 + f);
-    f += 30; 
+    f += 15; 
   }
 
   f = 510;
@@ -31,11 +31,10 @@ void tempgScreen()//------------------------------------------------------------
     myGLCD.printNumI(i, f, 386);
     f -= 40;
   }
-
+  myGLCD.print("75.0", 5, 363);
   myGLCD.print("0", 550, 386); 
   myGLCD.drawCircle(30, 32, 2);  
-  myGLCD.print("F", 40, 36);  
-  //myGLCD.print("C", 20, 18);;
+  myGLCD.print("F", 40, 36);  //myGLCD.print("C", 20, 18);; 
   myGLCD.print("HOUR", 520, 420);
 
   myGLCD.drawLine(80, 60, 80, 380); // Eixo y
@@ -54,91 +53,37 @@ void tempgScreen()//------------------------------------------------------------
   {
     myGLCD.drawLine(l, 60, l, 380);
   }
-
-/*********************************************** CELSIUS ***************************/
 /************************************** changed for Fahrenheit *********************/
-  /*
-  linhaR =setTempC;   //  lines compared
-  linhaG =(setTempC+offTempC);
-  linhaB = (setTempC-offTempC);
-
-  if ((linhaR >= 22.5) && (linhaR <= 27.5))
-  {
-    x= (380 - ((linhaR - 22.5) * 60));
-  }
-  else if (linhaR > 27.5)
-  {
-    x = 60;
-  }
-  else if (linhaR < 22.5)
-  {
-    x = 380;
-  }
-
-  if ((linhaG >= 22.5) && (linhaG <= 27.5))
-  {
-    y = (190-((linhaG - 22.5) * 60));
-  }
-  else if (linhaG > 27.5)
-  {
-    y = 60;
-  }
-  else if (linhaG < 22.5)
-  {
-    y = 380;
-  }
-
-  if ((linhaB >= 22.5) && (linhaB <= 27.5))
-  {
-    z = (190 -((linhaB - 22.5) * 60));
-  }
-  else if (linhaB > 27.5)
-  {
-    z = 60;
-  }
-  else if (linhaB < 22.5)
-  {
-    z = 380;
-  }
-  
-  */
-  
-  /**************************************** added for Fahrenheit ***********************************/
-  /********************************************* FAHRENHEIT ****************************************/
   linhaR = setTempC;                  //  lines compared
   linhaG =(setTempC+offTempC);
   linhaB =(setTempC-offTempC);
 
-  if ((linhaR >= 75) && (linhaR <= 80))
-    x= (380 - ((linhaR - 75) * 60));
+  if ((linhaR >= 75) && (linhaR <= 80)) //if ((linhaR >= 22.5) && (linhaR <= 27.5))
+    x= (380 - ((linhaR - 75) * 60));  // x= (380 - ((linhaR - 22.5) * 60));
 
-  else if (linhaR > 80)
+  else if (linhaR > 80)//else if (linhaR > 27.5)
     x = 60;
 
-  else if (linhaR < 75)
-    x = 380;
+  else if (linhaR < 75) //else if (linhaR < 22.5)
+    x = 380; 
 
-  if ((linhaG >= 75) && (linhaG <= 80))
-    y = (380-((linhaG - 75) * 60));
+  if ((linhaG >= 75) && (linhaG <= 80))//if ((linhaG >= 22.5) && (linhaG <= 27.5))
+    y = (380-((linhaG - 75) * 60));// y = (190-((linhaG - 22.5) * 60));
 
-  else if (linhaG > 80)
+  else if (linhaG > 80)// else if (linhaG > 27.5)
     y = 60;
 
-  else if (linhaG < 75)
+  else if (linhaG < 75)//else if (linhaG < 22.5)
     y = 380;
 
-  if ((linhaB >= 75) && (linhaB <= 80))
-    z = (380 -((linhaB - 75) * 60));
+  if ((linhaB >= 75) && (linhaB <= 80))//if ((linhaB >= 22.5) && (linhaB <= 27.5))
+    z = (380 -((linhaB - 75) * 60)); // z = (190 -((linhaB - 22.5) * 60));
 
-  else if (linhaB > 80)
+  else if (linhaB > 80)// else if (linhaB > 27.5)
     z = 60;
 
-  else if (linhaB < 75)
+  else if (linhaB < 75) //else if (linhaB < 22.5)
     z = 380;
-    
-//--------------------------------------------end F or C -----------------------------------------------//
-
-
 
   myGLCD.setColor(255, 0, 0);
   myGLCD.drawLine(80, x, 580, x);// Temperatura desejada
@@ -190,30 +135,31 @@ void tempgScreen()//------------------------------------------------------------
         j++;
         soma = 0;
         k = 0;
-
-        if ((media) > 27.5)
-        {
-          grafico = 60;
-        }
-        else if ((media >= 22.5) && (media <= 27.5))
-        {
-          grafico = (380 -((media - 22.5) * 30));
-        }
-        else
-        {
-          grafico = 380;
-        }
-        setFont(LARGE, 255, 0, 255, 0, 0, 0);
-
-        if(j < 500)
-        {
-          myGLCD.drawPixel((80 + j), grafico);
-        }
       }
+       /******************************** added for Fahrenheit *******************************************************************/
+      if ((media) > 80)//if ((media) > 27.5)
+      {
+        grafico = 60;
+      }
+      else if ((media >= 75) && (media <= 80)) //else if ((media >= 22.5) && (media <= 27.5))
+      {
+        grafico = (380 -((media - 75) * 60)); //grafico = (190 -((media - 22.5) * 30));
+      }
+      else
+      {
+        grafico = 380;
+      }
+      setFont(LARGE, 255, 0, 255, 0, 0, 0);  
+
+      if(j < 500)
+      {
+        myGLCD.drawPixel((80 + j), grafico); // purple chart line
+      }
+     }
     }
     file.close();
   }
-}
+
 
 void orpScreen()//------------------------------------------------------------tela =12
 {
@@ -346,8 +292,6 @@ void orpScreen()//------------------------------------------------------------te
       soma +=redox;
 
 
-
-
       if(strlen(buf)==3)
       {
         i++;
@@ -358,7 +302,6 @@ void orpScreen()//------------------------------------------------------------te
       {
         k -= 1;
       }
-
 
       if (i==6)
       {
@@ -532,7 +475,6 @@ void PHAScreen()//-------------------------------ph do aqua---------------------
       {
         k -= 1;
       }
-
 
       if (i==6)
       {
@@ -881,7 +823,6 @@ void densidadeScreen()//----------------grafico de densidade -------------------
       {
         k -= 1;
       }
-
 
       if (i == 6)
       {
