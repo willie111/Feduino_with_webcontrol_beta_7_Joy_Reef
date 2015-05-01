@@ -4,18 +4,20 @@ void checkTempC()
   contador_temp ++;
 
   sensors.requestTemperatures();                                          // Chamada para todos os sensores.
-  temperatura_agua_temp += (sensors.getTempC(sensor_agua));               // Lê temperatura da água
-  temperatura_dissipador_temp += (sensors.getTempC(sensor_dissipador));   // Lê temperatura do dissipador
-  temperatura_ambiente_temp += (sensors.getTempC(sensor_ambiente));       // Lê temperatura do dissipador
+  temperatura_agua_temp += (sensors.getTempC(sensor_agua));               // LÃƒÂª temperatura da ÃƒÂ¡gua
+  temperatura_dissipador_temp += (sensors.getTempC(sensor_dissipador));   // LÃƒÂª temperatura do dissipador
+  temperatura_ambiente_temp += (sensors.getTempC(sensor_ambiente));       // LÃƒÂª temperatura do dissipador
 
   if(contador_temp == 12)
   {
     tempC = temperatura_agua_temp / 12;
     tempH = temperatura_dissipador_temp / 12;
     tempA = temperatura_ambiente_temp / 12;
+    
     tempC = (tempC * 1.8) + 32; /******************************************************** added for Fahrenheit *******************************************************************/
     tempH = (tempH * 1.8) + 32;
     tempA = (tempA * 1.8) + 32;
+    
     contador_temp = 0;
     temperatura_agua_temp = 0;
     temperatura_dissipador_temp = 0;
@@ -35,7 +37,7 @@ void checkTempC()
     }
   }
 
-  if ((tempC < (setTempC + offTempC)) && (tempC > (setTempC - offTempC)))          // Desliga aquecedor e chiller
+  if ((tempC < (setTempC + offTempC)) && (tempC > (setTempC - offTempC)))          // Desliga aquecedor e chieller
   {
     bitWrite(status_parametros,0,0);
     bitWrite(status_parametros,1,0);
@@ -59,6 +61,7 @@ void checkTempC()
 
   if ((tempC > 122) || (tempC <50))
      // ((tempC > 50) || (tempC <10))
+  
   {
     bitWrite(status_parametros,0,0);
     bitWrite(status_parametros,1,0);
@@ -75,7 +78,7 @@ void checkTempC()
   }
 
   int tempval = int(tempH * 10);
-  fanSpeed = map(tempval, (HtempMin * 10), (HtempMax * 10), 0, 255);       // Controle de velocidade das ventoinhas do dissipador
+  int fanSpeed = map(tempval, (HtempMin * 10), (HtempMax * 10), 0, 255);       // Controle de velocidade das ventoinhas do dissipador
   if (fanSpeed < 0)
   {  
     fanSpeed = 0;
@@ -86,7 +89,7 @@ void checkTempC()
   }
   analogWrite(fanPin, fanSpeed);
 
-  if(tempH < HtempMin) // Desativa os coolers se a temperatura estive abaixo da mínima definida.
+  if(tempH < HtempMin) // Desativa os coolers se a temperatura estive abaixo da mÃƒÂ­nima definida.
   {
     digitalWrite(desativarFanPin, LOW);
   }
@@ -96,15 +99,15 @@ void checkTempC()
   }
 }
 
-void check_nivel() // Verifica o nível do reef e fish only.
+void check_nivel() // Verifica o nÃƒÂ­vel do reef e fish only.
 {
   if((analogRead(sensor5) > 400) ||(analogRead(sensor6) > 400) || (analogRead(sensor2) < 400) && (bitRead(tpa_status,1) == false))
   {
-    nivel_status =true; // Sinaliza nivel baixo em um dos aquários ou sump
+    nivel_status =true; // Sinaliza nivel baixo em um dos aquÃƒÂ¡rios ou sump
   }
   else 
   {
-    nivel_status =false; // Sinaliza nível normal dos aquários e sump
+    nivel_status =false; // Sinaliza nÃƒÂ­vel normal dos aquÃƒÂ¡rios e sump
   }
 }
 
@@ -124,20 +127,20 @@ void check_PH_reator()
   if (PHR < setPHR)       
   {
     bitWrite(status_parametros,5,0);
-    digitalWrite(reatorPin, LOW);  // Desliga co2 do reator de cálcio
+    digitalWrite(reatorPin, LOW);  // Desliga co2 do reator de cÃƒÂ¡lcio
   }
   if (offPHR > 0)
   {
     if (PHR > setPHR)    
     {
       bitWrite(status_parametros,5,1);
-      digitalWrite(reatorPin, HIGH); // Liga co2 do reator de cálcio
+      digitalWrite(reatorPin, HIGH); // Liga co2 do reator de cÃƒÂ¡lcio
     }
   }
   if ((PHR < 4) || (PHR > 10))
   {
     bitWrite(status_parametros,5,0);
-    digitalWrite(reatorPin, LOW);  // Desliga co2 do reator de cálcio
+    digitalWrite(reatorPin, LOW);  // Desliga co2 do reator de cÃƒÂ¡lcio
   }     
 }
 
@@ -154,10 +157,10 @@ void check_PH_aquario()
       bitWrite(status_parametros,3,1);
     }
   }
-  if (PHA < (setPHA - offPHA)) // Se PH do aquário menor que o desejado menos a variacao permitida. 
+  if (PHA < (setPHA - offPHA)) // Se PH do aquÃƒÂ¡rio menor que o desejado menos a variacao permitida. 
   {
     bitWrite(status_parametros,5,0);
-    digitalWrite(reatorPin, LOW);  // Desliga co2 do reator de cálcio
+    digitalWrite(reatorPin, LOW);  // Desliga co2 do reator de cÃƒÂ¡lcio
   }  
 }
 
@@ -221,19 +224,23 @@ void check_alarme()
   }
 }
 
-void reposicao_agua_doce () // abre a solenoide 1 se o nível estiver baixo e se a tpa não estiver em andamento
-//e se o chiller estiver desligado e se o nível do sump não estiver anormal e se não houve falha durante uma tpa.
+void reposicao_agua_doce () // abre a solenoide 1 se o nÃƒÂ­vel estiver baixo e se a tpa nÃƒÂ£o estiver em andamento
+//e se o chiller estiver desligado e se o nÃƒÂ­vel do sump nÃƒÂ£o estiver anormal e se nÃƒÂ£o houve falha durante uma tpa.
 {
   if((analogRead(sensor3) > 400) && (analogRead(sensor2) > 400) && (bitRead(tpa_status,1) == false) && (bitRead(status_parametros,0) == false) && (bitRead(tpa_status,2) == false))
   {
     PCF8575.digitalWrite(solenoide1Pin,HIGH);
     //digitalWrite(solenoide1Pin,HIGH);
-    bitWrite(Status,1,1); //sinaliza reposição em andamento
+    bitWrite(Status,1,1); //sinaliza reposiÃƒÂ§ÃƒÂ£o em andamento
   }
   else
   {
     PCF8575.digitalWrite(solenoide1Pin,LOW);
     //digitalWrite(solenoide1Pin,LOW);
-    bitWrite(Status,1,0); // sinaliza reposição em andamento
+    bitWrite(Status,1,0); // sinaliza reposiÃƒÂ§ÃƒÂ£o em andamento
   }
 }
+
+
+
+
