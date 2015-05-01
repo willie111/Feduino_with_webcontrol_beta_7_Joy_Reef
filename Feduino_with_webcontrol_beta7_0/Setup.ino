@@ -4,7 +4,7 @@ void setup()
   // Comente a linha abaixo para usar os pinos 0 e 1 para controle dos coolers.
   Serial.begin(38400); //Inicia a comunicação com a  porta serial 0 para obter mensagens de depuração.
   Serial3.begin(38400); //Inicia a comunicação com a  porta serial 2 onde estão conectados os "stamps".
-
+ 
   // Define a função dos pinos.
   pinMode(alarmPin, OUTPUT);               // Pino 0;
   pinMode(desativarFanPin, OUTPUT);        // Pino 1;
@@ -48,12 +48,13 @@ void setup()
   pinMode(ChipSelect_RFM, OUTPUT);         // Pino A15;
 
   //**************** PCF8575 ****************
-  //pinMode (temporizador1, OUTPUT);         // Pino 80;
-  //pinMode (temporizador2, OUTPUT);         // Pino 81;
-  //pinMode (temporizador3, OUTPUT);         // Pino 82;
-  //pinMode (temporizador4, OUTPUT);         // Pino 83;
-  //pinMode (temporizador5, OUTPUT);         // Pino 84;
-  //pinMode (solenoide1Pin, OUTPUT);         // Pino 85;
+/*
+  pinMode (temporizador1, OUTPUT);         // Pino 80;
+  pinMode (temporizador2, OUTPUT);         // Pino 81;
+  pinMode (temporizador3, OUTPUT);         // Pino 82;
+  pinMode (temporizador4, OUTPUT);         // Pino 83;
+  pinMode (temporizador5, OUTPUT);         // Pino 84;
+  pinMode (solenoide1Pin, OUTPUT);         // Pino 85;*/
 
 
   myGLCD.InitLCD(LANDSCAPE); // Orientação da imagem no LCD.
@@ -70,12 +71,11 @@ void setup()
   tempC = (sensors.getTempC(sensor_agua));       // Lê a temperatura da água
   tempH = (sensors.getTempC(sensor_dissipador)); // Lê a temperatura do dissipador.
   tempA = (sensors.getTempC(sensor_ambiente));   // Lê a temperatura do ambiente.
-  
   tempC = (tempC * 1.8) + 32;  /******************************************************** added for Fahrenheit *******************************************************************/
   tempH = (tempH * 1.8) + 32;
   tempA = (tempA * 1.8) + 32;
 
-     if(PCF8575TS_S == true)
+   if(PCF8575TS_S == true)
    {
    PCF8575.begin(endereco_PCF8575TS); // Inicia a comunicação com o PCF8575TS
    for(int i = 0; i < 16; i++)
@@ -95,7 +95,7 @@ void setup()
     setFont(LARGE, 255, 0, 0, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[225]))); // "FORMATANDO A EEPROM..."
-    myGLCD.print(buffer, CENTER, 115);
+    myGLCD.print(buffer, CENTER, 230);
 
     EEPROM.write(0, 222); // Indica que a EEPROM foi formatada por este programa  
 
@@ -133,8 +133,8 @@ void setup()
   while(!card.init(SPI_HALF_SPEED, ChipSelect_SD)) // Inicia a comunicação com o cartão SD.
   {
     setFont(LARGE, 255, 0, 0, 0, 0, 0);
-    myGLCD.print("PLEASE INSERT A SD CARD.", CENTER, 230); 
-    Serial.println(F("Please insert a SD CARD"));
+    myGLCD.print("PLEASE INSERT AN SD CARD.", CENTER, 230); 
+    Serial.println("Please insert an SD Card");
   }
   volume.init(&card);
   root.openRoot(&volume);
@@ -162,7 +162,7 @@ void setup()
 
     server.begin(); // Inicia o servidor.
 
-    Serial.print(F("Ip Server: "));
+    Serial.print("Ip Server: ");
     Serial.println(Ethernet.localIP());
   }
 
