@@ -90,7 +90,7 @@ void setClock()
   else
   {
     myGLCD.printNumI(t_temp.hour, 152, 102);
-  } 
+  }
   if (t_temp.min<10)
   {
     myGLCD.printNumI(0, 332, 102);
@@ -99,7 +99,7 @@ void setClock()
   else
   {
     myGLCD.printNumI(t_temp.min, 332, 102);
-  } 
+  }
   if (t_temp.sec<10)
   {
     myGLCD.printNumI(0, 512, 102);
@@ -131,35 +131,35 @@ void setClock()
 
 }
 
-void testScreen(boolean refreshAll=false)//-------------------------------- Teste do leds ------------------------------------- tela =3
-{    
+void testScreen(boolean refreshAll=false)//-------------------------------- TEST LEDS ------------------------------------- tela =3
+{
   char bufferL[9];
   String led;
 
-  if (refreshAll == true) 
-  {  
+  if (refreshAll == true)
+  {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[16])));
     printHeader(buffer); // tabela_textos[16] "TESTAR VARIACAO DE LUMINOSIDADE"
-    myGLCD.fillRect (1, 30, 636, 74);      //clear 'Test in progress'
-    printButton ("", stsT[0], stsT[1], stsT[2], stsT[3], true);   //start/stop
-    printButton ("-10s", tenM[0], tenM[1], tenM[2], tenM[3], true);     //-10s
-    printButton ("+10s", tenP[0], tenP[1], tenP[2], tenP[3], true);   //+10s
+    myGLCD.fillRect (1, 30, 636, 74); //clear 'Test in progress'
+    printButton ("", stsT[0], stsT[1], stsT[2], stsT[3], true); //start/stop
+    printButton ("-10s", tenM[0], tenM[1], tenM[2], tenM[3], true); //-10s
+    printButton ("+10s", tenP[0], tenP[1], tenP[2], tenP[3], true); //+10s
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[17])));
-    myGLCD.print(buffer, stsT[0]+10, stsT[1]+15); // "INICIAR"
+    myGLCD.print(buffer, stsT[0]+10, stsT[1]+15); // "START"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[18])));
-    myGLCD.print(buffer, stsT[0]+25, stsT[1]+40);  // "TESTE"
+    myGLCD.print(buffer, stsT[0]+25, stsT[1]+40); // "TEST"
 
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));    
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "HOME"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
     printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
-    printButton(buffer, volT[0], volT[1], volT[2], volT[3]);  // tabela_textos[66] = "VOLTAR"
-  } 
+    printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // "BACK"
+  }
   else
   {
     if(teste_iniciado == true)
@@ -201,15 +201,15 @@ void testScreen(boolean refreshAll=false)//-------------------------------- Test
       myGLCD.print(buffer, 60, 80); // "OUTPUT POWER (0-255):"
     }
 
-    if (LEDtestTick == true)               //test LED and speed up time
+    if (LEDtestTick == true) //test LED and speed up time
     {
-      if (millis() - previousMillis > 500)    //change time every 0.5s
+      if (millis() - previousMillis > 500) //change time every 0.5s
       {
         previousMillis = millis();
 
         min_cnt++;
 
-        if (min_cnt > 1439) 
+        if (min_cnt > 1439)
         {
           min_cnt = 0;
         }
@@ -271,18 +271,18 @@ void testScreen(boolean refreshAll=false)//-------------------------------- Test
         myGLCD.print(bufferL, 360, 270);
       }
     }
-  } 
+  }
 }
 
-//--------------------------------------------- Temperatura -------------------------------- tela =4 
+//--------------------------------------------- Temperature -------------------------------- tela =4
 void tempScreen(boolean refreshAll=false)
 {
 
   if (refreshAll)
   {
     if (setTempC==0) {
-      setTempC = tempC;  
-    }                  //change to current temp.
+      setTempC = tempC;
+    } //change to current temp.
     temp2beS = setTempC;
     temp2beO = offTempC;
     temp2beA = alarmTempC;
@@ -301,18 +301,18 @@ void tempScreen(boolean refreshAll=false)
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[76])));
     myGLCD.print(buffer, 100, 240); // "VARIATION TO ACTIVATE ALARM:"
 
-    printButton("-", temM[0], temM[1], temM[2], temM[3], true);      //temp minus
-    printButton("+", temP[0], temP[1], temP[2], temP[3], true);      //temp plus
-    printButton("-", offM[0], offM[1], offM[2], offM[3], true);      //offset minus
-    printButton("+", offP[0], offP[1], offP[2], offP[3], true);      //offset plus
-    printButton("-", almM[0], almM[1], almM[2], almM[3], true);      //alarm minus
-    printButton("+", almP[0], almP[1], almP[2], almP[3], true);      //alarm plus
+    printButton("-", temM[0], temM[1], temM[2], temM[3], true); //temp minus
+    printButton("+", temP[0], temP[1], temP[2], temP[3], true); //temp plus
+    printButton("-", offM[0], offM[1], offM[2], offM[3], true); //offset minus
+    printButton("+", offP[0], offP[1], offP[2], offP[3], true); //offset plus
+    printButton("-", almM[0], almM[1], almM[2], almM[3], true); //alarm minus
+    printButton("+", almP[0], almP[1], almP[2], almP[3], true); //alarm plus
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
-    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SAVE"
+    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SALVAR"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "HOME"
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
     printButton(buffer, menU[0], menU[1], menU[2], menU[3]);
@@ -323,11 +323,11 @@ void tempScreen(boolean refreshAll=false)
   myGLCD.printNumF(temp2beO, 1, 285, 180);
   myGLCD.printNumF(temp2beA, 1, 285, 280);
 }
-void ledSetScreen()   //-------------------------------- ALTER LED OUTPUT ----------------------------------- tela =5
+void ledSetScreen() //-------------------------------- ALTER LED OUTPUT ----------------------------------- tela =5
 {
   int a;
 
-  if (cor_selecionada == 0) 
+  if (cor_selecionada == 0)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[17])));
     printHeader(buffer); // "WHITE LED POWER: 255 = 100%"
@@ -351,13 +351,13 @@ void ledSetScreen()   //-------------------------------- ALTER LED OUTPUT ------
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[21])));
     printHeader(buffer); // "VIOLET LED POWER: 255 = 100%"
-  } 
+  }
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
-  for (int i = 0; i < 12; i++) 
+   for (int i = 0; i < 12; i++)
   {
     myGLCD.setColor(0, 255, 255);
-    myGLCD.printNumI((i*2), (i*52)+26, 44); 
+    myGLCD.printNumI((i*2), (i*52)+26, 44);
     if(i == 11)
     {
       myGLCD.print("0", (i*52)+34, 72);
@@ -366,9 +366,9 @@ void ledSetScreen()   //-------------------------------- ALTER LED OUTPUT ------
     {
       myGLCD.printNumI(((i*2)+2), (i*52)+26, 72);
     }
-    for (int j=0; j<8; j++) 
+    for (int j=0; j<8; j++)
     {
-      a = (i*8)+j;         
+      a = (i*8)+j;
       myGLCD.setColor(255, 255, 255);
       myGLCD.printNumI(cor[cor_selecionada][a], (i*52)+14, (j*36)+108);
       myGLCD.setColor(100, 100, 100);
@@ -393,7 +393,7 @@ void ledSetScreen()   //-------------------------------- ALTER LED OUTPUT ------
   printButton(buffer, leWB[0], leWB[1], leWB[2], leWB[3], SMALL); // "MORE"
 }
 
-void ledChangeScreen(boolean refreshAll=false)    //-------------------------- POWER OF LED ------------------------------ tela =6
+void ledChangeScreen(boolean refreshAll=false) //------ POWER OF LED -------------------- tela =6
 {
   if(refreshAll == true)
   {
@@ -425,7 +425,7 @@ void ledChangeScreen(boolean refreshAll=false)    //-------------------------- P
     }
 
     setFont(LARGE, 0, 255, 255, 0,0,0);
-    for (int i=0; i<12; i++) 
+    for (int i=0; i<12; i++)
     {
       myGLCD.setColor(0, 255, 255);
       myGLCD.printNumI(((i*2)), (i*52)+26, 44);
@@ -464,7 +464,7 @@ void ledChangeScreen(boolean refreshAll=false)    //-------------------------- P
   if(periodo_selecionado == true)
   {
     for (int i=0; i<8; i++)
-    { 
+    {
       printButton("+", (i*76)+10, 100, (i*76)+78, 150, LARGE);
       printButton("-", (i*76)+10, 428, (i*76)+78, 478, LARGE);
     }
@@ -473,10 +473,10 @@ void ledChangeScreen(boolean refreshAll=false)    //-------------------------- P
   {
     mensagem = false;
     myGLCD.setColor(0, 0, 0);
-    myGLCD.fillRect(90, 210, 600, 242); //Apaga mensagem.
+    myGLCD.fillRect(90, 210, 600, 242); //Apaga mensagem
   }
 }
-void tpaScreen(boolean refreshAll = false) //-------------------------------AUTO-WATER CHANGE SCREEN ----
+void tpaScreen(boolean refreshAll = false) //-----------------------------AUTO-WATER CHANGE SCREEN --------------------------- tela =7
 {
   if(refreshAll)
   {
@@ -502,19 +502,19 @@ void tpaScreen(boolean refreshAll = false) //-------------------------------AUTO
     myGLCD.setFont(BigFont);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[83])));
-    myGLCD.print(buffer, 40, 102); // "HORA:"
+    myGLCD.print(buffer, 40, 102); // "TIME:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[84])));
-    myGLCD.print(buffer, 320, 82); // "DURACAO MAXIMA"
+    myGLCD.print(buffer, 320, 82); // "DURATION MAX"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[85])));
     myGLCD.print(buffer, 350, 122); // "POR ESTAGIO:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
-    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SALVAR"
+    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SAVE"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "HOME"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
     printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
@@ -523,28 +523,28 @@ void tpaScreen(boolean refreshAll = false) //-------------------------------AUTO
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[59])));
     printButton_verde(buffer, segU[0], segU[1], segU[2], segU[3]); //botao segunda
-  } 
-  else 
+  }
+  else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[59])));
     printButton(buffer, segU[0], segU[1], segU[2], segU[3]); //botao segunda
   }
-  if (semana[1] == 2) 
+  if (semana[1] == 2)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[60])));
     printButton_verde(buffer, terC[0], terC[1], terC[2], terC[3]); //botao terca
-  } 
-  else 
+  }
+  else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[60])));
     printButton(buffer, terC[0], terC[1], terC[2], terC[3]); //botao terca
   }
-  if (semana[2] == 3) 
+  if (semana[2] == 3)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[61])));
     printButton_verde(buffer, quaR[0], quaR[1], quaR[2], quaR[3]); //botao quarta
-  } 
-  else 
+  }
+  else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[61])));
     printButton(buffer, quaR[0], quaR[1], quaR[2], quaR[3]); //botao quarta
@@ -553,7 +553,7 @@ void tpaScreen(boolean refreshAll = false) //-------------------------------AUTO
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[62])));
     printButton_verde(buffer, quiN[0], quiN[1], quiN[2], quiN[3]); //botao quinta
-  } 
+  }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[62])));
@@ -563,8 +563,8 @@ void tpaScreen(boolean refreshAll = false) //-------------------------------AUTO
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[63])));
     printButton_verde(buffer, sexT[0], sexT[1], sexT[2], sexT[3]); //botao sexta
-  } 
-  else 
+  }
+  else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[63])));
     printButton(buffer, sexT[0], sexT[1], sexT[2], sexT[3]); //botao sexta
@@ -574,60 +574,60 @@ void tpaScreen(boolean refreshAll = false) //-------------------------------AUTO
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[64])));
     printButton_verde(buffer, sabA[0], sabA[1], sabA[2], sabA[3]); //botao sabado
   }
-  else 
+  else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[64])));
     printButton(buffer, sabA[0], sabA[1], sabA[2], sabA[3]); //botao sabado
   }
-  if (semana[6] == 7) 
+  if (semana[6] == 7)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[65])));
     printButton_verde(buffer, domI[0], domI[1], domI[2], domI[3]); //botao domingo
   }
-  else 
+  else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[65])));
     printButton(buffer, domI[0], domI[1], domI[2], domI[3]); //botao domingo
   }
-  if (bitRead(tpa_status,2) == true) 
+  if (bitRead(tpa_status,2) == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[86])));
-    printButton_vermelho(buffer, proX[0], proX[1], proX[2], proX[3]); //Sinaliza que houve uma falha durante a TPA. // "FALHA!!"
-  } 
+    printButton_vermelho(buffer, proX[0], proX[1], proX[2], proX[3]); // "ERROR!!"
+  }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[87])));
-    printButton(buffer, proX[0], proX[1], proX[2], proX[3]); //Sinaliza que a TPA foi realizada normalmente ou não foi realizada. // "NORMAL"
+    printButton(buffer, proX[0], proX[1], proX[2], proX[3]);          // "NORMAL"
   }
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
-  if (temp2hora < 10) 
+  if (temp2hora < 10)
   {
-    myGLCD.printNumI(0, 140, 96);
-    myGLCD.printNumI(temp2hora, 172, 96);
-  } 
+    myGLCD.printNumI(0, 148, 102);
+    myGLCD.printNumI(temp2hora, 164, 102);
+  }
   else
   {
-    myGLCD.printNumI(temp2hora, 140, 96);
+    myGLCD.printNumI(temp2hora, 148, 102);
   }
 
-  if (temp2minuto < 10) 
+  if (temp2minuto < 10)
   {
-    myGLCD.printNumI(0, 240, 96);
-    myGLCD.printNumI(temp2minuto, 272, 96);
-  } 
+    myGLCD.printNumI(0, 248, 102);
+    myGLCD.printNumI(temp2minuto, 264, 102);
+  }
   else
   {
-    myGLCD.printNumI(temp2minuto, 240, 96);
+    myGLCD.printNumI(temp2minuto, 248, 102);
   }
-  if (temp2duracaomaximatpa < 10) 
+  if (temp2duracaomaximatpa < 10)
   {
-    myGLCD.printNumI(0, 550, 96);
-    myGLCD.printNumI(temp2duracaomaximatpa, 590, 96);
-  } 
-  else 
+    myGLCD.printNumI(0, 560, 102);
+    myGLCD.printNumI(temp2duracaomaximatpa, 576, 102);
+  }
+  else
   {
-    myGLCD.printNumI(temp2duracaomaximatpa, 550, 96);
+    myGLCD.printNumI(temp2duracaomaximatpa, 560, 102);
   }
 }
 void menu_dosadoras()//---------------------------------------------tela =8
@@ -639,19 +639,19 @@ void menu_dosadoras()//---------------------------------------------tela =8
   printButton(buffer, manU[0], manU[1], manU[2], manU[3]); // "MANUAL"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[90])));
-  printButton(buffer, perS[0], perS[1], perS[2], perS[3]); // "PERSONALIZADO"
+  printButton(buffer, perS[0], perS[1], perS[2], perS[3]); // "CUSTOM"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[91])));
-  printButton(buffer, reV[0], reV[1], reV[2], reV[3]); // "REVER CONFIG."
+  printButton(buffer, reV[0], reV[1], reV[2], reV[3]); // "REVIEW CONFIG."
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[134])));
-  printButton(buffer, atiV[0], atiV[1], atiV[2], atiV[3]); // "DESATIVAR MODOS"
+  printButton(buffer, atiV[0], atiV[1], atiV[2], atiV[3]); // "DEACTIVE MODES"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[133])));
-  printButton(buffer, orP[0], orP[1], orP[2], orP[3]); // "CALIBRAR"
+  printButton(buffer, orP[0], orP[1], orP[2], orP[3]); // "CALIBRATE"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "HOME"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
   printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
@@ -660,20 +660,20 @@ void menu_dosadoras()//---------------------------------------------tela =8
 void graficoScreen()//------------------------------------------------------------tela =9
 {
 
-  strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[34])));  
-  printHeader(buffer); // tabela_textos[34] = "ESCOLHA UM GRAFICO"
+  strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[34])));
+  printHeader(buffer); // tabela_textos[34] = "SELECT A GRAPH"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "HOME"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
   printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[93])));
-  printButton(buffer, tempG[0], tempG[1], tempG[2],tempG[3]); // "TEMPERATURA"
+  printButton(buffer, tempG[0], tempG[1], tempG[2],tempG[3]); // "TEMPERATURE"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[94])));
-  printButton(buffer, phA[0], phA[1], phA[2], phA[3]); // "PH AQUARIO"
+  printButton(buffer, phA[0], phA[1], phA[2], phA[3]); // "PH AQUARIUM"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[95])));
   printButton(buffer, phR[0], phR[1], phR[2], phR[3]); // "PH REATOR"
@@ -682,11 +682,11 @@ void graficoScreen()//----------------------------------------------------------
   printButton(buffer, orP[0], orP[1], orP[2], orP[3]); // "ORP"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[97])));
-  printButton(buffer, denS[0], denS[1], denS[2], denS[3]); // "DENSIDADE"
+  printButton(buffer, denS[0], denS[1], denS[2], denS[3]); // "DENSITY"
 
 }
 
-void waveScreen(boolean refreshAll = false)///--------------tela =10
+void waveScreen(boolean refreshAll = false)///------------------------------------------------------------------tela =10
 {
   if(refreshAll == true)
   {
@@ -697,29 +697,29 @@ void waveScreen(boolean refreshAll = false)///--------------tela =10
     printHeader(buffer); // tabela_textos[10] = "WAVEMAKER"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "HOME"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
     printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
-    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SALVAR"
+    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SAVE"
 
     myGLCD.setColor(0, 0, 0);
     myGLCD.fillRect(2, 20, 648, 478);
 
     if(modo_selecionado == 1)
-    {       
+    {
       printButton("-", peRB[0], peRB[1], peRB[2], peRB[3], true);
       printButton("+", peRC[0], peRC[1], peRC[2], peRC[3], true);
       printButton_verde("1", boT1[0], boT1[1], boT1[2], boT1[3],true);
 
       setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[238]))); // "PERIODO"
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[238]))); // "PERIOD"
       myGLCD.print(buffer, 132, 250);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[239]))); // "MODO: ONDA SENOIDAL DESSINCRONIZADA" 
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[239]))); // "ALTERNATING"
       myGLCD.print(buffer, 100, 150);
     }
     else
@@ -727,7 +727,7 @@ void waveScreen(boolean refreshAll = false)///--------------tela =10
       printButton("1", boT1[0], boT1[1], boT1[2], boT1[3],true);
     }
 
-    if(modo_selecionado == 2)   
+    if(modo_selecionado == 2)
     {
       printButton("-", peRB[0], peRB[1], peRB[2], peRB[3], true);
       printButton("+", peRC[0], peRC[1], peRC[2], peRC[3], true);
@@ -735,11 +735,11 @@ void waveScreen(boolean refreshAll = false)///--------------tela =10
 
       setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[238]))); // "PERIODO"
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[238]))); // "PERIOD"
       myGLCD.print(buffer, 132, 250);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[240]))); // "MODO: ONDA SENOIDAL SINCRONIZADA" 
-      myGLCD.print(buffer, 100, 150); 
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[240]))); // "SYNCRONIZED"
+      myGLCD.print(buffer, 100, 150);
     }
     else
     {
@@ -748,15 +748,15 @@ void waveScreen(boolean refreshAll = false)///--------------tela =10
     if(modo_selecionado == 3)
     {
       printButton("-", peRB[0], peRB[1], peRB[2], peRB[3], true);
-      printButton("+", peRC[0], peRC[1], peRC[2], peRC[3], true);    
-      printButton_verde("3", boT3[0], boT3[1], boT3[2], boT3[3],true); 
+      printButton("+", peRC[0], peRC[1], peRC[2], peRC[3], true);
+      printButton_verde("3", boT3[0], boT3[1], boT3[2], boT3[3],true);
 
       setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[241]))); // "DURACAO DO INTERVALO EM MS"
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[241]))); // "DURATION OF INTERVAL IN MS"
       myGLCD.print(buffer, 30, 250);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[242]))); // "MODO: MARE CHEIA" 
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[242]))); // "TIDAL SWELL"
       myGLCD.print(buffer, 105, 150);
     }
     else
@@ -766,15 +766,15 @@ void waveScreen(boolean refreshAll = false)///--------------tela =10
     if(modo_selecionado == 4)
     {
       printButton("-", peRB[0], peRB[1], peRB[2], peRB[3], true);
-      printButton("+", peRC[0], peRC[1], peRC[2], peRC[3], true);    
+      printButton("+", peRC[0], peRC[1], peRC[2], peRC[3], true);
       printButton_verde("4", boT4[0], boT4[1], boT4[2], boT4[3],true);
 
       setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[243]))); // "MODO: CRISTA DA ONDA"
-      myGLCD.print(buffer, 105, 150);   
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[243]))); // "REEF CREST"
+      myGLCD.print(buffer, 105, 150);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[241]))); // "DURACAO DO INTERVALO EM MS"
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[241]))); // "DURATION/MILLISECONDS"
       myGLCD.print(buffer, 30, 250);
     }
     else
@@ -783,26 +783,26 @@ void waveScreen(boolean refreshAll = false)///--------------tela =10
     }
     if(modo_selecionado == 5)
     {
-      printButton("-", PoTEB1[0], PoTEB1[1], PoTEB1[2], PoTEB1[3], true);      
-      printButton("+", PoTEC1[0], PoTEC1[1], PoTEC1[2], PoTEC1[3], true);     
-      printButton("-", PoTEB2[0], PoTEB2[1], PoTEB2[2], PoTEB2[3], true);      
-      printButton("+", PoTEC2[0], PoTEC2[1], PoTEC2[2], PoTEC2[3], true);  
+      printButton("-", PoTEB1[0], PoTEB1[1], PoTEB1[2], PoTEB1[3], true);
+      printButton("+", PoTEC1[0], PoTEC1[1], PoTEC1[2], PoTEC1[3], true);
+      printButton("-", PoTEB2[0], PoTEB2[1], PoTEB2[2], PoTEB2[3], true);
+      printButton("+", PoTEC2[0], PoTEC2[1], PoTEC2[2], PoTEC2[3], true);
       printButton_verde("M", boT5[0], boT5[1], boT5[2], boT5[3],true);
 
       setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[246]))); // "MODO: MANUAL"
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[246]))); // "MANUAL"
       myGLCD.print(buffer, 145, 150);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[244]))); // "POTENCIA DA BOMBA 1" 
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[244]))); // "PUMP 1"
       myGLCD.print(buffer, 138, 200);
 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[245]))); // "POTENCIA DA BOMBA 2" 
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[245]))); // "PUMP 2"
       myGLCD.print(buffer, 138, 310);
     }
     else
     {
-      printButton("M", boT5[0], boT5[1], boT5[2], boT5[3],true);   
+      printButton("M", boT5[0], boT5[1], boT5[2], boT5[3],true);
     }
 
     setFont(LARGE, 88, 255, 238, 0, 0, 0);
@@ -811,26 +811,26 @@ void waveScreen(boolean refreshAll = false)///--------------tela =10
     myGLCD.print("50%", 434, 312);
     myGLCD.print("100%", 416, 182);
 
-    myGLCD.setColor(190, 190, 190); 
-    myGLCD.drawRect(484, 454, 618, 454); // Linha x   
-    myGLCD.drawRect(490, 454, 490, 194);  // Linha y1  
-    myGLCD.drawRect(612, 454, 612, 194);  // Linha y2
+    myGLCD.setColor(190, 190, 190);
+    myGLCD.drawRect(484, 454, 618, 454); // Linha x
+    myGLCD.drawRect(490, 454, 490, 194); // Linha y1
+    myGLCD.drawRect(612, 454, 612, 194); // Linha y2
 
     for (int i=0; i < 10; i++)
     {
       myGLCD.drawLine(484, (i * 26) + 194, 496, (i * 26) + 194); // Marcador esequerdo
       myGLCD.drawLine(606, (i * 26) + 194, 618, (i * 26) + 194); // Marcador central
-      myGLCD.drawPixel(552, (i * 26) + 194);                    // Marcador direito
-    }  
+      myGLCD.drawPixel(552, (i * 26) + 194); // Marcador direito
+    }
   }
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
   if((modo_selecionado == 1) || (modo_selecionado == 2))
   {
-    myGLCD.print("     ", 145, 300);
-    myGLCD.printNumI(periodo, 145, 300); 
+    myGLCD.print(" ", 145, 300);
+    myGLCD.printNumI(periodo, 145, 300);
   }
-  else if((modo_selecionado == 3) || (modo_selecionado == 4)) 
+  else if((modo_selecionado == 3) || (modo_selecionado == 4))
   {
     myGLCD.print(" ", 145, 300);
     myGLCD.printNumI(duracao, 145, 300);
@@ -847,33 +847,33 @@ void waveScreen(boolean refreshAll = false)///--------------tela =10
 
 
 void parametroScreen()//-------------------------------------------------------------------tela =14
-{  
+{
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[36])));
-  printHeader(buffer); // tabela_textos[36] = "ESCOLHA UM PARAMETRO"
+  printHeader(buffer); // tabela_textos[36] = "SELECT A PARAMETER"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3],false); // "INICIO"
+  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3],false); // "HOME"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
   printButton(buffer, menU[0], menU[1], menU[2], menU[3],false); // "MENU 1";
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[93])));
-  printButton(buffer, tempG[0], tempG[1], tempG[2],tempG[3]); // "TEMPERATURA"
+  printButton(buffer, tempG[0], tempG[1], tempG[2],tempG[3]); // "TEMPERATURE"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[94])));
-  printButton(buffer, phA[0], phA[1], phA[2], phA[3]); // "PH AQUARIO"
+  printButton(buffer, phA[0], phA[1], phA[2], phA[3]); // "PH AQUARIUM"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[95])));
-  printButton(buffer, phR[0], phR[1], phR[2], phR[3]); // "PH REATOR"
+  printButton(buffer, phR[0], phR[1], phR[2], phR[3]); // "PH REACTOR"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[96])));
   printButton(buffer, orP[0], orP[1], orP[2], orP[3]); // "ORP"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[97])));
-  printButton(buffer, denS[0], denS[1], denS[2], denS[3]); // "DENSIDADE"
+  printButton(buffer, denS[0], denS[1], denS[2], denS[3]); // "DENSITY"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[98])));
-  printButton(buffer, caliB[0], caliB[1], caliB[2], caliB[3]); // "CALIBRAR SONDAS"
+  printButton(buffer, caliB[0], caliB[1], caliB[2], caliB[3]); // "CALIBRATE PROBE"
 
 }
 //---------------------------------------------PH do reator--------------------------------tela =15 ----------
@@ -883,42 +883,42 @@ void config_phR_Screen(boolean refreshAll=false)
   if (refreshAll)
   {
     if (setPHR==0) {
-      setPHR = PHR;  
-    }                  //change to current temp.
+      setPHR = PHR;
+    } //change to current temp.
     PHR2beS = setPHR;
     PHR2beO = offPHR;
     PHR2beA = alarmPHR;
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[37])));
-    printHeader(buffer); // tabela_textos[37] = "CONTROLE DE PH DO REATOR DE CALCIO"
+    printHeader(buffer); // tabela_textos[37] = "CONTROL REACTOR pH"
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[99])));
-    myGLCD.print(buffer, 220, 40); // "PH DESEJADO:"
+    myGLCD.print(buffer, 220, 40); // "PH DESIRED:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[75])));
-    myGLCD.print(buffer, 180, 140); // "VARIACAO PERMITIDA:"
+    myGLCD.print(buffer, 180, 140); // "VARIATION PERMITTED:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[76])));
-    myGLCD.print(buffer, 100, 240); // "VARIACAO PARA ACIONAR O ALARME:"
+    myGLCD.print(buffer, 100, 240); // "VARIATION TO TRIGGER ALARM:"
 
-    printButton("-", temM[0], temM[1], temM[2], temM[3], true);      
-    printButton("+", temP[0], temP[1], temP[2], temP[3], true);     
-    printButton("-", offM[0], offM[1], offM[2], offM[3], true);     
-    printButton("+", offP[0], offP[1], offP[2], offP[3], true);     
-    printButton("-", almM[0], almM[1], almM[2], almM[3], true);      
-    printButton("+", almP[0], almP[1], almP[2], almP[3], true);      
+    printButton("-", temM[0], temM[1], temM[2], temM[3], true);
+    printButton("+", temP[0], temP[1], temP[2], temP[3], true);
+    printButton("-", offM[0], offM[1], offM[2], offM[3], true);
+    printButton("+", offP[0], offP[1], offP[2], offP[3], true);
+    printButton("-", almM[0], almM[1], almM[2], almM[3], true);
+    printButton("+", almP[0], almP[1], almP[2], almP[3], true);
 
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
-    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SALVAR"
+    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SAVE"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "HOME"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
-    printButton(buffer, menU[0], menU[1], menU[2], menU[3]);
+    printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "BACK"
   }
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
@@ -939,44 +939,44 @@ void config_orp_Screen(boolean refreshAll=false)
 
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[38])));
-    printHeader(buffer); // tabela_textos[38] = "CONTROLE DE ORP"
+    printHeader(buffer); // tabela_textos[38] = "CONTROL ORP"
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[100])));
-    myGLCD.print(buffer, 230, 40); // "ORP DESEJADA:"
+    myGLCD.print(buffer, 230, 40); // "ORP DESIRED:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[75])));
-    myGLCD.print(buffer, 180, 140); // "VARIACAO PERMITIDA:"
+    myGLCD.print(buffer, 180, 140); // "VARIATION PERMITTED:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[76])));
-    myGLCD.print(buffer, 100, 240); // "VARIACAO PARA ACIONAR O ALARME:"
+    myGLCD.print(buffer, 100, 240); // "VARIATION TO TRIGGER ALARM:"
 
-    printButton("-", temM[0], temM[1], temM[2], temM[3], true);      //temp minus
-    printButton("+", temP[0], temP[1], temP[2], temP[3], true);      //temp plus
-    printButton("-", offM[0], offM[1], offM[2], offM[3], true);      //offset minus
-    printButton("+", offP[0], offP[1], offP[2], offP[3], true);      //offset plus
-    printButton("-", almM[0], almM[1], almM[2], almM[3], true);      //alarm minus
-    printButton("+", almP[0], almP[1], almP[2], almP[3], true);      //alarm plus
+    printButton("-", temM[0], temM[1], temM[2], temM[3], true); //temp minus
+    printButton("+", temP[0], temP[1], temP[2], temP[3], true); //temp plus
+    printButton("-", offM[0], offM[1], offM[2], offM[3], true); //offset minus
+    printButton("+", offP[0], offP[1], offP[2], offP[3], true); //offset plus
+    printButton("-", almM[0], almM[1], almM[2], almM[3], true); //alarm minus
+    printButton("+", almP[0], almP[1], almP[2], almP[3], true); //alarm plus
 
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
-    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SALVAR"
+    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SAVE"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "HOME"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
-    printButton(buffer, menU[0], menU[1], menU[2], menU[3]);
+    printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "BACK"
   }
 
   myGLCD.setColor(0, 0, 0);
-  myGLCD.fillRoundRect (300, 180, 406, 214); 
+  myGLCD.fillRoundRect (300, 180, 406, 214);
   myGLCD.fillRoundRect (300, 280, 406, 314);
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
-  myGLCD.printNumI(ORP2beS,300, 80);
-  myGLCD.printNumI(ORP2beO,300, 180);
+  myGLCD.printNumI(ORP2beS, 300, 80);
+  myGLCD.printNumI(ORP2beO, 300, 180);
   myGLCD.printNumI(ORP2beA, 300, 280);
 }
 //---------------------------------------------PH do aquario--------------------------------tela =18 ----------
@@ -987,44 +987,44 @@ void config_phA_Screen(boolean refreshAll=false)
   if (refreshAll)
   {
     if (setPHA==0) {
-      setPHA = PHA;  
-    }                  //change to current temp.
+      setPHA = PHA;
+    } //change to current temp.
     PHA2beS = setPHA;
     PHA2beO = offPHA;
     PHA2beA = alarmPHA;
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[39])));
-    printHeader(buffer); // tabela_textos[39] = "CONTROLE DE PH DO AQUARIO"
+    printHeader(buffer); // tabela_textos[39] = "CONTROL AQUARIUM pH"
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[99])));
-    myGLCD.print(buffer, 220, 40); // "PH DESEJADO:"
+    myGLCD.print(buffer, 220, 40); // "PH DESIRED:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[75])));
-    myGLCD.print(buffer, 180, 140); // "VARIACAO PERMITIDA:"
+    myGLCD.print(buffer, 180, 140); // "VARIATION PERMITTED:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[76])));
-    myGLCD.print(buffer, 100, 240); // "VARIACAO PARA ACIONAR O ALARME:"
+    myGLCD.print(buffer, 100, 240); // "VARIATION TO TRIGGER ALARM:"
 
-    printButton("-", temM[0], temM[1], temM[2], temM[3], true);      //temp minus
-    printButton("+", temP[0], temP[1], temP[2], temP[3], true);      //temp plus
-    printButton("-", offM[0], offM[1], offM[2], offM[3], true);      //offset minus
-    printButton("+", offP[0], offP[1], offP[2], offP[3], true);      //offset plus
-    printButton("-", almM[0], almM[1], almM[2], almM[3], true);      //alarm minus
-    printButton("+", almP[0], almP[1], almP[2], almP[3], true);      //alarm plus
+    printButton("-", temM[0], temM[1], temM[2], temM[3], true); //temp minus
+    printButton("+", temP[0], temP[1], temP[2], temP[3], true); //temp plus
+    printButton("-", offM[0], offM[1], offM[2], offM[3], true); //offset minus
+    printButton("+", offP[0], offP[1], offP[2], offP[3], true); //offset plus
+    printButton("-", almM[0], almM[1], almM[2], almM[3], true); //alarm minus
+    printButton("+", almP[0], almP[1], almP[2], almP[3], true); //alarm plus
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
-    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SALVAR"
+    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SAVE"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "HOME"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
     printButton(buffer, menU[0], menU[1], menU[2], menU[3]);
   }
 
-  setFont(LARGE, 255, 255, 255, 0, 0, 0); 
+  setFont(LARGE, 255, 255, 255, 0, 0, 0);
   myGLCD.printNumF(PHA2beS, 1, 280, 80);
   myGLCD.printNumF(PHA2beO, 1, 280, 180);
   myGLCD.printNumF(PHA2beA, 1, 280, 280);
@@ -1040,37 +1040,37 @@ void config_dens_Screen(boolean refreshAll=false)
     DEN2beA = alarmDEN;
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[40])));
-    printHeader(buffer); // tabela_textos[40] = "CONTROLE DE DENSIDADE"
+    printHeader(buffer); // tabela_textos[40] = "CONTROL DENSITY"
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[101])));
-    myGLCD.print(buffer, 180, 40); // "DENSIDADE DESEJADA:"
+    myGLCD.print(buffer, 180, 40); // "DENSITY DESIRED:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[75])));
-    myGLCD.print(buffer, 180, 140); // "VARIACAO PERMITIDA:"
+    myGLCD.print(buffer, 180, 140); // "VARIATION PERMITTED:"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[76])));
-    myGLCD.print(buffer, 100, 240); // "VARIACAO PARA ACIONAR O ALARME:"
+    myGLCD.print(buffer, 100, 240); // "VARIATION TO TRIGGER ALARM:"
 
-    printButton("-", temM[0], temM[1], temM[2], temM[3], true);      //temp minus
-    printButton("+", temP[0], temP[1], temP[2], temP[3], true);      //temp plus
-    printButton("-", offM[0], offM[1], offM[2], offM[3], true);      //offset minus
-    printButton("+", offP[0], offP[1], offP[2], offP[3], true);      //offset plus
-    printButton("-", almM[0], almM[1], almM[2], almM[3], true);      //alarm minus
-    printButton("+", almP[0], almP[1], almP[2], almP[3], true);      //alarm plus
+    printButton("-", temM[0], temM[1], temM[2], temM[3], true); //temp minus
+    printButton("+", temP[0], temP[1], temP[2], temP[3], true); //temp plus
+    printButton("-", offM[0], offM[1], offM[2], offM[3], true); //offset minus
+    printButton("+", offP[0], offP[1], offP[2], offP[3], true); //offset plus
+    printButton("-", almM[0], almM[1], almM[2], almM[3], true); //alarm minus
+    printButton("+", almP[0], almP[1], almP[2], almP[3], true); //alarm plus
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
-    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SALVAR"
+    printButton(buffer, prOK[0], prOK[1], prOK[2], prOK[3]); // "SAVE"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "HOME"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
     printButton(buffer, menU[0], menU[1], menU[2], menU[3]);
   }
   myGLCD.setColor(0, 0, 0);
-  myGLCD.fillRoundRect (300, 180, 380, 214); 
+  myGLCD.fillRoundRect (300, 180, 380, 214);
   myGLCD.fillRoundRect (300, 280, 380, 314);
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
@@ -1084,36 +1084,36 @@ void selecionar_dosadora()//---------------------------------------------tela =2
 {
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[41])));
-  printHeader(buffer); // tabela_textos[41] = "ESCOLHA UMA DOSADORA"
+  printHeader(buffer); // tabela_textos[41] = "SELECT A DOSER"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[102])));
-  printButton(buffer, dosa1[0], dosa1[1], dosa1[2], dosa1[3]); // tabela_textos[102] = "DOSADORA 1"
+  printButton(buffer, dosa1[0], dosa1[1], dosa1[2], dosa1[3]); // "DOSER 1"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[103])));
-  printButton(buffer, dosa2[0], dosa2[1], dosa2[2], dosa2[3]); // tabela_textos[103] = "DOSADORA 2"
+  printButton(buffer, dosa2[0], dosa2[1], dosa2[2], dosa2[3]); // "DOSER 2"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[104])));
-  printButton(buffer, dosa3[0], dosa3[1], dosa3[2], dosa3[3]); // tabela_textos[104] = "DOSADORA 3"
+  printButton(buffer, dosa3[0], dosa3[1], dosa3[2], dosa3[3]); // "DOSER 3"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[204])));
-  printButton(buffer, dosa4[0], dosa4[1], dosa4[2], dosa4[3]); // tabela_textos[204] = "DOSADORA 4"
+  printButton(buffer, dosa4[0], dosa4[1], dosa4[2], dosa4[3]); // "DOSER 4"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[205])));
-  printButton(buffer, dosa5[0], dosa5[1], dosa5[2], dosa5[3]); // tabela_textos[205] = "DOSADORA 5"
+  printButton(buffer, dosa5[0], dosa5[1], dosa5[2], dosa5[3]); // "DOSER 5"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[206])));
-  printButton(buffer, dosa6[0], dosa6[1], dosa6[2], dosa6[3]); // tabela_textos[206] = "DOSADORA 6"
+  printButton(buffer, dosa6[0], dosa6[1], dosa6[2], dosa6[3]); // "DOSER 6"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "HOME"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
   printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
-  printButton(buffer, volT[0], volT[1], volT[2], volT[3]);  // "VOLTAR"
+  printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // "BACK"
 }
-//--------------------------- TEST INDIVIDUAL LEDS ----------------------------------------------------- tela =22
+//--------------------------- TEST INDIVIDUAL LEDS ---- tela =22
 void teste_individual_leds()
 {
   bled_out_temp = bled_out;
@@ -1202,7 +1202,7 @@ void teste_individual_leds()
   }
 
   myGLCD.setFont(BigFont);
-  myGLCD.print("%", 40, 50); // %
+  myGLCD.print("%", 60, 60); // %
   myGLCD.print("100", 10, 82); // 100
   myGLCD.print("90", 24, 108); // 90
   myGLCD.print("80", 24, 134); // 80
@@ -1238,11 +1238,11 @@ void teste_individual_leds()
   desenhar_barras(cor_canal4[0], cor_canal4[1],cor_canal4[2], 410, 88, 498, 344);
 
   y_tocado = map(uvled_out_temp, 255, 0, 88, 344);
-  desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 514, 88, 602, 344);                                                             
+  desenhar_barras(cor_canal5[0], cor_canal5[1],cor_canal5[2], 514, 88, 602, 344);
 }
-// ------------------------------------------------------------------ tela =23
-//--------------------------------------------------------------------tela =24
-//----------------------------------------teste dos leds ---------------------- tela =25
+// ----------------------------------------------------------------- tela =23
+//-------------------------------------------------------------------tela =24
+//---------------------------------- test LEDs---------------------- tela =25
 void escolher_teste()
 {
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[49])));
@@ -1404,7 +1404,7 @@ void config_dosagem_manual(boolean refreshAll=false) // ----------tela =27
       myGLCD.print(buffer, 160, 60); // tabela_textos[111] = "DOSADORA 1 SELECIONADA"
     }
     if(dosadora_selecionada == 1)
-    {    
+    {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[112])));
       myGLCD.print(buffer, 160, 60); // tabela_textos[112] = "DOSADORA 2 SELECIONADA"
     }
@@ -1426,8 +1426,8 @@ void config_dosagem_manual(boolean refreshAll=false) // ----------tela =27
     if(dosadora_selecionada == 5)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[209])));
-      myGLCD.print(buffer, 160, 60); // tabela_textos[209] = "DOSADORA 6 SELECIONADA" 
-    }    
+      myGLCD.print(buffer, 160, 60); // tabela_textos[209] = "DOSADORA 6 SELECIONADA"
+    }
   }
 }
 void escolher_canal() //---------------------------------------------------------- tela =28
@@ -1458,12 +1458,12 @@ void escolher_canal() //--------------------------------------------------------
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[10])));
   printButton(buffer, denS[0], denS[1], denS[2], denS[3]); // "VIOLETA"
-}  
+}
 
 void config_dosagem_personalizada(boolean refreshAll=false) // -------------------tela =29
 {
   if(refreshAll)
-  {   
+  {
     config_valores_dosadoras_temp();
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[45])));
@@ -1493,7 +1493,7 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
     printButton(buffer, proX[0], proX[1], proX[2], proX[3]); // "PROXIMO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
     printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
@@ -1506,79 +1506,79 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[59])));
     printButton_verde(buffer, segU[0], segU[1], segU[2], segU[3]); //botao segunda
-  } 
-  else 
+  }
+  else
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[59])));      
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[59])));
     printButton(buffer, segU[0], segU[1], segU[2], segU[3]); //botao segunda
   }
   if (terca_dosagem_personalizada[dosadora_selecionada] == 2)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[60])));
     printButton_verde(buffer, terC[0], terC[1], terC[2], terC[3]); //botao terca
-  } 
-  else 
+  }
+  else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[60])));
     printButton(buffer, terC[0], terC[1], terC[2], terC[3]); //botao terca
   }
   if (quarta_dosagem_personalizada[dosadora_selecionada] == 3)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[61]))); 
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[61])));
     printButton_verde(buffer, quaR[0], quaR[1], quaR[2], quaR[3]); //botao quarta
-  } 
+  }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[61])));
     printButton(buffer, quaR[0], quaR[1], quaR[2], quaR[3]); //botao quarta
   }
-  if (quinta_dosagem_personalizada[dosadora_selecionada] == 4) 
+  if (quinta_dosagem_personalizada[dosadora_selecionada] == 4)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[62])));
     printButton_verde(buffer, quiN[0], quiN[1], quiN[2], quiN[3]); //botao quinta
-  } 
-  else 
+  }
+  else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[62])));
     printButton(buffer, quiN[0], quiN[1], quiN[2], quiN[3]); //botao quinta
   }
-  if (sexta_dosagem_personalizada[dosadora_selecionada] == 5) 
+  if (sexta_dosagem_personalizada[dosadora_selecionada] == 5)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[63])));
     printButton_verde(buffer, sexT[0], sexT[1], sexT[2], sexT[3]); //botao sexta
-  } 
+  }
   else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[63])));
     printButton(buffer, sexT[0], sexT[1], sexT[2], sexT[3]); //botao sexta
   }
-  if (sabado_dosagem_personalizada[dosadora_selecionada] == 6) 
+  if (sabado_dosagem_personalizada[dosadora_selecionada] == 6)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[64])));
     printButton_verde(buffer, sabA[0], sabA[1], sabA[2], sabA[3]); //botao sabado
   }
-  else 
+  else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[64])));
     printButton(buffer, sabA[0], sabA[1], sabA[2], sabA[3]); //botao sabado
   }
-  if (domingo_dosagem_personalizada[dosadora_selecionada] == 7) 
+  if (domingo_dosagem_personalizada[dosadora_selecionada] == 7)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[65])));
     printButton_verde(buffer, domI[0], domI[1], domI[2], domI[3]); //botao sabado
   }
-  else 
+  else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[65])));
     printButton(buffer, domI[0], domI[1], domI[2], domI[3]); //botao sabado
   }
 
   setFont(LARGE, 255, 255, 255, 0, 0, 0);
-  if (hora_inicial_dosagem_personalizada[dosadora_selecionada] < 10) 
+  if (hora_inicial_dosagem_personalizada[dosadora_selecionada] < 10)
   {
     myGLCD.printNumI(0, 140, 96);
     myGLCD.printNumI(hora_inicial_dosagem_personalizada[dosadora_selecionada], 156, 96);
-  } 
+  }
   else
   {
     myGLCD.printNumI(hora_inicial_dosagem_personalizada[dosadora_selecionada], 140, 96);
@@ -1588,8 +1588,8 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
   {
     myGLCD.printNumI(0, 240, 96);
     myGLCD.printNumI(minuto_inicial_dosagem_personalizada[dosadora_selecionada], 256, 96);
-  } 
-  else 
+  }
+  else
   {
     myGLCD.printNumI(minuto_inicial_dosagem_personalizada[dosadora_selecionada], 240, 96);
   }
@@ -1597,7 +1597,7 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
   {
     myGLCD.printNumI(0, 140 + 310, 96);
     myGLCD.printNumI(hora_final_dosagem_personalizada[dosadora_selecionada], 156 + 310, 96);
-  } 
+  }
   else
   {
     myGLCD.printNumI(hora_final_dosagem_personalizada[dosadora_selecionada], 140 + 310, 96);
@@ -1607,7 +1607,7 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
   {
     myGLCD.printNumI(0, 240 + 310, 96);
     myGLCD.printNumI(minuto_final_dosagem_personalizada[dosadora_selecionada], 256 + 310, 96);
-  } 
+  }
   else
   {
     myGLCD.printNumI(minuto_final_dosagem_personalizada[dosadora_selecionada], 240 + 310, 96);
@@ -1628,7 +1628,7 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
   else if(dosadora_selecionada == 2)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[104])));
-    myGLCD.print(buffer, 20, 396);  // "DOSADORA 3"; // tabela_textos[104]
+    myGLCD.print(buffer, 20, 396); // "DOSADORA 3"; // tabela_textos[104]
   }
   else if(dosadora_selecionada == 3)
   {
@@ -1650,7 +1650,7 @@ void config_dosagem_personalizada(boolean refreshAll=false) // -----------------
 
 }
 
-void solicitar_senha()  //---------------tela =30
+void solicitar_senha() //---------------tela =30
 {
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[46])));
   printHeader(buffer); // tabela_textos[46] = "DIGITE A SENHA"
@@ -1673,7 +1673,7 @@ void solicitar_senha()  //---------------tela =30
   printButton(buffer, boTE[0], boTE[1], boTE[2], boTE[3],true); // tabela_textos[137] = "ENTRAR"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // tabela_textos[11] = "INICIO"
+  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // tabela_textos[11] = "INICIO"
 
 }
 
@@ -1682,12 +1682,12 @@ void config_dosagem_personalizada_2(boolean refreshAll=false) // ----------tela 
   if(refreshAll)
   {
     config_valores_dosadoras_temp2();
-
+    
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[47])));
     printHeader(buffer); // tabela_textos[47] = "CONFIGURAR DOSAGEM PERSONALIZADA"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
     printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
@@ -1723,15 +1723,15 @@ void config_dosagem_personalizada_2(boolean refreshAll=false) // ----------tela 
   }
 
   if (modo_personalizado == true)
-  { 
+  {
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
-    myGLCD.printNumF(dose_dosadora_personalizada[dosadora_selecionada], 1, 200, 96);  
-    if (quantidade_dose_dosadora_personalizada[dosadora_selecionada] < 10) 
+    myGLCD.printNumF(dose_dosadora_personalizada[dosadora_selecionada], 1, 200, 96);
+    if (quantidade_dose_dosadora_personalizada[dosadora_selecionada] < 10)
     {
       myGLCD.printNumI(0, 550, 96);
       myGLCD.printNumI(quantidade_dose_dosadora_personalizada[dosadora_selecionada], 566, 96);
-    } 
-    else 
+    }
+    else
     {
       myGLCD.printNumI(quantidade_dose_dosadora_personalizada[dosadora_selecionada], 550, 96);
     }
@@ -1747,57 +1747,56 @@ void config_dosagem_personalizada_2(boolean refreshAll=false) // ----------tela 
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[112])));
       myGLCD.print(buffer, 250, 426);
     }
-    else  if(dosadora_selecionada == 2)
+    else if(dosadora_selecionada == 2)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[113])));
       myGLCD.print(buffer, 250, 426);
     }
-    else  if(dosadora_selecionada == 3)
+    else if(dosadora_selecionada == 3)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[207])));
       myGLCD.print(buffer, 250, 426);
     }
-    else   if(dosadora_selecionada == 4)
+    else if(dosadora_selecionada == 4)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[208])));
       myGLCD.print(buffer, 250, 426);
     }
-    else  if(dosadora_selecionada == 5)
+    else if(dosadora_selecionada == 5)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[209])));
       myGLCD.print(buffer, 250, 426);
     }
-    if (modo_personalizado_on[dosadora_selecionada] == 1) 
+    if (modo_personalizado_on[dosadora_selecionada] == 1)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-      printButton_verde(buffer, sexT[0], sexT[1], sexT[2], sexT[3]); 
-    } 
-    else 
+      printButton_verde(buffer, sexT[0], sexT[1], sexT[2], sexT[3]);
+    }
+    else
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-      printButton(buffer, sexT[0], sexT[1], sexT[2], sexT[3]); 
+      printButton(buffer, sexT[0], sexT[1], sexT[2], sexT[3]);
     }
-  }  
+  }
 }
 
 void rever_configuracao_dosadoras()//---------------------------------------------tela =32
 {
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[44])));
-  printHeader(buffer); // tabela_textos[44] = "REVER CONFIG. DOSADORAS" 
+  printHeader(buffer); // tabela_textos[44] = "REVER CONFIG. DOSADORAS"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[140])));
   printButton(buffer, manU[0], manU[1], manU[2], manU[3]); // tabela_textos[140] = "PERSONALIZADO"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]);  // "INICIO"
+  printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
   printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
   printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // tabela_textos[66]
-} 
-
+}
 void rever_dosagem_personalizada() // ------------------------------------------------------------------tela =34 / 23
 {
   byte k = 0;
@@ -1816,8 +1815,8 @@ void rever_dosagem_personalizada() // ------------------------------------------
   printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // "VOLTAR"
 
   myGLCD.setColor(161, 127, 73);                    
-  myGLCD.drawLine(2, 176, 638, 176);  
-  myGLCD.drawLine(2, 316, 638, 316);
+  myGLCD.drawLine(1, 176, 638, 176);  
+  myGLCD.drawLine(1, 316, 638, 316);
   myGLCD.drawLine(638, 30, 638, 478);
 
   if(dispScreen == 23)
@@ -1844,7 +1843,7 @@ void rever_dosagem_personalizada() // ------------------------------------------
     myGLCD.print(buffer, 20, 100 + (i * 140));  
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[119]))); // tabela_textos[119] = "FINAL:"
-    myGLCD.print(buffer, 136, 100 + (i * 140));
+    myGLCD.print(buffer, 236, 100 + (i * 140));
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[128]))); // tabela_textos[128] = "QUANTIDADE DE DOSES"
     myGLCD.print(buffer, 20, 140 + (i * 140));
@@ -1856,119 +1855,119 @@ void rever_dosagem_personalizada() // ------------------------------------------
     myGLCD.print(":", 360, 100 + (i * 140));
     myGLCD.print(":", 526, 100 + (i * 140));
 
-    myGLCD.printNumF(dose_dosadora_personalizada_e[i + k], 1, 530, 100 + (i * 140));
+    myGLCD.printNumF(dose_dosadora_personalizada_e[i + k], 1, 550, 100 + (i * 140));
     myGLCD.printNumI(quantidade_dose_dosadora_personalizada_e[i + k], 340, 140 + (i * 140));
 
     if(hora_inicial_dosagem_personalizada_e[i + k] < 10)
     {
-      myGLCD.printNumI(0, 119, 100 + (i * 140));
-      myGLCD.printNumI(hora_inicial_dosagem_personalizada_e[i + k], 135, 50 + (i * 140));
+      myGLCD.printNumI(0, 144, 100 + (i * 140));
+      myGLCD.printNumI(hora_inicial_dosagem_personalizada_e[i + k], 160, 100 + (i * 140));
     }
     else
     {
-      myGLCD.printNumI(hora_inicial_dosagem_personalizada_e[i + k], 119, 100 + (i * 140));
+      myGLCD.printNumI(hora_inicial_dosagem_personalizada_e[i + k], 144, 100 + (i * 140));
     }
     if(minuto_inicial_dosagem_personalizada_e[i + k] < 10)
     {
-      myGLCD.printNumI(0, 166, 100 + (i * 140));
-      myGLCD.printNumI(minuto_inicial_dosagem_personalizada_e[i + k], 182, 100 + (i * 140));
+      myGLCD.printNumI(0, 196, 100 + (i * 140));
+      myGLCD.printNumI(minuto_inicial_dosagem_personalizada_e[i + k], 212, 100 + (i * 140));
     }
     else
     {
-      myGLCD.printNumI(minuto_inicial_dosagem_personalizada_e[i + k], 166, 100 + (i * 140));
+      myGLCD.printNumI(minuto_inicial_dosagem_personalizada_e[i + k], 196, 100 + (i * 140));
     }
     if(hora_final_dosagem_personalizada_e[i + k] < 10)
     {
-      myGLCD.printNumI(0, 300, 100 + (i * 140));
-      myGLCD.printNumI(hora_final_dosagem_personalizada_e[i + k], 316, 100 + (i * 140)); 
+      myGLCD.printNumI(0, 330, 100 + (i * 140));
+      myGLCD.printNumI(hora_final_dosagem_personalizada_e[i + k], 346, 100 + (i * 140)); 
     }
     else
     {
-      myGLCD.printNumI(hora_final_dosagem_personalizada_e[i + k], 300, 100 + (i * 140));
+      myGLCD.printNumI(hora_final_dosagem_personalizada_e[i + k], 330, 100 + (i * 140));
     }
     if(minuto_final_dosagem_personalizada_e[i + k] < 10)
     {
-      myGLCD.printNumI(0, 346, 100 + (i * 140));
-      myGLCD.printNumI(minuto_final_dosagem_personalizada_e[i + k], 362, 100 + (i * 140));
+      myGLCD.printNumI(0, 376, 100 + (i * 140));
+      myGLCD.printNumI(minuto_final_dosagem_personalizada_e[i + k], 196, 100 + (i * 140));
     }
     else
     {
-      myGLCD.printNumI(minuto_final_dosagem_personalizada_e[i + k], 346, 100 + (i * 140));
+      myGLCD.printNumI(minuto_final_dosagem_personalizada_e[i + k], 188, 50 + (i * 140));
     }
     if(segunda_dosagem_personalizada_e[i + k] == 1)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-      printButton_verde(buffer, 220, 46 + (i * 140), 275, 86 + (i * 140));
+      printButton_verde(buffer, 220, 46 + (i * 140), 260, 86 + (i * 140));
     }
     else
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[70])));
-      printButton(buffer, 220, 46 + (i * 140), 275, 86 + (i * 140));
+      printButton(buffer, 220, 46 + (i * 140), 260, 86 + (i * 140));
     }
     if(terca_dosagem_personalizada_e[i + k] == 2)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
-      printButton_verde(buffer, 280, 46 + (i * 140), 335, 86 + (i * 140));
+      printButton_verde(buffer, 280, 46 + (i * 140), 320, 86 + (i * 140));
     }
     else
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[71])));
-      printButton(buffer, 280, 46 + (i * 140), 335, 86 + (i * 140));
+      printButton(buffer, 280, 46 + (i * 140), 320, 86 + (i * 140));
     }
     if(quarta_dosagem_personalizada_e[i + k] == 3)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-      printButton_verde(buffer, 340, 46 + (i * 140), 395, 86 + (i * 140));
+      printButton_verde(buffer, 340, 46 + (i * 140), 380, 86 + (i * 140));
     }
     else
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[72])));
-      printButton(buffer, 340, 46 + (i * 140), 395,86 + (i * 140));
+      printButton(buffer, 340, 46 + (i * 140), 380, 86 + (i * 140));
     }    
     if(quinta_dosagem_personalizada_e[i + k] == 4)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-      printButton_verde(buffer, 400, 46 + (i * 140), 455, 86 + (i * 140));
+      printButton_verde(buffer, 400, 46 + (i * 140), 440, 86 + (i * 140));
     }
     else
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[198])));
-      printButton(buffer, 400, 46 + (i * 140), 455, 86 + (i * 140));
+      printButton(buffer, 400, 46 + (i * 140), 440, 86 + (i * 140));
     }    
     if(sexta_dosagem_personalizada_e[i + k] == 5)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-      printButton_verde(buffer, 460, 46 + (i * 140), 515, 86 + (i * 140));
+      printButton_verde(buffer, 460, 46 + (i * 140), 500, 86 + (i * 140));
     }
     else
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[199])));
-      printButton(buffer, 460, 46 + (i * 140), 515, 86 + (i * 140));
+      printButton(buffer, 460, 46 + (i * 140), 500, 86 + (i * 140));
     }
     if(sabado_dosagem_personalizada_e[i + k] == 6)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-      printButton_verde(buffer, 520, 46 + (i * 140), 575, 86 + (i * 140));
+      printButton_verde(buffer, 520, 46 + (i * 140), 560, 86 + (i * 140));
     }
     else
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[200])));
-      printButton(buffer, 520, 46 + (i * 140), 575, 86 + (i * 140));
+      printButton(buffer, 520, 46 + (i * 140), 560, 86 + (i * 140));
     }
     if(domingo_dosagem_personalizada_e[i + k] == 7)
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-      printButton_verde(buffer, 580, 46 + (i * 140), 635, 86 + (i * 140));
+      printButton_verde(buffer, 580, 46 + (i * 140), 620, 86 + (i * 140));
     }
     else
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[73])));
-      printButton(buffer, 580,46 + (i * 140), 635, 86 + (i * 140));
+      printButton(buffer, 580, 46 + (i * 140), 620, 86 + (i * 140));
     } 
     if (modo_personalizado_on_e[i + k] == true) 
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-      printButton_verde(buffer, 400, 130 + (i * 140), 490, 170 + (i * 140)); 
+      printButton_verde(buffer, 400, 130 + (i * 140), 490, 85 + (i * 70)); 
     } 
     else 
     {
@@ -1983,7 +1982,7 @@ void rever_dosagem_personalizada() // ------------------------------------------
     else 
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-      printButton(buffer, 500, 130 + (i * 140), 590, 170 + (i * 140)); 
+      printButton(buffer, 5000, 130 + (i * 140), 490, 170 + (i * 140)); 
     }
   }
 }
@@ -2127,8 +2126,8 @@ void desativar_dosadoras(boolean refreshAll = false)
     myGLCD.setColor(0, 0, 0); 
     myGLCD.fillRect (6, 192, 234, 226);
     myGLCD.fillRect (6, 230, 190, 262);
-    myGLCD.fillRect (6, 260, 190, 292);
-    myGLCD.fillRect (6, 290, 190, 322); 
+    myGLCD.fillRect (6, 260, 190, 146);
+    myGLCD.fillRect (6, 290, 190, 161); 
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
@@ -2163,13 +2162,13 @@ void desativar_dosadoras(boolean refreshAll = false)
   if (bitRead(ativar_desativar, (i + 2)) == true)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[147])));
-    printButton_verde(buffer, 200, 370, 440, 450); 
+    printButton_verde(buffer, 200, 370, 220, 450); 
 
     myGLCD.setColor(0, 0, 0);
     myGLCD.fillRect (6, 332, 234, 366);
     myGLCD.fillRect (6, 370, 190, 402);
     myGLCD.fillRect (6, 400, 190, 432);
-    myGLCD.fillRect (6, 430, 190, 462);
+    myGLCD.fillRect (6, 436, 190, 462);
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0); 
 
@@ -2202,8 +2201,7 @@ void desativar_dosadoras(boolean refreshAll = false)
     myGLCD.print(buffer, 6, 430);
   }
 }
-
-//--------------------------------- Potência mínima e máxima para a luz noturna ----tela =36 
+//--------------------------------------------- PotÃƒÂªncia mÃƒÂ­nima e mÃƒÂ¡xima para a luz noturna -------------------------------- tela =36
 void luz_noturna(boolean refreshAll=false)
 {
 
@@ -2213,7 +2211,7 @@ void luz_noturna(boolean refreshAll=false)
     tMinI = MinI;
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[52])));
-    printHeader(buffer); // tabela_textos[52] = "LUZ NOTURNA   255 = 100 %"
+    printHeader(buffer); // tabela_textos[52] = "LUZ NOTURNA 255 = 100 %"
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
@@ -2229,10 +2227,10 @@ void luz_noturna(boolean refreshAll=false)
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[158])));
     myGLCD.print(buffer, 225, 240); // "LUA NOVA:"
 
-    printButton("-", temM[0], temM[1], temM[2], temM[3], true);      //Lua cheia menos
-    printButton("+", temP[0], temP[1], temP[2], temP[3], true);      //Lua cheia mais
-    printButton("-", almM[0], almM[1], almM[2], almM[3], true);      //Lua nova menos
-    printButton("+", almP[0], almP[1], almP[2], almP[3], true);      //Lua nova mais
+    printButton("-", temM[0], temM[1], temM[2], temM[3], true); //Lua cheia menos
+    printButton("+", temP[0], temP[1], temP[2], temP[3], true); //Lua cheia mais
+    printButton("-", almM[0], almM[1], almM[2], almM[3], true); //Lua nova menos
+    printButton("+", almP[0], almP[1], almP[2], almP[3], true); //Lua nova mais
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
     printButton(buffer, salV[0], salV[1], salV[2], salV[3]); // "SALVAR"
@@ -2241,13 +2239,13 @@ void luz_noturna(boolean refreshAll=false)
     printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
-    printButton(buffer, menU[0], menU[1], menU[2], menU[3]);  // "MENU 1";
+    printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
-    printButton(buffer, volT[0], volT[1], volT[2], volT[3]);  // tabela_textos[66] = "VOLTAR";
+    printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // tabela_textos[66] = "VOLTAR";
   }
 
-  setFont(LARGE, 255, 255, 255, 0, 0, 0); 
+  setFont(LARGE, 255, 255, 255, 0, 0, 0);
   myGLCD.printNumI(tMaxI, 300, 85);
   myGLCD.printNumI(tMinI, 300, 285);
 }
@@ -2277,100 +2275,100 @@ void menuScreen_2()
 
 //--------------------------------------------- Timers -------------------------------- tela =38
 void TimerScreen()
-{ 
+{
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[53])));
   printHeader(buffer); // tabela_textos[53] = "SELECIONE O TIMER"
 
-  if (temporizador_ativado_e[0] == 1) 
+  if (temporizador_ativado_e[0] == 1)
   {
-    printButton_verde("T 1",14, 44, 112, 100);     // Timer 1 
+    printButton_verde("T 1",14, 44, 112, 100); // Timer 1
   }
-  else 
+  else
   {
-    printButton("T 1",14, 44, 112, 100);     // Timer 1 
-  }      
-  if (temporizador_ativado_e[1] == 1) 
-  {
-    printButton_verde("T 2",142, 44, 240, 100);     // Timer 2 
+    printButton("T 1",14, 44, 112, 100); // Timer 1
   }
-  else 
+  if (temporizador_ativado_e[1] == 1)
   {
-    printButton("T 2",142, 44, 240, 100);     // Timer 2 
-  }     
-  if (temporizador_ativado_e[2] == 1) 
-  {
-    printButton_verde("T 3",270, 44, 368, 100);     // Timer 3 
+    printButton_verde("T 2",142, 44, 240, 100); // Timer 2
   }
-  else 
+  else
   {
-    printButton("T 3",270, 44, 368, 100);     // Timer 3 
-  }    
-  if (temporizador_ativado_e[3] == 1) 
-  {
-    printButton_verde("T 4",398, 44, 498, 100);     // Timer 4 
+    printButton("T 2",142, 44, 240, 100); // Timer 2
   }
-  else 
+  if (temporizador_ativado_e[2] == 1)
   {
-    printButton("T 4",398, 44, 498, 100);     // Timer 4 
-  }        
-  if (temporizador_ativado_e[4] == 1) 
-  {
-    printButton_verde("T 5",526, 44, 624, 100);     // Timer 5 
+    printButton_verde("T 3",270, 44, 368, 100); // Timer 3
   }
-  else 
+  else
   {
-    printButton("T 5",526, 44, 624, 100);     // Timer 5
-  } 
+    printButton("T 3",270, 44, 368, 100); // Timer 3
+  }
+  if (temporizador_ativado_e[3] == 1)
+  {
+    printButton_verde("T 4",398, 44, 498, 100); // Timer 4
+  }
+  else
+  {
+    printButton("T 4",398, 44, 498, 100); // Timer 4
+  }
+  if (temporizador_ativado_e[4] == 1)
+  {
+    printButton_verde("T 5",526, 44, 624, 100); // Timer 5
+  }
+  else
+  {
+    printButton("T 5",526, 44, 624, 100); // Timer 5
+  }
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-  printButton_verde(buffer,14, 110, 112, 194);      // Botão ON 1 
+  printButton_verde(buffer,14, 110, 112, 194); // BotÃƒÂ£o ON 1
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-  printButton_verde(buffer,142, 110, 240, 194);    // Botão ON 2
+  printButton_verde(buffer,142, 110, 240, 194); // BotÃƒÂ£o ON 2
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-  printButton_verde(buffer,270, 110, 368, 194);   // Botão ON 3
+  printButton_verde(buffer,270, 110, 368, 194); // BotÃƒÂ£o ON 3
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-  printButton_verde(buffer,398, 110, 496, 194);   // Botão ON 4
+  printButton_verde(buffer,398, 110, 496, 194); // BotÃƒÂ£o ON 4
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[126])));
-  printButton_verde(buffer,526, 110, 624, 194);   // Botão ON 5
+  printButton_verde(buffer,526, 110, 624, 194); // BotÃƒÂ£o ON 5
 
-  myGLCD.setColor(255, 255, 255);  // Retângulos ao redor dos horários
-  myGLCD.drawRoundRect(14, 204, 112, 288);      // Botão ON 1 
-  myGLCD.drawRoundRect(142, 204, 240, 288);    // Botão ON 2 
-  myGLCD.drawRoundRect(270, 204, 368, 288);   // Botão ON 3 
-  myGLCD.drawRoundRect(398, 204, 496, 288);   // Botão ON 4 
-  myGLCD.drawRoundRect(526, 204, 624, 288);   // Botão ON 5  
+  myGLCD.setColor(255, 255, 255); // RetÃƒÂ¢ngulos ao redor dos horÃƒÂ¡rios
+  myGLCD.drawRoundRect(14, 204, 112, 288); // BotÃƒÂ£o ON 1
+  myGLCD.drawRoundRect(142, 204, 240, 288); // BotÃƒÂ£o ON 2
+  myGLCD.drawRoundRect(270, 204, 368, 288); // BotÃƒÂ£o ON 3
+  myGLCD.drawRoundRect(398, 204, 496, 288); // BotÃƒÂ£o ON 4
+  myGLCD.drawRoundRect(526, 204, 624, 288); // BotÃƒÂ£o ON 5
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-  printButton_vermelho(buffer, 16, 298, 110, 382);      // Botão OFF 1 
+  printButton_vermelho(buffer, 16, 298, 110, 382); // BotÃƒÂ£o OFF 1
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-  printButton_vermelho(buffer, 144, 298, 238, 382);    // Botão OFF 2 
+  printButton_vermelho(buffer, 144, 298, 238, 382); // BotÃƒÂ£o OFF 2
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-  printButton_vermelho(buffer, 272, 298, 366, 382);   // Botão OFF 3 
+  printButton_vermelho(buffer, 272, 298, 366, 382); // BotÃƒÂ£o OFF 3
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-  printButton_vermelho(buffer, 400, 298, 494, 382);   // Botão OFF 4 
+  printButton_vermelho(buffer, 400, 298, 494, 382); // BotÃƒÂ£o OFF 4
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[127])));
-  printButton_vermelho(buffer, 528, 298, 622, 382);   // Botão OFF 5 
+  printButton_vermelho(buffer, 528, 298, 622, 382); // BotÃƒÂ£o OFF 5
 
-  myGLCD.setColor(255, 255, 255);  // Retângulos ao redor dos horários
-  myGLCD.drawRoundRect(14, 392, 112, 476);     // Botão OFF 1 
-  myGLCD.drawRoundRect(142, 392, 240, 476);   // Botão OFF 2 
-  myGLCD.drawRoundRect(270, 392, 368, 476);  // Botão OFF 3 
-  myGLCD.drawRoundRect(398, 392, 496, 476);  // Botão OFF 4 
-  myGLCD.drawRoundRect(526, 392, 624, 476);  // Botão OFF 5
+  myGLCD.setColor(255, 255, 255); // RetÃƒÂ¢ngulos ao redor dos horÃƒÂ¡rios
+  myGLCD.drawRoundRect(14, 392, 112, 476); // BotÃƒÂ£o OFF 1
+  myGLCD.drawRoundRect(142, 392, 240, 476); // BotÃƒÂ£o OFF 2
+  myGLCD.drawRoundRect(270, 392, 368, 476); // BotÃƒÂ£o OFF 3
+  myGLCD.drawRoundRect(398, 392, 496, 476); // BotÃƒÂ£o OFF 4
+  myGLCD.drawRoundRect(526, 392, 624, 476); // BotÃƒÂ£o OFF 5
 
   myGLCD.setBackColor(0, 0, 0);
 
   for(byte i = 0; i < 5; i++)
   {
-    if (on_hora_e[i] < 10) // Timers on
+    if (on_hora_e[i] < 10) // Timer 1
     { 
       myGLCD.print("0", 24 + (i * 128), 234); 
       myGLCD.printNumI(on_hora_e[i], 42 + (i * 128), 234);
@@ -2391,9 +2389,9 @@ void TimerScreen()
       myGLCD.printNumI(on_minuto_e[i], 74 + (i * 128), 234);
     }      
 
-    if (off_hora_e[i] < 10) // Timers off
+    if (off_hora_e[i] < 10) // Timer 1
     { 
-      myGLCD.print("0",24 + (i * 128), 422); 
+      myGLCD.print("0", 24 + (i * 128), 422); 
       myGLCD.printNumI(off_hora_e[i], 42 + (i * 128), 422);
     }
     else
@@ -2418,7 +2416,7 @@ void TimerScreen()
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
   printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // Volta ao início.  // "INICIO"
-} 
+}
 //--------------------------------------------- Configurar timers -------------------------------- tela =39
 void config_timer(boolean refreshAll=false)
 {
@@ -2426,31 +2424,31 @@ void config_timer(boolean refreshAll=false)
   {
     config_valores_timers_temp();
 
-    if(temporizador == 0)
-    {
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[54])));
-      printHeader(buffer); // tabela_textos[54] = "CONFIGURAR TIMER 1"
-    }
-    else if(temporizador == 1)
-    {
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[55])));
-      printHeader(buffer); // tabela_textos[55] = "CONFIGURAR TIMER 2"
-    }
-    else  if(temporizador == 2)
-    {
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[56])));
-      printHeader(buffer); // tabela_textos[56] = "CONFIGURAR TIMER 3"
-    }
-    else if(temporizador == 3)
-    {
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[57])));
-      printHeader(buffer); // tabela_textos[57] = "CONFIGURAR TIMER 4"
-    } 
-    else if(temporizador == 4)
-    {
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[58])));
-      printHeader(buffer); // tabela_textos[58] ="CONFIGURAR TIMER 5"
-    }
+      if(temporizador == 0)
+      {
+        strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[54])));
+        printHeader(buffer); // tabela_textos[54] = "CONFIGURAR TIMER 1"
+      }
+      else if(temporizador == 1)
+      {
+        strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[55])));
+        printHeader(buffer); // tabela_textos[55] = "CONFIGURAR TIMER 2"
+      }
+      else if(temporizador == 2)
+      {
+        strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[56])));
+        printHeader(buffer); // tabela_textos[56] = "CONFIGURAR TIMER 3"
+      }
+      else if(temporizador == 3)
+      {
+        strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[57])));
+        printHeader(buffer); // tabela_textos[57] = "CONFIGURAR TIMER 4"
+      }
+      else if(temporizador == 4)
+      {
+        strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[58])));
+        printHeader(buffer); // tabela_textos[58] ="CONFIGURAR TIMER 5"
+      }
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[161])));
     printButton_verde(buffer, 16, 34, 284, 68); // "LIGAR TIMER"
@@ -2458,29 +2456,29 @@ void config_timer(boolean refreshAll=false)
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[162])));
     printButton_vermelho(buffer, 346, 34, 624, 68); // "DESLIGAR TIMER"
 
-    printButton("+", 42, 90, 130, 176, true);    // Botão para cima
-    printButton("+", 178, 90, 266, 176, true);    // Botão para cima
-    printButton("-", 42, 270, 130, 356, true); // Botão para baixo
-    printButton("-", 178, 270, 266, 356, true); // Botão para baixo
+    printButton("+", 42, 90, 130, 176, true); // BotÃƒÂ£o para cima
+    printButton("+", 178, 90, 266, 176, true); // BotÃƒÂ£o para cima
+    printButton("-", 42, 270, 130, 356, true); // BotÃƒÂ£o para baixo
+    printButton("-", 178, 270, 266, 356, true); // BotÃƒÂ£o para baixo
 
-    printButton("+", 374, 90, 462, 176, true);    // Botão para cima
-    printButton("+", 510, 90, 598, 176, true);    // Botão para cima
-    printButton("-", 374, 270, 462, 356, true); // Botão para baixo
-    printButton("-", 510, 270, 598, 356, true); // Botão para baixo
+    printButton("+", 374, 90, 462, 176, true); // BotÃƒÂ£o para cima
+    printButton("+", 510, 90, 598, 176, true); // BotÃƒÂ£o para cima
+    printButton("-", 374, 270, 462, 356, true); // BotÃƒÂ£o para baixo
+    printButton("-", 510, 270, 598, 356, true); // BotÃƒÂ£o para baixo
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
-    printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // Volta ao menu 1.  // "MENU 1";
+    printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // Volta ao menu 1. // "MENU 1";
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // Volta ao início. // "INICIO"
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // Volta ao inÃƒÂ­cio. // "INICIO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
     printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // Volta ao menu selecionar timer. // "VOLTAR"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
-    printButton(buffer, salV[0], salV[1], salV[2], salV[3]); // Salva as modificações. // "SALVAR"
+    printButton(buffer, salV[0], salV[1], salV[2], salV[3]); // Salva as modificaÃƒÂ§ÃƒÂµes. // "SALVAR"
 
-    setFont(LARGE, 255, 255, 255, 0, 0, 0);          
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
     myGLCD.print(":",140, 206);
     myGLCD.print(":",472, 206);
   }
@@ -2488,69 +2486,69 @@ void config_timer(boolean refreshAll=false)
 
   if (on_hora[temporizador] < 10)
   {
-    myGLCD.print("0",58, 200);           
+    myGLCD.print("0",58, 200);
     myGLCD.printNumI(on_hora[temporizador], 75, 200);
-  } 
-  else 
+  }
+  else
   {
     myGLCD.printNumI(on_hora[temporizador], 58, 200);
   }
 
   if (on_minuto[temporizador] < 10)
-  {                            
+  {
     myGLCD.print("0", 190, 200);
     myGLCD.printNumI(on_minuto[temporizador], 207, 200);
-  } 
-  else 
+  }
+  else
   {
     myGLCD.printNumI(on_minuto[temporizador], 190, 200);
   }
 
   if (off_hora[temporizador] < 10)
   {
-    myGLCD.print("0",386, 200);            
+    myGLCD.print("0",386, 200);
     myGLCD.printNumI(off_hora[temporizador], 403, 200);
-  } 
-  else 
+  }
+  else
   {
     myGLCD.printNumI(off_hora[temporizador], 386, 200);
   }
 
   if (off_minuto[temporizador] < 10)
   {
-    myGLCD.print("0",528, 200); 
+    myGLCD.print("0",528, 200);
     myGLCD.printNumI(off_minuto[temporizador], 545, 200);
-  } 
-  else 
+  }
+  else
   {
     myGLCD.printNumI(off_minuto[temporizador], 528, 200);
   }
-  if (temporizador_ativado[temporizador] == 1) 
+  if (temporizador_ativado[temporizador] == 1)
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[147])));
     printButton_verde(buffer, domI[0]-40, domI[1], domI[2]+40, domI[3]); // Ativado 120, 193, 200, 233
   }
-  else 
+  else
   {
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[148])));
     printButton(buffer, domI[0]-40, domI[1], domI[2]+40, domI[3]); // Desativado
-  } 
+  }
 }
 
-//--------------------------------------- Configurar leds --------------------------- tela =40
+//--------------------------------------------- Configurar leds -------------------------------- tela =40
 void config_leds()
 {
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[202])));
   printHeader(buffer); // tabela_textos[2] = "CONFIGURAR LEDS"
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[4])));
-  printButton(buffer, tanD[0], tanD[1], tanD[2], tanD[3]); // 1º botaão, 1ª coluna 
+  printButton(buffer, tanD[0], tanD[1], tanD[2], tanD[3]); // 1Ã‚Âº botaÃƒÂ£o, 1Ã‚Âª coluna
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[7])));
-  printButton(buffer, tesT[0], tesT[1], tesT[2], tesT[3]); // 2º botão, 1ª coluna 
+  printButton(buffer, tesT[0], tesT[1], tesT[2], tesT[3]); // 2Ã‚Âº botÃƒÂ£o, 1Ã‚Âª coluna
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[159])));
-  printButton(buffer, temC[0], temC[1], temC[2], temC[3]); // 3º botão, 1ª coluna 
+  printButton(buffer, temC[0], temC[1], temC[2], temC[3]); // 3Ã‚Âº botÃƒÂ£o, 1Ã‚Âª coluna
 
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[228])));
   printButton(buffer, graF[0], graF[1], graF[2], graF[3]); // "COOLERS"
@@ -2561,8 +2559,8 @@ void config_leds()
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[69])));
   printButton(buffer, tpaA[0],tpaA[1], tpaA[2], tpaA[3]); // "predefinido_t"
 
-  //  printButton("", dosA[0], dosA[1], dosA[2], dosA[3]); // 3º botão, 2ª coluna
-  //  printButton("", wavM[0], wavM[1], wavM[2], wavM[3]); // 4º botão, 2ª coluna
+  // printButton("", dosA[0], dosA[1], dosA[2], dosA[3]); // 3Ã‚Âº botÃƒÂ£o, 2Ã‚Âª coluna
+  // printButton("", wavM[0], wavM[1], wavM[2], wavM[3]); // 4Ã‚Âº botÃƒÂ£o, 2Ã‚Âª coluna
   strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
   printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
@@ -2573,7 +2571,7 @@ void config_leds()
 //------------------------------- Procurar sensores de temperatura -------------------------------- tela =41
 void procurar_sensores(boolean refreshAll=false)
 {
-  int numberOfDevices; // Número de sensores encontrados
+  int numberOfDevices; // NÃƒÂºmero de sensores encontrados
   float temperatura;
 
   if(refreshAll == true)
@@ -2600,191 +2598,193 @@ void procurar_sensores(boolean refreshAll=false)
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[216])));
-    myGLCD.print(buffer,90, 44); // "PROBES FOUND"
+    myGLCD.print(buffer,100, 88); // "PROBES FOUND"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217])));
-    myGLCD.print(buffer,35, 80); // "1"
+    myGLCD.print(buffer,6, 145); // "1"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218])));
-    myGLCD.print(buffer,35, 100); // "2"
+    myGLCD.print(buffer,6, 165); // "2"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219])));
-    myGLCD.print(buffer,35, 120); // "3"
+    myGLCD.print(buffer,6, 185); // "3"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[220])));
-    myGLCD.print(buffer,65, 240); // "USE FOR WATER TEMP."
+    myGLCD.print(buffer,55, 240); // "USE FOR WATER TEMP."
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[221])));
-    myGLCD.print(buffer,65, 310); // "USE FOR LED TEMP."
+    myGLCD.print(buffer,55, 310); // "USE FOR LED TEMP."
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[222])));
-    myGLCD.print(buffer,65, 380); // "USE FOR ROOM TEMP."
+    myGLCD.print(buffer,55, 380); // "USE FOR ROOM TEMP."
   }
 
   myGLCD.setColor(0, 0, 0);
-  myGLCD.fillRect(5, 160, 400, 190); //Clear error message: "DO NOT ASSOCIE 2 OR 3 PROBES AT THE SAME PARAMETER"
-  myGLCD.fillRect(5, 190, 400, 220); //Clear error message: "DO NOT ASSOCIE 2 OR 3 PROBES AT THE SAME PARAMETER"
+  myGLCD.fillRect(5, 118, 398, 138); //Clear error message: "DO NOT ASSOCIE 2 OR 3 PROBES AT THE SAME PARAMETER"
+  myGLCD.fillRect(5, 210, 398, 230); //Clear error message: "DO NOT ASSOCIE 2 OR 3 PROBES AT THE SAME PARAMETER"
 
   if(sonda_associada_1_temp == 1)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217]))); // "SONDA 1"
-    printButton(buffer, sonD1[0], sonD1[1], sonD1[2], sonD1[3]);
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217]))); // "1"
+    printButton(buffer, sonD1[0], sonD1[1], sonD1[2], sonD1[3], true);
   }
   if(sonda_associada_1_temp == 2)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218]))); // "SONDA 2"
-    printButton_verde(buffer, sonD1[0], sonD1[1], sonD1[2], sonD1[3]); 
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218]))); // "2"
+    printButton_verde(buffer, sonD1[0], sonD1[1], sonD1[2], sonD1[3], true);
   }
   if(sonda_associada_1_temp == 3)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219]))); // "SONDA 3"
-    printButton_vermelho(buffer, sonD1[0], sonD1[1], sonD1[2], sonD1[3]);
-  } 
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219]))); // "3"
+    printButton_vermelho(buffer, sonD1[0], sonD1[1], sonD1[2], sonD1[3], true);
+  }
 
   if(sonda_associada_2_temp == 1)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217]))); // "SONDA 1"
-    printButton(buffer, sonD2[0], sonD2[1], sonD2[2], sonD2[3]);
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217]))); // "1"
+    printButton(buffer, sonD2[0], sonD2[1], sonD2[2], sonD2[3], true);
   }
   if(sonda_associada_2_temp == 2)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218]))); // "SONDA 2"
-    printButton_verde(buffer, sonD2[0], sonD2[1], sonD2[2], sonD2[3]); 
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218]))); // "2"
+    printButton_verde(buffer, sonD2[0], sonD2[1], sonD2[2], sonD2[3], true);
   }
   if(sonda_associada_2_temp == 3)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219]))); // "SONDA 3"
-    printButton_vermelho(buffer, sonD2[0], sonD2[1], sonD2[2], sonD2[3]);
-  } 
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219]))); // "3"
+    printButton_vermelho(buffer, sonD2[0], sonD2[1], sonD2[2], sonD2[3], true);
+  }
 
   if(sonda_associada_3_temp == 1)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217]))); // "SONDA 1"
-    printButton(buffer, sonD3[0], sonD3[1], sonD3[2], sonD3[3]);
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[217]))); // "1"
+    printButton(buffer, sonD3[0], sonD3[1], sonD3[2], sonD3[3], true);
   }
   if(sonda_associada_3_temp == 2)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218]))); // "SONDA 2"
-    printButton_verde(buffer, sonD3[0], sonD3[1], sonD3[2], sonD3[3]);
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[218]))); // "2"
+    printButton_verde(buffer, sonD3[0], sonD3[1], sonD3[2], sonD3[3], true);
   }
   if(sonda_associada_3_temp == 3)
   {
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219]))); // "SONDA 3"
-    printButton_vermelho(buffer, sonD3[0], sonD3[1], sonD3[2], sonD3[3]);
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[219]))); // "3"
+    printButton_vermelho(buffer, sonD3[0], sonD3[1], sonD3[2], sonD3[3], true);
   }
 
   sensors.begin();
   numberOfDevices = sensors.getDeviceCount();
 
   setFont(LARGE, 88, 255, 238, 0, 0, 0);
-  myGLCD.printNumI(numberOfDevices, 65, 44);  // NUMBER OF PROBES FOUND, IN THIS CASE,"3"
+  myGLCD.printNumI(numberOfDevices, 70, 88); // NUMBER OF PROBES FOUND, IN THIS CASE,"3"
+
 
   for(byte k = 0; k < numberOfDevices; k++)
   {
-    // Pesquisar endereços
+    // Pesquisar endereÃƒÂ§os
     if(sensors.getAddress(tempDeviceAddress, k))
     {
       temperatura = sensors.getTempC(tempDeviceAddress);
+      
       temperatura = (temperatura * 1.8) + 32;
       if (k == 0)
-      { 
-        for (byte i=0; i<8; i++) 
+      {
+        for (byte i=0; i<8; i++)
         {
           sonda1[i] = tempDeviceAddress[i];
         }
       }
       if (k == 1)
-      { 
-        for (byte i=0; i<8; i++) 
+      {
+        for (byte i=0; i<8; i++)
         {
           sonda2[i] = tempDeviceAddress[i];
         }
       }
       if (k == 2)
-      { 
-        for (byte i = 0; i < 8; i++) 
+      {
+        for (byte i = 0; i < 8; i++)
         {
           sonda3[i] = tempDeviceAddress[i];
         }
-      }      
+      }
     }
-    myGLCD.setColor(255, 255, 255); 
-    myGLCD.print(":", 55, (k * 20) + 80);
+    myGLCD.setColor(255, 255, 255);
+    myGLCD.print(":", 20, (k * 20) + 145);
 
-    myGLCD.setColor(255, 163, 100); 
-    myGLCD.printNumF(temperatura, 1, 278,(k * 18) + 80);    // Imprime as teperaturas.
-    myGLCD.print(":", 262, (k * 20) + 80);
-    myGLCD.print("F", 360, (k * 20) + 80);//myGLCD.print("C", 315, (k * 15) + 80);
-    myGLCD.drawCircle(355, (k * 20) + 82, 1);
+    myGLCD.setColor(255, 163, 100);
+    myGLCD.printNumF(temperatura, 1, 334,(k * 20) + 145); // Imprime as teperaturas.
+    myGLCD.print(":", 320, (k * 20) + 145);
+    myGLCD.print("F", 420, (k * 20) + 145);   //myGLCD.print("C", 315, (k * 15) + 80);
+    myGLCD.drawCircle(416, (k * 20) + 143, 1);
 
     setFont(LARGE, 88, 255, 238, 0, 0, 0);
-    for (byte i = 0; i < 8; i++) 
+    for (byte i = 0; i < 8; i++)
     {
       byte result;
       byte temp = tempDeviceAddress[i];
-      result = temp/16;		     //Converte primeiro caracter HEX para ASCII
-      if (result == 15) 
+      result = temp/16;	//Converte primeiro caracter HEX para ASCII
+      if (result == 15)
       {
-        myGLCD.print("F", (i * 24) + 74, (k * 20) + 80);
+        myGLCD.print("F", (i * 36) + 36, (k * 20) + 145);
       }
-      if (result == 14) 
+      if (result == 14)
       {
-        myGLCD.print("E", (i * 24) + 74, (k * 20) + 80);
-      } 
-      if (result == 13) 
-      {
-        myGLCD.print("D", (i * 24) + 74, (k * 20) + 80);
+        myGLCD.print("E", (i * 36) + 36, (k * 20) + 145);
       }
-      if (result == 12) 
+      if (result == 13)
       {
-        myGLCD.print("C", (i * 24) + 74, (k * 20) + 80);
+        myGLCD.print("D", (i * 36) + 36, (k * 20) + 145);
       }
-      if (result == 11) 
+      if (result == 12)
       {
-        myGLCD.print("B", (i * 24) + 74, (k * 20) + 80);
+        myGLCD.print("C", (i * 36) + 36, (k * 20) + 145);
       }
-      if (result == 10) 
+      if (result == 11)
       {
-        myGLCD.print("A", (i * 24 + 74), (k * 20) + 80);
+        myGLCD.print("B", (i * 36) + 36, (k * 20) + 145);
       }
-      if (result < 10 ) 
+      if (result == 10)
       {
-        myGLCD.printNumI(result, (i * 24) + 74, (k * 20) + 80);
+        myGLCD.print("A", (i * 36 + 36), (k * 20) + 145);
+      }
+      if (result < 10 )
+      {
+        myGLCD.printNumI(result, (i * 36) + 36, (k * 20) + 145);
       }
 
-      result = temp - (temp/16) * 16;           // Converte segundo caracter HEX para ASCII
-      if (result == 15) 
+      result = temp - (temp/16) * 16; // Converte segundo caracter HEX para ASCII
+      if (result == 15)
       {
-        myGLCD.print("F", (i * 24) + 82, (k * 20) + 80);
+        myGLCD.print("F", (i * 36) + 50, (k * 20) + 145);
       }
-      if (result == 14) 
+      if (result == 14)
       {
-        myGLCD.print("E", (i * 24) + 82, (k * 20) + 80);
+        myGLCD.print("E", (i * 36) + 50, (k * 20) + 145);
       }
-      if (result == 13) 
+      if (result == 13)
       {
-        myGLCD.print("D", (i * 24) + 82, (k * 20) + 80);
+        myGLCD.print("D", (i * 36) + 50, (k * 20) + 145);
       }
-      if (result == 12) 
+      if (result == 12)
       {
-        myGLCD.print("C", (i * 24) + 82, (k * 20) + 80);
-      } 
-      if (result == 11) 
-      {
-        myGLCD.print("B", (i * 24) + 82, (k * 20) + 80);
+        myGLCD.print("C", (i * 36) + 50, (k * 20) + 145);
       }
-      if (result == 10) 
+      if (result == 11)
       {
-        myGLCD.print("A", (i * 24) + 82, (k * 20) + 80);
+        myGLCD.print("B", (i * 36) + 50, (k * 20) + 145);
+      }
+      if (result == 10)
+      {
+        myGLCD.print("A", (i * 36) + 50, (k * 20) + 145);
       }
       if (result < 10)
       {
-        myGLCD.printNumI(result, (i * 24) + 82, (k * 20) + 80);
+        myGLCD.printNumI(result, (i * 36) + 50, (k * 20) + 145);
       }
       if (i<7)
       {
-        myGLCD.print(":", (i * 24) + 90, (k * 20) + 80);
-      } 
+        myGLCD.print(":", (i * 36) + 62, (k * 20) + 145);
+      }
     }
   }
 }
@@ -2803,34 +2803,36 @@ void configurar_coolers(boolean refreshAll = false)
     printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"  
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
     printButton(buffer, salV[0], salV[1], salV[2], salV[3]); // "SALVAR"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
-    printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // VOLTAR  
+    printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // VOLTAR
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[230])));
     myGLCD.print(buffer, 220, 40); // "INIACIAR EM:"
 
-    myGLCD.print("(68 ----- 95)", 220, 140); //myGLCD.print("(20 ----- 35)", 220, 140); // interval // interval // CHANGE VALUES FOR F SCALE TO (68 --- 95)
+    //myGLCD.print("(20 ----- 35)", 220, 140); // interval /******************************************************** changed for Fahrenheit *******************************************************************/
+    myGLCD.print("(68 ----- 95)", 220, 140); // interval // CHANGE VALUES FOR F SCALE TO (68 --- 95)
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[231])));
     myGLCD.print(buffer, 160, 240); // "VELOCIDADE MAXIMA EM:"
 
-    myGLCD.print("(85 ---- 122)", 220, 340); //myGLCD.print("(36 ----- 50)", 220, 340); // interval // interval // CHANGE VALUES FOR F SCALE TO (85 --- 122)
+    //myGLCD.print("(36 ----- 50)", 220, 340); // interval /******************************************************** changed for Fahrenheit *******************************************************************/
+    myGLCD.print("(85 ---- 122)", 220, 340); // interval // CHANGE VALUES FOR F SCALE TO (85 --- 122)
 
-    printButton("-", temM[0], temM[1], temM[2], temM[3], true);      // Temperatura para iniciar +
-    printButton("+", temP[0], temP[1], temP[2], temP[3], true);      // Temperatura para iniciar -
-    printButton("-", almM[0], almM[1], almM[2], almM[3], true);      // Temperatura para velocidade máxima +
-    printButton("+", almP[0], almP[1], almP[2], almP[3], true);      // Temperatura para velocidade máxima -
+    printButton("-", temM[0], temM[1], temM[2], temM[3], true); // Temperatura para iniciar +
+    printButton("+", temP[0], temP[1], temP[2], temP[3], true); // Temperatura para iniciar -
+    printButton("-", almM[0], almM[1], almM[2], almM[3], true); // Temperatura para velocidade mÃƒÂ¡xima +
+    printButton("+", almP[0], almP[1], almP[2], almP[3], true); // Temperatura para velocidade mÃƒÂ¡xima -
   }
 
-  setFont(LARGE, 255, 255, 255, 0, 0, 0); 
-  myGLCD.printNumF(HtempMin_temp, 1, 290, 80);
+  setFont(LARGE, 255, 255, 255, 0, 0, 0);
+  myGLCD.printNumF(HtempMin_temp, 1, 290, 80); // 260 to 290 ***************** need to change for Fahrenheit, longer number string **********
   myGLCD.printNumF(HtempMax_temp, 1, 290, 280);
 }
 
@@ -2840,16 +2842,16 @@ void reduzir_potencia(boolean refreshAll = false)
   if(refreshAll == true)
   {
     tempHR_t = tempHR;
-    potR_t = potR; 
+    potR_t = potR;
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[235]))); // "CONFIG. TEMPERATURA E POTENCIA DOS LEDS"
-    printHeader(buffer);    
+    printHeader(buffer);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
     printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"  
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
     printButton(buffer, salV[0], salV[1], salV[2], salV[3]); // "SALVAR"
@@ -2866,24 +2868,25 @@ void reduzir_potencia(boolean refreshAll = false)
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[233]))); // "SE A TEMPERATURA ALCANCAR"
-    myGLCD.print(buffer, 40, 118);  
+    myGLCD.print(buffer, 40, 118);
 
-    myGLCD.drawCircle(593, 119, 2);              
-    myGLCD.print(" F ", 595, 118);//myGLCD.print(" C ", 299, 59); /******************************************************** changed for Fahrenheit *******************************************************************/
-  
+    myGLCD.drawCircle(593, 119, 2);
+    //myGLCD.print(" C ", 299, 59); /******************************************************** changed for Fahrenheit *******************************************************************/
+    myGLCD.print(" F ", 595, 118);
+
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[234]))); // "REDUZIR POTENCIA EM"
-    myGLCD.print(buffer, 130, 280);  
-    myGLCD.print("%.", 590, 280);  
+    myGLCD.print(buffer, 130, 280);
+    myGLCD.print("%.", 590, 280);
   }
-  myGLCD.setColor(0, 0, 0);    
+  myGLCD.setColor(0, 0, 0);
   myGLCD.fillRect(450, 270, 520, 310); // Apaga valores
 
   setFont(LARGE, 0, 255, 0, 0, 0, 0);
   myGLCD.printNumI(tempHR_t, 450, 118);
-  myGLCD.printNumI(potR_t, 450, 280); 
+  myGLCD.printNumI(potR_t, 450, 280);
 }
 
-//------------------------------- Potência pré-definida para os leds -------------------------------- tela =44
+//------------------------------- LED PRESET -------------------------------- tela =44
 void pre_definido(boolean refreshAll = false)
 {
   int j = 0;
@@ -2896,22 +2899,22 @@ void pre_definido(boolean refreshAll = false)
       predefinido_t = predefinido;
       pre_definido_ativado_t = pre_definido_ativado;
       pwm_pre_definido_t = pwm_pre_definido;
-      led_on_minuto_t =led_on_minuto; 
+      led_on_minuto_t =led_on_minuto;
       led_on_hora_t = led_on_hora;
-      led_off_minuto_t = led_off_minuto; 
+      led_off_minuto_t = led_off_minuto;
       led_off_hora_t = led_off_hora;
       amanhecer_anoitecer_t = amanhecer_anoitecer;
     }
     horario_alterado = false;
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[249]))); // "CONFIG. VALORES predefinido_tS"
-    printHeader(buffer);    
+    printHeader(buffer);
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[1])));
     printButton(buffer, menU[0], menU[1], menU[2], menU[3]); // "MENU 1";
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[11])));
-    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"  
+    printButton(buffer, iniC[0], iniC[1], iniC[2], iniC[3]); // "INICIO"
 
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[13])));
     printButton(buffer, salV[0], salV[1], salV[2], salV[3]); // "SALVAR"
@@ -2919,11 +2922,11 @@ void pre_definido(boolean refreshAll = false)
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[66])));
     printButton(buffer, volT[0], volT[1], volT[2], volT[3]); // VOLTAR
 
-    printButton("+", 420, 380, 480, 440, true); // Todos pwm + 
+    printButton("+", 420, 380, 480, 440, true); // Todos pwm +
     printButton("-", 560, 380, 620, 440, true); // Todos pwm -
 
     for(i = 0; i < 5; i++)
-    {     
+    {
       j = i * 5;
 
       printButton("+", 270, 120 + (i * 60) + j, 330, 180 + (i * 60) + j, true);
@@ -2937,10 +2940,10 @@ void pre_definido(boolean refreshAll = false)
 
     if (led_on_hora_t < 10)
     {
-      myGLCD.print("0", 478, 250-10);           
+      myGLCD.print("0", 478, 250-10);
       myGLCD.printNumI(led_on_hora_t, 494, 250-10);
-    } 
-    else 
+    }
+    else
     {
       myGLCD.printNumI(led_on_hora_t, 478, 250-10);
     }
@@ -2948,21 +2951,22 @@ void pre_definido(boolean refreshAll = false)
     myGLCD.print(":", 512, 240);
 
     if (led_on_minuto_t < 10)
-    {                            
+    
+    {
       myGLCD.print("0", 530, 240);
       myGLCD.printNumI(led_on_minuto_t, 546, 240);
-    } 
-    else 
+    }
+    else
     {
       myGLCD.printNumI(led_on_minuto_t, 530, 240);
     }
 
     if (led_off_hora_t < 10)
     {
-      myGLCD.print("0", 478, 310);            
+      myGLCD.print("0", 478, 310);
       myGLCD.printNumI(led_off_hora_t, 494, 310);
-    } 
-    else 
+    }
+    else
     {
       myGLCD.printNumI(led_off_hora_t, 478, 310);
     }
@@ -2971,22 +2975,22 @@ void pre_definido(boolean refreshAll = false)
 
     if (led_off_minuto_t < 10)
     {
-      myGLCD.print("0", 530, 310); 
+      myGLCD.print("0", 530, 310);
       myGLCD.printNumI(led_off_minuto_t, 546, 310);
-    } 
-    else 
+    }
+    else
     {
       myGLCD.printNumI(led_off_minuto_t, 530, 310);
     }
 
     setFont(LARGE, 0, 255, 0, 0, 0, 0);
 
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[250])));   
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[250])));
     myGLCD.print(buffer, 464, 214); // "SUNRISE"
 
     myGLCD.setColor(255, 0, 0);
-    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[251])));   
-    myGLCD.print(buffer, 471, 284); // "SUNSET"    
+    strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[251])));
+    myGLCD.print(buffer, 471, 284); // "SUNSET"
 
     myGLCD.setColor(255, 255, 0);
     myGLCD.drawRect(420, 190, 620, 364);
@@ -2998,12 +3002,12 @@ void pre_definido(boolean refreshAll = false)
     if((predefinido_t == 0) && (pre_definido_ativado_t == 1)) // Se predefinido_t igual a zero. Controlar individualmente.
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[247])));
-      printButton_verde(buffer, 20, 50, 400, 110); // "CONT. INDIVIDUALMENTE"  
+      printButton_verde(buffer, 20, 50, 400, 110); // "CONT. INDIVIDUALMENTE"
 
       myGLCD.setFont(BigFont);
 
       for(i = 0; i < 5; i++)
-      {     
+      {
         j = i * 5;
 
         if(i == 0)
@@ -3013,10 +3017,10 @@ void pre_definido(boolean refreshAll = false)
           myGLCD.setColor(0, 0, 0);
           myGLCD.setBackColor(cor_canal1[0], cor_canal1[1], cor_canal1[2]);
           strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[6])));
-          myGLCD.print(buffer, 30, 144  + (i * 60) + j); // "BRANCO"
-          myGLCD.print(":", 190, 144  + (i * 60) + j);
-          myGLCD.print(" ", 206, 144  + (i * 60) + j);
-          myGLCD.printNumI(wled_out_temp, 206, 144  + (i * 60) + j);
+          myGLCD.print(buffer, 30, 144 + (i * 60) + j); // "BRANCO"
+          myGLCD.print(":", 190, 144 + (i * 60) + j);
+          myGLCD.print(" ", 206, 144 + (i * 60) + j);
+          myGLCD.printNumI(wled_out_temp, 206, 144 + (i * 60) + j);
         }
         else if(i == 1)
         {
@@ -3025,10 +3029,10 @@ void pre_definido(boolean refreshAll = false)
           myGLCD.setColor(0, 0, 0);
           myGLCD.setBackColor(cor_canal2[0], cor_canal2[1], cor_canal2[2]);
           strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[7])));
-          myGLCD.print(buffer, 30, 144  + (i * 60) + j); // "AZUL"
-          myGLCD.print(":", 190, 144  + (i * 60) + j);
-          myGLCD.print(" ", 206, 144  + (i * 60) + j);
-          myGLCD.printNumI(bled_out_temp, 206, 144  + (i * 60) + j);
+          myGLCD.print(buffer, 30, 144 + (i * 60) + j); // "AZUL"
+          myGLCD.print(":", 190, 144 + (i * 60) + j);
+          myGLCD.print(" ", 206, 144 + (i * 60) + j);
+          myGLCD.printNumI(bled_out_temp, 206, 144 + (i * 60) + j);
         }
         else if(i == 2)
         {
@@ -3037,10 +3041,10 @@ void pre_definido(boolean refreshAll = false)
           myGLCD.setColor(0, 0, 0);
           myGLCD.setBackColor(cor_canal3[0], cor_canal3[1], cor_canal3[2]);
           strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[8])));
-          myGLCD.print(buffer, 30, 144  + (i * 60) + j); // "AZUL ROYAL"
-          myGLCD.print(":", 190, 144  + (i * 60) + j);
-          myGLCD.print(" ", 206, 144  + (i * 60) + j);
-          myGLCD.printNumI(rbled_out_temp, 206, 144  + (i * 60) + j);
+          myGLCD.print(buffer, 30, 144 + (i * 60) + j); // "AZUL ROYAL"
+          myGLCD.print(":", 190, 144 + (i * 60) + j);
+          myGLCD.print(" ", 206, 144 + (i * 60) + j);
+          myGLCD.printNumI(rbled_out_temp, 206, 144 + (i * 60) + j);
         }
         else if(i == 3)
         {
@@ -3049,10 +3053,10 @@ void pre_definido(boolean refreshAll = false)
           myGLCD.setColor(0, 0, 0);
           myGLCD.setBackColor(cor_canal4[0], cor_canal4[1], cor_canal4[2]);
           strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[9])));
-          myGLCD.print(buffer, 30, 144  + (i * 60) + j); // "VERMELHO"
-          myGLCD.print(":", 190, 144  + (i * 60) + j);
-          myGLCD.print(" ", 206, 144  + (i * 60) + j);
-          myGLCD.printNumI(rled_out_temp, 206, 144  + (i * 60) + j);
+          myGLCD.print(buffer, 30, 144 + (i * 60) + j); // "VERMELHO"
+          myGLCD.print(":", 190, 144 + (i * 60) + j);
+          myGLCD.print(" ", 206, 144 + (i * 60) + j);
+          myGLCD.printNumI(rled_out_temp, 206, 144 + (i * 60) + j);
         }
         else if(i == 4)
         {
@@ -3061,10 +3065,10 @@ void pre_definido(boolean refreshAll = false)
           myGLCD.setColor(0, 0, 0);
           myGLCD.setBackColor(cor_canal5[0], cor_canal5[1], cor_canal5[2]);
           strcpy_P(buffer, (char*)pgm_read_word_near(&(nome_canal[10])));
-          myGLCD.print(buffer, 30, 144  + (i * 60) + j); // "VIOLETA"
-          myGLCD.print(":", 190, 144  + (i * 60) + j);
-          myGLCD.print(" ", 206, 144  + (i * 60) + j);
-          myGLCD.printNumI(uvled_out_temp, 206, 144  + (i * 60) + j);
+          myGLCD.print(buffer, 30, 144 + (i * 60) + j); // "VIOLETA"
+          myGLCD.print(":", 190 , 144 + (i * 60) + j);
+          myGLCD.print(" ", 206, 144 + (i * 60) + j);
+          myGLCD.printNumI(uvled_out_temp, 206, 144 + (i * 60) + j);
         }
         myGLCD.setColor(255, 255, 255);
         myGLCD.drawRoundRect(20, 120 + (i * 60) + j, 260, 180 + (i * 60) + j);
@@ -3076,7 +3080,7 @@ void pre_definido(boolean refreshAll = false)
       printButton(buffer, 20, 50, 400, 110); // "CONT. INDIVIDUALMENTE"
 
       for(i = 0; i < 5; i++)
-      {     
+      {
         j = i * 5;
         myGLCD.setColor(100, 100, 100);
         myGLCD.fillRoundRect(20, 120 + (i * 60) + j, 260, 180 + (i * 60) + j);
@@ -3127,9 +3131,9 @@ void pre_definido(boolean refreshAll = false)
           myGLCD.print(":", 190, 144 + (i * 60) + j);
           myGLCD.print(" ", 206, 144 + (i * 60) + j);
           myGLCD.printNumI(uvled_out_temp, 206, 144 + (i * 60) + j);
-        }   
+        }
       }
-    }  
+    }
 
     if((predefinido_t == 1) && (pre_definido_ativado_t == 1))
     {
@@ -3144,13 +3148,13 @@ void pre_definido(boolean refreshAll = false)
 
     if(pre_definido_ativado_t == 1)
     {
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[147]))); 
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[147])));
       printButton_verde(buffer, 420, 120, 620, 180); // "ATIVADO"
     }
     else
     {
       strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[148])));
-      printButton(buffer, 420, 120, 620, 180); // "DESATIVADO" 
+      printButton(buffer, 420, 120, 620, 180); // "DESATIVADO"
     }
 
     if((predefinido_t == 1) && (pre_definido_ativado_t == 1))
@@ -3159,7 +3163,7 @@ void pre_definido(boolean refreshAll = false)
     }
     else
     {
-      setFont(LARGE, 100, 100, 100, 0, 0, 0); 
+      setFont(LARGE, 100, 100, 100, 0, 0, 0);
     }
     myGLCD.print(" ", 484, 420);
     if(pwm_pre_definido_t >= 100)
@@ -3172,7 +3176,7 @@ void pre_definido(boolean refreshAll = false)
     }
     else
     {
-      myGLCD.printNumI(pwm_pre_definido_t, 512, 420); 
+      myGLCD.printNumI(pwm_pre_definido_t, 512, 420);
     }
   }
   if(horario_alterado == true)
@@ -3191,72 +3195,72 @@ void pre_definido(boolean refreshAll = false)
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[253])));
     myGLCD.print(buffer, 30, 310); // "DURACAO DO NASCER E POR DO SOL EM MIN."
 
-    printButton("+", 60, 90, 110, 140, true);    // Botão para cima
-    printButton("+", 200, 90, 250, 140, true);    // Botão para cima
-    printButton("-", 60, 210, 110, 260, true); // Botão para baixo
-    printButton("-", 200, 210, 250, 260, true); // Botão para baixo
+    printButton("+", 60, 90, 110, 140, true); // BotÃƒÂ£o para cima
+    printButton("+", 200, 90, 250, 140, true); // BotÃƒÂ£o para cima
+    printButton("-", 60, 210, 110, 260, true); // BotÃƒÂ£o para baixo
+    printButton("-", 200, 210, 250, 260, true); // BotÃƒÂ£o para baixo
 
-    printButton("+", 390, 90, 440, 140, true);    // Botão para cima
-    printButton("+", 530, 90, 580, 140, true);    // Botão para cima
-    printButton("-", 390, 210, 440, 260, true); // Botão para baixo
-    printButton("-", 530, 210, 580, 260, true); // Botão para baixo
-
-
-    printButton("-", 200, 350, 250, 400, true);    // Botão para cima
-    printButton("+", 390, 350, 440, 400, true);    // Botão para cima
+    printButton("+", 390, 90, 440, 140, true); // BotÃƒÂ£o para cima
+    printButton("+", 530, 90, 580, 140, true); // BotÃƒÂ£o para cima
+    printButton("-", 390, 210, 440, 260, true); // BotÃƒÂ£o para baixo
+    printButton("-", 530, 210, 580, 260, true); // BotÃƒÂ£o para baixo
 
 
-    setFont(LARGE, 255, 255, 255, 0, 0, 0);          
+    printButton("-", 200, 350, 250, 400, true); // BotÃƒÂ£o para cima
+    printButton("+", 390, 350, 440, 400, true); // BotÃƒÂ£o para cima
+
+
+    setFont(LARGE, 255, 255, 255, 0, 0, 0);
     myGLCD.print(":",142, 168);
     myGLCD.print(":",474, 168);
 
     setFont(LARGE, 255, 255, 255, 0, 0, 0);
     if (led_on_hora_t < 10)
     {
-      myGLCD.print("0",66, 166);           
+      myGLCD.print("0",66, 166);
       myGLCD.printNumI(led_on_hora_t, 82, 166);
-    } 
-    else 
+    }
+    else
     {
       myGLCD.printNumI(led_on_hora_t, 66, 166);
     }
 
     if (led_on_minuto_t < 10)
-    {                            
+    {
       myGLCD.print("0", 204, 166);
       myGLCD.printNumI(led_on_minuto_t, 220, 166);
-    } 
-    else 
+    }
+    else
     {
       myGLCD.printNumI(led_on_minuto_t, 204, 166);
     }
 
     if (led_off_hora_t < 10)
     {
-      myGLCD.print("0",394, 166);            
+      myGLCD.print("0",394, 166);
       myGLCD.printNumI(led_off_hora_t, 410, 166);
-    } 
-    else 
+    }
+    else
     {
       myGLCD.printNumI(led_off_hora_t, 394, 166);
     }
 
     if (led_off_minuto_t < 10)
     {
-      myGLCD.print("0",541, 166); 
+      myGLCD.print("0",541, 166);
       myGLCD.printNumI(led_off_minuto_t, 557, 166);
-    } 
-    else 
+    }
+    else
     {
       myGLCD.printNumI(led_off_minuto_t, 541, 166);
     }
 
     if (amanhecer_anoitecer_t < 100)
     {
-      myGLCD.print(" ", 282, 358); // DURATION OF SUNRISE/SUNSET IN MINUTES     
+      myGLCD.print(" ", 282, 358); // DURATION OF SUNRISE/SUNSET IN MINUTES
       myGLCD.printNumI(amanhecer_anoitecer_t, 298, 370);
-    } 
-    else 
+    }
+    else
     {
       myGLCD.printNumI(amanhecer_anoitecer_t, 298, 375);
     }
