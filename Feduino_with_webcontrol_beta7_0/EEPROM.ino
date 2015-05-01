@@ -78,7 +78,7 @@ void SalvartpaEEPROM()
 
   for(byte i = 0; i < 7; i++)
   {
-    EEPROM.write((491 + i), semana_e[i]);
+    //EEPROM.write((491 + i), semana_e[i]);
   }
 }
 
@@ -287,7 +287,7 @@ void lertpaEEPROM()
   duracaomaximatpa = EEPROM.read(490);
   for(byte i = 0; i < 7; i++)
   {
-    semana_e[i] = EEPROM.read(491 + i);
+    //semana_e[i] = EEPROM.read(491 + i);
   }
 }
 
@@ -481,4 +481,4 @@ void ler_predefinido_EEPROM()
     uvled_out_temp = EEPROM.read(823);
     amanhecer_anoitecer = EEPROM.read(824);
   }
-} 
+}
