@@ -336,7 +336,6 @@ void desenhar_barras(int sbR, int sbG, int sbB, int sbX1, int sbY1, int sbX2, in
   myGLCD.setColor(sbR, sbG, sbB);            
   myGLCD.drawLine(sbX1, sbY1, sbX2, sbY1);
   myGLCD.drawLine(sbX1, sbY2, sbX2, sbY2);
-  
 }
 
 void desenhar_barras_periodo ()
@@ -345,6 +344,5 @@ void desenhar_barras_periodo ()
   myGLCD.drawRect((setor_selecionado * 76)+10, 160, (setor_selecionado * 76)+78, 390); 
   desenhar_barras(cor_canal [cor_selecionada][0], cor_canal [cor_selecionada][1], cor_canal [cor_selecionada][2], (setor_selecionado * 76)+10, 160, (setor_selecionado * 76)+78, 390);
 }
-
 
   
