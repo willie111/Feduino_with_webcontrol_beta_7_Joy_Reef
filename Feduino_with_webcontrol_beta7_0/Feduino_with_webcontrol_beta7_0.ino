@@ -1,4 +1,4 @@
-///*****************************************************************************************************************************************************
+//*****************************************************************************************************************************************************/
 //......................................................................................................................................................
 //...............           .           ...           .....         . .....     ..... .   ...     ...     .....     .....           ....................
 //..............                                       ...             . .       ....      .       .         .       ...     ...     . .................
@@ -16,51 +16,54 @@
 //..............     .........           .     .....     .           ....... .         . ....     ..     .....     .......         .....................
 //................................... ................. ......... ............... . ........... ................. ........... . . ......................
 //******************************************************************************************************************************************************
-//***********************              Desenvolvido por Fernando Garcia         ************************************************************************
+//*********************** Developed by Fernando Garcia *************************************************************************************************
 //******************************************************************************************************************************************************
-//******* Dúvidas, sugestões e elogios: info@ferduino.com **********************************************************************************************
-//******************************************************************************************************************************************************
+//******* Questions, suggestions and praise: fefegarcia_1@hotmail.com **********************************************************************************
+//******************************************************************************************************************************************
 
-// Este programa é compatível com a IDE 1.0.6
+// This program is compatible with IDE 1.0.5
 
-// As funções para controle via web foram implementadas graças à preciosa ajuda do Simone Grimaldi e Danilo Castellano.
+// Functions for control via web were implemented thanks to the precious help of Simone Grimaldi.
 
 //---------------------------------------------------------
 
-// Este programa foi desenvolvido com base na versão Stilo 2.1
-// Disponível nesta página http://code.google.com/p/stilo/ 
+// This program was developed based on version 2.1 Stilo
+// Available http://code.google.com/p/stilo/ this page 
 
 //-----------------------------------------------------------
-// Este programa é software livre; Você pode redistribuí-lo e/ou
-// modificá-lo sob os termos da GNU General Public License
-// como publicada pela Free Software Foundation versão 3
-// da licença, ou (por sua opção) qualquer versão posterior.
-// Este programa é distribuído na esperança que seja útil,
-// mas sem qualquer garantia; sem mesmo a garantia implícita de
-// comercialização ou propósito particular. Consulte o
-// GNU General Public License para mais detalhes.
+// This program is free software; You can redistribute and / or
+// Modify it under the terms of the GNU General Public License
+// As published by the Free Software Foundation version 3
+// The License, or (at your option) any later version.
+// This program is distributed in the hope that it will be useful,
+// But without any warranty; without even the implied warranty of
+// Merchantability or particular purpose. Refer to
+// GNU General Public License for more details.
 
 //*************************************************************************************************
-//*************** Selecionar idioma ***************************************************************
+//*************************************************************************************************
 //*************************************************************************************************
 
-// Descomente a linha correspondente ao seu idioma.
-// Uncomment the line corresponding to your language.
 
- #define ENGLISH    // If this program is useful for you, make a donation to help with development. Paypal: fefegarcia_1@hotmail.com
+// Uncomment the line Corresponding to your language
 
-
+#define ENGLISH       // If this program is useful for you, make a donation to help with development. Paypal: fefegarcia_1@hotmail.com
+// #define FRENCH     // Si ce programme est utile pour vous, faire un don pour aider au développement. Paypal: fefegarcia_1@hotmail.com
+// #define GERMAN     // Wenn dieses Programm ist nützlich für Sie, eine Spende an mit Entwicklung zu helfen. Paypal: fefegarcia_1@hotmail.com
+// #define ITALIAN    // Se questo programma è utile per voi, fare una donazione per aiutare con lo sviluppo. Paypal: fefegarcia_1@hotmail.com
+//#define PORTUGUESE   // Se este programa é útil para você, faça uma doação para ajudar no desenvolvimento. Paypal: fefegarcia_1@hotmail.com
+// #define SPANISH    // Si este programa es útil para usted, hacer una donación para ayudar con el desarrollo. Paypal: fefegarcia_1@hotmail.com
 
 //*************************************************************************************************
-//*************** Bibliotecas utilizadas ***********************************************************
+//********************** libraries used ***********************************************************
 //*************************************************************************************************
 #include <UTFT.h>    
 #include <UTouch.h> 
 #include <Wire.h>
 #include <EEPROM.h>
 #include <writeAnything.h>
-//#include <DS1307henning.h> // Comente esta linha para usar a versão em inglês.
-#include <DS1307.h>      // Descomente esta linha para usar a versão em inglês.
+//#include <DS1307henning.h>
+#include <DS1307.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #include <SdFat.h>
@@ -73,12 +76,12 @@
 #include <Ethernet.h>
 
 //****************************************************************************************************
-//****************** Variáveis de textos e fontes ****************************************************
+//****************** Variables texts and sources ****************************************************
 //****************************************************************************************************
 #define LARGE true
 #define SMALL false
-extern uint8_t RusFont1[];    // Declara que fontes vamos usar
-extern uint8_t BigFont[];     // Declara que fontes vamos usar
+extern uint8_t RusFont1[];    // Declares fonts used
+extern uint8_t BigFont[];     // Declares fonts used
 char buffer[50];
 
 //****************************************************************************************************
@@ -164,27 +167,23 @@ byte sonda_associada_3_temp = 0;
 //*******************************************************************************************************
 //********************** Functions of the RTC ***********************************************************
 //*******************************************************************************************************
-//       (SDA,SCL)
-DS1307 rtc(18, 19);       // Indicates which pins are connected for the RTC. uncomment this line when using PCF8575
-//DS1307 rtc(20, 21);       // Indicates which pins are connected for the RTC. comment this line when using PCF8575
+//        (SDA,SCL) Indica em quais pinos o RTC está conectado.
+//DS1307 rtc(20, 21);     // Comente esta linha para usar o Ferduino Mega 2560
+DS1307 rtc(18, 19);  // Descomente esta linha para usar o Ferduino Mega 2560
 Time t_temp, t;
-// 18 & 19 pins reserved for the RTC.
-// 20 & 21 pins reserved for the PCF8575 I2C communication.
 
 //*******************************************************************************************************
-//*********************** Touch screen and display variables ********************************************
+//********************** Variáveis das fuções do touch screen e tela inicial ****************************
 //*******************************************************************************************************
 UTFT        myGLCD(CTE70, 38,39,40,41);
-UTouch      myTouch(6,5,4,3,2); 
-//UTouch      myTouch(7,6,5,4,3);
+UTouch      myTouch(6,5,4,3,2);              // Comente esta linha para usar o Ferduino Mega 2560
+// UTouch      myTouch(7,6,5,4,3);           // Descomente esta linha para usar o Ferduino Mega 2560
 
-long previousMillis = 0;
+unsigned long previousMillis = 0;
 byte data[56];
 String day, ano; 
-int whiteLed, blueLed, azulroyalLed, vermelhoLed, violetaLed;    // Previous value of PWM.
+int whiteLed, blueLed, azulroyalLed, vermelhoLed, violetaLed;    // Valor anterior de PWM.
 int dispScreen = 0;
-//unsigned long previousMillis_2 = 0;
-//int interval = 30; // time in seconds til clock screen displays 
 
 //*****************************************************************************************
 //*********************** parameters ******************************************************
@@ -205,27 +204,26 @@ byte status_parametros_1 = 0x0;
 //*********************** Variable water temperature control ******************************
 //*****************************************************************************************
 float tempC = 0;                 // Water temperature
-//float setTempC = 25.5;           // desired temperature *C /******************************************************** changed for Fahrenheit *******************************************************************/
-float setTempC = 78;             // desired temperature *F
+float setTempC = 78;   // desired temperature *F.....float setTempC = 25.5;// desired temperature *C 
 float offTempC = 0.5;            // Permissible variation
 float alarmTempC = 1;            // Variation to trigger the alarm for water temperature
 int contador_temp = 0;
 float temperatura_agua_temp = 0; // temporary temperature
 
 //*****************************************************************************************
-//****************** Variables controlling the pH of the aquarium *************************
+//************************ Variáveis temporárias de controle de temperatura da água *******
 //*****************************************************************************************
 float temp2beS;           
 float temp2beO;
 float temp2beA;
 
 //*****************************************************************************************
-//************************ Variáveis do controle do PH do aquário *************************
+//****************** Variables controlling the pH of the aquarium *************************
 //*****************************************************************************************
-float PHA = 0;              // PH do aquário
-float setPHA = 0;           // PH desejado do aquário
-float offPHA = 0;           // Variaçãoo permitida do PH do aquário
-float alarmPHA = 0;         // Variação para acionar o alarme de ph do aquário
+float PHA = 0;               // Aquarium pH
+float setPHA = 0;            // Desired Aquarium pH
+float offPHA = 0;            // Permissible variation
+float alarmPHA = 0;          // Variation to trigger the alarm
 
 //*****************************************************************************************
 //************************ Variáveis temporárias de controle do PH do aquário *************
@@ -235,20 +233,20 @@ float PHA2beO;
 float PHA2beA;
 
 //*****************************************************************************************
-//************************ Variáveis de controle de densidade *****************************
+//*************************** Variable density control ************************************
 //*****************************************************************************************
-int DEN = 0;                 // Densidade
-int setDEN = 1025;           // Densidade desejada
-byte offDEN = 2;             // Variação permitida da densidade
-byte alarmDEN = 1;           // Variação para acionar o alarme de densidade
+int DEN = 0;                 // Density
+int setDEN = 0;           // Desired Density (1025)
+byte offDEN = 2;             // Permissible variation
+byte alarmDEN = 1;           // Variation to trigger the alarm
 
 //*****************************************************************************************
-//************************ Variáveis de controle do PH do reator de cálcio ****************
+//************************ variables pH calcium reactor ***********************************
 //*****************************************************************************************
-float PHR = 0;              // Valores PH reator
-float setPHR = 0;           // PH do reator desejado
-float offPHR = 0;           // Variacao permitida do PH do reator
-float alarmPHR = 0;         // Variacao para acionar o alarme do PH do reator de calcio
+float PHR = 0;               // Reactor pH
+float setPHR = 0;            // Desired Reactor pH
+float offPHR = 0;            // Permissible variation
+float alarmPHR = 0;          // Variation to trigger the alarm
 
 //*****************************************************************************************
 //************************ Variáveis temporárias de controle do PH do reator de cálcio ****
@@ -258,15 +256,15 @@ float PHR2beO;
 float PHR2beA;
 
 //*****************************************************************************************
-//************************ Variáveis de controle da  ORP **********************************
+//************************ variables  ORP **********************************
 //*****************************************************************************************
-int ORP = 0;                // Valores ORP
-int setORP = 420;           // ORP desejada
-byte offORP = 10;           // Variação permitida da ORP
-byte alarmORP = 10;         // Variacão para acionar o alarme da ORP
+int ORP = 0;                 // ORP
+int setORP = 0;            // Desired ORP (420)
+byte offORP = 10;            // Permissible variation
+byte alarmORP = 10;          // Variation to trigger the alarm
 
 //*****************************************************************************************
-//************************ Variáveis temporárias de controle da ORP ***********************
+//************************ variables  ORP ***********************
 //*****************************************************************************************
 int ORP2beS;
 byte ORP2beO;
@@ -284,8 +282,8 @@ byte DEN2beA;
 //*****************************************************************************************
 float HtempMin = 80;    // temperature to start the operation of the heatsink fan °F scale
 float HtempMax = 90;    // PWM fans should be at maximum speed when the sink is 90°F
-//float HtempMin = 30.5;    // Declara a temperatura para iniciar o funcionamento das ventoinhas do dissipador 
-//float HtempMax = 40.5;    // Declara que as ventoinhas devem estar em sua velocidade máxima quando o dissipador estiver com 40°c
+//float HtempMin = 30.5;    // temperature to start the operation of the heatsink fan °c scale /******* changed for Fahrenheit ******************/
+//float HtempMax = 40.5;    // PWM fans should be at maximum speed when the sink is 40°c
 int fanSpeed = 0;         // PWM dos coolers
 
 //*****************************************************************************************
@@ -295,28 +293,28 @@ float HtempMin_temp = 0;    // Declara a temperatura para iniciar o funcionament
 float HtempMax_temp = 0;    // Declara que as ventoinhas devem estar em sua velocidade máxima quando o dissipador estiver com 40°c
 
 //*****************************************************************************************
-//*********************** Variáveis de controle da temperatura do dissipador **************
+//*************************** Control variables of the heat sink temperature **************
 //*****************************************************************************************
-float tempH = 0;    // Temperatura do dissipador
+float tempH = 0;    // Heatsink temperature
 byte tempHR =95;   // Temperature to reduce power of leds °F scale
-//byte tempHR = 60;   // Temperatura para reduzir potência dos leds
-byte potR = 30;     // Porcentagem a ser reduzida.
+//byte tempHR = 60;   // Temperature to reduce power of leds °C scale  /******************************** changed for Fahrenheit ******************/
+byte potR = 30;     // Percentage to be reduced.
 
 //*****************************************************************************************
-//*********** Variáveis temporárias de controle da temperatura do dissipador **************
+//*********** Temporary variables control the heat sink temperature ***********************
 //*****************************************************************************************
-float temperatura_dissipador_temp = 0; // Temperatura temporária
-byte tempHR_t = 0;                     // Temperatura temporária para reduzir potência dos leds
-byte potR_t = 0;                       // Porcentagem temporária a ser reduzida.
-boolean temperatura_alta = false;      // Sinaliza que a temperatura dos leds está alta.
-boolean temperatura_baixou = false;    // Sinaliza que a temperatura dos leds esteve alta.
+float temperatura_dissipador_temp = 0; // temporary temperature
+byte tempHR_t = 0;                     // Temporary temperature to reduce power of leds
+byte potR_t = 0;                       // Temporary percentage to be reduced.
+boolean temperatura_alta = false;      // Signals that the temperature of the LEDs is high.
+boolean temperatura_baixou = false;    // Signals that the temperature of the LEDs was high.
 
 //*****************************************************************************************
-//************************ Variáveis de controle da iluminação ****************************
+//************************ Control variables lighting *************************************
 //*****************************************************************************************
-int LedChangTime = 0;             // Página de alteração do leds, tempo e valores.
-boolean MeanWell = true;          // Se estiver usando drivers cuja potência máxima seja obtida aplicando zero volt e a mínima seja 5 volts altere de "true" para "false".
-boolean LEDtestTick = false;      // Acelerar o tempo durante o teste dos leds. 
+int LedChangTime = 0;             // Change page of the LED's, and time valuesÃ¢â‚¬â€¹Ã¢â‚¬â€¹.
+boolean MeanWell = true;          // If using drivers whose maximum power is obtained by applying zero volts and 5 volts is minimal change "true" to "false".
+boolean LEDtestTick = false;      // Accelerate time during testing of LEDs.
 int min_cnt ;
 byte bled_out;
 byte wled_out;
@@ -330,7 +328,7 @@ byte rled_out_temp;
 byte uvled_out_temp;
 byte moonled_out;
 boolean periodo_selecionado = false;
-byte y_tocado;
+int y_tocado;
 boolean teste_em_andamento = false;
 byte cor_selecionada = 0;
 // bit 1 = led white
@@ -340,13 +338,13 @@ byte cor_selecionada = 0;
 // bit 5 = led violet
 byte setor_selecionado = 0;
 boolean mensagem = true;
-float suavizar = 0.0; // LEDS iniciam suavemente e chega ao valor especificado em 50 segundos.
+float suavizar = 0.0; // LEDs start smoothly and reaches the specified value in 50 seconds.
 byte predefinido = 0;
 byte pre_definido_ativado = 0;
 byte pwm_pre_definido = 0;
-byte led_on_minuto;
+byte led_on_minuto; // Time to turn on leds.
 byte led_on_hora;
-byte led_off_minuto;
+byte led_off_minuto; // Time to turn off leds.
 byte led_off_hora;
 boolean horario_alterado = false;
 boolean hora_modificada = false;
@@ -354,12 +352,12 @@ byte amanhecer_anoitecer = 60;
 boolean teste_iniciado = false;
 
 //*****************************************************************************************
-//**************** Variáveis temporárias de controle da iluminação ************************
+//**************** Temporary variables to control lighting ************************
 //*****************************************************************************************
 byte predefinido_t = 0;
 byte pre_definido_ativado_t = 0;
 byte pwm_pre_definido_t = 0;
-byte led_on_minuto_t; 
+byte led_on_minuto_t;           // temporary schedule
 byte led_on_hora_t;
 byte led_off_minuto_t;
 byte led_off_hora_t;
@@ -373,16 +371,17 @@ byte cor_canal2[] = {0, 255, 0};       // Green   // {0, 125, 255}; // Blue
 byte cor_canal3[] = {0, 0, 255};       // Royal Blue
 byte cor_canal4[] = {255, 0, 0};       // Red
 byte cor_canal5[] = {138, 43, 226};    // Violet
+
 //*****************************************************************************************
-//************************ Variáveis da fase lunar ****************************************
+//************************ Variables lunar phase ******************************************
 //*****************************************************************************************
 String LP;
-byte MaxI , tMaxI;  // Potência  máxima na Lua cheia.             
-byte MinI, tMinI;   // Potência  mínima na Lua nova.
+byte MaxI , tMaxI;  // Maximum power at the full moon.             
+byte MinI, tMinI;   // Maximum power at the new moon.
 byte fase = 0;
 
 //*****************************************************************************************
-//********* Variáveis da TPA (Troca Parcial de Água) automática ***************************
+//************************ Variables automatic AWC ****************************************
 //*****************************************************************************************
 byte hora = 0;
 byte minuto = 0;
@@ -390,14 +389,14 @@ byte duracaomaximatpa = 0;
 byte semana_e[7]; // Index 0 = segunda-feira, 1 = terça-feira, 2 = quarta-feira, 3 = quinta-feira, 4 = sexta-feira, 5 = sábado, 6 = domingo.
 byte tpa = 0;                             // Controla os estágios da TPA automática
 byte tpa_status = 0x0; // 0 = false e 1 = true
-// bit 1 = Sinaliza TPA automática em andamento
-// bit 2 = Sinaliza falha durante a TPA automática          
-unsigned long tempo = 0;                 // Duração de cada estágio da TPA automática
-unsigned long marcadoriniciotpa = 0;   // Evita que uma tpa inicie próximo do millis zerar
-unsigned long shiftedmillis = 0;       // Evita que uma tpa inicie próximo do millis zerar
+// bit 1 = Automatic signals AWC in progress
+// bit 2 = Signals failure during automatic AWC        
+unsigned long tempo = 0;                 // Duration of each stage of AWC automatic
+unsigned long marcadoriniciotpa = 0;   // Prevent a tpa millis start near the zero
+unsigned long shiftedmillis = 0;       // Prevent a tpa millis start near the zero
 
 //*****************************************************************************************
-//********** Variáveis temporárias da TPA (Troca Parcial de Água) automática **************
+//************* Automatic temporary variables AWC (Partial Exchange of Water) *************
 //*****************************************************************************************
 byte temp2hora;
 byte temp2minuto;
@@ -405,7 +404,7 @@ byte temp2duracaomaximatpa;
 byte semana[7];
 
 //****************************************************************************************
-//*********************** Variáveis de controle das funções que utilizam o cartao SD *****
+//*********************** Control variables of the functions that use the SD Card ********
 //****************************************************************************************
 Sd2Card card;
 SdFile file;
@@ -414,12 +413,12 @@ SdVolume volume;
 unsigned long log_SD_millis = 0;
 
 //*****************************************************************************************
-//*********************** Variável do controle de níveis **********************************
+//*********************** Variable control levels *****************************************
 //*****************************************************************************************
 boolean nivel_status = 0;             // Sinaliza nível baixo em um dos aquários
 
 //*****************************************************************************************
-//************************ Variável de controle da reposição de água doce *****************
+//************************ Variable control of replenishment of freshwater ****************
 //*****************************************************************************************
 byte Status = 0x0;
 // bit 1 // Sinaliza reposição ligada / desligada
@@ -427,23 +426,24 @@ byte Status = 0x0;
 // bit 3 
 
 //*****************************************************************************************
-//************************* Funções do ethernet shield ************************************
+//************************* Functions ethernet shield ************************************
 //*****************************************************************************************
 boolean Ethernet_Shield = true; // Altere para "false" caso não tenha um Ethernet Shield conectado ao Arduino.
 
-const char *Username  = "*******";   // user name for joy-reef.com
-const char *APIKEY = "******";           // ApiKey generated at joy-reef.com
+char *Username  = "willie";   // Coloque aqui o nome de usuário cadastrado no joy-reef.com
+char *APIKEY = "34b8bde";           // Cole aqui a ApiKey gerada pelo joy-reef.com
 
-const byte maxima_tentativa = 3;                // Número máximo de tentativas de autenticação.
-const byte intervalo_tentativa = 15;   // Tempo  de espera (em minutos) para novas tentativas.
+byte maxima_tentativa = 3;                // Número máximo de tentativas de autenticação.
+unsigned long intervalo_tentativa = 15;   // Tempo  de espera (em minutos) para novas tentativas.
 
-byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED }; // Este MAC deve ser único na sua rede local.
+byte mac[] = {0x54, 0x55, 0x58, 0x10, 0x00, 0x26 }; // Este MAC deve ser único na sua rede local.
 byte ip[] = {209, 97, 81, 183};                     // Configure o IP conforme a sua rede local.
 IPAddress dnsServer(8, 8, 8, 8);                    // Configure o IP conforme a sua rede local. Este é o DNS do Google, geralmente não é necessário mudar.
 IPAddress gateway(192, 168, 0, 1);                  // Configure o "Gateway" conforme a sua rede local.
 IPAddress subnet(255, 255, 255, 0);                 // Configure a máscara de rede conforme a sua rede local.
-EthernetServer server(80);                        // Coloque aqui o número da porta configurada no seu roteador para redirecionamento.
+EthernetServer server(5000);                        // Coloque aqui o número da porta configurada no seu roteador para redirecionamento.
                                                     // O número da porta deverá ser obrigatóriamente um destes: 80, 5000, 6000, 7000, 8000, 8080 ou 9000.
+
 unsigned long intervalo = 0;
 char *inParse[25];
 boolean web_teste = false;
@@ -452,20 +452,19 @@ boolean web_dosage = false;
 unsigned long millis_dosagem = 0;
 unsigned long millis_enviar = 0;
 boolean web_calibracao = false;
-const char *token = ":";
+char *token = ":";
 char Auth1[50];
 unsigned long teste_led_millis = 0; 
+
 //*****************************************************************************************
 //************************** Variáveis de controle do multiplexador ***********************
 //*****************************************************************************************
-#define STAMPS_V4X     // Comente esta linha para usar Stamps EZO
-//#define STAMPS_EZO     // Descomente esta linha para usar Stamps EZO
 boolean Stamps = false; // Altere para "false" caso não tenha ao menos um dos circuitos de PH, ORP e EC da Atlas Scientific.
 unsigned long millis_antes = 0;
-const byte ph1 = 0; // Y0
-const byte ph2 = 1; // Y1
-const byte orp = 2; // Y2
-const byte ec = 3;  // Y3
+short ph1=0; // Y0
+short ph2=1; // Y1
+short orp=2; // Y2
+short ec=3;  // Y3
 
 //*****************************************************************************************
 //************************** Variables password request ***********************************
@@ -474,10 +473,10 @@ const byte ec = 3;  // Y3
 char stCurrent[7]="";
 char limpar_senha [7] = "";
 byte stCurrentLen=0;
-char senha [7] = {'0','1','2','8','6','7','\0'}; // Enter your password here. The character '\ 0' and commas should not be changed. change only the numbers
-  
+char senha [7] = {'0','1','2','8','6','7','\0'}; // Enter your password here. The character '\ 0' and commas should not be changed. change only the number
+
 //*****************************************************************************************
-//************************** Variáveis dosadoras ******************************************
+//************************** dosing variables *********************************************
 //*****************************************************************************************
 boolean dosadoras = false; //Altere para "false" caso não tenha as dosadoras.
 const char *arquivo[6] = {"HDP1.TXT","HDP2.TXT","HDP3.TXT","HDP4.TXT","HDP5.TXT","HDP6.TXT"};
@@ -526,10 +525,10 @@ byte modo_personalizado_on[6];
 float dose_dosadora_manual[6];
 float fator_calib_dosadora[6];
 //*****************************************************************************************
-//************************** Variáveis dos timers *****************************************
+//************************** Variables of timers ******************************************
 //*****************************************************************************************
 byte temporizador = 0;
-byte temporizador_e[5] = {temporizador1, temporizador2, temporizador3, temporizador4, temporizador5};  // Index 0 = timer 1 , 1 = timer 2, 2 = timer 3, 3 = timer 4, 4 = timer 5
+byte temporizador_e[5] = {temporizador1, temporizador2, temporizador3, temporizador4, temporizador5};
 
 boolean web_timer = false;
 byte temporizador_status = 0x0; // 1 = true e 0 = false
@@ -544,7 +543,6 @@ byte temporizador_modificado = 0x0;
 //bit 3 = temporizador 3
 //bit 4 = temporizador 4
 //bit 5 = temporizador 5
-
 byte on_hora_e[5]; // Index 0 = timer 1 , 1 = timer 2, 2 = timer 3, 3 = timer 4, 4 = timer 5
 byte on_minuto_e[5];
 byte off_hora_e[5];
@@ -552,7 +550,7 @@ byte off_minuto_e[5];
 byte temporizador_ativado_e[5];
 
 //*****************************************************************************************
-//******************** Variáveis temporárias dos timers ***********************************
+//************************** Temporary variables of timers ********************************
 //*****************************************************************************************
 byte on_hora[5];
 byte on_minuto[5];
@@ -561,15 +559,15 @@ byte off_minuto[5];
 byte temporizador_ativado[5];
 
 //*****************************************************************************************
-//************************** Variáveis do PCF8575 *****************************************
+//************************** Variables PCF8575 ********************************************
 //*****************************************************************************************
 
  boolean PCF8575TS_S = true; // Altere para "false" caso não tenha um PCF8575
  byte endereco_PCF8575TS = 0x20; // Endereço em hexadecimal = 0x20
- PCF8575 PCF8575;
+PCF8575 PCF8575;
 
 //*****************************************************************************************
-//************************** Comunicação RF ***********************************************
+//************************** RF communication *********************************************
 //*****************************************************************************************
 byte consumo = 0;
 /*boolean RFM12B = false; // Altere para "false" caso não tenha um RFM12B
@@ -581,7 +579,7 @@ byte consumo = 0;
  const byte emonTx_NodeID = 10;            // ID do receptor*/
 
 //*****************************************************************************************
-//************************** Dispositivos SPI *********************************************
+//************************** SPI devices **************************************************
 //*****************************************************************************************
 const byte SD_CARD = 0; 
 const byte ETHER_CARD = 1;
@@ -589,28 +587,28 @@ const byte RFM = 2;
 const byte ChipSelect_SD = 53; // Comente esta linha para usar o Ferduino Mega 2560
 //const byte ChipSelect_SD = 5;  // Descomente esta linha para usar o Ferduino Mega 2560           
 const byte SelectSlave_ETH = 4;
-const byte ChipSelect_RFM = 69; // A15
+const int ChipSelect_RFM = A15;
 
 //*****************************************************************************************
-//************************* Variáveis da temperatura ambiente *****************************
+//************************* Variables room temperature ************************************
 //*****************************************************************************************
 float tempA = 0; // Temperatura ambiente
 float temperatura_ambiente_temp = 0; // Temperatura temporária
 
 //*****************************************************************************************
-//************************* Variáveis das bombas de circulação ****************************
+//************************* Variables of Wave pumps ***************************************
 //*****************************************************************************************
 byte modo_selecionado = 1; 
 byte Pump1PWM_temp = 0;    
 byte Pump2PWM_temp = 0;
-int periodo = 10000;
+int periodo = 3500; // default setting 100000
 int duracao = 5000; // Duração do ciclo em milisegundos para o modo 3.
 unsigned long millis_antes_1 = 0;
 byte conta = 0;
 byte Pump1PWM = 0;    
 byte Pump2PWM = 0;
 //*****************************************************************************************
-//************************** Control variables power leds *******************
+//************************** Control variables power leds *********************************
 //*****************************************************************************************
 // WHITE Dimming Values (White LED array in RAM)
 byte wled[96] = {
@@ -715,3 +713,4 @@ char* tabela_strings[] PROGMEM =
   string4, string5, string6, string7,
   string8, string9, string10, string11
 };
+
