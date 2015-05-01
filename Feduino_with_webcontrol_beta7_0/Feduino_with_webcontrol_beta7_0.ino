@@ -430,8 +430,8 @@ byte Status = 0x0;
 //*****************************************************************************************
 boolean Ethernet_Shield = true; // Altere para "false" caso não tenha um Ethernet Shield conectado ao Arduino.
 
-char *Username  = "willie";   // Coloque aqui o nome de usuário cadastrado no joy-reef.com
-char *APIKEY = "34b8bde";           // Cole aqui a ApiKey gerada pelo joy-reef.com
+char *Username  = "br549";   // Coloque aqui o nome de usuário cadastrado no joy-reef.com
+char *APIKEY = "eieio";           // Cole aqui a ApiKey gerada pelo joy-reef.com
 
 byte maxima_tentativa = 3;                // Número máximo de tentativas de autenticação.
 unsigned long intervalo_tentativa = 15;   // Tempo  de espera (em minutos) para novas tentativas.
