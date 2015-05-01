@@ -1,4 +1,3 @@
-
 prog_char texto0[] PROGMEM = "";                                            // tabela_textos[0]
 prog_char texto1[] PROGMEM = "MENU 1";                                      // tabela_textos[1]
 prog_char texto2[] PROGMEM = "MENU 2";                                      // tabela_textos[2]
@@ -336,4 +335,3 @@ char* nome_canal[] PROGMEM =
   nomecanal12, nomecanal13, nomecanal14, nomecanal15, nomecanal16,nomecanal17,
   nomecanal18, nomecanal19, nomecanal20, nomecanal21
 };
-
