@@ -152,7 +152,7 @@ void loop()
      Serial.print("Time: ");
      Serial.println(rtc.getTimeStr(FORMAT_LONG));*/
 
-    Serial.print (F("Free memory: "));
+    Serial.print ("Free memory: ");
     Serial.println (FreeRam());
     /*
     Serial.print("Sensor 1: ");    
@@ -210,3 +210,12 @@ void loop()
     previousMillis = millis();
   }
 } //-------------------end of main loop
+
+
+
+
+
+
+
+
+
