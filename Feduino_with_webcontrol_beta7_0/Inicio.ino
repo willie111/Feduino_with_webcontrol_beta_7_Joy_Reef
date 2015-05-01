@@ -50,7 +50,7 @@ void mainScreen(boolean refreshAll=false)
     myGLCD.print("www.CasualReef.com", 489, 450);
     //myGLCD.print("www.reefcentral.com", 489, 450);
     //myGLCD.print("www.reef2reef.com", 489, 450);
-    //myGLCD.print("www.bigbluereef.com", 480, 450);           
+    //myGLCD.print("www.bigbluereef.com", 480, 450);  
     char bufferLP[16];
     LP.toCharArray(bufferLP, 16);
 
@@ -178,89 +178,23 @@ void mainScreen(boolean refreshAll=false)
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[226])));
     myGLCD.print(buffer, 395, 380); // "Tank Room Temp:"    
 
- if((refreshAll == true) || (web_timer == true))
-  {
-    web_timer = false;
-    if(temporizador_ativado) // TIMER 1
-    {
-      myGLCD.setColor(192, 192, 192); 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[31])));
-      myGLCD.print(buffer, 10, 288); // RETURN:"
-    }
-    else
-    {
-      myGLCD.setColor(64, 64, 64);
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[31])));
-      myGLCD.print(buffer, 10, 288); // RETURN:"      
-    }
-
-    if(temporizador_ativado) // Timer 2
-    {
-      myGLCD.setColor(192, 192, 192); 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[77])));
-      myGLCD.print(buffer, 10, 312); // SKIMMER:"
-    }
-    else
-    {
-      myGLCD.setColor(64, 64, 64); 
-      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[77])));
-      myGLCD.print(buffer, 10, 312); // SKIMMER:"
-    }      
-
-    if(temporizador_ativado) // Timer 3
-    {
-     myGLCD.setColor(192, 192, 192); 
-     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[78])));
-     myGLCD.print(buffer, 10, 336); // CL PUMP:"
-    }
-    else
-    {
-     myGLCD.setColor(64, 64, 64); 
-     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[78])));
-     myGLCD.print(buffer, 10, 336); // CL PUMP"
-    }     
-
-    if(temporizador_ativado) // Timer 4
-    {
-     myGLCD.setColor(192, 192, 192);
-     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[79])));
-     myGLCD.print(buffer, 10, 360); // REFUGEM:"
-    }
-    else
-    {
-     myGLCD.setColor(64, 64, 64); 
-     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[79])));
-     myGLCD.print(buffer, 10, 360); // REFUGEM:"
-    }    
-
-    if(temporizador_ativado) // Timer 5
-    {
-     myGLCD.setColor(192, 192, 192);
-     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[80])));
-     myGLCD.print(buffer, 10, 384); // FRAG:"
-    }
-    else
-    {
-     myGLCD.setColor(64, 64, 64);
-     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[80])));
-     myGLCD.print(buffer, 10, 384); // FRAG:"
-    }
-  }     
-
     myGLCD.setColor(0, 255, 255);
 
     myGLCD.drawCircle(758, 12, 2);                  // Unidade t. dissipador
-    myGLCD.print("F", 765, 18);//myGLCD.print("C", 374, 14); changed for Fahrenheit 
-    
+    myGLCD.print("F", 765, 18);
+    //myGLCD.print("C", 374, 14);  /******************************************************** changed for Fahrenheit *******************************************************************/
+
     myGLCD.drawCircle(758, 40, 2);                  // Unidade t. ÃƒÂ¡gua
-    myGLCD.print("F", 765, 46); //myGLCD.print("C", 374, 28); changed for Fahrenheit 
-                         
+    myGLCD.print("F", 765, 46);    /******************************************************** changed for Fahrenheit *******************************************************************/
+    //myGLCD.print("C", 374, 28);                     // Unidade t. ÃƒÂ¡gua
+
     myGLCD.print("G/L", 740, 130);                   // Unidade densidade
     myGLCD.print("MV", 747, 158);                    // Unidade ORP
 
     myGLCD.drawCircle(758, 374, 2);                  // Unidade t. ambiente
-    myGLCD.print("F", 765, 380); //myGLCD.print("C", 374, 195);  changed for Fahrenheit 
-    
+    myGLCD.print("F", 765, 380);
+    //myGLCD.print("C", 374, 195); /******************************************************** changed for Fahrenheit *******************************************************************/
+
 
     //myGLCD.setColor(161, 127, 73);
     myGLCD.setColor(0, 0, 255);           // section outlines
@@ -276,6 +210,75 @@ void mainScreen(boolean refreshAll=false)
     myGLCD.setColor(255, 215, 0);
     myGLCD.drawRect(1, 1, 799, 479);
   } // Fim do refreshAll
+  
+  if((refreshAll == true) || (web_timer == true))
+  {
+    web_timer = false;
+    if(temporizador_ativado_e[0] == 1) // TIMER 1
+    {
+      myGLCD.setColor(192, 192, 192); 
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[31])));
+      myGLCD.print(buffer, 10, 288); // RETURN:"
+    }
+    else
+    {
+      myGLCD.setColor(64, 64, 64);
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[31])));
+      myGLCD.print(buffer, 10, 288); // RETURN:"      
+    }
+
+    if(temporizador_ativado_e[1] == 1) // Timer 2
+    {
+      myGLCD.setColor(192, 192, 192); 
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[77])));
+      myGLCD.print(buffer, 10, 312); // SKIMMER:"
+    }
+    else
+    {
+      myGLCD.setColor(64, 64, 64); 
+      strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[77])));
+      myGLCD.print(buffer, 10, 312); // SKIMMER:"
+    }      
+
+    if(temporizador_ativado_e[2] == 1) // Timer 3
+    {
+     myGLCD.setColor(192, 192, 192); 
+     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[78])));
+     myGLCD.print(buffer, 10, 336); // CL PUMP:"
+    }
+    else
+    {
+     myGLCD.setColor(64, 64, 64); 
+     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[78])));
+     myGLCD.print(buffer, 10, 336); // CL PUMP"
+    }     
+
+    if(temporizador_ativado_e[3] == 1) // Timer 4
+    {
+     myGLCD.setColor(192, 192, 192);
+     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[79])));
+     myGLCD.print(buffer, 10, 360); // REFUGEM:"
+    }
+    else
+    {
+     myGLCD.setColor(64, 64, 64); 
+     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[79])));
+     myGLCD.print(buffer, 10, 360); // REFUGEM:"
+    }    
+
+    if(temporizador_ativado_e[4] == 1) // Timer 5
+    {
+     myGLCD.setColor(192, 192, 192);
+     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[80])));
+     myGLCD.print(buffer, 10, 384); // FRAG:"
+    }
+    else
+    {
+     myGLCD.setColor(64, 64, 64);
+     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[80])));
+     myGLCD.print(buffer, 10, 384); // FRAG:"
+    }
+  }
 
  
   if ((whiteLed != wled_out) || refreshAll)  // Atualiza grÃƒÂ¡fico led branco    
@@ -419,8 +422,8 @@ void mainScreen(boolean refreshAll=false)
   myGLCD.setColor(0, 255, 255);  
   myGLCD.printNumF(tempH, 1, 670, 18);              // Heatsink Temp
   myGLCD.printNumF(tempC, 1, 670, 46);              // Aquarium Temp
-  myGLCD.printNumF(PHA, 2, 670, 74);                // Aquarium  pH.
-  myGLCD.printNumF(PHR, 2, 670, 102);               // Calc. Rx. pH.
+  myGLCD.printNumF(PHA, 1, 670, 74);                // Aquarium  pH.
+  myGLCD.printNumF(PHR, 1, 670, 102);               // Calc. Rx. pH.
   myGLCD.printNumI(DEN, 670, 130);                  // Water Density
   myGLCD.printNumI(ORP, 670, 158);                  // Redox Potent. 
   myGLCD.printNumF(tempA, 1, 670, 380);             // Ambiente Temp
@@ -433,11 +436,11 @@ void mainScreen(boolean refreshAll=false)
   }  
   if (bitRead(status_parametros,3) == true) 
   {                               
-    myGLCD.printNumF(PHA, 2, 670, 74);              // Aquarium pH in red
+    myGLCD.printNumF(PHA, 1, 670, 74);              // Aquarium pH in red
   }    
   if (bitRead(status_parametros,6) == true) 
   {                                
-    myGLCD.printNumF(PHR, 2, 670, 102);             // Reactor pH in red
+    myGLCD.printNumF(PHR, 1, 670, 102);             // Reactor pH in red
   }   
   if (bitRead(status_parametros,4) == true) 
   {                                
@@ -524,7 +527,7 @@ void mainScreen(boolean refreshAll=false)
     myGLCD.setColor(255, 0, 0);
     strcpy_P(buffer, (char*)pgm_read_word_near(&(tabela_textos[86])));
     myGLCD.print(buffer, 670, 354);                // Signals failure during a AWC // tabela_textos[86] = "FAIL!"
-  } //myGLCD.print("C", 374, 195); /* changed for Fahrenheit */
+  } 
   if (bitRead(temporizador_status,1) == true)      
   {             
     myGLCD.setColor(0, 255, 255);
@@ -589,3 +592,8 @@ void mainScreen(boolean refreshAll=false)
     myGLCD.print(buffer, 116, 155);                  // Warning that the temperature was high for LEDs.
   }
 }
+
+
+
+
+
