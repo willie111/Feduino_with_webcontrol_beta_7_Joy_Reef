@@ -182,7 +182,7 @@ void requestAction(byte ID)
     client.print(F(",\"speed\":")); 
     client.print(LedToPercent(fanSpeed));
     client.print(F(",\"moonPhase\":")); 
-    client.print(fase);
+    //client.print(fase);
     client.print(F(",\"iluminated\":")); 
     client.print(lunarCycle *100);
     client.print(F("}"));
